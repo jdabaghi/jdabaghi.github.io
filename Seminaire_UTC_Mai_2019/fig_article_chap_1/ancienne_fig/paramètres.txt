@@ -1,4 +1,0 @@
-Hmax = 0.2
-J = 4
-tol_newton_exacte = 1e-9;
-tol_gmres_exacte = 1e-9;

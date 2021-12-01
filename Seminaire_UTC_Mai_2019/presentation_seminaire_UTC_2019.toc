@@ -1,5 +1,0 @@
-\beamer@endinputifotherversion {3.36pt}
-\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
-\beamer@sectionintoc {2}{Stationary variational inequality}{18}{0}{2}
-\beamer@sectionintoc {3}{Two-phase compositional flow}{69}{0}{3}
-\beamer@sectionintoc {4}{Conclusion}{104}{0}{4}
