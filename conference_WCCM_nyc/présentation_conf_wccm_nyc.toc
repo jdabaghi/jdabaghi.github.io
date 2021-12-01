@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Model problem and its discretization}{4}{0}{2}
+\beamer@sectionintoc {3}{Semismooth Newton method}{9}{0}{3}
+\beamer@sectionintoc {4}{A posteriori and adaptivity}{11}{0}{4}
+\beamer@sectionintoc {5}{Numerical experiments}{16}{0}{5}

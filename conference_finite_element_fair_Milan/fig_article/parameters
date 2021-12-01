@@ -1,0 +1,648 @@
+﻿Hmax = 0.15;                      
+
+J = 3;                          
+tol_newton_exacte = 1e-9;
+tol_newton_inexacte = 1e-9;
+tol_gmres_inexacte = 1e-3;
+maxit = 15; %% Resolution exacte
+maxit = 10 %%% résolution inexacte
+gamma_alg = 0.01 %% resolution inexacte
+
+
+%%%Simulation
+adaptive_inexact_resolution
+Gamma_lin = 0.1
+Gamma_alg = 0.01
+J = 3 
+Hmax = 0.15
+maxit = 3
+iter_newton_1 = 9 iter gmres
+iter_newton_2 = 48 iter gmres
+iter_newton_3 = 33 iter gmres
+iter_newton_4 = 18 iter gmres
+iter_newton_5 = 18 iter gmres
+iter_newton_6 = 9 iter gmres
+iter_newton_7 = 9 iter gmres
+iter_newton_8 = 9 iter gmres
+iter_newton_9 = 9 iter gmres
+iter_newton_10 = 6 iter gmres
+iter_newton_11 = 6 iter gmres
+iter_newton_12 = 6 iter gmres
+
+plot_algebraic_iter_with_newton_adapt_inexact = [9, 48, 33, 18, 18, 9, 9, 9, 9, 6, 6, 6] 
+inexact resolution
+
+alpha_alg = 1
+ plot_algebraic_iter_with_newton_inexact = repmat(3,46,1)
+46 iter Newton. At each Newton step 3 iter of Gmres
+
+exact resolution
+iter_newton_1 = 200 iter gmres
+iter_newton_2 = 20 iter gmres
+iter_newton_3 = 40 iter gmres
+iter_newton_4 = 40 iter gmres
+iter_newton_5 = 40 iter gmres
+iter_newton_6 = 40 iter gmres
+iter_newton_7 = 40 iter gmres
+iter_newton_8 = 60 iter gmres
+iter_newton_9 = 60 iter gmres
+iter_newton_10 = 60 iter gmres
+iter_newton_11 = 60 iter gmres
+iter_newton_12 = 60 iter gmres
+iter_newton_13 = 60 iter gmres
+iter_newton_14 = 60 iter gmres
+iter_newton_15 = 40 iter gmres
+plot_algebraic_iter_with_newton_exact = [200, 20, 40, 40, 40, 40, 40, 60, 60, 60, 60, 60, 60, 60, 40]
+
+
+
+%%SIMULATION NUMBER OF NEWTON STEPS PER NUMBER OF ELEMENTS EXACT RESOLUTION
+Hmax = 0.3 ie ne = 
+
+   (1,1)       0.2225
+   (1,2)       0.0237
+   (1,3)       0.0280
+   (1,4)       0.0307
+   (1,5)       0.0163
+   (1,6)       0.0051
+   (1,7)       0.0004
+   (1,8)       0.0001
+
+Hmax = 0.2 ie ne = 4064  
+
+ (1,1)       0.3714
+   (1,2)       0.1834
+   (1,3)       0.0321
+   (1,4)       0.0383
+   (1,5)       0.0741
+   (1,6)       0.0356
+   (1,7)       0.0130
+   (1,8)       0.0077
+   (1,9)       0.0064
+   (1,10)      0.0059
+   (1,11)      0.0012
+   (1,12)      0.0001
+
+Hmax = 0.15 ie ne = 7840
+number of newton iter = 15
+
+Hmax = 0.1 ie ne = 16832
+
+   (1,1)      0.417899577726062
+   (1,2)      0.079637410534531
+   (1,3)      0.092140101517994
+   (1,4)      0.061804233791320
+   (1,5)      0.028295744626648
+   (1,6)      0.030624102066574
+   (1,7)      0.018778294734777
+   (1,8)      0.034521367859994
+   (1,9)      0.013315811099691
+   (1,10)     0.016277527324037
+   (1,11)     0.020452987908631
+   (1,12)     0.013654161297632
+   (1,13)     0.007218763500526
+   (1,14)     0.005210015176656
+   (1,15)     0.004884608411253
+   (1,16)     0.001635888282681
+   (1,17)     0.000574268648911
+   (1,18)     0.000173000485385
+   (1,19)     0.000048052730080
+
+Hmax = 0.09 ie ne = 20928
+number of Newton iter = 20
+
+
+Hmax = 0.08 ie ne = 27328
+
+   (1,1)       0.6163
+   (2,1)       0.1922
+   (1,2)       0.1988
+   (1,3)       0.0946
+   (1,4)       0.0929
+   (1,5)       0.0576
+   (1,6)       0.0700
+   (1,7)       0.0321
+   (1,8)       0.0722
+   (1,9)       0.0182
+   (1,10)      0.0381
+   (1,11)      0.0512
+   (1,12)      0.0601
+   (1,13)      0.0257
+   (1,14)      0.0225
+   (1,15)      0.0155
+   (1,16)      0.0162
+   (1,17)      0.0066
+   (1,18)      0.0105
+   (1,19)      0.0034
+   (1,20)      0.0023
+   (1,21)      0.0022
+   (1,22)      0.0004
+   (1,23)      0.0001
+   (1,24)      0.0001
+
+Hmax = 0.07 ie ne = 34592
+   (1,1)       0.3186
+   (2,1)       0.0275
+   (1,2)       0.0159
+   (1,3)       0.0141
+   (1,4)       0.0117
+   (1,5)       0.0074
+   (1,6)       0.0096
+   (1,7)       0.0077
+   (1,8)       0.0122
+   (1,9)       0.0064
+   (1,10)      0.0049
+   (1,11)      0.0047
+   (1,12)      0.0088
+   (1,13)      0.0025
+   (1,14)      0.0029
+   (1,15)      0.0033
+   (1,16)      0.0020
+   (1,17)      0.0016
+   (1,18)      0.0015
+   (1,19)      0.0013
+   (1,20)      0.0011
+   (1,21)      0.0007
+   (1,22)      0.0004
+   (1,23)      0.0002
+   (1,24)      0.0001
+   (1,25)      0.0000
+   (1,26)      0.0000
+   (1,27)      0.0000
+
+more details for Hmax = 0.07
+iter_newton_1 ------ 500 gmres_iter
+iter_newton_2 ------ 20 gmres_iter
+iter_newton_3 ------ 40 gmres_iter
+iter_newton_4 ------ 40 gmres_iter
+iter_newton_5 ------ 40 gmres_iter
+iter_newton_6 ------ 40 gmres_iter
+iter_newton_7 ------ 40 gmres_iter
+iter_newton_8 ------ 60 gmres_iter
+iter_newton_9 ------ 40 gmres_iter
+iter_newton_10 ------ 60 gmres_iter
+iter_newton_11 ------ 60 gmres_iter
+iter_newton_12 ------ 80 gmres_iter
+iter_newton_13 ------ 80 gmres_iter
+iter_newton_14 ------ 80 gmres_iter
+iter_newton_15 ------ 100 gmres_iter
+iter_newton_16 ------ 100 gmres_iter
+iter_newton_17 ------ 100 gmres_iter
+iter_newton_18 ------ 120 gmres_iter
+iter_newton_19 ------ 100 gmres_iter
+iter_newton_20 ------ 100 gmres_iter
+iter_newton_21 ------ 100 gmres_iter
+iter_newton_22 ------ 100 gmres_iter
+iter_newton_23 ------ 100 gmres_iter
+iter_newton_24 ------ 100 gmres_iter
+iter_newton_25 ------ 100 gmres_iter
+iter_newton_26 ------ 80 gmres_iter
+iter_newton_27 ------ 60 gmres_iter
+
+more details for Hmax = 0.08
+iter_newton_1 ------ 240 gmres_iter
+iter_newton_2 ------ 20 gmres_iter
+iter_newton_3 ------ 20 gmres_iter
+iter_newton_4 ------ 40 gmres_iter
+iter_newton_5 ------ 40 gmres_iter
+iter_newton_6 ------ 40 gmres_iter
+iter_newton_7 ------ 40 gmres_iter
+iter_newton_8 ------ 60 gmres_iter
+iter_newton_9 ------ 40 gmres_iter
+iter_newton_10 ------ 60 gmres_iter
+iter_newton_11 ------ 60 gmres_iter
+iter_newton_12 ------ 60 gmres_iter
+iter_newton_13 ------ 80 gmres_iter
+iter_newton_14 ------ 80 gmres_iter
+iter_newton_15 ------ 80 gmres_iter
+iter_newton_16 ------ 80 gmres_iter
+iter_newton_17 ------ 80 gmres_iter
+iter_newton_18 ------ 100 gmres_iter
+iter_newton_19 ------ 100 gmres_iter
+iter_newton_20 ------ 100 gmres_iter
+iter_newton_21 ------ 100 gmres_iter
+iter_newton_22 ------ 80 gmres_iter
+iter_newton_23 ------ 80 gmres_iter
+iter_newton_24 ------ 40 gmres_iter
+iter_newton_25 ------ 20 gmres_iter
+
+more details for Hmax = 0.09
+iter_newton_1 ------ 400 gmres_iter
+iter_newton_2 ------ 20 gmres_iter
+iter_newton_3 ------ 40 gmres_iter
+iter_newton_4 ------ 40 gmres_iter
+iter_newton_5 ------ 40 gmres_iter
+iter_newton_6 ------ 40 gmres_iter
+iter_newton_7 ------ 60 gmres_iter
+iter_newton_8 ------ 60 gmres_iter
+iter_newton_9 ------ 60 gmres_iter
+iter_newton_10 ------ 60 gmres_iter
+iter_newton_11 ------ 80 gmres_iter
+iter_newton_12 ------ 80 gmres_iter
+iter_newton_13 ------ 80 gmres_iter
+iter_newton_14 ------ 80 gmres_iter
+iter_newton_15 ------ 80 gmres_iter
+iter_newton_16 ------ 80 gmres_iter
+iter_newton_17 ------ 80 gmres_iter
+iter_newton_18 ------ 80 gmres_iter
+iter_newton_19 ------ 80 gmres_iter
+iter_newton_20 ------ 80 gmres_iter
+iter_newton_21 ------ 60 gmres_iter
+iter_newton_22 ------ 40 gmres_iter
+iter_newton_23 ------ 20 gmres_iter
+
+more details for Hmax = 0.1
+iter_newton_1 ------ 360 gmres_iter
+iter_newton_2 ------ 20 gmres_iter
+iter_newton_3 ------ 40 gmres_iter
+iter_newton_4 ------ 40 gmres_iter
+iter_newton_5 ------ 40 gmres_iter
+iter_newton_6 ------ 40 gmres_iter
+iter_newton_7 ------ 40 gmres_iter
+iter_newton_8 ------ 60 gmres_iter
+iter_newton_9 ------ 40 gmres_iter
+iter_newton_10 ------ 60 gmres_iter
+iter_newton_11 ------ 60 gmres_iter
+iter_newton_12 ------ 60 gmres_iter
+iter_newton_13 ------ 80 gmres_iter
+iter_newton_14 ------ 80 gmres_iter
+iter_newton_15 ------ 80 gmres_iter
+iter_newton_16 ------ 80 gmres_iter
+iter_newton_17 ------ 80 gmres_iter
+iter_newton_18 ------ 80 gmres_iter
+iter_newton_19 ------ 60 gmres_iter
+ 
+more details for Hmax = 0.15
+iter_newton_1 ------ 200 iter gmres
+iter_newton_2 ------ 20 iter gmres
+iter_newton_3  ------  40 iter gmres
+iter_newton_4  ------  40 iter gmres
+iter_newton_5  ------  40 iter gmres
+iter_newton_6  ------  40 iter gmres
+iter_newton_7 ------  40 iter gmres
+iter_newton_8  ------  60 iter gmres
+iter_newton_9   ------ 60 iter gmres
+iter_newton_10  ------  60 iter gmres
+iter_newton_11  ------  60 iter gmres
+iter_newton_12  ------  60 iter gmres
+iter_newton_13   ------ 60 iter gmres
+iter_newton_14 ------  60 iter gmres
+iter_newton_15   ------ 40 iter gmres
+
+more details for Hmax = 0.2
+iter_newton_1 ------ 140 iter gmres
+iter_newton_2 ------ 20 iter gmres
+iter_newton_3  ------  20 iter gmres
+iter_newton_4  ------  40 iter gmres
+iter_newton_5  ------  40 iter gmres
+iter_newton_6  ------  40 iter gmres
+iter_newton_7 ------  40 iter gmres
+iter_newton_8  ------  40 iter gmres
+iter_newton_9   ------ 40 iter gmres
+iter_newton_10  ------  40 iter gmres
+iter_newton_11  ------  40 iter gmres
+iter_newton_12  ------  40 iter gmres
+
+more details for Hmax = 0.3
+
+iter_newton_1 ------ 80 iter gmres
+iter_newton_2 ------ 20 iter gmres
+iter_newton_3  ------  20 iter gmres
+iter_newton_4  ------  40 iter gmres
+iter_newton_5  ------  40 iter gmres
+iter_newton_6  ------  40 iter gmres
+iter_newton_7 ------  40 iter gmres
+iter_newton_8  ------  40 iter gmres
+
+
+%%SIMULATION NUMBER OF NEWTON STEPS PER NUMBER OF ELEMENTS adapt inexact RESOLUTION
+
+Hmax = 0.3 ie ne = 2048
+number of Newton iter = 6
+iter_newton_1 ----- 15 iter_gmres
+iter_newton_2 ----- 5 iter_gmres
+iter_newton_3 ----- 5 iter_gmres
+iter_newton_4 ----- 5 iter_gmres
+iter_newton_5 ----- 5 iter_gmres
+iter_newton_6 ----- 5 iter_gmres
+
+
+Hmax = 0.2 ie ne = 4064
+iter_newton_1 ----- 15 iter_gmres
+iter_newton_2 ----- 15 iter_gmres
+iter_newton_3 ----- 5 iter_gmres
+iter_newton_4 ----- 5 iter_gmres
+iter_newton_5 ----- 5 iter_gmres
+iter_newton_6 ----- 5 iter_gmres
+iter_newton_7 ----- 5 iter_gmres
+iter_newton_8 ----- 5 iter_gmres
+
+
+Hmax = 0.15 ie ne = 7840
+iter_newton_1 ----- 9 iter_gmres
+iter_newton_2 ----- 48 iter_gmres
+iter_newton_3 ----- 33 iter_gmres
+iter_newton_4 ----- 18 iter_gmres
+iter_newton_5 ----- 18 iter_gmres
+iter_newton_6 ----- 9 iter_gmres
+iter_newton_7 ----- 9 iter_gmres
+iter_newton_8 ----- 9 iter_gmres
+iter_newton_9 ----- 9 iter_gmres
+iter_newton_10 ----- 6 iter_gmres
+iter_newton_11 ----- 6 iter_gmres
+iter_newton_12 ----- 6 iter_gmres
+
+Hmax = 0.1 ie ne = 16832
+iter_newton_1 ----- 5 iter_gmres
+iter_newton_2 ----- 25 iter_gmres
+iter_newton_3 ----- 45 iter_gmres
+iter_newton_4 ----- 35 iter_gmres
+iter_newton_5 ----- 20 iter_gmres
+iter_newton_6 ----- 10 iter_gmres
+iter_newton_7 ----- 10 iter_gmres
+iter_newton_8 ----- 10 iter_gmres
+iter_newton_9 ----- 15 iter_gmres
+iter_newton_10 ----- 15 iter_gmres
+iter_newton_11 ----- 20 iter_gmres
+iter_newton_12 ----- 15 iter_gmres
+iter_newton_13 ----- 10 iter_gmres
+iter_newton_14 ----- 10 iter_gmres
+
+
+Hmax = 0.09 ie ne = 20928
+
+iter_newton_1 ----- 5 iter_gmres
+iter_newton_2 ----- 20 iter_gmres
+iter_newton_3 ----- 40 iter_gmres
+iter_newton_4 ----- 35 iter_gmres
+iter_newton_5 ----- 25 iter_gmres
+iter_newton_6 ----- 10 iter_gmres
+iter_newton_7 ----- 10 iter_gmres
+iter_newton_8 ----- 15 iter_gmres
+iter_newton_9 ----- 25 iter_gmres
+iter_newton_10 ----- 20 iter_gmres
+iter_newton_11 ----- 20 iter_gmres
+iter_newton_12 ----- 20 iter_gmres
+iter_newton_13 ----- 20 iter_gmres
+iter_newton_14 ----- 20 iter_gmres
+iter_newton_15 ----- 10 iter_gmres
+iter_newton_16 ----- 10 iter_gmres
+
+Hmax = 0.08 ie ne = 27328
+iter_newton_1 ----- 5 iter_gmres
+iter_newton_2 ----- 20 iter_gmres
+iter_newton_3 ----- 50 iter_gmres
+iter_newton_4 ----- 70 iter_gmres
+iter_newton_5 ----- 35 iter_gmres
+iter_newton_6 ----- 40 iter_gmres
+iter_newton_7 ----- 10 iter_gmres
+iter_newton_8 ----- 10 iter_gmres
+iter_newton_9 ----- 25 iter_gmres
+iter_newton_10 ----- 25 iter_gmres
+iter_newton_11 ----- 25 iter_gmres
+iter_newton_12 ----- 20 iter_gmres
+iter_newton_13 ----- 25 iter_gmres
+iter_newton_14 ----- 25 iter_gmres
+iter_newton_15 ----- 95 iter_gmres
+iter_newton_16 ----- 20 iter_gmres
+iter_newton_17 ----- 10 iter_gmres
+iter_newton_18 ----- 10 iter_gmres
+
+Hmax = 0.07 ie ne  = 34592
+iter_newton_1 ----- 5 iter_gmres
+iter_newton_2 ----- 15 iter_gmres
+iter_newton_3 ----- 30 iter_gmres
+iter_newton_4 ----- 40 iter_gmres
+iter_newton_5 ----- 85 iter_gmres
+iter_newton_6 ----- 40 iter_gmres
+iter_newton_7 ----- 10 iter_gmres
+iter_newton_8 ----- 40 iter_gmres
+iter_newton_9 ----- 35 iter_gmres
+iter_newton_10 ----- 30 iter_gmres
+iter_newton_11 ----- 30 iter_gmres
+iter_newton_12 ----- 25 iter_gmres
+iter_newton_13 ----- 35 iter_gmres
+iter_newton_14 ----- 60 iter_gmres
+iter_newton_15 ----- 85 iter_gmres
+iter_newton_16 ----- 50 iter_gmres
+iter_newton_17 ----- 20 iter_gmres
+iter_newton_18 ----- 15 iter_gmres
+iter_newton_19 ----- 55 iter_gmres
+iter_newton_20 ----- 10 iter_gmres
+iter_newton_21 ----- 10 iter_gmres
+
+%%SIMULATION NUMBER OF NEWTON STEPS PER NUMBER OF ELEMENTS inexact RESOLUTION
+Hmax = 0.07 ie ne  = 34592
+number_newton_iter = 166
+ 
+Hmax = 0.08 ie ne = 27328
+number_newton_iter = 148
+
+
+Hmax = 0.09 ie ne = 20928
+number_newton_iter = 95
+
+Hmax = 0.2 ie ne = 4064
+number_newton_iter = 27
+
+Hmax = 0.1 ie ne = 16832
+number_newton_iter = 80
+
+Hmax = 0.3 ie ne = 2048
+number_newton_iter = 16
+
+
+%%%%%Matlab_plot number newton iterations with number of vertices%%%%%
+%%curve_exact_newton
+plot([2048, 4064, 7840, 16832, 20928, 27328, 34592], [8, 12, 15, 19, 20, 24, 27] , '^-', 'linewidth', 2, 'Color', dark_green, 'MarkerFaceColor', dark_green); 
+hold on;
+%% curve_inexact_newton
+plot([2078, 4064, 7840, 16832, 20928, 27328, 34592], [16, 27, 46, 80, 95, 148, 166], 'o-', 'linewidth', 2, 'Color', RoyalBlue1, 'MarkerFaceColor', RoyalBlue1);
+%% curve_adaptive_inexact_newton
+plot([2078, 4064, 7840, 16832, 20928, 27328, 34592], [6, 8, 12, 14, 16, 18, 21], 'o-', 'linewidth', 2, 'Color', OrangeRed2, 'MarkerFaceColor', OrangeRed2);
+xlabel('Number of elements', 'FontSize', 15);
+ylabel('Number of Newton iterations', 'FontSize', 15)                   
+h_legend = legend('exact ', 'inexact ', 'adapt inexact ');
+set(h_legend, 'FontSize', 11);
+
+%%%%% Matlab plot number of total iterations(GMRES+newton) with the number of vertices%%%%
+%%curve_exact_newton
+semilogy([2078, 4064, 7840, 16832, 20928, 27328, 34592], [320, 540, 880, 1380, 1740, 1740, 2440] , 's-', 'linewidth', 2, 'Color', RoyalBlue1, 'MarkerFaceColor', RoyalBlue1); 
+hold on;
+%% curve_inexact_newton
+semilogy([2078, 4064, 7840, 16832, 20928, 27328, 34592], [160, 270, 460, 800, 950, 1480, 1660], 'o-', 'linewidth', 2, 'Color', OrangeRed2, 'MarkerFaceColor', OrangeRed2);
+%% curve_adaptive_inexact_newton
+semilogy([2078, 4064, 7840, 16832, 20928, 27328, 34592], [40, 60, 180, 245, 305, 520, 725], '^-', 'linewidth', 2, 'Color', dark_green, 'MarkerFaceColor', dark_green);
+xlabel('Number of elements', 'FontSize', 15);
+semilogy('Number of Newton iterations', 'FontSize', 15)                   
+h_legend = legend('exact ', 'inexact ', 'adapt inexact ');
+set(h_legend, 'FontSize', 11);
+
+
+
+%%%%%SIMULATION ADAPTIVE INEXACTE NEWTON gamma_alg = 0.1
+Hmax = 0.07
+iter_newton_1 ----- 5 iter_gmres
+iter_newton_2 ----- 5 iter_gmres
+iter_newton_3 ----- 5 iter_gmres
+iter_newton_4 ----- 5 iter_gmres
+iter_newton_5 ----- 5 iter_gmres
+iter_newton_6 ----- 5 iter_gmres
+iter_newton_7 ----- 15 iter_gmres
+iter_newton_8 ----- 15 iter_gmres
+iter_newton_9 ----- 10 iter_gmres
+iter_newton_10 ----- 10 iter_gmres
+iter_newton_11 ----- 10 iter_gmres
+iter_newton_12 ----- 10 iter_gmres
+iter_newton_13 ----- 10 iter_gmres
+iter_newton_14 ----- 5 iter_gmres
+iter_newton_15 ----- 10 iter_gmres
+iter_newton_16 ----- 5 iter_gmres
+iter_newton_17 ----- 5 iter_gmres
+iter_newton_18 ----- 5 iter_gmres
+iter_newton_19 ----- 5 iter_gmres
+
+Hmax = 0.08
+iter_newton_1 ----- 5 iter_gmres
+iter_newton_2 ----- 5 iter_gmres
+iter_newton_3 ----- 5 iter_gmres
+iter_newton_4 ----- 5 iter_gmres
+iter_newton_5 ----- 5 iter_gmres
+iter_newton_6 ----- 15 iter_gmres
+iter_newton_7 ----- 10 iter_gmres
+iter_newton_8 ----- 10 iter_gmres
+iter_newton_9 ----- 10 iter_gmres
+iter_newton_10 ----- 10 iter_gmres
+iter_newton_11 ----- 5 iter_gmres
+iter_newton_12 ----- 10 iter_gmres
+iter_newton_13 ----- 5 iter_gmres
+iter_newton_14 ----- 10 iter_gmres
+iter_newton_15 ----- 5 iter_gmres
+iter_newton_16 ----- 10 iter_gmres
+iter_newton_17 ----- 5 iter_gmres
+iter_newton_18 ----- 5 iter_gmres
+
+Hmax = 0.09
+iter_newton_1 ----- 5 iter_gmres
+iter_newton_2 ----- 5 iter_gmres
+iter_newton_3 ----- 5 iter_gmres
+iter_newton_4 ----- 5 iter_gmres
+iter_newton_5 ----- 5 iter_gmres
+iter_newton_6 ----- 10 iter_gmres
+iter_newton_7 ----- 10 iter_gmres
+iter_newton_8 ----- 5 iter_gmres
+iter_newton_9 ----- 10 iter_gmres
+iter_newton_10 ----- 10 iter_gmres
+iter_newton_11 ----- 10 iter_gmres
+iter_newton_12 ----- 5 iter_gmres
+iter_newton_13 ----- 5 iter_gmres
+iter_newton_14 ----- 5 iter_gmres
+iter_newton_15 ----- 5 iter_gmres
+
+Hmax = 0.1
+iter_newton_1 ----- 5 iter_gmres
+iter_newton_2 ----- 5 iter_gmres
+iter_newton_3 ----- 5 iter_gmres
+iter_newton_4 ----- 5 iter_gmres
+iter_newton_5 ----- 10 iter_gmres
+iter_newton_6 ----- 5 iter_gmres
+iter_newton_7 ----- 10 iter_gmres
+iter_newton_8 ----- 5 iter_gmres
+iter_newton_9 ----- 5 iter_gmres
+iter_newton_10 ----- 10 iter_gmres
+iter_newton_11 ----- 5 iter_gmres
+iter_newton_12 ----- 5 iter_gmres
+iter_newton_13 ----- 5 iter_gmres
+
+Hmax = 0.15
+iter_newton_1 ----- 5 iter_gmres
+iter_newton_2 ----- 5 iter_gmres
+iter_newton_3 ----- 5 iter_gmres
+iter_newton_4 ----- 5 iter_gmres
+iter_newton_5 ----- 5 iter_gmres
+iter_newton_6 ----- 5 iter_gmres
+iter_newton_7 ----- 5 iter_gmres
+iter_newton_8 ----- 5 iter_gmres
+iter_newton_9 ----- 5 iter_gmres
+iter_newton_10 ----- 5 iter_gmres
+
+Hmax = 0.2
+iter_newton_1 ----- 5 iter_gmres
+iter_newton_2 ----- 5 iter_gmres
+iter_newton_3 ----- 5 iter_gmres
+iter_newton_4 ----- 5 iter_gmres
+iter_newton_5 ----- 5 iter_gmres
+iter_newton_6 ----- 5 iter_gmres
+iter_newton_7 ----- 5 iter_gmres
+iter_newton_8 ----- 5 iter_gmres
+
+Hmax = 0.3
+iter_newton_1 ----- 5 iter_gmres
+iter_newton_2 ----- 5 iter_gmres
+iter_newton_3 ----- 5 iter_gmres
+iter_newton_4 ----- 5 iter_gmres
+iter_newton_5 ----- 5 iter_gmres
+iter_newton_6 ----- 5 iter_gmres
+
+
+
+iter_newton_1 ----- 5 iter_gmres
+iter_newton_2 ----- 5 iter_gmres
+iter_newton_3 ----- 5 iter_gmres
+iter_newton_4 ----- 5 iter_gmres
+iter_newton_5 ----- 5 iter_gmres
+iter_newton_6 ----- 5 iter_gmres
+iter_newton_7 ----- 5 iter_gmres
+iter_newton_8 ----- 5 iter_gmres
+iter_newton_9 ----- 5 iter_gmres
+iter_newton_10 ----- 5 iter_gmres
+
+
+%%%%%Matlab_plot number algebraic iterations during newton steps for gamma_alg=0.1%%%%%
+
+temp_plot_exact_res = [200, 20, 40, 40, 40, 40, 40, 60, 60, 60, 60, 60, 60, 60, 40]
+temp_plot_inexact_res = repmat(10, 46, 1)'
+temp_plot_adaptive_inexact = repmat(5, 10, 1)'
+
+
+%%curve_exact_newton
+loglog(1:15, temp_plot_exact_res, 's-', 'linewidth', 2, 'Color', RoyalBlue1, 'MarkerFaceColor', RoyalBlue1); 
+hold on;
+%% curve_inexact_newton
+loglog(1:46, temp_plot_inexact_res, 'o-', 'linewidth', 2, 'Color', OrangeRed2, 'MarkerFaceColor', OrangeRed2);
+%% curve_adaptive_inexact_newton
+loglog(1 : 10, temp_plot_adaptive_inexact, '^-', 'linewidth', 2, 'Color', dark_green, 'MarkerFaceColor', dark_green);
+xlabel('Newton iteration', 'FontSize', 15);
+ylabel('Number of algebraic solver iterations', 'FontSize', 15);                   
+h_legend = legend('exact ', 'inexact ', 'adapt inexact ');
+set(h_legend, 'FontSize', 11);
+
+
+, repmat(5, 10, 1)'
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%Matlab_plot number algebraic iterations during newton steps for gamma_alg=0.01 Hmax_0.15 inex_iter=10%%%%%
+
+temp_plot_exact_res = [200, 20, 40, 40, 40, 40, 40, 60, 60, 60, 60, 60, 60, 60, 40]
+
+
+temp_plot_inexact_res = repmat(10, 46, 1)'
+
+
+temp_plot_adapt_inexact = [9, 48, 33, 18, 18, 9, 9, 9, 9, 6, 6, 6] 
+
+
+
+%%curve_exact_newton
+loglog(1:15, temp_plot_exact_res, 's-', 'linewidth', 2, 'Color', RoyalBlue1, 'MarkerFaceColor', RoyalBlue1); 
+hold on;
+%% curve_inexact_newton
+loglog(1:46, temp_plot_inexact_res, 'o-', 'linewidth', 2, 'Color', OrangeRed2, 'MarkerFaceColor', OrangeRed2);
+%% curve_adaptive_inexact_newton
+loglog(1 : 12, temp_plot_adapt_inexact, '^-', 'linewidth', 2, 'Color', dark_green, 'MarkerFaceColor', dark_green);
+xlabel('Newton iteration', 'FontSize', 15);
+ylabel('Number of algebraic solver iterations', 'FontSize', 15);                   
+h_legend = legend('exact ', 'inexact ', 'adapt inexact ');
+set(h_legend, 'FontSize', 11);
+
+

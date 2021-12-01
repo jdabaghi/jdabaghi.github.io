@@ -1,0 +1,2360 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2019.3.20)  17 MAY 2019 16:14
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\input presentation_thesis_chap1.tex
+(./presentation_thesis_chap1.tex
+./presentation_thesis_chap1.tex:1: Undefined control sequence.
+l.1 \section
+            {Stationary variational inequality}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./presentation_thesis_chap1.tex:1: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \section{S
+              tationary variational inequality}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no S in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no v in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no q in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no y in font nullfont!
+./presentation_thesis_chap1.tex:2: Undefined control sequence.
+l.2 \subsection
+               {}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:4: Undefined control sequence.
+<argument> \frametitle 
+                       
+l.4 \frametitle
+               {Model problem and settings: contact between two membranes}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no M in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+
+./presentation_thesis_chap1.tex:6: LaTeX Error: Environment equation* undefined
+.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 \begin{equation*}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+Missing character: There is no F in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no u in font nullfont!
+./presentation_thesis_chap1.tex:7: Missing $ inserted.
+<inserted text> 
+                $
+l.7 \mbox{Find} \ u_
+                    1, u_2, \lambda \ \mbox{such that} \quad
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 7.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 7.
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+./presentation_thesis_chap1.tex:8: Undefined control sequence.
+l.8 \dps
+        
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:10: Undefined control sequence.
+l.10 \dps
+          -\mu_1 \Delta u_1-\lambda = f_1 \qquad \mbox{in} \quad \Omega, \\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+./presentation_thesis_chap1.tex:11: Undefined control sequence.
+<recently read> \dps 
+                     
+l.11 \dps
+          -\mu_2 \Delta u_2+\lambda = f_2 \qquad \mbox{in} \quad \Omega,\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+./presentation_thesis_chap1.tex:12: Undefined control sequence.
+<recently read> \dps 
+                     
+l.12 \dps
+          (\textcolor{electricpurple}{u_1-u_2})\textcolor{carmine}{\lambda}=...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:12: Undefined control sequence.
+l.12 \dps (\textcolor
+                     {electricpurple}{u_1-u_2})\textcolor{carmine}{\lambda}=...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:12: Undefined control sequence.
+l.12 ...tcolor{electricpurple}{u_1-u_2})\textcolor
+                                                  {carmine}{\lambda}=0, \qua...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:12: Undefined control sequence.
+l.12 ...olor{carmine}{\lambda}=0, \quad \textcolor
+                                                  {electricpurple}{u_1-u_2 \...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:13: Undefined control sequence.
+l.13 \textcolor
+               {carmine}{\lambda \geq 0} \qquad \mbox{in} \quad \Omega, \hsp...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+./presentation_thesis_chap1.tex:14: Undefined control sequence.
+<recently read> \dps 
+                     
+l.14 \dps
+          u_1=g > 0 \qquad \mbox{on} \quad\partial \Omega,\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+./presentation_thesis_chap1.tex:15: Undefined control sequence.
+<recently read> \dps 
+                     
+l.15 \dps
+          u_2=0 \qquad \mbox{on} \quad\partial \Omega.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+
+./presentation_thesis_chap1.tex:19: LaTeX Error: \begin{frame} on input line 3 
+ended by \end{equation*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.19 \end{equation*}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./presentation_thesis_chap1.tex:19: Missing $ inserted.
+<inserted text> 
+                $
+l.19 \end{equation*}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+./presentation_thesis_chap1.tex:21: LaTeX Error: Environment figure undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.21 \begin{figure}
+                   [t]
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no ] in font nullfont!
+
+./presentation_thesis_chap1.tex:22: LaTeX Error: Environment subfigure undefine
+d.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 \begin{subfigure}
+                      [normal]{0.44\textwidth}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no ] in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no 4 in font nullfont!
+./presentation_thesis_chap1.tex:22: Missing number, treated as zero.
+<to be read again> 
+                   }
+l.22 \begin{subfigure}[normal]{0.44\textwidth}
+                                              
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./presentation_thesis_chap1.tex:22: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.22 \begin{subfigure}[normal]{0.44\textwidth}
+                                              
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./presentation_thesis_chap1.tex:23: Undefined control sequence.
+l.23 \includegraphics
+                     [width=\textwidth]{fig_article_chap_1/fig_membrane_cv.eps}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no = in font nullfont!
+./presentation_thesis_chap1.tex:23: Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.23 \includegraphics[width=\textwidth]
+                                       {fig_article_chap_1/fig_membrane_cv.eps}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./presentation_thesis_chap1.tex:23: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.23 \includegraphics[width=\textwidth]
+                                       {fig_article_chap_1/fig_membrane_cv.eps}
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+Missing character: There is no ] in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no g in font nullfont!
+./presentation_thesis_chap1.tex:23: Missing $ inserted.
+<inserted text> 
+                $
+l.23 \includegraphics[width=\textwidth]{fig_
+                                            article_chap_1/fig_membrane_cv.eps}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./presentation_thesis_chap1.tex:23: Extra }, or forgotten $.
+l.23 ...h]{fig_article_chap_1/fig_membrane_cv.eps}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+./presentation_thesis_chap1.tex:25: LaTeX Error: \begin{frame} on input line 3 
+ended by \end{subfigure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.25 \end{subfigure}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./presentation_thesis_chap1.tex:25: Missing $ inserted.
+<inserted text> 
+                $
+l.25 \end{subfigure}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./presentation_thesis_chap1.tex:25: Missing } inserted.
+<inserted text> 
+                }
+l.25 \end{subfigure}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+./presentation_thesis_chap1.tex:27: LaTeX Error: Environment subfigure undefine
+d.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.27 \begin{subfigure}
+                      [normal]{0.44\textwidth}
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no ] in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 4 in font nullfont!
+Missing character: There is no 4 in font nullfont!
+./presentation_thesis_chap1.tex:27: Missing number, treated as zero.
+<to be read again> 
+                   }
+l.27 \begin{subfigure}[normal]{0.44\textwidth}
+                                              
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./presentation_thesis_chap1.tex:27: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   }
+l.27 \begin{subfigure}[normal]{0.44\textwidth}
+                                              
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./presentation_thesis_chap1.tex:28: Undefined control sequence.
+l.28 \includegraphics
+                     [width=\textwidth]{fig_article_chap_1/fig_lambda_cv.eps}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no [ in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no = in font nullfont!
+./presentation_thesis_chap1.tex:28: Missing number, treated as zero.
+<to be read again> 
+                   ]
+l.28 \includegraphics[width=\textwidth]
+                                       {fig_article_chap_1/fig_lambda_cv.eps}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./presentation_thesis_chap1.tex:28: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   ]
+l.28 \includegraphics[width=\textwidth]
+                                       {fig_article_chap_1/fig_lambda_cv.eps}
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+Missing character: There is no ] in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no g in font nullfont!
+./presentation_thesis_chap1.tex:28: Missing $ inserted.
+<inserted text> 
+                $
+l.28 \includegraphics[width=\textwidth]{fig_
+                                            article_chap_1/fig_lambda_cv.eps}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./presentation_thesis_chap1.tex:28: Extra }, or forgotten $.
+l.28 ...dth]{fig_article_chap_1/fig_lambda_cv.eps}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+./presentation_thesis_chap1.tex:30: LaTeX Error: \begin{frame} on input line 3 
+ended by \end{subfigure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.30 \end{subfigure}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./presentation_thesis_chap1.tex:30: Missing $ inserted.
+<inserted text> 
+                $
+l.30 \end{subfigure}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./presentation_thesis_chap1.tex:30: Missing } inserted.
+<inserted text> 
+                }
+l.30 \end{subfigure}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+./presentation_thesis_chap1.tex:31: LaTeX Error: \begin{frame} on input line 3 
+ended by \end{figure}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.31 \end{figure}
+                 
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./presentation_thesis_chap1.tex:37: Undefined control sequence.
+<argument> \frametitle 
+                       
+l.37 \frametitle
+                {Continuous problem}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no C in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--38
+[]
+ []
+
+
+Overfull \hbox (402.87282pt too wide) in paragraph at lines 1--38
+[]\OML/cmm/m/it/10 ; u[]; ^^U []  []$
+ []
+
+
+Overfull \hbox (145.16394pt too wide) in paragraph at lines 1--38
+[]\OML/cmm/m/it/10 rticle[]hap[]=fig[]embrane[]v:eps[]$
+ []
+
+
+Overfull \hbox (131.02379pt too wide) in paragraph at lines 1--38
+[]\OML/cmm/m/it/10 rticle[]hap[]=fig[]ambda[]v:eps[]$
+ []
+
+
+Overfull \hbox (52.88983pt too wide) in paragraph at lines 1--38
+| $\OML/cmm/m/it/10 u[]$ 
+ []
+
+
+Overfull \hbox (52.88983pt too wide) in paragraph at lines 1--38
+| $\OML/cmm/m/it/10 u[]$
+ []
+
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+./presentation_thesis_chap1.tex:39: Undefined control sequence.
+l.39 ...=\left\{\chi\in L^2(\Omega), \: \textcolor
+                                                  {carmine}{\chi \geq 0} \: ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+
+Overfull \hbox (36.3212pt too wide) in paragraph at lines 39--40
+\OML/cmm/m/it/10 H[]\OT1/cmr/m/n/10 (
+)  =
+ []
+
+
+Overfull \hbox (108.47835pt too wide) in paragraph at lines 39--40
+[]$
+ []
+
+
+Overfull \hbox (17.49995pt too wide) in paragraph at lines 39--40
+\OT1/cmr/m/n/10 ^^C =
+ []
+
+
+Overfull \hbox (137.27074pt too wide) in paragraph at lines 39--40
+[]$ 
+ []
+
+Missing character: There is no F in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+
+./presentation_thesis_chap1.tex:43: LaTeX Error: Environment equation* undefine
+d.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.43 \begin{equation*}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./presentation_thesis_chap1.tex:44: Missing $ inserted.
+<inserted text> 
+                $
+l.44 \left
+          \lbrace\begin{array}{llccc}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./presentation_thesis_chap1.tex:45: Undefined control sequence.
+l.45 \dps
+          \sum_{\ialf=1}^2 \mu_\ialf \left(\nab u_\ialf,\nab v_\ialf\right)_...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:45: Undefined control sequence.
+l.45 \dps \sum_{\ialf
+                     =1}^2 \mu_\ialf \left(\nab u_\ialf,\nab v_\ialf\right)_...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:45: Undefined control sequence.
+l.45 \dps \sum_{\ialf=1}^2 \mu_\ialf
+                                     \left(\nab u_\ialf,\nab v_\ialf\right)_...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:45: Missing { inserted.
+<to be read again> 
+                   \left 
+l.45 \dps \sum_{\ialf=1}^2 \mu_\ialf \left
+                                          (\nab u_\ialf,\nab v_\ialf\right)_...
+A left brace was mandatory here, so I've put one in.
+You might want to delete and/or insert some corrections
+so that I will find a matching right brace soon.
+(If you're confused by all this, try typing `I}' now.)
+
+./presentation_thesis_chap1.tex:45: Undefined control sequence.
+l.45 \dps \sum_{\ialf=1}^2 \mu_\ialf \left(\nab
+                                                u_\ialf,\nab v_\ialf\right)_...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:45: Undefined control sequence.
+l.45 ...m_{\ialf=1}^2 \mu_\ialf \left(\nab u_\ialf
+                                                  ,\nab v_\ialf\right)_{\Ome...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:45: Undefined control sequence.
+l.45 ...alf=1}^2 \mu_\ialf \left(\nab u_\ialf,\nab
+                                                   v_\ialf\right)_{\Omega} -...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:45: Undefined control sequence.
+l.45 ... \mu_\ialf \left(\nab u_\ialf,\nab v_\ialf
+                                                  \right)_{\Omega} - \left(\...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:45: Missing { inserted.
+<to be read again> 
+                   \right 
+l.45 ...ialf \left(\nab u_\ialf,\nab v_\ialf\right
+                                                  )_{\Omega} - \left(\lambda...
+A left brace was mandatory here, so I've put one in.
+You might want to delete and/or insert some corrections
+so that I will find a matching right brace soon.
+(If you're confused by all this, try typing `I}' now.)
+
+./presentation_thesis_chap1.tex:45: Missing } inserted.
+<inserted text> 
+                }
+l.45 ...ialf \left(\nab u_\ialf,\nab v_\ialf\right
+                                                  )_{\Omega} - \left(\lambda...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./presentation_thesis_chap1.tex:45: Undefined control sequence.
+l.45 ...mbda,v_1-v_2\right)_{\Omega} = \sum_{\ialf
+                                                  =1}^2\left(f_\ialf,v_\ialf...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:45: Undefined control sequence.
+l.45 ...)_{\Omega} = \sum_{\ialf=1}^2\left(f_\ialf
+                                                  ,v_\ialf\right)_{\Omega} \...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:45: Undefined control sequence.
+l.45 ...a} = \sum_{\ialf=1}^2\left(f_\ialf,v_\ialf
+                                                  \right)_{\Omega} \quad \fo...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:45: Missing { inserted.
+<to be read again> 
+                   \right 
+l.45 ...sum_{\ialf=1}^2\left(f_\ialf,v_\ialf\right
+                                                  )_{\Omega} \quad \forall (...
+A left brace was mandatory here, so I've put one in.
+You might want to delete and/or insert some corrections
+so that I will find a matching right brace soon.
+(If you're confused by all this, try typing `I}' now.)
+
+./presentation_thesis_chap1.tex:45: Missing } inserted.
+<inserted text> 
+                }
+l.45 ...sum_{\ialf=1}^2\left(f_\ialf,v_\ialf\right
+                                                  )_{\Omega} \quad \forall (...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./presentation_thesis_chap1.tex:45: Missing } inserted.
+<inserted text> 
+                }
+l.45 ...1,v_2) \in \left[H_0^1(\Omega)\right]^2 \\
+                                                  
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./presentation_thesis_chap1.tex:46: Undefined control sequence.
+l.46 \left(\chi - \textcolor
+                            {carmine}{\lambda},\textcolor{electricpurple}{u_...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:46: Undefined control sequence.
+l.46 ... - \textcolor{carmine}{\lambda},\textcolor
+                                                  {electricpurple}{u_1-u_2}\...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:47: Undefined control sequence.
+l.47 ... \chi \in \Lambda \hspace{7 cm} \textcolor
+                                                  {electricpurple}{(\mathrm{...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./presentation_thesis_chap1.tex:50: LaTeX Error: \begin{frame} on input line 36
+ ended by \end{equation*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.50 \end{equation*}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./presentation_thesis_chap1.tex:50: Missing $ inserted.
+<inserted text> 
+                $
+l.50 \end{equation*}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./presentation_thesis_chap1.tex:51: Undefined control sequence.
+l.51 \hspace{4.5 cm}\textcolor
+                              {cadmiumgreen}{\textbf{equivalent to}}\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no c in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+
+Overfull \hbox (33.22203pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 Saddle
+ []
+
+
+Overfull \hbox (26.1943pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 point
+ []
+
+
+Overfull \hbox (22.20128pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 type
+ []
+
+
+Overfull \hbox (24.91652pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 weak
+ []
+
+
+Overfull \hbox (17.83325pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 for-
+ []
+
+
+Overfull \hbox (19.48601pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 mu-
+ []
+
+
+Overfull \hbox (12.61797pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 la-
+ []
+
+
+Overfull \hbox (22.99988pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 tion:
+ []
+
+
+Overfull \hbox (40.43059pt too wide) in paragraph at lines 41--53
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 f[]; f[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 2
+ []
+
+
+Overfull \hbox (39.11124pt too wide) in paragraph at lines 41--53
+[][]$
+ []
+
+
+Overfull \hbox (15.68398pt too wide) in paragraph at lines 41--53
+\OML/cmm/m/it/10 g >
+ []
+
+
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 41--53
+\OT1/cmr/m/n/10 0$
+ []
+
+
+Overfull \hbox (52.3658pt too wide) in paragraph at lines 41--53
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 u[]; u[]; ^^U\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/
+10 2
+ []
+
+
+Overfull \hbox (36.38893pt too wide) in paragraph at lines 41--53
+\OML/cmm/m/it/10 H[]\OT1/cmr/m/n/10 (
+) \OMS/cmsy/m/n/10 ^^B
+ []
+
+
+Overfull \hbox (36.38893pt too wide) in paragraph at lines 41--53
+\OML/cmm/m/it/10 H[]\OT1/cmr/m/n/10 (
+) \OMS/cmsy/m/n/10 ^^B
+ []
+
+
+Overfull \hbox (6.94444pt too wide) in paragraph at lines 41--53
+\OT1/cmr/m/n/10 ^^C$
+ []
+
+
+Overfull \hbox (523.36359pt too wide) in paragraph at lines 41--53
+[]$
+ []
+
+
+Overfull \hbox (30.82623pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 equiv-
+ []
+
+
+Overfull \hbox (9.42354pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 a-
+ []
+
+
+Overfull \hbox (19.00685pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 lent
+ []
+
+
+Overfull \hbox (10.22217pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 to 
+ []
+
+
+Overfull \hbox (55.43715pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 Variational
+ []
+
+
+Overfull \hbox (13.4166pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 in-
+ []
+
+
+Overfull \hbox (30.34705pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 equal-
+ []
+
+
+Overfull \hbox (16.61102pt too wide) in paragraph at lines 41--53
+\OT1/cmr/bx/n/10 ity: 
+ []
+
+./presentation_thesis_chap1.tex:54: Undefined control sequence.
+<recently read> \Kg 
+                    
+l.54 \item $\Kg
+               = \left\{(v_1,v_2)\in H_g^1(\Omega)\times H_0^1(\Omega),\: \t...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:54: Undefined control sequence.
+l.54 ...(\Omega)\times H_0^1(\Omega),\: \textcolor
+                                                  {electricpurple}{v_1-v_2 \...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+
+Overfull \hbox (7.7778pt too wide) in paragraph at lines 54--56
+\OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (257.14104pt too wide) in paragraph at lines 54--56
+[]$ 
+ []
+
+
+./presentation_thesis_chap1.tex:58: LaTeX Error: Environment equation* undefine
+d.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.58 \begin{equation*}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 \dps
+          \sum_{\ialf=1}^2 \mu_\ialf \left(\nab u_\ialf,\nab \left(v_\ialf-u...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:59: Missing $ inserted.
+<inserted text> 
+                $
+l.59 \dps \sum
+              _{\ialf=1}^2 \mu_\ialf \left(\nab u_\ialf,\nab \left(v_\ialf-u...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 \dps \sum_{\ialf
+                     =1}^2 \mu_\ialf \left(\nab u_\ialf,\nab \left(v_\ialf-u...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 \dps \sum_{\ialf=1}^2 \mu_\ialf
+                                     \left(\nab u_\ialf,\nab \left(v_\ialf-u...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:59: Missing { inserted.
+<to be read again> 
+                   \left 
+l.59 \dps \sum_{\ialf=1}^2 \mu_\ialf \left
+                                          (\nab u_\ialf,\nab \left(v_\ialf-u...
+A left brace was mandatory here, so I've put one in.
+You might want to delete and/or insert some corrections
+so that I will find a matching right brace soon.
+(If you're confused by all this, try typing `I}' now.)
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 \dps \sum_{\ialf=1}^2 \mu_\ialf \left(\nab
+                                                u_\ialf,\nab \left(v_\ialf-u...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 ...m_{\ialf=1}^2 \mu_\ialf \left(\nab u_\ialf
+                                                  ,\nab \left(v_\ialf-u_\ial...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 ...alf=1}^2 \mu_\ialf \left(\nab u_\ialf,\nab
+                                                   \left(v_\ialf-u_\ialf\rig...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 ...ialf \left(\nab u_\ialf,\nab \left(v_\ialf
+                                                  -u_\ialf\right)\right)_{\O...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 ...ft(\nab u_\ialf,\nab \left(v_\ialf-u_\ialf
+                                                  \right)\right)_{\Omega} \g...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:59: Missing { inserted.
+<to be read again> 
+                   \right 
+l.59 ...b u_\ialf,\nab \left(v_\ialf-u_\ialf\right
+                                                  )\right)_{\Omega} \geq \su...
+A left brace was mandatory here, so I've put one in.
+You might want to delete and/or insert some corrections
+so that I will find a matching right brace soon.
+(If you're confused by all this, try typing `I}' now.)
+
+./presentation_thesis_chap1.tex:59: Missing } inserted.
+<inserted text> 
+                }
+l.59 ...b u_\ialf,\nab \left(v_\ialf-u_\ialf\right
+                                                  )\right)_{\Omega} \geq \su...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 ...lf\right)\right)_{\Omega} \geq \sum_{\ialf
+                                                  =1}^2\left(f_\ialf,v_\ialf...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 ...\Omega} \geq \sum_{\ialf=1}^2\left(f_\ialf
+                                                  ,v_\ialf-u_\ialf\right)_{\...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 ...\geq \sum_{\ialf=1}^2\left(f_\ialf,v_\ialf
+                                                  -u_\ialf\right)_{\Omega} \...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 ...m_{\ialf=1}^2\left(f_\ialf,v_\ialf-u_\ialf
+                                                  \right)_{\Omega} \quad \fo...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:59: Missing { inserted.
+<to be read again> 
+                   \right 
+l.59 ...lf=1}^2\left(f_\ialf,v_\ialf-u_\ialf\right
+                                                  )_{\Omega} \quad \forall \...
+A left brace was mandatory here, so I've put one in.
+You might want to delete and/or insert some corrections
+so that I will find a matching right brace soon.
+(If you're confused by all this, try typing `I}' now.)
+
+./presentation_thesis_chap1.tex:59: Missing } inserted.
+<inserted text> 
+                }
+l.59 ...lf=1}^2\left(f_\ialf,v_\ialf-u_\ialf\right
+                                                  )_{\Omega} \quad \forall \...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 ...-u_\ialf\right)_{\Omega} \quad \forall \bv
+                                                   = (v_1,v_2)\in ~\Kg \qqua...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 ...ega} \quad \forall \bv = (v_1,v_2)\in ~\Kg
+                                                   \qquad \textcolor{electri...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:59: Undefined control sequence.
+l.59 ... \bv = (v_1,v_2)\in ~\Kg \qquad \textcolor
+                                                  {electricpurple}{(\mathrm{...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./presentation_thesis_chap1.tex:60: LaTeX Error: \begin{frame} on input line 36
+ ended by \end{equation*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.60 \end{equation*}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./presentation_thesis_chap1.tex:60: Missing } inserted.
+<inserted text> 
+                }
+l.60 \end{equation*}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./presentation_thesis_chap1.tex:60: Missing $ inserted.
+<inserted text> 
+                $
+l.60 \end{equation*}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./presentation_thesis_chap1.tex:64: Undefined control sequence.
+<argument> \frametitle 
+                       
+l.64 \frametitle
+                {Discretization by finite elements}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no D in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no z in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no s in font nullfont!
+./presentation_thesis_chap1.tex:65: Undefined control sequence.
+l.65 \textcolor
+               {cadmiumgreen}{\textbf{Spaces for the discretization:}}\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no c in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+./presentation_thesis_chap1.tex:66: Undefined control sequence.
+<recently read> \Xghp 
+                      
+l.66 $\Xghp
+           =\left\{v_h \in \mathcal{C}^0(\overline{\Omega}),  {v_h}_{|K} \in...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:66: Undefined control sequence.
+l.66 ...^0(\overline{\Omega}),  {v_h}_{|K} \in \Pp
+                                                   (K), \ \forall K \in {\ma...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+./presentation_thesis_chap1.tex:68: Undefined control sequence.
+<recently read> \Xzerohp 
+                         
+l.68 $\Xzerohp
+               =\left\{v_h \in \calC^0(\overline{\Omega}); \ {v_h}|_{K} \in ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:68: Undefined control sequence.
+l.68 $\Xzerohp =\left\{v_h \in \calC
+                                    ^0(\overline{\Omega}); \ {v_h}|_{K} \in ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:68: Undefined control sequence.
+l.68 ...0(\overline{\Omega}); \ {v_h}|_{K} \in \Pp
+                                                   (K), \quad \forall K \in ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:68: Undefined control sequence.
+l.68 ...|_{K} \in \Pp (K), \quad \forall K \in \Th
+                                                   \right\} \cap H_0^1(\Omega)$
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+<recently read> \dps 
+                     
+l.71 $\dps
+           \Kghp=\left\{(\vunh,\vdeuxh) \in \Xghp \times \Xzerohp, \ \textco...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+l.71 $\dps \Kghp
+                =\left\{(\vunh,\vdeuxh) \in \Xghp \times \Xzerohp, \ \textco...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+l.71 $\dps \Kghp=\left\{(\vunh
+                              ,\vdeuxh) \in \Xghp \times \Xzerohp, \ \textco...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+l.71 $\dps \Kghp=\left\{(\vunh,\vdeuxh
+                                      ) \in \Xghp \times \Xzerohp, \ \textco...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+l.71 $\dps \Kghp=\left\{(\vunh,\vdeuxh) \in \Xghp
+                                                  \times \Xzerohp, \ \textco...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+l.71 ...{(\vunh,\vdeuxh) \in \Xghp \times \Xzerohp
+                                                  , \ \textcolor{electricpur...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+l.71 ...h) \in \Xghp \times \Xzerohp, \ \textcolor
+                                                  {electricpurple}{\vunh(\xl...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+l.71 ...zerohp, \ \textcolor{electricpurple}{\vunh
+                                                  (\xl)-\vdeuxh(\xl)} \geq 0...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+l.71 ...hp, \ \textcolor{electricpurple}{\vunh(\xl
+                                                  )-\vdeuxh(\xl)} \geq 0 \ \...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+l.71 ...xtcolor{electricpurple}{\vunh(\xl)-\vdeuxh
+                                                  (\xl)} \geq 0 \ \ \forall ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+l.71 ...lor{electricpurple}{\vunh(\xl)-\vdeuxh(\xl
+                                                  )} \geq 0 \ \ \forall \xl ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+l.71 ...(\xl)-\vdeuxh(\xl)} \geq 0 \ \ \forall \xl
+                                                   \in \Vdp \right\} \textco...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+l.71 ...euxh(\xl)} \geq 0 \ \ \forall \xl \in \Vdp
+                                                   \right\} \textcolor{red}{...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+l.71 ...\ \forall \xl \in \Vdp \right\} \textcolor
+                                                  {red}{\not \subset \Kg \qu...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:71: Undefined control sequence.
+l.71 ... \right\} \textcolor{red}{\not \subset \Kg
+                                                   \quad \forall p \geq 2}$\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:73: Undefined control sequence.
+l.73 \invisible
+               <1>{
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no < in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no > in font nullfont!
+./presentation_thesis_chap1.tex:74: Undefined control sequence.
+l.74 \textcolor
+               {cadmiumgreen}{\textbf{Discrete variational inequality:}} fin...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no c in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+./presentation_thesis_chap1.tex:74: Undefined control sequence.
+<recently read> \dps 
+                     
+l.74 ...crete variational inequality:}} find $\dps
+                                                   \uh=(\uunh,\udeuxh) \in \...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:74: Undefined control sequence.
+l.74 ...e variational inequality:}} find $\dps \uh
+                                                  =(\uunh,\udeuxh) \in \Kghp...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:74: Undefined control sequence.
+l.74 ...tional inequality:}} find $\dps \uh=(\uunh
+                                                  ,\udeuxh) \in \Kghp$ such ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:74: Undefined control sequence.
+l.74 ...nequality:}} find $\dps \uh=(\uunh,\udeuxh
+                                                  ) \in \Kghp$ such that
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:74: Undefined control sequence.
+l.74 ...} find $\dps \uh=(\uunh,\udeuxh) \in \Kghp
+                                                  $ such that
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no s in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+
+./presentation_thesis_chap1.tex:75: LaTeX Error: Environment equation* undefine
+d.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.75 \begin{equation*}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 \dps
+          \sum_{\ialf=1}^2 \mu_\ialf \left(\nab u_{\ialf h},\nab \left(v_{\i...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:76: Missing $ inserted.
+<inserted text> 
+                $
+l.76 \dps \sum
+              _{\ialf=1}^2 \mu_\ialf \left(\nab u_{\ialf h},\nab \left(v_{\i...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 \dps \sum_{\ialf
+                     =1}^2 \mu_\ialf \left(\nab u_{\ialf h},\nab \left(v_{\i...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 \dps \sum_{\ialf=1}^2 \mu_\ialf
+                                     \left(\nab u_{\ialf h},\nab \left(v_{\i...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:76: Missing { inserted.
+<to be read again> 
+                   \left 
+l.76 \dps \sum_{\ialf=1}^2 \mu_\ialf \left
+                                          (\nab u_{\ialf h},\nab \left(v_{\i...
+A left brace was mandatory here, so I've put one in.
+You might want to delete and/or insert some corrections
+so that I will find a matching right brace soon.
+(If you're confused by all this, try typing `I}' now.)
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 \dps \sum_{\ialf=1}^2 \mu_\ialf \left(\nab
+                                                u_{\ialf h},\nab \left(v_{\i...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 ..._{\ialf=1}^2 \mu_\ialf \left(\nab u_{\ialf
+                                                   h},\nab \left(v_{\ialf h}...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 ...1}^2 \mu_\ialf \left(\nab u_{\ialf h},\nab
+                                                   \left(v_{\ialf h}-u_{\ial...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 ...\left(\nab u_{\ialf h},\nab \left(v_{\ialf
+                                                   h}-u_{\ialf h}\right)\rig...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 ..._{\ialf h},\nab \left(v_{\ialf h}-u_{\ialf
+                                                   h}\right)\right)_{\Omega}...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 ...h}\right)\right)_{\Omega} \geq \sum_{\ialf
+                                                  =1}^2\left(f_\ialf,v_{\ial...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 ...\Omega} \geq \sum_{\ialf=1}^2\left(f_\ialf
+                                                  ,v_{\ialf h}-u_{\ialf h}\r...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 ...geq \sum_{\ialf=1}^2\left(f_\ialf,v_{\ialf
+                                                   h}-u_{\ialf h}\right)_{\O...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 ...alf=1}^2\left(f_\ialf,v_{\ialf h}-u_{\ialf
+                                                   h}\right)_{\Omega} \quad ...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 ...\ialf h}\right)_{\Omega} \quad \forall \bv
+                                                  _h = (v_{1h},v_{2h})\in ~\...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 ...ad \forall \bv_h = (v_{1h},v_{2h})\in ~\Kg
+                                                   \quad \textcolor{electric...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:76: Undefined control sequence.
+l.76 ...= (v_{1h},v_{2h})\in ~\Kg \quad \textcolor
+                                                  {electricpurple}{(\mathrm{...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./presentation_thesis_chap1.tex:77: LaTeX Error: \begin{frame} on input line 63
+ ended by \end{equation*}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.77 \end{equation*}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./presentation_thesis_chap1.tex:77: Missing } inserted.
+<inserted text> 
+                }
+l.77 \end{equation*}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./presentation_thesis_chap1.tex:77: Missing $ inserted.
+<inserted text> 
+                $
+l.77 \end{equation*}
+                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+./presentation_thesis_chap1.tex:78: Undefined control sequence.
+l.78 \invisible
+               <2>{
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no < in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no > in font nullfont!
+./presentation_thesis_chap1.tex:79: Undefined control sequence.
+l.79 \textcolor
+               {midnightblue}{\textbf{Resolution techniques:}}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no P in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no j in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no N in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no B in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no 8 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no A in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no v in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no N in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no K in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no z in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no 9 in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no P in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no v in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no H in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no m in font nullfont!
+LaTeX Font Info:    Try loading font information for +cmr on input line 80.
+LaTeX Font Info:    No file cmr.fd. on input line 80.
+
+LaTeX Font Warning: Font shape `/cmr/m/n' undefined
+(Font)              using `/cmr/m/n' instead on input line 80.
+
+./presentation_thesis_chap1.tex:80: Corrupted NFSS tables.
+wrong@fontshape ...message {Corrupted NFSS tables}
+                                                  error@fontshape else let f...
+l.80 ...rimal-dual active set strategy (Hinterm\"u
+                                                  ller 2002).\invisible<3>{
+This error message was generated by an \errmessage
+command, so I can't give any explicit help.
+Pretend that you're Hercule Poirot: Examine all clues,
+and deduce the truth by order and method.
+
+
+LaTeX Font Warning: Font shape `/cmr/m/n' undefined
+(Font)              using `OT1/cmr/m/n' instead on input line 80.
+
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no ) in font nullfont!
+Missing character: There is no . in font nullfont!
+./presentation_thesis_chap1.tex:80: Undefined control sequence.
+l.80 ... strategy (Hinterm\"uller 2002).\invisible
+                                                  <3>{
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no < in font nullfont!
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no > in font nullfont!
+./presentation_thesis_chap1.tex:85: Undefined control sequence.
+<argument> \frametitle 
+                       
+l.85 \frametitle
+                {Saddle point formulation}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no S in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+./presentation_thesis_chap1.tex:86: Undefined control sequence.
+l.86 \textcolor
+               {cadmiumgreen}{\textbf{Characterization of the discrete lagra...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no c in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no D in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no e in font nullfont!
+./presentation_thesis_chap1.tex:87: Undefined control sequence.
+<recently read> \lambih 
+                        
+l.87 Define $\lambih
+                    $ and $\lambiih$ in $\XXhp$ by
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+./presentation_thesis_chap1.tex:87: Undefined control sequence.
+<recently read> \lambiih 
+                         
+l.87 Define $\lambih$ and $\lambiih
+                                   $ in $\XXhp$ by
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+./presentation_thesis_chap1.tex:87: Undefined control sequence.
+<recently read> \XXhp 
+                      
+l.87 Define $\lambih$ and $\lambiih$ in $\XXhp
+                                              $ by
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no b in font nullfont!
+Missing character: There is no y in font nullfont!
+
+./presentation_thesis_chap1.tex:88: LaTeX Error: Environment equation* undefine
+d.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.88 \begin{equation*}
+                      
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./presentation_thesis_chap1.tex:89: Missing $ inserted.
+<inserted text> 
+                $
+l.89 \left
+          \lbrace\begin{array}{rclcc}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./presentation_thesis_chap1.tex:90: Undefined control sequence.
+l.90 \dps
+          \left\langle \lambih,z_{1h}\right\rangle _h&\egaldef& \hspace{0.8em}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:90: Undefined control sequence.
+l.90 \dps \left\langle \lambih
+                              ,z_{1h}\right\rangle _h&\egaldef& \hspace{0.8em}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:90: Undefined control sequence.
+l.90 ...le \lambih,z_{1h}\right\rangle _h&\egaldef
+                                                  & \hspace{0.8em}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:91: Undefined control sequence.
+l.91 \dps
+          \mu_1 \left(\nab \uunh, \nab z_{1h}\right)_{\Omega} - \left(f_1, z...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:91: Undefined control sequence.
+l.91 \dps \mu_1 \left(\nab
+                           \uunh, \nab z_{1h}\right)_{\Omega} - \left(f_1, z...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:91: Undefined control sequence.
+l.91 \dps \mu_1 \left(\nab \uunh
+                                , \nab z_{1h}\right)_{\Omega} - \left(f_1, z...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:91: Undefined control sequence.
+l.91 \dps \mu_1 \left(\nab \uunh, \nab
+                                       z_{1h}\right)_{\Omega} - \left(f_1, z...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:91: Undefined control sequence.
+l.91 ...\Omega} \quad &\forall z_{1h} \in \Xzerohp
+                                                  ,\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:92: Undefined control sequence.
+<recently read> \dps 
+                     
+l.92 \dps
+          \left\langle \lambiih,z_{2h}\right\rangle _h&\egaldef& \dps
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:92: Undefined control sequence.
+l.92 \dps \left\langle \lambiih
+                               ,z_{2h}\right\rangle _h&\egaldef& \dps
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:92: Undefined control sequence.
+l.92 ...e \lambiih,z_{2h}\right\rangle _h&\egaldef
+                                                  & \dps
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:92: Undefined control sequence.
+l.92 ...biih,z_{2h}\right\rangle _h&\egaldef& \dps
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./presentation_thesis_chap1.tex:93: Undefined control sequence.
+l.93 -\mu_2 \left(\nab
+                       \udeuxh, \nab z_{2h}\right)_{\Omega} + \left(f_2, z_{...
+(That makes 100 errors; please try again.) 
+Here is how much of TeX's memory you used:
+ 36 strings out of 493029
+ 448 string characters out of 6136234
+ 60040 words of memory out of 5000000
+ 3670 multiletter control sequences out of 15000+600000
+ 3948 words of font info for 15 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 18i,10n,16p,329b,122s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+./presentation_thesis_chap1.tex:93:  ==> Fatal error occurred, no output PDF fi
+le produced!

@@ -1,0 +1,11 @@
+\beamer@slide {ref:position_membrane_convergence}{3}
+\beamer@slide {sub@ref:position_membrane_convergence}{3}
+\beamer@slide {ref:lambda_membrane_convergence}{3}
+\beamer@slide {sub@ref:lambda_membrane_convergence}{3}
+\beamer@slide {eq:def:jac_clarke:A:right:hand:side:newton:newton}{9}
+\beamer@slide {eq:variational:formulation:inexacte_newton}{10}
+\beamer@slide {ref:position_membrane_inside_iter}{13}
+\beamer@slide {sub@ref:position_membrane_inside_iter}{13}
+\beamer@slide {ref:lambda_membrane_inside_iter}{13}
+\beamer@slide {sub@ref:lambda_membrane_inside_iter}{13}
+\beamer@slide {ref:figure:plot:number:alg:iter:per:newton:step}{18}

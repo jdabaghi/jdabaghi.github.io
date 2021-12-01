@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.24pt}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Model problem and its dicretization by finite elements}{4}{0}{2}
+\beamer@sectionintoc {3}{Inexact semi-smooth Newton method}{7}{0}{3}
+\beamer@sectionintoc {4}{A posteriori analysis and adaptivity}{9}{0}{4}
+\beamer@sectionintoc {5}{Numerical experiments}{14}{0}{5}

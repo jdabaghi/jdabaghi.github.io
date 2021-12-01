@@ -1,0 +1,27 @@
+\beamer@slide {eq:modele_initial_membrane}{4}
+\beamer@slide {eq:formulation_variationnelle_probleme_initial}{4}
+\beamer@slide {eq: formulation_variationnelle_probleme_reduit}{6}
+\beamer@slide {ref: maillage_domaine}{7}
+\beamer@slide {eq:probleme_variationnelle_discret_membrane}{8}
+\beamer@slide {eq:555}{11}
+\beamer@slide {eq: defcone}{12}
+\beamer@slide {ref: proposition_5}{14}
+\beamer@slide {eq: a_posteriori_membrane}{15}
+\beamer@slide {eq:reconstruction_flux_raviart_thomas}{17}
+\beamer@slide {eq: fonction_ g_1^a}{18}
+\beamer@slide {eq: fonction_g_2^a}{18}
+\beamer@slide {ref: fonction_sigma2h}{18}
+\beamer@slide {eq: reconstruction_flux}{19}
+\beamer@slide {eq: system_dual_2}{20}
+\beamer@slide {eq: minimisation_system_dual_1}{20}
+\beamer@slide {eq: minimisation_system_dual_2}{20}
+\beamer@slide {eq:formulation_variationnelle_discret_probleme_complet}{21}
+\beamer@slide {eq:matrice_rigidit\IeC {\'e}}{22}
+\beamer@slide {eq:matrice_A1}{23}
+\beamer@slide {eq:matrice_de_masse}{23}
+\beamer@slide {eq: definition_matrice_F}{24}
+\beamer@slide {eq:preuve_equivalence_part_1}{25}
+\beamer@slide {eq:preuve_equivalence_part_2}{25}
+\beamer@slide {eq:preuve_equivalence_part_3 }{25}
+\beamer@slide {eq: pp}{27}
+\beamer@slide {eq: ppp}{27}

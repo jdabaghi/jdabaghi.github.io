@@ -1,0 +1,304 @@
+
+
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+%\usepackage[latin1]{inputenc}
+%\usepackage[cyr]{aeguill}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{fancyhdr}
+%\usepackage[]{algorithm2e}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{pstricks}
+%\usepackage{stmaryrd}
+%\usepackage{enumitem} 
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{showlabels}
+\usepackage{cases}
+\usepackage{array}
+\usepackage{relsize,exscale}
+\usepackage{caption}
+\usepackage{times}
+\usepackage{subcaption}
+\usepackage{graphicx} 
+\usepackage{epstopdf}
+\usepackage{tikz}
+\usepackage{glossaries}
+
+
+\setbeamersize{text margin left=0.2 cm}
+  \setbeamersize{text margin right=0.2 cm}
+  %\setbeamersize{sidebar width left=}
+  %\setbeamersize{sidebar width right=taille}
+%\usetikzlibrary{calc}
+%\DeclareMathOperator*{\argmin}{argmin}
+
+\definecolor{ao(english)}{rgb}{0.0, 0.5, 0.0}
+\definecolor{armygreen}{rgb}{0.29, 0.33, 0.13}
+\definecolor{britishracinggreen}{rgb}{0.0, 0.26, 0.15}
+\definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{indigo}{rgb}{0.29, 0.0, 0.51}
+\definecolor{lightgray}{gray}{0.85}
+\definecolor{midnightblue}{rgb}{0.1, 0.1, 0.44}
+\definecolor{burntorange}{rgb}{0.8, 0.33, 0.0}
+\definecolor{royalblue}{rgb}{0.25, 0.41, 0.88}
+\definecolor{darkmagenta}{rgb}{0.55, 0.0, 0.55}
+\definecolor{byzantine}{rgb}{0.74, 0.2, 0.64}
+\definecolor{blue-violet}{rgb}{0.54, 0.17, 0.89}
+\definecolor{brown-traditional}{rgb}{0.59, 0.29, 0.0}
+\definecolor{brown-web}{rgb}{0.65, 0.16, 0.16}
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+\definecolor{electricpurple}{rgb}{0.75, 0.0, 1.0}
+\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{goldenbrown}{rgb}{0.6, 0.4, 0.08}
+\definecolor{armygreen}{rgb}{0.29, 0.33, 0.13}
+\definecolor{calpolypomonagreen}{rgb}{0.12, 0.3, 0.17}
+\definecolor{caputmortuum}{rgb}{0.35, 0.15, 0.13}
+\definecolor{carmine}{rgb}{0.59, 0.0, 0.09}
+\definecolor{chocolate-traditional}{rgb}{0.48, 0.25, 0.0}
+\definecolor{lincolngreen}{rgb}{0.11, 0.35, 0.02}
+\definecolor{magenta}{rgb}{1.0, 0.0, 1.0}
+\definecolor{auburn}{rgb}{0.43, 0.21, 0.1}
+\definecolor{bole}{rgb}{0.47, 0.27, 0.23}
+\definecolor{bulgarianrose}{rgb}{0.28, 0.02, 0.03}
+%\usepackage[dvipsnames]{xcolor}
+%\xdefinecolor{vert_olive}{named}{OliveGreen}
+%\xdefinecolor{bleuviolet}{named}{BlueViolet}
+%\xdefinecolor{bleucadet}{named}{CadetBlue}
+%\xdefinecolor{bleunuit}{named}{MidnightBlue}
+\graphicspath{{./Figures/}}
+\newtheorem{assumption}[theorem]{Assumption} 
+\newtheorem{proposition}[theorem]{Proposition} 
+\newtheorem{remark}[theorem]{Remark} 
+
+\renewcommand{\div}{\mathrm{div}}
+\newcommand{\Pdot}{\ddot{P}}
+\newcommand{\Pdothn}{\Pdot_h^n}
+%\usetheme{Madrid}
+\usetheme{Frankfurt}
+\vspace*{-0.7 cm}
+\title{A posteriori error estimates for variational inequalities:\\
+ application to a two-phase flow in porous media}
+\subtitle{ \scriptsize{A THESIS PRESENTED AT} \\ \normalsize{SORBONNE UNIVERSITY} \\ \scriptsize{DOCTORAL SCHOOL MATHEMATICAL SCIENCES OF CENTRAL PARIS (ED 386)}} % 
+\author{\underline{\textbf{JAD DABAGHI}} \\
+\scriptsize{Thesis advisor: Martin Vohral{\'{\i}}k\\
+Thesis co-advisor: Vincent Martin}}
+
+\institute[]{INRIA Paris \& Sorbonne University}
+\date{Paris, June $3^{\mathrm{rd}}$ 2019}
+\input{manuscrit_commandes}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamercovered{transparent}
+
+
+\AtBeginSection[] {
+    \begin{frame}
+    <beamer>[noframenumbering]
+        \frametitle{Outline}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+
+\newcommand{\kk}{\textcolor{royalblue}{k}}
+\newcommand{\ii}{\textcolor{burntorange}{i}}
+\newcommand{\nuu}{\textcolor{burntorange}{\nu}}
+\newcommand{\zzero}{\textcolor{royalblue}{0}}
+\newcommand{\izzero}{\textcolor{burntorange}{0}}
+\begin{document}
+
+
+
+
+\begin{frame}
+\maketitle
+\vspace{-0.6 cm}
+\includegraphics[scale=0.3]{INRIA-SCIENTIFIQUE-UK-RVB}
+\hfill 
+\includegraphics[scale=0.13]{logo_sorbonne}
+
+\end{frame}
+
+
+%% INTRODUCTION
+
+\input{presentation_thesis_introduction.tex}
+
+%% CHAP 1
+\input{presentation_thesis_chap1.tex}
+
+%% CHAP 2
+\input{presentation_thesis_chap2.tex}
+
+%% CHAP 3
+\input{presentation_thesis_chap3.tex}
+
+%% CONCLUSION
+\input{presentation_thesis_conclusion.tex}
+
+
+%% SLIDE RESERVE chap 1
+
+% \begin{frame}
+% \frametitle{Discretization flux reconstruction}
+% \vspace{-0.4 cm}
+% \begin{equation*}
+% \begin{array}{lclcc}
+% \left({\bm \sigma}_{\ialf h, \mathrm{disc}}^{\kk,\ii,\ba}, \tauh\right)_{\omah}- \left(\gamma_{\ialf h}^{\kk,\ii,\ba},\nab {\cdot} \tauh\right)_{\omah}
+% &=& -\left(\mu_\ialf \psiha \nab u_{\ialf h}^{\kk,\ii,\ba}, \tauh \right)_{\omega_h^{\ba}}
+% &  \forall \tauh\in \Vspaceha, \\
+% \left(\nab {\cdot} {\bm \sigma}_{\ialf h, \mathrm{disc}}^{\kk,\ii, \ba}, q_{h}\right)_{\omah}
+% &=&\left(\tilde{g}_{\ialf h}^{\kk,\ii,\ba}, q_{h}\right)_{\omah}
+% &  \forall q_{h}\in \Qspaceha,
+% \end{array}
+% \end{equation*}
+% \begin{equation*}
+% \tildgialfhkia \egaldef \left(f_\ialf -(-1)^{\ialf} \tildlambhkia -\rialfhki \right) \psiha- \mu_\ialf \nab \uialfhki {\cdot} \nab \psiha : \mbox{\textcolor{cadmiumgreen}{depends on the residual}} 
+% %\left(f_\ialf -(-1)^{\ialf} \tildlambhkia -\rialfhki \right) \psiha- \mu_\ialf \nab \uialfhki {\cdot} \nab \psiha
+% \end{equation*}
+% \begin{minipage}[c]{0.4 \linewidth}
+% For each internal vertex $ \ba \in \Vhint$
+% \vspace{-0.2 cm}
+% \begin{equation*}
+% \begin{split}
+% \Vspaceha & \egaldef
+%  \left\{\tauh  \in \RTp(\omah), \, \tauh {\cdot} \nnomah=0  \mbox{ on } \partial \omah \right\}\\
+% \Qspaceha &  \egaldef \Pp^{0}(\omah)
+% \end{split}
+% \vspace{-0.2 cm}
+% \end{equation*}
+
+% \invisible<1>{
+% \begin{equation*}
+% {\bm \sigma}_{\ialf h, \mathrm{disc}}^{\kk,\ii} \egaldef \sum_{\ba \in \mathcal{V}_h} {\bm \sigma}_{\ialf h, \mathrm{disc}}^{\kk,\ii,\ba}
+% \end{equation*}
+% }
+% \end{minipage}
+% \hfill
+% \begin{minipage}[c]{0.5 \linewidth}
+% \begin{figure}
+%   \begin{overprint}
+%     \onslide<1>\includegraphics[width=0.84\textwidth]{patch_alg_3.pdf}
+%     \onslide<2->\includegraphics[width=0.84\textwidth]{patch_alg_5.pdf}
+%     \end{overprint}
+% \end{figure}
+% \end{minipage}
+% \end{frame}
+
+
+
+% \begin{frame}[noframenumbering]
+% \textcolor{red}{\textbf{Strategy for constructing the estimators}}
+% \begin{equation*}
+% %\label{eq:def:lambda:pos:neg}
+% \lambh^{\kk,\ii} \egaldef \lambh^{\kk,\ii,\mathrm{pos}} + \lambh^{\kk,\ii,\mathrm{neg}}, \quad \Ktildeghp \egaldef \left\{(\vunh,\vdeuxh) \in \Xghp \times \Xzerohp, \ \textcolor{electricpurple}{\vunh-\vdeuxh} \geq 0  \right\} \subset \Kg.
+% \end{equation*}
+% \invisible<1>{
+% \textcolor{midnightblue}{\textbf{Nonconformity estimator 1:}}
+% \begin{equation*}
+% \eta_{\mathrm{nonc},1,K}^{\kk,\ii}  \egaldef  \tnorm{{\bm s}_h^{\kk,\ii}-\uh^{\kk,\ii}}_K, 
+% \end{equation*}
+% \vspace{-0.1 cm}
+% \invisible<2>{
+% \textcolor{midnightblue}{\textbf{Nonconformity estimator 2:}}
+% \begin{equation*}
+% \eta_{\mathrm{nonc},2,K}^{\kk,\ii} \egaldef h_{\Omega} \CPF \left(\frac{1}{\mu_1} +
+% \frac{1}{\mu_2} \right)^{\frac{1}{2}} \left\| \lambh^{\kk,\ii,\mathrm{neg}}\right\|_K, 
+% \end{equation*}
+% \invisible<3>{
+% \vspace{-0.2 cm}
+% \textcolor{midnightblue}{\textbf{Nonconformity estimator 3:}}
+% \begin{equation*}
+% \eta_{\mathrm{nonc},3,K}^{\kk,\ii}  \egaldef 2 h_{\Omega} \CPF \left(\frac{1}{\mu_1} +
+% \frac{1}{\mu_2} \right)^{\frac{1}{2}} \left\|\lambh^{\kk,\ii,\mathrm{pos}}\right\|_{\Omega}
+% \tnorm{{\bm s}_{h}^{\kk,\ii}-\uh^{\kk,\ii}}_K.
+% \end{equation*}
+% \invisible<4>{
+% }}}}
+% \end{frame}
+
+
+
+
+
+% %%% SLIDE RESERVE CHAP 2
+
+% \begin{frame}[noframenumbering]
+% \frametitle{Weak formulation-Discrete weak formulation}
+% \textcolor{cadmiumgreen}{\textbf{Weak formulation:}} 
+% For $\left(f_1,f_2\right) \in  [L^2(0,T;L^2(\Omega))]^2$, $\bu^0 \in H_g^1(\Omega) \times H_0^1(\Omega)$, 
+% find  $(u_1,u_2,\lambda) \in L^2(0,T;H_g^1(\Omega)) \times L^2(0,T;H_0^1(\Omega)) \times L^2(0,T; \Lambda)$ s.t. $\dps \partial_t \uialf \in L^2(0,T;H^{-1}(\Omega))$, and satisfying $\forall t \in \left]0,T\right[$ 
+% \begin{equation*}
+% \begin{split}
+% &\sum_{\ialf=1}^2 \langle \partial_t \uialf(t), \vialf \rangle + \sum_{\ialf=1}^2 \mu_\ialf \left(\nab \uialf(t), \nab \vialf \right)_{\Omega} - \left(\lambda(t),v_1-v_2\right)_{\Omega} = \sum_{\ialf=1}^2 \left(f_\ialf, \vialf \right)_{\Omega}, \hspace{0.15 cm} \forall \bv \in \left[H_0^1(\Omega)\right]^2 \\
+% & \left(\chi-\textcolor{carmine}{\lambda(t)}, \textcolor{electricpurple}{u_1(t)-u_2(t)}\right)_{\Omega} \geq 0 \quad \forall \chi \in \Lambda.
+% \end{split}
+% \end{equation*}
+% \invisible<1>{
+% \textcolor{cadmiumgreen}{\textbf{Discrete formulation:}}
+% Given $\left(u_{1h}^0,u_{2h}^0 \right) \in \Kgh^{p}$, search $(\uunhn,\udeuxhn,\lambh^n)\in \Xghp \times \Xzerohp \times
+% \Lahp$ such that for all $\left(z_{1h},z_{2h},\chi_h\right) \in \Xzerohp \times \Xzerohp \times \Lahp$ 
+% \begin{equation*}
+% \begin{array}{lcl}
+% \dps \frac{1}{\Dt_n} \sum_{\ialf=1}^2 \left(\uialfhn-\uialfh^{n-1}, z_{\ialf h}\right)_{\Omega} + \sum_{\ialf=1}^2 \mu_\ialf \left(\nab u_{\ialf h}^n, \nab z_{\ialf h}\right)_{\Omega}
+% - \left\langle \lambh^n, z_{1h}-z_{2h} \right \rangle_h
+% =  \dps \sum_{\ialf=1}^2 \left(f_\ialf,z_{\ialf h}\right)_{\Omega}, \\
+% \left\langle \chi_h - \textcolor{carmine}{\lambh^n}, \textcolor{electricpurple}{\uunh^n - \udeuxh^n}\right \rangle_h   \geq 0 
+% \end{array}
+% \end{equation*}
+% \invisible<2>{
+% }}
+% \end{frame}
+% %% 
+% %SLIDE RESERVE CHAP 3
+
+% \begin{frame}
+% \frametitle{Post-processing}
+% \vspace{-0.1 cm}
+% The discrete liquid pressure and discrete molar fraction \textcolor{midnightblue}{\textbf{are piecewise constant}} 
+% \\
+% \begin{equation*}
+% \left(\PKnki\right)_{K \in \Th} \in \textcolor{cadmiumgreen}{\PzeroTh} \quad \left(\chiKnki\right)_{K \in \Th} \in \textcolor{cadmiumgreen}{\PzeroTh}
+% \end{equation*}
+% \invisible<1>{
+% Piecewise polynomial reconstruction:
+% \begin{equation*}
+% \Phnki \in \textcolor{cadmiumgreen}{\PtwoTh}, \quad \chihnki \in \textcolor{cadmiumgreen}{\PtwoTh}
+% \end{equation*}
+% \vspace{-0.1 cm}
+% \invisible<2>{
+% Conforming reconstruction:
+% \begin{equation*}
+% \tildePhnki \in \textcolor{cadmiumgreen}{\PtwoTh} \ \textcolor{red}{\bm \cap} \ H^1(\Omega), \quad \tildechihnki \in \textcolor{cadmiumgreen}{\PtwoTh} \ \textcolor{red}{\bm \cap} \ H^1(\Omega).
+% \end{equation*}
+% \begin{figure}
+% \centering
+% \includegraphics[width = 0.6 \textwidth]{fig_article_chap_3/image_oswald2}
+% \end{figure}
+% \invisible<3>{
+% }}}
+% \end{frame}
+
+
+% \begin{frame}
+% \frametitle{Accuracy $\gammalin=10^{-6}$}
+% \textcolor{cadmiumgreen}{\hspace{2 cm} $t = 1.05 \times 10^5$ years \hspace{5 cm} $t = 3.5 \times 10^5$ years}
+% \begin{figure}
+% \centering
+% \includegraphics[width=0.48 \textwidth]{fig_article_chap_3/comparaison_plot_gas_saturations_exact_adapt_inexact_gamma_lin_10-6_gamma_alg_10-3_nt_21}
+% \includegraphics[width=0.48 \textwidth]{fig_article_chap_3/comparaison_plot_gas_saturations_exact_adapt_inexact_gamma_lin_gamma_alg_10-3_nt_70}
+% \end{figure}
+% \end{frame}
+
+% \bibliographystyle{plain}
+% \bibliography{diphasique_biblio}
+\end{document}
+
+
+

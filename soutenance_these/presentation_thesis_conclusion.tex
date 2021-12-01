@@ -1,0 +1,198 @@
+\section{Conclusion  and perspectives}
+\subsection{}
+\begin{frame}
+\frametitle{Conclusion and perspectives}
+\textcolor{midnightblue}{\large \textbf{Conclusion}}
+\invisible<1>{
+\begin{itemize}
+\item
+ Variational inequality: we devised a posteriori error estimates with $\Pp$ finite elements.
+\item
+ Two-phase flow with phase transition: a posteriori error estimates for a cell centered finite volume discretization. 
+\item
+Formulations with complementarity constraints and semismooth algorithms.
+\item
+ We distinguished the different error components.
+\item
+Adaptive stopping criteria $\Rightarrow$ reduction of the number of iterations. 
+\end{itemize}
+\invisible<2>{
+\textcolor{midnightblue}{\large \textbf{Perspectives}}
+\begin{itemize}
+\item Extension of the stationary contact problem to a hyperbolic contact problem between two vibrating membranes
+\item
+Devise a proof for the convergence of the semismooth Newton scheme
+\item 
+Chapter 2: Improve the time derivative a posteriori error
+\item
+Construct a posteriori error estimates for a multiphase multi compositional flow with several phase transitions.
+\end{itemize}
+\invisible<3>{
+}}}
+\end{frame}
+%
+
+%% REMERCIEMENTS + SLIDE RESERVE
+\begin{frame}
+\begin{overprint}
+
+\onslide<1>
+\vspace{0.1 cm}
+\begin{center}
+\LARGE{\textcolor{midnightblue}{Acknowledgements}}
+\end{center}
+ Ibtihel Ben Gharbia (IFPEN) Simulation in Chapter 3 on the basis of her \textcolor{midnightblue}{$\mathrm{MATLAB}$} code.
+\\
+Soleiman Yousef (IFPEN)
+\\
+Jean-Charles Gilbert (INRIA Paris)
+\\
+Michel Kern (INRIA Paris)
+\\
+Jan Pape{\v z} (INRIA Paris) Simulation in Chapter 1 on the basis of his \textcolor{midnightblue}{$\mathrm{MATLAB}$} code.
+\\ 
+Adel Blouza (Université Rouen)
+\newline
+\begin{center}
+\Huge{\textcolor{black}{Thank you for your attention}}
+\end{center}
+   \onslide<2> 
+
+\textcolor{cadmiumgreen}{\textbf{Discretization flux reconstruction:}}
+\begin{equation*}
+\begin{array}{lclcc}
+\left({\bm \sigma}_{\ialf h, \mathrm{disc}}^{\kk,\ii,\ba}, \tauh\right)_{\omah}- \left(\gamma_{\ialf h}^{\kk,\ii,\ba},\nab {\cdot} \tauh\right)_{\omah}
+&=& -\left(\mu_\ialf \psiha \nab u_{\ialf h}^{\kk,\ii,\ba}, \tauh \right)_{\omega_h^{\ba}}
+&  \forall \tauh\in \Vspaceha, \\
+\left(\nab {\cdot} {\bm \sigma}_{\ialf h, \mathrm{disc}}^{\kk,\ii, \ba}, q_{h}\right)_{\omah}
+&=&\left(\tilde{g}_{\ialf h}^{\kk,\ii,\ba}, q_{h}\right)_{\omah}
+&  \forall q_{h}\in \Qspaceha,
+\end{array}
+\end{equation*}
+\begin{equation*}
+\tildgialfhkia \egaldef \left(f_\ialf -(-1)^{\ialf} \tildlambhkia -\rialfhki \right) \psiha- \mu_\ialf \nab \uialfhki {\cdot} \nab \psiha : \mbox{\textcolor{cadmiumgreen}{depends on the residual}} 
+%\left(f_\ialf -(-1)^{\ialf} \tildlambhkia -\rialfhki \right) \psiha- \mu_\ialf \nab \uialfhki {\cdot} \nab \psiha
+\end{equation*}
+\begin{minipage}[c]{0.4 \linewidth}
+For each internal vertex $ \ba \in \Vhint$
+\vspace{-0.2 cm}
+\begin{equation*}
+\begin{split}
+\Vspaceha & \egaldef
+ \left\{\tauh  \in \RTp(\omah), \, \tauh {\cdot} \nnomah=0  \mbox{ on } \partial \omah \right\}\\
+\Qspaceha &  \egaldef \Pp^{0}(\omah)
+\end{split}
+\vspace{-0.2 cm}
+\end{equation*}
+
+\invisible<1>{
+\begin{equation*}
+{\bm \sigma}_{\ialf h, \mathrm{disc}}^{\kk,\ii} \egaldef \sum_{\ba \in \mathcal{V}_h} {\bm \sigma}_{\ialf h, \mathrm{disc}}^{\kk,\ii,\ba}
+\end{equation*}
+}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.5 \linewidth}
+\begin{figure}
+  %\begin{overprint}
+    %\onslide<1>\includegraphics[width=0.84\textwidth]{patch_alg_3.pdf}
+    \includegraphics[width=0.84\textwidth]{patch_alg_5.pdf}
+   % \end{overprint}
+\end{figure}
+\end{minipage}
+
+\onslide<3>
+
+\vspace{0.2 cm}
+\textcolor{cadmiumgreen}{\textbf{Strategy for constructing the estimators}}
+\begin{equation*}
+%\label{eq:def:lambda:pos:neg}
+\lambh^{\kk,\ii} \egaldef \lambh^{\kk,\ii,\mathrm{pos}} + \lambh^{\kk,\ii,\mathrm{neg}}, \quad \Ktildeghp \egaldef \left\{(\vunh,\vdeuxh) \in \Xghp \times \Xzerohp, \ \textcolor{electricpurple}{\vunh-\vdeuxh} \geq 0  \right\} \subset \Kg.
+\end{equation*}
+\textcolor{midnightblue}{\textbf{Nonconformity estimator 1:}}
+\begin{equation*}
+\eta_{\mathrm{nonc},1,K}^{\kk,\ii}  \egaldef  \tnorm{{\bm s}_h^{\kk,\ii}-\uh^{\kk,\ii}}_K, 
+\end{equation*}
+\vspace{-0.1 cm}
+\textcolor{midnightblue}{\textbf{Nonconformity estimator 2:}}
+\begin{equation*}
+\eta_{\mathrm{nonc},2,K}^{\kk,\ii} \egaldef h_{\Omega} \CPF \left(\frac{1}{\mu_1} +
+\frac{1}{\mu_2} \right)^{\frac{1}{2}} \left\| \lambh^{\kk,\ii,\mathrm{neg}}\right\|_K, 
+\end{equation*}
+\vspace{-0.2 cm}
+\textcolor{midnightblue}{\textbf{Nonconformity estimator 3:}}
+\begin{equation*}
+\eta_{\mathrm{nonc},3,K}^{\kk,\ii}  \egaldef 2 h_{\Omega} \CPF \left(\frac{1}{\mu_1} +
+\frac{1}{\mu_2} \right)^{\frac{1}{2}} \left\|\lambh^{\kk,\ii,\mathrm{pos}}\right\|_{\Omega}
+\tnorm{{\bm s}_{h}^{\kk,\ii}-\uh^{\kk,\ii}}_K.
+\end{equation*}
+
+\onslide<4>
+
+\vspace{0.1 cm}
+\textcolor{cadmiumgreen}{\textbf{Parabolic weak formulation}}
+\\\\
+\textcolor{midnightblue}{\textbf{Weak formulation:}} 
+For $\left(f_1,f_2\right) \in  [L^2(0,T;L^2(\Omega))]^2$, $\bu^0 \in H_g^1(\Omega) \times H_0^1(\Omega)$, 
+find  $(u_1,u_2,\lambda) \in L^2(0,T;H_g^1(\Omega)) \times L^2(0,T;H_0^1(\Omega)) \times L^2(0,T; \Lambda)$ s.t. $\dps \partial_t \uialf \in L^2(0,T;H^{-1}(\Omega))$, and satisfying $\forall t \in \left]0,T\right[$ 
+\begin{equation*}
+\vspace{-0.2 cm}
+\begin{split}
+&\sum_{\ialf=1}^2 \langle \partial_t \uialf(t), \vialf \rangle + \sum_{\ialf=1}^2 \mu_\ialf \left(\nab \uialf(t), \nab \vialf \right)_{\Omega} - \left(\lambda(t),v_1-v_2\right)_{\Omega} = \sum_{\ialf=1}^2 \left(f_\ialf, \vialf \right)_{\Omega}, \hspace{0.15 cm} \forall \bv \in \left[H_0^1(\Omega)\right]^2 \\
+& \left(\chi-\textcolor{carmine}{\lambda(t)}, \textcolor{electricpurple}{u_1(t)-u_2(t)}\right)_{\Omega} \geq 0 \quad \forall \chi \in \Lambda.
+\end{split}
+\end{equation*}
+\textcolor{midnightblue}{\textbf{Discrete formulation:}}
+Given $\left(u_{1h}^0,u_{2h}^0 \right) \in \Kgh^{p}$, search $(\uunhn,\udeuxhn,\lambh^n)\in \Xghp \times \Xzerohp \times
+\Lahp$ such that for all $\left(z_{1h},z_{2h},\chi_h\right) \in \Xzerohp \times \Xzerohp \times \Lahp$ 
+\begin{equation*}
+\begin{array}{lcl}
+\dps \frac{1}{\Dt_n} \sum_{\ialf=1}^2 \left(\uialfhn-\uialfh^{n-1}, z_{\ialf h}\right)_{\Omega} + \sum_{\ialf=1}^2 \mu_\ialf \left(\nab u_{\ialf h}^n, \nab z_{\ialf h}\right)_{\Omega}
+- \left\langle \lambh^n, z_{1h}-z_{2h} \right \rangle_h
+=  \dps \sum_{\ialf=1}^2 \left(f_\ialf,z_{\ialf h}\right)_{\Omega}, \\
+\left\langle \chi_h - \textcolor{carmine}{\lambh^n}, \textcolor{electricpurple}{\uunh^n - \udeuxh^n}\right \rangle_h   \geq 0 
+\end{array}
+\end{equation*}
+
+\onslide<5>
+
+\vspace*{0.2 cm}
+\textcolor{cadmiumgreen}{\textbf{Post-processing}}
+\\\\
+The discrete liquid pressure and discrete molar fraction \textcolor{midnightblue}{\textbf{are piecewise constant}} 
+\\
+\begin{equation*}
+\left(\PKnki\right)_{K \in \Th} \in \textcolor{cadmiumgreen}{\PzeroTh} \quad \left(\chiKnki\right)_{K \in \Th} \in \textcolor{cadmiumgreen}{\PzeroTh}
+\end{equation*}
+Piecewise polynomial reconstruction:
+\begin{equation*}
+\Phnki \in \textcolor{cadmiumgreen}{\PtwoTh}, \quad \chihnki \in \textcolor{cadmiumgreen}{\PtwoTh}
+\end{equation*}
+\vspace{-0.1 cm}
+Conforming reconstruction:
+\begin{equation*}
+\tildePhnki \in \textcolor{cadmiumgreen}{\PtwoTh} \ \textcolor{red}{\bm \cap} \ H^1(\Omega), \quad \tildechihnki \in \textcolor{cadmiumgreen}{\PtwoTh} \ \textcolor{red}{\bm \cap} \ H^1(\Omega).
+\end{equation*}
+\vspace{-0.8 cm}
+\begin{figure}
+\centering
+\includegraphics[width = 0.6 \textwidth]{fig_article_chap_3/image_oswald2}
+\end{figure}
+
+\onslide<6>
+\vspace{0.2 cm}
+\textcolor{red}{$\bm \gammalin= \bm \gammaalg \bm = {\bm {10^{-6}}}$}
+\\\\
+\textcolor{cadmiumgreen}{\hspace{2 cm} $t = 1.05 \times 10^5$ years \hspace{5 cm} $t = 3.5 \times 10^5$ years}
+\begin{figure}
+\centering
+\includegraphics[width=0.48 \textwidth]{fig_article_chap_3/comparaison_plot_gas_saturations_exact_adapt_inexact_gamma_lin_10-6_gamma_alg_10-3_nt_21}
+\includegraphics[width=0.48 \textwidth]{fig_article_chap_3/comparaison_plot_gas_saturations_exact_adapt_inexact_gamma_lin_gamma_alg_10-3_nt_70}
+\end{figure}
+
+ \end{overprint} 
+
+\end{frame}
+%
+
+

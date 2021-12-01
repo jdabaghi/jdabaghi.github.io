@@ -1,0 +1,1725 @@
+
+
+\documentclass[10 pt]{beamer}
+\usepackage[utf8]{inputenc}
+%\usepackage[latin1]{inputenc}
+%\usepackage[cyr]{aeguill}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\usepackage[]{algorithm2e}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{pstricks}
+%\usepackage{stmaryrd}
+%\usepackage{enumitem} 
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{array}
+\usepackage{relsize,exscale}
+\usepackage{caption}
+\usepackage{times}
+\usepackage{subcaption}
+\usepackage{graphicx} 
+\usepackage{epstopdf}
+\usepackage{tikz}
+\usepackage{glossaries}
+%\usepackage{animate}
+\setbeamersize{text margin left=0.2 cm}
+  \setbeamersize{text margin right=0.2 cm}
+  %\setbeamersize{sidebar width left=}
+  %\setbeamersize{sidebar width right=taille}
+%\usetikzlibrary{calc}
+%\DeclareMathOperator*{\argmin}{argmin}
+
+
+\definecolor{ao(english)}{rgb}{0.0, 0.5, 0.0}
+\definecolor{armygreen}{rgb}{0.29, 0.33, 0.13}
+\definecolor{britishracinggreen}{rgb}{0.0, 0.26, 0.15}
+\definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{indigo}{rgb}{0.29, 0.0, 0.51}
+\definecolor{lightgray}{gray}{0.85}
+\definecolor{midnightblue}{rgb}{0.1, 0.1, 0.44}
+\definecolor{burntorange}{rgb}{0.8, 0.33, 0.0}
+\definecolor{royalblue}{rgb}{0.25, 0.41, 0.88}
+\definecolor{darkmagenta}{rgb}{0.55, 0.0, 0.55}
+\definecolor{byzantine}{rgb}{0.74, 0.2, 0.64}
+\definecolor{blue-violet}{rgb}{0.54, 0.17, 0.89}
+\definecolor{brown-traditional}{rgb}{0.59, 0.29, 0.0}
+\definecolor{brown-web}{rgb}{0.65, 0.16, 0.16}
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+\definecolor{electricpurple}{rgb}{0.75, 0.0, 1.0}
+\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{goldenbrown}{rgb}{0.6, 0.4, 0.08}
+\definecolor{armygreen}{rgb}{0.29, 0.33, 0.13}
+\definecolor{calpolypomonagreen}{rgb}{0.12, 0.3, 0.17}
+\definecolor{caputmortuum}{rgb}{0.35, 0.15, 0.13}
+\definecolor{carmine}{rgb}{0.59, 0.0, 0.09}
+\definecolor{chocolate-traditional}{rgb}{0.48, 0.25, 0.0}
+\definecolor{lincolngreen}{rgb}{0.11, 0.35, 0.02}
+\definecolor{magenta}{rgb}{1.0, 0.0, 1.0}
+\definecolor{auburn}{rgb}{0.43, 0.21, 0.1}
+\definecolor{bole}{rgb}{0.47, 0.27, 0.23}
+\definecolor{bulgarianrose}{rgb}{0.28, 0.02, 0.03}
+%\usepackage[dvipsnames]{xcolor}
+%\xdefinecolor{vert_olive}{named}{OliveGreen}
+%\xdefinecolor{bleuviolet}{named}{BlueViolet}
+%\xdefinecolor{bleucadet}{named}{CadetBlue}
+%\xdefinecolor{bleunuit}{named}{MidnightBlue}
+\graphicspath{{./Figures/}}
+\newtheorem{assumption}[theorem]{Assumption} 
+\newtheorem{proposition}[theorem]{Proposition} 
+\newtheorem{remark}[theorem]{Remark} 
+
+\renewcommand{\div}{\mathrm{div}}
+\newcommand{\Pdot}{\ddot{P}}
+\newcommand{\Pdothn}{\Pdot_h^n}
+%\usetheme{Madrid}
+\usetheme{Frankfurt}
+
+\title[SIAM GS 2019]{A posteriori error estimates and stopping criteria\\ for a two-phase flow\\ with nonlinear complementarity constraints}
+\author[Jad Dabaghi]
+{Ibtihel Ben Gharbia, \underline{Jad Dabaghi}, Vincent Martin, Martin Vohral\'ik}
+\institute[]{Inria Paris \& Université Paris-Est}
+\date{SIAM Conference on Mathematical \& Computational Issues in the Geosciences, March $13^{\mathrm{th}}$ 2019}
+\subject{Numerical Analysis}
+\input{article_commande_diphasique_anglais}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamercovered{transparent}
+
+
+
+\AtBeginSection[] {
+    \begin{frame}
+    <beamer>[noframenumbering]
+        \frametitle{Outline}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+
+\begin{document}
+
+
+\begin{frame}
+\maketitle
+\includegraphics[scale=0.3]{INRIA-SCIENTIFIQUE-UK-RVB}
+\hfill \includegraphics[scale=0.08]{Logo_ponts_paristech}
+
+\end{frame}
+
+
+
+
+\newcommand{\kk}{\textcolor{royalblue}{k}}
+\newcommand{\ii}{\textcolor{burntorange}{i}}
+\newcommand{\nuu}{\textcolor{burntorange}{\nu}}
+
+
+\setcounter{tocdepth}{4}
+\section{Introduction}
+
+\begin{frame}
+\defbeamertemplate*{footline}{infolines theme frame plus slide}{\setcounter{slidenumber}{\insertpagenumber}\addcounter{slidenumber}{-\insertframestartpage}\addcounter{slidenumber}{1}}
+\frametitle{Introduction}
+\hspace*{0.2 cm} \textcolor{red}{\textbf{Storage of radioactive wastes}}
+
+\begin{minipage}{0.45 \linewidth}
+\begin{figure}
+\includegraphics[scale=0.65]{stockage_dechets_radioactifs_sans_texte}
+\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.53 \linewidth}
+Model: System of PDE's with complementarity constraints
+\begin{equation*}
+\begin{split}
+\partial_t \bU + \mathcal{A}(\bU)& {}= 0\\
+\textcolor{electricpurple}{\mathcal{K}}(\bU) \geq 0, \hspace{0.15 cm} \textcolor{carmine}{\mathcal{G}}(\bU) \geq 0, \hspace{0.15 cm} \textcolor{electricpurple}{\mathcal{K}}(\bU) \cdot \textcolor{carmine}{\mathcal{G}}(\bU) &= 0.
+\end{split}
+\end{equation*}
+Space/Time discretisation
+%: Finite volumes/Backward Euler scheme
+\begin{equation*}
+\begin{split}
+&S^n(\bU_h^n)=0\\
+& \textcolor{electricpurple}{\mathcal{K}}(\bU_h^n) \geq 0 \hspace{0.15 cm} \textcolor{carmine}{\mathcal{G}}(\bU_h^n) \geq 0 \hspace{0.15 cm} \textcolor{electricpurple}{\mathcal{K}}(\bU_h^n) \cdot \textcolor{carmine}{\mathcal{G}}(\bU_h^n)=0
+\end{split}
+\end{equation*}
+Resolution: semismooth Newton 
+\begin{equation*}
+\mathbb{A}^{n,\kk-1} \bU_h^{n,\kk,\ii} = \bB^{n,\kk-1}-{\bm R}^{n,\kk,\ii}
+\end{equation*}
+\end{minipage}
+\pause
+\begin{minipage}{0.49 \linewidth}
+Can we estimate each error components (discretization, linearization, algebraic)?\\
+ Can we reduce the computational cost?
+\end{minipage}
+\hfill
+\begin{minipage}{0.49 \linewidth}
+${\bm \Rightarrow}$ 
+\fbox{\textcolor{cadmiumgreen}{\textbf{A posteriori error estimates}}}
+\end{minipage}
+\end{frame}
+
+\section{Model problem and its discretization}
+    
+\subsection{}  
+
+\begin{frame}
+\frametitle{Compositional two-phase flow with phase transition}
+
+\begin{equation*}
+\dps
+\left\lbrace\begin{array}{llccc}
+\dps \partial_t l_\componentw + \nab \cdot {\bm \Phi}_{\mathrm{w}} = Q_{\componentw}, \hspace{4 cm} \mbox{\textcolor{cadmiumgreen}{\textbf{ Unknowns:}}} \Sl, \Pl, \chihl \\
+              \dps \partial_t l_\componenth  + \nab \cdot {\bm \Phi}_{\mathrm{h}}=\Qh,\\
+\textcolor{electricpurple}{\mathcal{K}}(\Sl) \geq 0, \;  \textcolor{carmine}{\mathcal{G}}(\Sl,\Pl,\chihl) \geq 0, \; \textcolor{electricpurple}{\mathcal{K}}(\Sl) \cdot \textcolor{carmine}{\mathcal{G}}(\Sl,\Pl,\chihl)=0  
+\end{array}
+\right.
+\end{equation*}
+
+\textcolor{blue}{\textbf{Amount of components:}}
+$l_\componentw \egaldef \porosity \rhowl \Sl$, 
+\quad $\lh \egaldef \porosity \rhohl \Sl+\porosity \rhohg \Sg$
+\vspace{0.05\textwidth}
+
+
+
+\textcolor{blue}{\textbf{Fluxes:}} ${\bm \Phi}_{\mathrm{w}} \egaldef \rhowl \darcyliq-\Jhl$, \quad ${\bm \Phi}_{\mathrm{h}} \egaldef \rhohl \darcyliq  + \rhohg \darcygas + \Jhl$
+\vspace{0.05\textwidth}
+
+\textcolor{blue}{\textbf{Capillary pressure:}} $\Pg \egaldef \Pl + \Pcp(\Sl)$
+
+\vspace{0.05\textwidth}
+
+\textcolor{blue}{\textbf{Algebraic closure:}} $\Sl + \Sg = 1$, \quad $\chihl + \chiwl = 1$, \quad $\chihg = 1$
+
+\vspace{0.05\textwidth}
+
+\textcolor{blue}{\textbf{Boundary conditions:}} ${\bm \Phi}_{\mathrm{w}} \cdot \bn_{\Omega} = 0$, \quad ${\bm \Phi}_{\mathrm{h}} \cdot \bn_{\Omega} = 0$.
+
+%\begin{assumption}
+%The water is incompressible and is only present in liquid phase and the gas is slightly compressible
+%\begin{equation*}
+%\rhowl = \mathrm{cst}, \quad \rhowg = 0, \quad \rhog = \betag \Pg, \quad \rhohl = \betal \chihl, \quad \chihg = 1, \quad \chiwg=0.
+%\end{equation*}
+%\end{assumption}
+\end{frame}
+
+\begin{frame}
+\frametitle{Discretization by the finite volume method}
+\textcolor{blue}{\textbf{Numerical solution: }}
+\begin{equation*}
+\bUn \egaldef (\bUn_K)_{K\in \Th}, \qquad \bUn_K \egaldef  (\SKn,\PKn,\chiKn) \quad \textcolor{cadmiumgreen}{\textbf{one value per cell and time step}} 
+\label{eq:finite:volume:approx}
+\end{equation*}
+\textcolor{cadmiumgreen}{\textbf{Time discretization:}} Consider: $t_0=0 < t_1 < \cdots < t_{N_t}=\tF$.
+\begin{minipage}{0.68 \textwidth}
+ \begin{figure}[htbp]
+\vspace{-1.6 cm}
+ \centering
+ \begin{picture}(200,60)(0,0)
+ \thicklines
+ \put(0,15){\line(200,0){200}}
+ %\put(0,10){\red{\line(0,10){10}}}
+ \put(0,0){\makebox(0,0){\small \red{$t_0$}}}
+ \put(0,15){\black{\circle*{6}}}
+ \put(25,10){\red{\line(0,10){10}}}
+ \put(25,0){\makebox(0,0){\small \red{$t_1$}}}
+ %\put(25,15){\blue{\circle*{6}}}
+ \put(12.5,30){\makebox(0,0){\small  \blue{$I_1$}}}
+ \put(50,10){\red{\line(0,10){10}}}
+ \put(50,0){\makebox(0,0){\small \red{$t_2$}}}
+ %\put(75,15){\blue{\circle*{6}}}
+ \put(37.5,30){\makebox(0,0){\small  \blue{$I_2$}}}
+ \put(75,30){\makebox(0,0){\small \blue{$\cdots$}}}
+ \put(75,0){\makebox(0,0){\small \red{$\cdots$}}}
+ \put(112.5,30){\makebox(0,0){\small \blue{$I_{n}$}}}
+ %\put(215,15){\blue{\circle*{6}}}
+ \put(100,10){\red{\line(0,10){10}}}
+ \put(100,0){\makebox(0,0){\red{\small $t_{n-1}$}}}
+ \put(125,10){\red{\line(0,10){10}}}
+ \put(125,0){\makebox(0,0){\red{\small $t_{n}$}}}
+ \put(150,30){\makebox(0,0){\small \blue{$\cdots$}}}
+ \put(150,0){\makebox(0,0){\small \red{$\cdots$}}}
+ \put(175,0){\makebox(0,0){\small \red{$t_{\Nt - 1}$}}}
+ \put(175,10){\red{\line(0,10){10}}}
+ %\put(355,15){\blue{\circle*{6}}}
+ \put(187.5,30){\makebox(0,0){\small \blue{$I_{\Nt}$}}}
+ \put(200,0){\makebox(0,0){\small \red{$t_{\Nt}$}}}
+ %\put(240,10){\red{\line(0,10){10}}}
+ \put(200,15){\black{\circle*{6}}}
+ \end{picture}
+ %\caption{Time discretization of the model}
+ \label{ref:time:discretization:model}
+ \end{figure}
+\end{minipage} \hfill
+\begin{minipage} {0.30 \textwidth}
+\begin{equation*}
+ \partial_t^n v_K := \frac{v_K^{n}-v_K^{n-1}}{\Delta t_n}
+\end{equation*}
+\vspace{1 cm} 
+\end{minipage}
+\textcolor{cadmiumgreen}{\textbf{Space discretization:}} $\Th$ a superadmissible family of conforming simplicial meshes of the space domain $\Omega$. \textcolor{blue}{Number of cells : $\Nsp$}
+\begin{minipage}{.55 \textwidth}
+\begin{equation*}
+\dps 
+\left(\nab v \cdot \bn_{K,\sigma},1\right)_{\sigma} := \dps |\sigma| \frac{v_L - v_K}{d_{KL}} \hspace{0.2 cm} \sigma = \overline{K} \cap \overline{L},
+\end{equation*}
+
+\end{minipage}
+\hfill
+\begin{minipage}{.43 \textwidth}
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale = 0.6]
+%\draw [very thin, gray] (0,0) grid (9,5);
+\draw [thick] (0,3) -- (3,5)--(6,3)--(3,1)--(0,3);
+\draw[very thick, cadmiumgreen] (3,1)--(3,5);
+\draw[color=red] (1.8,3.4) node {\scriptsize{K}};
+\draw [fill] (2,3) circle (0.09); %node {$\bullet$};
+\draw [fill] (4,3) circle (0.09); %node {$\bullet$};
+\draw[color=red] (3.8,3.4) node {\scriptsize{L}};
+\draw[color=cadmiumgreen] (3.2,2.2) node {\scriptsize{$\sigma$}};
+\draw[thick, dashed, blue] [<->] (2,3)--(4,3);
+\draw [thick, red] [->] (3,4.4) -- (3.5,4.4);
+\draw[color=red] (3.6,4) node {{${\bf n}_{\tiny {K},\tiny {\sigma}}$}};
+\end{tikzpicture}
+%\caption{Approximation of the gradient}
+\label{ref: Approximation of the gradient}
+\end{figure}
+\end{minipage}
+\end{frame}
+
+
+\begin{frame}
+\textcolor{blue}{\textbf{Discretization of the water equation}}
+\begin{equation*}
+\SwKn(\bU^n) \egaldef |K| \partial_t^n \lwK  + \sum_{\sigma \in \EK} {F}_{\componentw,K,\sigma}(\bU^{n})- |K|\QwKn = 0,
+%\label{eq:mass:conservation:equation:water}
+\end{equation*}
+\textcolor{cadmiumgreen}{\textbf{Total flux}}
+\begin{equation*}
+%\label{eq:total:flux:across:sigma:water component}
+{F}_{\componentw,K,\sigma}(\bUn) \egaldef \rhowl (\mobilityliq)_{\sigma}^{n} (\psil)_{\sigma}^{n} - (\jhl)_{\sigma}^{n} \quad \sigma \in \EKint \quad \overline{\sigma} = \overline{K} \cap \overline{L}.
+\end{equation*}
+\pause
+\textcolor{blue}{\textbf{Discretization of the hydrogen equation}}
+
+\begin{equation*} 
+\ShKn(\bU^n)\egaldef |K| \partial_t^n \lhK + \sum_{\sigma \in \EK} {F}_{\componenth,K,\sigma}(\bUn) - |K| \QhKn = 0,
+\label{eq:mass:conservation:equation:hydrogen:green:formula}
+\end{equation*}
+\textcolor{cadmiumgreen}{\textbf{Total flux}}
+\begin{equation*}
+\label{eq:total:flux:across:sigma:hydrogen:component}
+ {F}_{\componenth,K,\sigma}(\bUn) \egaldef \betal \chisigman (\mobilityliq)_{\sigma}^{n} (\psil)_{\sigma}^{n} + (\psig)_{\sigma}^{n} (\mobilitygas)_{\sigma}^{n} (\rhog)_{\sigma}^{n} + (\jhl)_{\sigma}^{n} , \quad \sigma \in \EKint \quad \overline{\sigma} = \overline{K} \cap \overline{L}.
+\end{equation*}
+\pause
+%\begin{minipage}{.47 \linewidth}
+%\begin{itemize}
+%\item 
+%$\mobilityliq$: mobility of liquid phase (upwind approx)
+%\item 
+%$\mobilitygas$: mobility of gas phase (upwind approx)
+%\item
+%$\psil$: potential of liquid phase
+%\end{itemize}
+%\end{minipage}
+%\hfill
+%\begin{minipage}{.45 \linewidth}
+%\begin{itemize}
+%\item
+%$\psig$: potential of gas phase
+%\item
+%$\jhl$: discrete Fick term\\
+%\item
+%  $\QwKn$, $\QhKn$: source term constant in space and time
+%\end{itemize}
+%\end{minipage}
+At each time step, for each components, we obtain the nonlinear system of algebraic equations
+\begin{equation*}
+S_{c,K}^n(\bU_h^n)=0
+\end{equation*}
+\end{frame}
+\begin{frame}
+\frametitle{Discrete complementarity problem}
+\textcolor{red}{\textbf{Discretization of the nonlinear complementarity constraints}}
+\begin{equation*}
+\textcolor{electricpurple}{\mathcal{K}(\bU_K^n)} \egaldef \textcolor{electricpurple}{1-\SKn} \quad \textcolor{carmine} {\mathcal{G}(\bU_K^n)} \egaldef  \textcolor{carmine}{H(\PKn\hspace{-0.05 cm}+\hspace{-0.05 cm}\Pcp(\SKn))-\betal \chiKn}
+\end{equation*}
+The discretization reads
+\pause
+\begin{equation*}
+\begin{split}
+&S_{c,K}^n(\bU_h^n)=0\\
+& \textcolor{electricpurple}{\mathcal{K}(\bU_K^n)} \geq 0, \quad   \textcolor{electricpurple}{\mathcal{G}(\bU_K^n)} \geq 0, \quad \textcolor{electricpurple}{\mathcal{K}(\bU_K^n)} \cdot \textcolor{electricpurple}{\mathcal{G}(\bU_K^n)}=0
+\end{split}
+\end{equation*}
+\textcolor{red}{\textbf{Can we reformulate the complementarity constraints?}}
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Semismoothness}
+\alert{\textbf{To reformulate the discrete constraints:}}
+\vspace{0.2 cm}
+\begin{definition}[C-function]
+\begin{equation*}
+\forall(\ba,\bb)\in {\R}^{\Nsp} \times \R^{\Nsp}, \: f(\ba,\bb)=0 \: \iff \:
+\ba \geq0, \: \bb \geq0, \: \ba \cdot \bb=0
+\end{equation*}
+\end{definition}
+\vspace{0.3 cm}
+\textcolor{cadmiumgreen}{\textbf{min-function:}}  $\min\left(\ba,\bb\right)=0 \iff \ba \geq0, \: \bb \geq0, \: \ba \cdot \bb=0$.
+
+\pause
+\vspace{0.3 cm}
+
+\textcolor{blue}{\textbf{Application: complementarity constraints for the two-phase model}}
+\begin{equation*}
+\underbrace{\dps \textcolor{electricpurple}{1-\SKn}}_{\textcolor{electricpurple}{\mathcal{K}(\SKn)}} \geq 0\quad  \underbrace{\dps \textcolor{carmine}{H(\PKn+\Pcp(\SKn))-\betal \chiKn}}_{\textcolor{carmine} {\mathcal{G}(\PKn,\SKn,\chiKn)}} \geq 0
+\end{equation*}
+The discretization reads
+\pause
+\begin{equation*}
+\begin{split}
+&S_{c,K}^n(\bU_h^n)=0\\
+& \min\left(\textcolor{electricpurple}{1-\SKn},\textcolor{carmine}{H(\PKn+\Pcp(\SKn))-\betal \chiKn}\right)=0
+\end{split}
+\end{equation*}
+
+\end{frame}
+ \begin{frame}
+ 
+ \frametitle{Inexact semismooth Newton method}
+
+ \textcolor{cadmiumgreen}{\textbf{Semismooth Newton linearization:}} Given an initial guess $\bUnzero \in \R^{3 \Nsp}$, consider:
+ \begin{equation*}
+% \label{eq:Newton_method}
+ \mathbb{A}^{n,\kk-1}\bU^{n,\kk}=\bB^{n,\kk-1},
+ \end{equation*}
+ \textcolor{cadmiumgreen}{\textbf{Inexact Semismooth Newton linearization:}}
+We use an iterative algebraic solver at the semismooth Newton step $\kk \geq 1$, starting from an initial guess $\bU^{n,\kk,0}$ generating a sequence $(\bU^{n,\kk,\ii})_{\ii \geq 1}$ satisfying
+ \begin{equation*}
+% \label{ref:inex:newton:method}
+ \mathbb{A}^{n,\kk-1}\bU^{n,\kk,\ii}=\bB^{n,\kk-1} - \bR^{n,\kk,\ii}
+ \end{equation*}
+ \pause
+\textcolor{red}{\textbf{Can we estimate the discretization error?}} \\
+\vspace{0.3 cm}
+\textcolor{red}{\textbf{Can we estimate the semismooth linearization error?}} \\
+\vspace{0.3 cm}
+\textcolor{red}{\textbf{Can we estimate the iterative algebraic error?}}
+ \end{frame}
+
+
+\section{A posteriori analysis}
+\subsection{}
+
+%%%%%%%%%%%%%%%%%%BIBLIOGRAPHY%%%%%%%%%%%%%%%%%%%ù
+%\begin{frame}
+%\frametitle{Bibliography}
+%\vspace{-0.3 cm}
+%\begin{block}{
+%\scriptsize{
+%\textcolor{white}{\textbf{Global overview}}
+%}}
+%      \begin{thebibliography}{10}
+%\scriptsize{
+%\bibitem{Prager:Synge:1947}
+%{\sc W.~Prager and J.~L. Synge}, {\em Approximations in elasticity based on the
+%  concept of function space}, Quart. Appl. Math, 1947.
+%\bibitem{Ainsworth:2000}
+%{\sc M.~Ainsworth and J.~T. Oden}, {\em A posteriori error estimation in finite element analysis}, Pure and Applied Mathematics, New York, 2000.
+%\bibitem{Verfurth:2013}
+%{\sc R.~Verf\"urth}, {\em A posteriori error estimation techniques for finite
+%  element methods}, Oxford, 2013.}
+%\end{thebibliography}
+%\end{block}
+%   
+%   \vspace{-0.2 cm}
+%\begin{block}{
+%\scriptsize{
+%\textcolor{white}{\textbf{Equilibrated flux reconstructions}}
+%}}
+%
+%     \begin{thebibliography}{10}
+%\scriptsize{ 
+%\bibitem{Destuynder:1999}
+%{\sc P.~Destuynder and B.~M\'etivet}, {\em Explicit error bounds in a
+%  conforming finite element method}, Math. Comp, 1999.
+%
+%\bibitem{Braess:Schoberl:2008}
+%{\sc D.~Braess and J.~Sch\"oberl}, {\em Equilibrated residual error estimator
+%  for edge elements}, Math. Comp, 2008.
+%
+%\bibitem{VorErn:2013}
+%{\sc A.~Ern and M.~Vohral{\'{\i}}k}, {\em Adaptive inexact {N}ewton methods
+%  with a posteriori stopping criteria for nonlinear diffusion {PDE}s}, SIAM J.
+%  Sci. Comput, 2013.
+%}
+%\end{thebibliography}
+%\end{block}
+%\vspace{-0.1 cm}
+%\begin{block}{
+%\scriptsize{
+%\textcolor{white}{\textbf{Multiphase compositional flows}}
+%}}
+%\hspace{-0.7 cm}
+%
+%\scriptsize{
+% \begin{thebibliography}{10}
+%
+%\bibitem{DiPietroFlauraudVorYoussef:2014}
+%{\sc D.~A. Di~Pietro, E.~Flauraud, M.~Vohral{\'{\i}}k, and S.~Yousef}, {\em A
+%  posteriori error estimates, stopping criteria, and adaptivity for multiphase
+%  compositional {D}arcy flows in porous media}, J. Comput. Phys, 2014.
+%
+%\bibitem{CancesPopVor:2013}
+%{\sc C.~Canc\`es, I.~S. Pop, and M.~Vohral{\'{\i}}k}, {\em An a posteriori error
+%  estimate for vertex-centered finite volume discretizations of immiscible
+%  incompressible two-phase flow}, Math. Comp, 2014.
+%\end{thebibliography}
+%}
+%\end{block}
+%
+%\end{frame}
+
+%%%%%%%%%%%%%%%
+%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Weak solution}
+\vspace{-0.7 cm}
+\begin{align*}
+X &\egaldef L^2((0,\tF);H^1(\Omega)),\\
+Y & \egaldef H^1((0,\tF);L^2(\Omega)), \quad \widehat{Y} \egaldef H^1((0,\tF);L^{\infty}(\Omega)),\\ 
+ Z & \egaldef \left\{v \in L^2((0,\tF);L^{\infty}(\Omega)), \hspace{0.15 cm} v \geq 0 \hspace{0.15 cm} \mbox{on} \hspace{0.15 cm} \Omega \times (0,\tF)  \right\}.
+\end{align*}
+\pause
+\vspace{-0.3 cm}
+\begin{assumption}[Weak formulation]
+\label{ref:assumption:weak:solution}
+\vspace{-0.8 cm}
+\begin{align*}
+&\Sl \in \widehat{Y}, \quad 1-\Sl \in Z, \quad \lw \in Y, \quad \lh \in Y, \quad \Pl \in X, \quad \chihl \in X,\\
+&\left(\Phiw, \Phih\right) \in \left[L^2((0,\tF); \HdivOmeg)\right]^2 ,\\
+&\dps \int_{0}^{\tF} \left(\partial_t \lc, \varphi \right)_{\Omega}(t)\,\mathrm{dt}-\hspace{-0.1 cm}\int_{0}^{\tF} \left(\Phic, \nab \varphi \right)_{\Omega}(t)\,\mathrm{dt} = \hspace{-0.1 cm} \int_{0}^{\tF} \left(\Qc, \varphi \right)_{\Omega}(t)\,\mathrm{dt} \quad \forall \varphi \in X, \\
+&\dps \int_{0}^{\tF} \left(\lambda - \left(1 - \Sl\right), H[\Pl+\Pcp(\Sl)]-\betal \chihl  \right)_{\Omega}(t)\,\mathrm{dt} \geq 0 \quad \forall \lambda \in Z, \\
+&\nonumber\mbox{the initial condition  holds}.
+\end{align*}
+\end{assumption}
+\pause
+\vspace*{-0.4 cm}
+\begin{equation*}
+\left\| \varphi \right\|_X^2 \egaldef \sum_{n=1}^{\Nt}\left\|\varphi \right\|_{X_n}^2\,\mathrm{dt}, 
+\hspace{0.15 cm} \left\| \varphi \right\|_{X_n} \egaldef \int_{\In} \sum_{K \in \Th} \left\| \varphi \right\|_{X,K}^2 \mathrm{dt}, \hspace{0.15 cm} \left\| \varphi \right\|_{X,K}^2 \egaldef \varepsilon h_K^{-2} \left\|\varphi\right\|_K^2 + \left\|\nab \varphi\right\|_K^2
+\end{equation*}
+
+\end{frame}
+\begin{frame}
+\frametitle{Approximate solution}
+\begin{equation*}
+\SKnki \in \textcolor{cadmiumgreen}{\PzerodTh} \quad \PKnki \in \textcolor{cadmiumgreen}{\PzerodTh} \quad \chiKnki \in \textcolor{cadmiumgreen}{\PzerodTh}
+\end{equation*}
+The discrete liquid pressure and discrete molar fraction do not belong to $H^1(\Omega)$
+
+\textcolor{blue}{\textbf{We construct a conforming solution:}}
+\begin{figure}
+\centering
+\includegraphics[width = 0.7 \textwidth]{image_oswald}
+\end{figure}
+Space-time functions:
+\begin{equation*}
+\Shtaunki  \in \textcolor{cadmiumgreen}{Y}, \quad  \Phtaunki \in \textcolor{cadmiumgreen}{\PtwodTh} \ \textcolor{red}{\bm \notin} \ X, \quad \chihtaunki \in \textcolor{cadmiumgreen}{\PtwodTh} \ \textcolor{red}{\bm \notin} \ X
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+& \tildePhtaunki \in \textcolor{cadmiumgreen}{\PtwocTh} \ \textcolor{red}{\bm \in} \ X,\\
+& \tildechihtaunki \in \textcolor{cadmiumgreen}{\PtwocTh} \textcolor{red}{\bm \in} X.
+\end{split}
+\end{equation*}
+\end{frame}
+\begin{frame}
+\frametitle{Error measure}
+
+\textcolor{cadmiumgreen}{\textbf{Dual norm of the residual for the components}}
+\begin{equation*}
+\hspace{-0.2 cm}\left\|\mathcal{R}_{\componentc}(\Shtaunki,\Phtaunki,\chihtaunki) \right\|_{\Xn'} \egaldef \sup_{\substack{\varphi \in \Xn \\ \left\|\varphi\right\|_{\Xn} = 1}}  \int_{\In} 
+\left(\Qc - \partial_t \lchtaunki , \varphi\right)_{\Omega}(t) + \left(\Phichtaunki,\nab \varphi \right)_{\Omega}(t)\,\mathrm{dt} 
+\end{equation*}
+\pause
+\textcolor{cadmiumgreen}{\textbf{Residual for the constraints}}
+\begin{equation*}
+  \mathcal{R}_{\mathrm{e}}(\Shtaunki,\Phtaunki,\chihtaunki) \egaldef \int_{\In}\left(\textcolor{electricpurple}{1 - \Shtaunki}, \textcolor{carmine}{H \left[\Phtaunki + \Pcp(\Shtaunki)\right] - \betal \chihtaunki} \right)_{\Omega}(t)\,\mathrm{dt}
+\end{equation*}
+\pause
+\textcolor{cadmiumgreen}{\textbf{Error measure for the nonconformity of the pressure}}
+\begin{equation*}
+\mathcal{N}_{P}(\Phtaunki) \egaldef \inf_{\delta_{\phasel} \in \Xn} \left\{\sum_{\componentc \in \left\{ \componentw,\componenth \right\}} \int_{\In} 
+  \left\| \tensor \frac{\krl(\Shtaunki)}{\mul} \rhocl \nab \left(\Phtaunki-\delta_{\phasel}  \right)(t) \right\|^2 \,\mathrm{dt} \right\}^{\frac{1}{2}}
+\end{equation*}
+\pause
+\textcolor{cadmiumgreen}{\textbf{Error measure for nonconformity of the molar fraction}}
+\begin{equation*}
+\mathcal{N}_{\chi}(\chihtaunki) \egaldef\inf_{\theta \in \Xn} \left\{\int_{\In} \left\| -\porosity \Mh \Shtaunki \left(\frac{\rhowl}{\Mw} + \frac{\betal}{\Mh}\chihtaunki \right) \Dhl \nab \left(\chihtaunki-\theta \right)(t) \right\|^2 \,\mathrm{dt} \right\}^\frac{1}{2}
+\end{equation*}
+\end{frame}
+\begin{frame}
+\begin{definition}[Error measure]
+\begin{equation*}
+\begin{split}
+\mathcal{N}^{n,\kk,\ii} & \egaldef \left\{\sum_{\componentc \in\mathcal{C}} \left\|\mathcal{R}_{\componentc}(\Shtaunki,\Phtaunki,\chihtaunki) \right\|_{X_n'}^2 \right\}^{\frac{1}{2}} + \left\{\sum_{\phasep \in \mathcal{P}}\mathcal{N}_{\phasep}^2 + \mathcal{N}_{\chi}^2\right\}^{\frac{1}{2}}\\
+& + \mathcal{R}_{\mathrm{e}}(\Shtaunki,\Phtaunki,\chihtaunki)
+\end{split}
+\end{equation*}
+\end{definition}
+\begin{theorem}
+\begin{equation*}
+%\label{eq:corrolary:component:error}
+\mathcal{N}^{n,\kk,\ii} \leq \etadiscnki + \etalinnki + \etaalgnki
+\end{equation*}  
+\end{theorem}
+\textcolor{red}{\textbf{How do we construct each error estimators?}}
+\end{frame}
+\begin{frame}
+\frametitle{Component flux reconstructions}
+\textcolor{cadmiumgreen}{\textbf{The finite volume scheme provides}}
+\begin{equation*} 
+  |K| \partial_t^n \lcK + \sum_{\sigma \in \EK} {F}_{\componentc,K,\sigma}(\bUn) =  |K|\QcKn
+\end{equation*}
+\textcolor{cadmiumgreen}{\textbf{Inexact semismooth linearization}}
+
+\begin{equation*}
+\label{eq:flux:equation}
+ \frac{|K|}{\Delta t}\left[\lcK\left(\bU^{n,\kk-1}\right) - \lcK^{n-1} + \mathcal{L}_{\componentc,K}^{n,\kk,\ii}\right] + \sum_{\sigma \in \EKint} \mathcal{F}_{\componentc,K,\sigma}^{n,\kk,\ii}- |K|\QcKn + {\bR}_{\componentc,K}^{n,\kk,\ii} = 0
+\end{equation*}
+ \textcolor{blue}{Linear perturbation in the accumulation}
+\begin{equation*}
+\mathcal{L}_{\componentc,K}^{n,\kk,\ii} \egaldef \sum_{K' \in \Th} \frac{|K|}{\Delta t}  \frac{\partial \lcK^n}{\partial \bU_{K'}^n}(\bU_{K'}^{n,\kk-1}) \left[\bU_{K'}^{n,\kk,\ii}-\bU_{K'}^{n,\kk-1} \right]
+\end{equation*}
+\textcolor{blue}{Linearized component flux}
+\begin{equation*}
+\label{eq:linearized:semi:smooth:component:flux}
+\mathcal{F}_{\componentc,K,\sigma}^{n,\kk,\ii} \egaldef \sum_{K' \in \Th} \frac{\partial {F}_{\componentc,K,\sigma}}{\partial \bU_{K'}^n} \left(\bU^{n,\kk-1}\right) \left[\bU_{K'}^{n,\kk,\ii} -\bU_{K'}^{n,\kk-1} \right] + {F}_{\componentc,K,\sigma}\left(\bU^{n,\kk-1}\right)
+\end{equation*}
+\end{frame}
+
+%%% FRAME RAVIART THOMAS
+%\begin{frame}
+%\frametitle{Raviart--Thomas spaces}
+%\vspace{-0.3 cm}
+%\begin{definition}
+%The lowest-order Raviart--Thomas space is defined by
+%\begin{equation*}
+%\textbf{RT}_0(\Omega)=\left\{\bw_h \in \HdivOmeg, {\bw_h}|_{K} \in \textbf{RT}_0(K)\ \forall K \in \Th\right\}
+%\end{equation*}
+% \begin{equation*}
+% \quad \textbf{RT}_0(K)=[{\mathbb{P}}_0(K)]^2 + \vec{{\bm x}} \cdot  {\mathbb{P}}_0(K)
+%\end{equation*}
+%\end{definition}
+%\vspace{0.3 cm}
+%\begin{minipage}[c]{0.5 \linewidth}
+%\begin{figure}
+%\centering
+%\begin{tikzpicture}
+%%\draw [very thin, gray] (0,0) grid (8,5);
+%\draw(1,2)--(5,2)--(3,5)--(1,2);
+%\draw [thick, blue] [->] (3,2) -- (3,1);
+%\draw [thick, blue] [->] (4,3.5) -- (5,4.2);
+%\draw [thick, blue] [->] (2,3.5) -- (1,4);
+%\draw [fill] (4,3.5) circle (0.09); %node {$\bullet$};
+%\draw [fill] (2,3.5) circle (0.09); %node {$\bullet$};
+%\draw [fill] (3,2) circle (0.09); %node {$\bullet$};
+%\end{tikzpicture}
+%\end{figure}
+%\end{minipage}\hfill
+%\begin{minipage}[c]{0.5 \linewidth}
+%\textcolor{cadmiumgreen}{\textbf{Degrees of freedom $\textbf{RT}_0$:}} 
+%\begin{equation*}
+%v_j=(\bv \cdot \bn_{e_j},1)_{e_j}, \hspace{0.2 cm} e_j \in \partial K, \hspace{0.2 cm} j = \left\{1,2,3\right\}.
+%\end{equation*}
+%% \begin{proposition} 
+%% If $\bv \in \textbf{RT}_0(\Omega)$ then $v|_{K} \cdot \bn_{K,\sigma}$ is constant over the edge $\sigma$.
+%% \end{proposition}
+%\end{minipage}
+%
+%\end{frame}
+
+
+
+
+\begin{frame}
+\textcolor{cadmiumgreen}{\textbf{Discretization error flux reconstruction:}}
+\begin{equation*}
+\left(\Thetachdiscnki \cdot \bn_K,1 \right)_{\sigma} \egaldef F_{\componentc,K,\sigma}\left(\bU^{n,\kk, \ii}\right) \quad \forall K \in \Th
+\end{equation*}
+\textcolor{cadmiumgreen}{\textbf{Linearization error flux reconstruction:}}
+\begin{equation*}
+\left(\Thetachlinnki \cdot \bn_K,1 \right)_{\sigma} \egaldef \mathcal{F}_{\componentc,K,\sigma}^{n,\kk,\ii} -  F_{\componentc,K,\sigma}\left(\bU^{n,\kk, \ii}\right) \quad \forall K \in \Th
+\end{equation*}
+\textcolor{cadmiumgreen}{\textbf{Algebraic error flux reconstruction:}}
+\begin{equation*}
+\Thetachalgnkinu  \egaldef {\bm \Theta}_{\componentc,h,\mathrm{disc}}^{n,\kk,\ii+\nuu} + {\bm \Theta}_{\componentc,h,\mathrm{lin}}^{n,\kk,\ii+\nuu} - \left(\Thetachdiscnki + \Thetachlinnki \right)
+ \quad \forall K \in \Th
+\end{equation*}
+\textcolor{red}{\textbf{Total flux reconstruction:}} 
+\begin{equation*}
+%\label{eq:def:tot:flux}
+\Thetachnkinu \egaldef \Thetachdiscnki+\Thetachlinnki+\Thetachalgnkinu \ \textcolor{red}{\bm \in} \ \HdivOmeg
+\end{equation*}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Error estimators}
+
+
+\begin{itemize}
+\item $\partial_t \lc + \nab \cdot \Thetachnkinu \neq \Qc$ \quad $\Thetachnkinu \neq \Phichtaunki(t^n)$
+\item $1 - \Shtaunki \ngeq 0$ \quad $H\left[\Phtaunki + \Pcp\left(\Shtaunki\right)\right]-\betal \chihtaunki \ngeq 0$ 
+ \item $\Phtaunki \notin X$ \quad $\chihtaunki \notin X$
+\end{itemize}
+\pause
+\textcolor{cadmiumgreen}{\textbf{Discretization estimator}}
+\begin{equation*}
+\begin{split}
+&\etaRKcnkinu \egaldef \min\left\{\CPW,\varepsilon^{-\frac{1}{2}}\right\} h_K \left\|\Qchn - \frac{\lcK(\bU^{n,\kk-1}) - \lcK^{n-1} + \mathcal{L}_{\componentc,K}^{n,\kk,\ii}}{\Tn} - \nab \cdot \Thetachnki \right\|_K \\
+&\etaFKcnkinu(t) \egaldef \left\|\Thetachnkinu - \Phichtaunki(t) \right\|_K\\
+&\etaPKposnki(t) \egaldef \left(\left\{1-\Shtaunki\right\}^{+},\left\{H\left[\Phtaunki + \Pcp\left(\Shtaunki\right)\right]-\betal \chihtaunki\right\}^{+}\right)_K(t)\\
+&\etaNCKlcnki(t) \egaldef \left\| \tensor \frac{\krl(\Shtaunki)}{\mul} \rhocl \nab \left(\Phtaunki-\tildePhtaunki  \right)(t) \right\|_K\\
+&\etaNCKchinki(t)  \egaldef \left\| -\porosity \Mh \Shtaunki \left(\frac{\rhowl}{\Mw} + \frac{\betal}{\Mh}\chihtaunki \right) \Dhl \nab \left(\chihtaunki-\tildechihtaunki \right)(t) \right\|_K
+\end{split}
+\end{equation*}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Error estimators}
+\textcolor{cadmiumgreen}{\textbf{Linearization estimator}}
+\begin{equation*}
+\begin{split}
+& \etalinKcnki \egaldef \left\|\Thetachlinnki \right\|_K\\
+& \etaNAKcnki  \egaldef \varepsilon^{-\frac{1}{2}} h_K \left(\Tn\right)^{-1} \left\|\lcK(\bU^{n,\kk,\ii}) - \lcK(\bU^{n,\kk-1}) - \mathcal{L}_{\componentc,K}^{n,\kk,\ii} \right\|_K\\
+& \etaPKnegnki(t)  \egaldef \left(\left\{1 - \Shtaunki\right\}^{-},\left\{H\left[\Phtaunki + \Pcp\left(\Shtaunki\right)\right]-\betal \chihtaunki\right\}^{-}\right)_K(t)
+\end{split}
+\end{equation*}
+\pause
+\textcolor{cadmiumgreen}{\textbf{Algebraic estimator}}
+\begin{equation*}
+\begin{split}
+\etaalgKcnki & \egaldef \left\|\Thetachalgnkinu \right\|_K\\
+\etaremcKnkinu & \egaldef h_K |K|^{-1} \varepsilon^{-\frac{1}{2}} \left\|\RcK^{n,\kk,\ii+\nuu}  \right\|_K
+\end{split}
+\end{equation*}
+\pause
+\begin{remark}
+\begin{equation*}
+\etalinnki \rightarrow 0 \quad \etaalgnki \rightarrow 0 \quad \mbox{when} \quad \kk,\ii \rightarrow \infty 
+\end{equation*}
+
+\end{remark}
+\end{frame}
+
+ \begin{frame}
+ \frametitle{Adaptivity}
+ \vspace{-0.3 cm}\begin{algorithm}[H]
+ \caption{Adaptive inexact semismooth Newton algorithm}
+ \begin{algorithmic}
+
+ \STATE{\textbf{Initialization (semismooth Newton):} \; Choose an initial vector $\bU^{n,\textcolor{royalblue}{0}} \egaldef \bU^{n-1} \in \R^{3 \Nsp}$, ($\kk=0$)}\\
+ \STATE{\textbf{Do}}\\
+ \STATE{\quad$\kk = \kk+1$}\\
+ \STATE {\quad Compute $\mathbb{A}^{n,\kk-1}  \in \R^{3 \Nsp, 3 \Nsp}$, \quad $\bB^{n,\kk-1} \in \R ^{3 \Nsp}$ \\
+ \quad Consider  the system of linear algebraic equations 
+ $\mathbb{A}^{n,\textcolor{royalblue}{k-1}} \bU^{n,\kk}= \bB^{n,\textcolor{royalblue}{k-1}}$}
+ \STATE{\quad \textbf{Initialization (linear solver):} Define $\bU^{n,\kk,\textcolor{burntorange}{0}} = \bU^{n,\kk-1}$, ($\textcolor{burntorange}{i=0}$) 
+ as}
+ \STATE{\quad initial guess for the linear solver}\\
+ \STATE{\quad \textbf{Do}}
+ 	\STATE{\qquad $\textcolor{burntorange}{i=i+1}$}\\	
+ 	\STATE \qquad Compute Residual: {$\bR^{n,\kk, \ii} =\bB^{n,\textcolor{royalblue}{k-1}}-\mathbb{A}^{n,\textcolor{royalblue}{k-1}} \bU^{n,\kk, \ii}$}\\
+ 	\qquad  Compute estimators 
+ 	\STATE{\quad \textbf{While} \fcolorbox{violet}{white}{$\eta_{\mathrm{alg}}^{n,\kk,\ii} \geq \gamma_{\mathrm{alg}} \max  \left\{{\eta_{\mathrm{disc}}^{n,\kk,\ii}, \eta_{\mathrm{lin}}^{n,\kk,\ii}}\right\}$}} 
+		
+ 	\STATE{\textbf{While} \fcolorbox{violet}{white}{ $\eta_{\mathrm{lin}}^{n,\kk,\ii} \geq \gamma_{\mathrm{lin}} \eta_{\mathrm{disc}}^{n,\kk,\ii}$}} 
+ 	\STATE{\textbf{End}}
+ \end{algorithmic}
+ \end{algorithm}
+ 
+ \end{frame}
+%
+\section{Numerical experiments}
+\subsection{}
+\begin{frame}
+\frametitle{Numerical experiments}
+$\Omega$:  one-dimensional core with length $L = 200 m$. 
+\\
+\vspace{0.2 cm}
+\textbf{Semismooth solver:} Newton-min
+\\
+\vspace{0.2 cm}
+\textbf{Iterative algebraic solver:} GMRES.
+\\
+\vspace{0.2 cm}
+\textbf{Time step:} $\Delta t = 5000$ years, 
+\\
+\vspace{0.2 cm}
+\textbf{Number of cells:} $\Nsp = 1000$, \\
+\vspace{0.2 cm}
+\textbf{Final simulation time:} $\tF = 5 \times 10^{5}$ years.
+\\
+\vspace{0.2 cm}
+\begin{figure}
+\includegraphics[width= 1 \textwidth]{image/num_exp_finite_vol}
+\end{figure}
+
+
+\end{frame}
+\begin{frame}
+\frametitle{Numerical solution $t = 1.05 \times 10^{5}$ years}
+\vspace{-0.2 cm}\begin{figure}
+\centering
+\includegraphics[width=0.43\textwidth]{image/saturations_cv_solver_1000_cells_nt=20} \quad
+\includegraphics[width=0.43\textwidth]{image/liquid_pressure_cv_solver_1000_cells_nt=20}
+\end{figure}
+\vspace{-0.3 cm}
+\begin{figure}
+\includegraphics[width=0.43\textwidth]{image/mole_frac_cv_solver_1000_cells_nt=20}
+\end{figure}
+\end{frame}
+\begin{frame}
+ \frametitle{Violation of the complementarity constraints}
+\begin{figure}
+\centering
+\includegraphics[width=0.45\textwidth]{image/gas_saturation_neg_gmres_iter2_newtoninter_4} \qquad
+\includegraphics[width=0.48\textwidth]{image/henry_constraint_neg_gmresiter2_newton_iter4}
+\end{figure}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Phase transition estimator}
+\begin{minipage}{0.49\textwidth}
+\centering
+\scriptsize{\textcolor{red}{\textbf{\bm{$t=2500$} years}}}
+\includegraphics[width=0.78\textwidth]{image/MODIF_phase_transition_estimator_appearance_gas_nt=inittime_cv}
+\end{minipage}
+%\hfill
+\hfill
+\begin{minipage}{0.49\textwidth}
+\centering
+\scriptsize{\textcolor{red}{ \textbf{\bm{$t = 1.25 \times 10^4$} years}}} 
+\includegraphics[width=0.78\textwidth]{image/MODIF_phase_transition_estimator_appearance_gas_nt=2_cv}
+\end{minipage}
+
+% % \vspace{-0.3 cm}
+ \begin{minipage}{.49 \textwidth}
+ \hspace{2 cm}\scriptsize{ \textbf{\textcolor{red}{ \bm{$t = 4.25 \times 10^4$} years}}}
+\vspace{-0.3 cm}
+\begin{figure}
+\includegraphics[width=0.79\textwidth]{image/MODIF_phase_transition_estimator_appearance_gas_nt=9_cv}
+\end{figure}
+ \end{minipage}
+\begin{minipage}{.49 \textwidth}
+\begin{remark}
+This estimator detects the error caused by the 
+ appearance of the gas phase whenever the gas spreads throughout the domain. 
+\end{remark}
+\end{minipage}
+\end{frame}
+%%%%%%% Numerical scheme Newton min adaptivity%%%%%%
+%\begin{frame}
+%\frametitle{Newton-min adaptivity}
+%\vspace{-0.1 cm}
+%\hspace{2 cm} \scriptsize{\textcolor{red}{\textbf{Exact Newton-min}}} \hspace{4.5 cm} \scriptsize{\textcolor{red}{\textbf{Inexact Newton-min}}}
+%\vspace{-0.1 cm}
+%\begin{figure}
+%\includegraphics[scale=0.35]{image/estimators_exact_resolution_newton_iter_nt=21_tolnewton_10-6_tolgmres_10-11}
+%\qquad \qquad \qquad \includegraphics[scale=0.32]{image/estimators_inex_resolution_newton_iter_nt=21_stopp_crit_alg_modif}
+%\end{figure}
+%\hspace{4.8 cm}\scriptsize{\textcolor{red}{\textbf{Adaptive inexact Newton-min}}}
+%\vspace{-0.15 cm}\begin{figure}
+%\includegraphics[scale=0.35]{image/estimators_adapt_inexact_resolution_newton_iter_nt=20}
+%\end{figure}
+%\end{frame}
+%
+
+%%%% Numerical experiments GMRES adaptivity%%%%%
+%\begin{frame}
+%\frametitle{GMRES adaptivity}
+%\hspace{2 cm}\scriptsize{\textcolor{red}{\textbf{Exact Newton-min}}} \hspace{4.8 cm}\scriptsize{\textcolor{red}{\textbf{Inexact Newton-min}}}
+%\vspace{-0.1 cm}
+%\begin{figure}
+%\includegraphics[width=0.41\textwidth]{image/estimators_exact_resolution_gmres_iter_newton_iter1_tol_newton_10-6_tol_gmres_10-12nt=21} \qquad \qquad \qquad \qquad
+%\includegraphics[width=0.41\textwidth]{image/estimators_inex_resolution_newton_iter_1gmres_iter_nt=21}
+%\end{figure}
+%\vspace{-0.2 cm}
+%\hspace{5 cm}\scriptsize{\textcolor{red}{\textbf{Adaptive inexact Newton-min}}}
+%\vspace{-0.2 cm}
+%\begin{figure}
+%\includegraphics[width=0.41\textwidth]{image/estimators_adapt_inex_resolution_newton_iter_1gmres_iter_nt=21}
+%\end{figure}
+%\end{frame}
+\begin{frame}
+\frametitle{Overall performance $\gammalin = \gammaalg = 10^{-3}$}
+%\vspace{-0.2 cm}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.44\textwidth]{image/number_Newton_iterations_three_methods_per_time_Nx_1000}
+%\hspace{1 cm}
+%\includegraphics[width=0.44\textwidth]{image/number_gmres_iterations_three_methods_per_time_Nx_1000}
+%\end{figure}
+%\vspace{-0.3 cm}
+\begin{figure}
+\centering
+\includegraphics[width=0.47\textwidth]{image/Cumulated_number_Newton_iterations_three_methods_Nx_1000}
+\hspace{0.6 cm}
+\includegraphics[width=0.47\textwidth]{image/Cumulated_number_gmres_iterations_three_methods_Nx_1000}
+\end{figure}
+\end{frame}
+\begin{frame}
+\frametitle{Accuracy  $\gammalin = \gammaalg = 10^{-3}$}
+\vspace{-0.1 cm}
+\begin{minipage}[c]{.27\linewidth}
+\textcolor{cadmiumgreen}{$t = 1.05 \times 10^5$ years}
+\end{minipage} 
+\hfill
+\begin{minipage}[c]{.72\linewidth}
+\begin{figure}
+\centering
+\includegraphics[width=0.62\textwidth]{image/comparaison_plot_gas_saturations_exact_adapt_inexact_gamma_lin_gamma_alg_10-3_nt_21}
+
+%\includegraphics[width=0.4\textwidth]{image/comparaison_plot_liq_pressure_exact_adapt_inexact_gamma_lin_gamma_alg_10-3_nt_21}
+\end{figure}
+\end{minipage}
+\begin{minipage}[c]{.27\linewidth}
+\textcolor{cadmiumgreen}{$t = 3.5 \times 10^5$ years}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{.72\linewidth}
+\begin{figure}
+\includegraphics[width=0.63\textwidth]{image/comparaison_plot_gas_saturations_exact_adapt_inexact_gamma_lin_gamma_alg_10-3_nt_70}
+%\includegraphics[width=0.41\textwidth]{image/comparaison_plot_liq_pressure_exact_adapt_inexact_gamma_lin_gamma_alg_10-3_nt_70}
+\end{figure}
+\end{minipage} 
+\end{frame}
+%
+
+%%%% SLIDE ACCURACY ADAPTIVE STRATEGY%%%%%
+%\begin{frame}
+%\frametitle{Accuracy $\gammalin = 10^{-6}, \gammaalg = 10^{-3}$}
+%\textcolor{cadmiumgreen}{$t = 1.05 \times 10^5$ years} 
+%\vspace{-0.2 cm}
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.47\textwidth]{image/comparaison_plot_gas_saturations_exact_adapt_inexact_gamma_lin_10-6_gamma_alg_10-3_nt_21}
+%\quad
+%\includegraphics[width=0.48\textwidth]{image/comparaison_plot_liq_pressure_exact_adapt_inexact_gamma_lin_10-6_gamma_alg_10-3_nt_21}
+%\end{figure}
+%\vspace{-0.2 cm}
+%\scriptsize
+%\begin{table}
+%\centering
+%\begin{tabular}{lll}
+%\hline\noalign{\smallskip}
+%  $\left(\gammaalg,\gammalin\right)$ & \parbox{4.4 cm}{Cumulated Newton-min iterations} & \parbox{4.4 cm}{Cumulated GMRES iterations}  \\
+%\noalign{\smallskip}\hline\noalign{\smallskip}
+%($10^{-1},10^{-1}$)& 100 & 366 \\
+%($10^{-3}, 10^{-3}$) & 113  & 427 \\
+%($10^{-6},10^{-3}$) & 108 & 967 \\
+%($10^{-3},10^{-6}$) & 351 & 1682 \\
+%($10^{-6},10^{-6}$) & 308 & 2019 \\ 
+%Exact resolution & \textcolor{blue}{\textbf{600}} & \textcolor{blue}{\textbf{6000}}\\
+%\noalign{\smallskip}\hline
+%\end{tabular}
+%\end{table}
+% 
+%\end{frame}
+\begin{frame}
+\frametitle{Complements: Newton--Fischer--Burmeister}
+\textcolor{cadmiumgreen}{
+\begin{equation*}
+%\label{eq:Fischer:Burmeister:function}
+\left[\fFB (\ba, \bb)\right]_l = \sqrt{\ba_l^2 + \bb_l^2} - (\ba_l + \bb_l) \quad l=1,\ldots,\Nsp.
+\end{equation*}
+}
+{\begin{table}
+\centering
+\begin{tabular}{lll}
+\hline\noalign{\smallskip}
+$\left(\gammaalg,\gammalin\right)$ & \hspace{-0.3 cm} \parbox{4.5 cm}{Cumulated number of Newton--Fischer--Burmeister iterations} &   \parbox{3.5 cm}{Cumulated number of GMRES  iterations}  \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+$\left(10^{-1},10^{-1} \right)$ & \qquad 100 & \quad \qquad 428 \\
+$\left(10^{-3},10^{-3}\right)$ & \qquad 119 & \quad \qquad 751 \\
+$\left(10^{-3},10^{-6}\right)$ & \qquad 482 & \quad \qquad 2074 \\
+$\left(10^{-6},10^{-3}\right)$ & \qquad 117 & \quad \qquad 1694 \\
+\textcolor{blue}{\textbf{Exact resolution}} & \qquad \textcolor{blue}{\textbf{757}} & \quad \hspace{0.2 cm} \quad \textcolor{blue}{\textbf{10089}} \\
+\noalign{\smallskip}\hline
+\end{tabular}
+\end{table}
+}
+
+\normalsize
+\begin{itemize}
+\item[$\bullet$]  \textcolor{red}{\textbf{Adaptive inexact Newton--Fischer--Burmeister is faster than exact Newton--Fischer--Burmeister. It saves roughly $90 \%$  of the iterations}}
+\item[$\bullet$] \textcolor{red}{\textbf{Adaptive inexact Newton-min is faster than Adaptive inexact Newton--Fischer--Burmeister. It saves roughly $40 \%$ of the iterations.}}
+\end{itemize} 
+
+\end{frame}
+
+
+\section{Conclusion}
+\begin{frame}
+\frametitle{Conclusion}
+\begin{itemize}
+\item
+We devised for a two-phase flow problem with phase appearance and disappearance an a posteriori error estimate between the exact and approximate solution
+\vspace{0.3 cm}
+\item We treat a wide class of semismooth Newton methods
+\vspace{0.3 cm}
+\item 
+This estimate distinguishes the error components
+\end{itemize}
+\vspace{0.5 cm}
+\textcolor{red}{\textbf{Ongoing work:}}
+\begin{itemize}
+\item
+ Devise space-time adaptivity 
+\item extension to multiphase compositional flow with several phase transitions
+\end{itemize}
+\vspace{0.5 cm}
+\begin{thebibliography}{10}
+ \scriptsize{
+ \bibitem{Dabaghi2:2018}
+ {\sc I.~Ben Gharbia, J.~Dabaghi, V.~Martin, and M.~Vohral{\'{\i}}k}, {\em A posteriori error estimates and adaptive stopping criteria for a compositional two-phase flow with nonlinear complementarity constraints}.
+ \textcolor{black}{HAL Preprint~01919067, submitted for publication, 2018}}
+
+% \scriptsize{
+% \bibitem{Dabaghi:2018}
+% {\sc J.~Dabaghi, V.~Martin, and M.~Vohral{\'{\i}}k}, {\em Adaptive inexact
+%  semismooth Newton methods for the contact problem between two membranes}.
+% \textcolor{black}{HAL Preprint~01666845, submitted for publication, 2018}
+% }
+%
+% \scriptsize{
+% \bibitem{Dabaghi3:2018}
+% {\sc J.~Dabaghi, V.~Martin, and M.~Vohral{\'{\i}}k}, {\em A posteriori error estimate and adaptive stopping criteria for a parabolic variational inequality}.
+% \textcolor{black}{In preparation.}
+% }
+
+
+ \end{thebibliography}
+
+
+\end{frame}
+
+\begin{frame}
+\centering
+\vspace*{1 cm}
+\Huge Thank you for your attention!
+\vspace*{2 cm}
+\begin{figure}
+\centering
+\includegraphics[scale=1]{image/smiley}
+\end{figure}
+\end{frame}
+%
+%% %
+%% %\begin{frame}
+%% %\section{A posteriori and adaptivity}
+%% %\subsection{A posteriori and adaptivity}
+%% %\frametitle{A posteriori analysis and preliminary study}
+%% %\alert{\textbf{A posteriori error estimates:}}
+%% %$\dps |||\bu-\uhki||| \leq \left\{\dps \sum_{\substack{K \in\Th}} \eta_K(\uhki)^2\right\}^{1/2}$.\\
+%% %
+%% %%\alert{\textbf{Effectivity index:}} $\mathrm{I_{eff}}=\left\{\dps \sum_{\substack{K \in\Th}} \eta_K(\uhki)^2\right\}^{1/2} {\large /} \; {\dps|||\bu-\uhki|||} \quad \alert{\searrow 1} $ 
+%% %%From \eqref{eq:modele_initial_membrane} if we define ${\bm \sigma}_1 = -\mu_1 \nab u_1$ and ${\bm \sigma}_2 = - \mu_2 \nab u_2$ we have $({\bm \sigma}_1,{\bm \sigma}_2) \in \HdivOmeg$,  and $\nab \cdot {\bm \sigma}_1 = f_1 + \lambda $ and $\nab \cdot {\bm \sigma}_2 = f_2 - \lambda $. \\\\
+%% %%\includegraphics[scale=0.02]{attention} 
+%% %%\footnotesize
+%% %%$\left(-\nab \uunhki, -\nab \udeuxhki\right) \neq \HdivOmeg \hspace{0.1 cm}$  $\nab \cdot (- \mu_1 \nab \uunhki) \neq f_1 + \lambhki$  $\nab \cdot (-\mu_2 \nab \udeuxhki) \neq f_2 - \lambhki$.
+%% %%\normalsize
+%% %\scriptsize{
+%% %\begin{thebibliography}{10}
+%% %\bibitem{Repin:2008}
+%% %Sergey Repin.
+%% %\newblock {\em A posteriori estimates for partial differential equations}.
+%% %\newblock Walter de Gruyter GmbH \& Co. KG, Berlin, 2008.
+%% %\end{thebibliography}
+%% %}
+%% %
+%% %\scriptsize{
+%% %\begin{thebibliography}{10}
+%% %\bibitem{Verfurth:2013}
+%% %Verf\"urth, R\"udiger.
+%% %\newblock {\em A posteriori error estimation techniques for finite element
+%% %              methods}.
+%% %\newblock Oxford University Press, 2013.
+%% %\end{thebibliography}
+%% %}
+%% %
+%% %\vspace{-0.3 cm}
+%% %\normalsize
+%% %\begin{equation*}
+%% %\mbox{\textbf{Goal:}}\dps
+%% %\left\lbrace\begin{array}{llccc}
+%% %\dps \sigunhki \in \textbf H(\div,\Omega) \hspace{0.15 cm} \mbox{such that} \hspace{0.15 cm} (\nab \cdot \sigunhki,1)_K=(f_1+\lambhki,1)_K \hspace{0.15 cm} \forall K \in \Th, \\
+%% %\dps\sigdeuxhki \in \textbf H(\div,\Omega) \hspace{0.15 cm} \mbox{such that} \hspace{0.15 cm} (\nab \cdot \sigdeuxhki,1)_K=(f_2-\lambhki,1)_K \hspace{0.15 cm} \forall K \in \Th .
+%% %\end{array}
+%% %\right.
+%% %%\label{eq: 1.24}
+%% %\end{equation*}
+%% %\normalsize
+%% %\begin{itemize}
+%% %\item 
+%% %$\sigunhki = \sigunhdiski + \sigunhalgki$ and $\sigdeuxhki = \sigdeuxhdiski + \sigdeuxhalgki$
+%% %\end{itemize}
+%% %
+%% %%\textcolor{red}{\textbf{Assumption:}}
+%% %%$\sigunhalgki+\sigunhdiski =\sigunhki$ and
+%% %%$\sigdeuxhalgki+\sigdeuxhdiski =\sigdeuxhki$
+%% %%\\
+%% %\vspace{0.3 cm}
+%% %\textcolor{red}{\textbf{Algebraic fluxes reconstruction:}}
+%% %\begin{itemize}
+%% %
+%% %%$\lim\limits_{\substack{\textcolor{blue}{k},\textcolor{red}{i} \rightarrow + \infty}} {\left\|\sigunhalgki\right\|}_{L^2(\Omega)} = \lim\limits_{\substack{\textcolor{blue}{k},\textcolor{red}{i} \rightarrow + \infty }} {\left\|\sigdeuxhalgki\right\|}_{L^2(\Omega)} = 0$
+%% %\item $\left\{\sigunhalgki,\sigdeuxhalgki\right\} \in \textbf H(\div,\Omega)$, \: $\nab \cdot \sigunhalgki=\runhki$, \: $\nab \cdot \sigdeuxhalgki=\rdeuxhki$
+%% %\end{itemize}
+%% %
+%% %
+%% %
+%% %\scriptsize
+%% %\begin{thebibliography}{10}
+%% %  \bibitem{VorPapez:2015}
+%% %Papez Jan, Rüde Ulrich, Vohral{\'{\i}}k Martin, and Wohlmuth Barbara.
+%% %\newblock Sharp algebraic and total a posteriori error bounds via a multilevel
+%% %approach.
+%% %\newblock In preparation, 2017.
+%% %\end{thebibliography}
+%% %\end{frame}
+%% %%\subsection{Discretization fluxes reconstruction}
+%% %\begin{frame}
+%% %\frametitle{Discretization fluxes reconstruction}
+%% %%\subsection{Discretization flux reconstruction}
+%% %%$\forall \ba \in \mathcal{V}_{h}$, define $(\sigunhdiskia,\sigdeuxhdiskia) \in {\bf V}_{h}^{\ba} \times {\bf V}_{h}^{\ba}$ and $(\gamunhkia,\gamdeuxhkia)\in Q_{h}^{\ba} \times Q_{h}^{\ba}$, where ${\bf V}_{h}^{\ba} \subset \textbf H(\div,\Omega)$ and $Q_{h}^{\ba} \subset L^2(\Omega)$ by solving:
+%% %$\sigunhdiskia$ and $\sigdeuxhdiskia$ are the solution of mixed system on patches
+%% %\begin{equation*}
+%% %\left\lbrace\begin{array}{llccc}
+%% %(\sigunhdiskia,{\bv}_{1h})_{\omega_{h}^{\ba}}-(\gamunhkia,\nab \cdot {\bv}_{1h})_{\omega_{h}^{\ba}} &=& \dps -\left(\psi_{h,\ba} \nab \uunhki,{\bv}_{1h}\right)_{\omega_h^{\ba}}  & \forall {\bv}_{1h}\in {\bf V}_{h}^{\ba}, \\
+%% %\dps(\nab \cdot \sigunhdiskia,q_{1h})_{\omega_{h}^{\ba}}&=&\dps(\tildgunhkia,q_{1h})_{\omega_{h}^{\ba}} & \forall q_{1h}\in Q_{h}^{\ba},\\
+%% %(\sigdeuxhdiskia,{\bv}_{2h})_{\omega_{h}^{\ba}}-(\gamdeuxhkia,\nab \cdot {\bv}_{2h})_{\omega_{h}^{\ba}} &=& \dps-\left(\psi_{h,\ba} \nab \udeuxhki,{\bv}_{2h}\right)_{\omega_h^{\ba}} & \forall {\bv}_{2h}\in {\bf V}_{h}^{\ba},\\
+%% %(\nab \cdot \sigdeuxhdiskia,q_{2h})_{\omega_{h}^{\ba}}&=&\dps(\tildgdeuxhkia,q_{2h})_{\omega_{h}^{\ba}} & \forall q_{2h} \in Q_{h}^{\ba}.
+%% %\end{array}
+%% %\right.
+%% %%\label{eq:reconstruction_flux_raviart_thomas:newton:min:inexacte:discretozation:flux}
+%% %\end{equation*}
+%% %%\begin{align*}
+%% %%\tildgunhkia &=f_1 \psi_{h,\ba}- \mu_1 \nab \uunhki \cdot \nab \psi_{h,\ba} +\lambhki(\ba)\psi_{h,\ba} -\runhki \psi_{h,\ba} \quad \forall {\ba} \in \mathcal{V}_{h},\\
+%% %%\tildgdeuxhkia &= f_2 \psi_{h,\ba}- \mu_2 \nab \udeuxhki \cdot \nab \psi_{h,\ba}-\lambhki(\ba)\psi_{h,\ba}-\rdeuxhki \psi_{h,\ba} \quad \forall {\ba} \in \mathcal{V}_h,
+%% %%\end{align*}
+%% %\hspace{1.2 cm}
+%% %\fcolorbox{violet}{white}{
+%% %\textcolor{black}{$\dps
+%% %{{\sigunhdiski}}={\sum_{\ba \in \mathcal{V}_h} \sigunhdiskia} \quad \mbox{and} \quad \sigdeuxhdiski=\sum_{\ba \in \mathcal{V}_h} \sigdeuxhdiskia$}
+%% %}
+%% %\begin{itemize}
+%% %\item
+%% %$\sigunhdiski  \in \textbf H(\div,\Omega) \quad \mbox{and} \quad \left(\nab \cdot \sigunhdiski, 1\right)_K = \left(f_1 + \lambhki -\runhki ,1\right)_K$
+%% %\item
+%% %$\sigdeuxhdiski \in \textbf H(\div,\Omega) \quad \mbox{and} \quad \left(\nab \cdot \sigdeuxhdiski, 1\right)_K = \left(f_2 - \lambhki -\rdeuxhki ,1\right)_K$ .
+%% %\end{itemize}
+%% %
+%% %
+%% %\scriptsize{
+%% %\begin{thebibliography}{10}
+%% %\bibitem{Braess:2009}
+%% %Braess, Dietrich and Pillwein, Veronika and Sch{\"o}berl,
+%% %              Joachim.
+%% %\newblock {\em Equilibrated residual error estimates are {$p$}-robust}.
+%% %\newblock Computer Methods in Applied Mechanics and Engineering, 2009.
+%% %\end{thebibliography}
+%% %}
+%% %
+%% %\end{frame}
+%% %%\subsection{A posteriori error estimates}
+%% %\begin{frame}
+%% %\frametitle{A posteriori error estimates}
+%% %\vspace{-0.2 cm}
+%% %
+%% %\begin{itemize}
+%% %\item
+%% %${\bm u}=(u_1,u_2)\in\mathcal{K}_g$,\ $\uhki=(\uunhki,\udeuxhki)\in \mathbb{X}_{gh} \times \mathbb{X}_{0h}$,\ $\left\{\sigunhki, \sigdeuxhki\right\} \in \HdivOmeg$
+%% %\end{itemize}
+%% %\textcolor{red}{\textbf{Warning:}}
+%% %$\uunhki(\ba) - \udeuxhki(\ba)$ and $\lambhki(\ba)$ can be negative. 
+%% %%\vspace{-0.3 cm}
+%% %\begin{figure}[H]
+%% %\textcolor{red}{\hspace{-1.4 cm} \textbf{Example: k=2}}
+%% %\begin{subfigure}[normal]{0.35\textwidth} 
+%% %\includegraphics[width=\textwidth]{fig_article/diff_u1_u2_newton_gmres.eps}    
+%% %\label{ref:position_membrane_inside_iter}
+%% %\end{subfigure}
+%% %\begin{subfigure}[normal]{0.35\textwidth}
+%% %\includegraphics[width=\textwidth]{fig_article/lambda_newton_iter7.eps}     
+%% %\label{ref:lambda_membrane_inside_iter} 
+%% %\end{subfigure}
+%% %%\caption{membranes (left) and lagrange multiplier (right) during the iterations }
+%% %\end{figure}
+%% %\vspace{-0.2 cm}
+%% %\textcolor{cadmiumgreen}{\textbf{Motivation:}} Define $\shki \in \Kgh$ by
+%% %\vspace{0.3 cm}
+%% %$\dps \shki (\ba)= \dps \begin{cases}
+%% %\uhki(\ba) = \left(\uunhki(\ba), \udeuxhki(\ba)\right) \quad &\mbox{if $\uunhki(\ba) \geq \udeuxhki(\ba)$,}\\
+%% %\dps \left(\frac{\uunhki(\ba) + \udeuxhki(\ba)}{2}, \frac{\uunhki(\ba) + \udeuxhki(\ba)}{2}\right) \quad &\mbox{if $\uunhki(\ba) < \udeuxhki(\ba)$.}\end{cases}$
+%% %\end{frame}
+%% %\begin{frame}
+%% %
+%% %
+%% %\begin{itemize}
+%% %\item
+%% %Discretization error estimators
+%% %\vspace{0.3 cm}
+%% %$\left.
+%% %\begin{array}{ll}
+%% %\dps {\eta}_{\mathrm{F},K,\ialf}^{\kk,\ii} &= \left\| \mu_\ialf^{\frac{1}{2}} \nab u_{\ialf h}^{\kk,\ii}+\mu_\ialf^{-\frac{1}{2}} \sigmaialfhdiscki \right\|_{K}  
+%% %\\
+%% %\dps {\eta}_{\mathrm{osc},K,\ialf} & =  \dps \frac{h_K}{\pi} \mu_\ialf^{-\frac{1}{2}} \left\|f_\ialf-{\bm \Pi}_{\mathbb{P}_1}(f_\ialf)\right\|_{K}\\
+%% %\dps \etCKkipos & = 2 \dps \left(\uunhki-\udeuxhki,\lambhkipos\right)_K
+%% %\end{array}
+%% %\right\} \Rightarrow \dps {\bm \eta}^{\kk,\ii}_{\mathrm{disc}}
+%% %$\\
+%% %%\vspace{0.2 cm}
+%% %\item
+%% %Linearization error estimators
+%% %\vspace{0.3 cm}
+%% %%%%%%%%%%%
+%% %$\left.
+%% %\begin{array}{ll}
+%% %\dps \etalinunKki  &=  \tnorm{\shki-\uhki}_K  
+%% %\\
+%% %\dps \etalindeuxKki &= 2 h_{\Omega} \CPF \left(\frac{1}{\mu_1} + \frac{1}{\mu_2} \right)^{\frac{1}{2}} \left\|\lambhkipos\right\|_{\Omega} \tnorm{\shki-\uhki}_K\\
+%% %\dps \etalintroisKki &= h_{\Omega} \CPF \left(\frac{1}{\mu_1} + \frac{1}{\mu_2} \right)^{\frac{1}{2}} \left\| \lambhkineg\right\|_K
+%% %\end{array}
+%% %\right\} \Rightarrow \dps {\bm \eta}^{\kk,\ii}_{\mathrm{lin}}
+%% %$
+%% %\\
+%% %\item
+%% %Algebraic error estimators\\
+%% %\vspace{0.1 cm}
+%% %$\left.
+%% %\begin{array}{ll}
+%% %\dps \etaalgKialfki &= \left\|\mu_\ialf^{-\frac{1}{2}}\sigmaialfhalgki\right\|_{K}
+%% %\end{array}
+%% %\right\} \Rightarrow \dps {\bm \eta}^{\kk,\ii}_{\mathrm{alg}}
+%% %$
+%% %\end{itemize}
+%% %
+%% %\begin{theorem}[A posteriori  estimate distinguishing the error components]
+%% %
+%% %
+%% %\emph{
+%% %\textcolor{bulgarianrose}{
+%% %\begin{equation*}
+%% %\dps
+%% %|||\bu-\uhki||| \leq \eta^{\kk,\ii}_{\mathrm{disc}} +\eta^{\kk,\ii}_{\mathrm{alg}} + \eta^{\kk,\ii}_{\mathrm{lin}}.
+%% %\end{equation*}
+%% %}}
+%% %
+%% %\end{theorem}
+%% %\end{frame}
+%% %
+%% %\begin{frame}
+%% %\vspace{-0.2 cm}
+%% %\begin{proof}
+%% %We define global versions of these estimators as $ \eta_{\cdot}^{k,i} = \left\{\sum_{K \in \Th}\left(\eta_{\cdot,K}^{k,i}\right)^2\right\}^{\frac{1}{2}}$
+%% %\begin{enumerate}
+%% %\item $\uhki \notin \Kgh$: define the projection 
+%% %$\bs$ of $\uhki$ in $\Kg$ by $a(\bs,\bv-\bs) \geq a(\uhki,\bv-\bs) \quad \forall \bv \in \Kg $ \alert{Pb well posed: Lions-Stampacchia}
+%% %
+%% %
+%% %\item<2-> 
+%% %
+%% %$
+%% %\tnorm{\bu-\uhki}^2 = \underbrace{ a(\bu - \uhki, \bu - \bs)}_{=\textcolor{blue}{\textbf{A}}} + \underbrace{a(\bu  - \uhki, \bs-\uhki)}_{=\textcolor{cadmiumgreen}{\textbf{B}}}.
+%% %%=a(\bu,\bu-\uhki)-a(\uhki,\bu-\uhki).
+%% %$
+%% %\item<3-> 
+%% %
+%% %$\textcolor{cadmiumgreen}{\textbf{B}} \leq \tnorm{\bu-\uhki} \etalinunki$
+%% %\item<4-> 
+%% %\footnotesize
+%% %\vspace{-0.3 cm}
+%% %$\dps
+%% %\textcolor{blue}{\textbf{A}} \leq \left(\underbrace{\left\{\dps \sum_{K \in \Th}\dps \sum_{\ialf=1}^2({\eta}_{\mathrm{osc},K,\ialf} + {\eta}_{\mathrm{F},K,\ialf}^{\kk,\ii})^2\right\}^{\frac{1}{2}}}_{\textcolor{bulgarianrose}{\eta_1}} + \etalintroiski \right) \tnorm{\bu-\uhki} + \frac{1}{2} \etalindeuxki + \frac{1}{2} \sum_{K \in \Th} \etCKkipos 
+%% %$
+%% %\item<5-> 
+%% %\alert{Young inequality:} $\dps \tnorm{\bu-\uhki} \leq  \left\{ \left(\eta_1^{\kk,\ii} + \etalinunki + \etalintroiski    \right)^2  + \etalindeuxki + \sum_K \etCKkipos \right\}^{\frac{1}{2}}.
+%% %$
+%% %\end{enumerate}
+%% %\end{proof}
+%% %\end{frame}
+%% %
+%% %%\begin{frame}
+%% %%\scriptsize
+%% %%$\dps \eta_1 \hspace{-0.1 cm} = \left\{\sum_{K \in \Th}\sum_{j=1}^2({\eta}_{\mathrm{R},K,j}^{k,i}+{\eta}_{\mathrm{F},K,j}^{k,i}+\etalgKjki)^2\right\}^{\frac{1}{2}}$ $\dps \eta_2 \hspace{-0.1 cm}= \left\{\sum_{K\in \Th} (\etLKkineg)^2\right\}^{\frac{1}{2}} \hspace{-0.2 cm} +\left\{\sum_{K\in \Th} (\etPKki)^2\right\}^{\frac{1}{2}}$
+%% %%\\
+%% %%\scriptsize
+%% %%$\dps \eta_3 = \frac{1}{2} \sum_{K\in \Th}\left(\etCKkineg + \etCKkipos \right)+\left\{\sum_{K\in \Th} (\etLKkipos)^2\right\}^{\frac{1}{2}}$ 
+%% %%$\dps \varepsilon_1 = \frac{1}{2} \hspace{-0.1 cm} + \frac{1}{2}\frac{\min(1, \eta_2)}{\eta_2}$  $\dps \varepsilon_2 \hspace{-0.1 cm}=\min(\frac{1}{2}, \eta_2)$
+%% %%\vspace{-0.2 cm}
+%% %%\normalsize
+%% %
+%% %%\begin{itemize}
+%% %%\item 
+%% %%$\dps \eta^{k,i}_{\mathrm{disc}} = \sqrt{2} \left\{3 \sum_{j=1}^{2}\left(\sum_{K \in \Th} \left({\eta}_{\mathrm{R},K,j}^{k,i} + {\eta}_{\mathrm{F},K,j}^{k,i}\right)^{2}\right) + \frac{1}{2} \sum_{K \in \Th} \etCKkipos \right\}^{\frac{1}{2}}$
+%% %%\item
+%% %%$\dps \eta^{k,i}_{\mathrm{alg}} =  \sqrt{6} \left\{\sum_{j=1}^{2} \sum_{K \in \Th} \left(\etalgKjki\right)^{2}\right\}^{\frac{1}{2}}$
+%% %%\item
+%% %%$\dps \eta^{k,i}_{\mathrm{lin}} = \sqrt{2} \left\{\sum_{K \in \Th} \left(2 \left(\etLKkineg + \etPKki\right)^2 + \frac{1}{2} \etCKkineg + \etLKkipos\right)\right\}^{\frac{1}{2}}$
+%% %%\end{itemize}
+%% %
+%% %%\end{frame}
+%% %%\section{Adaptive Inexacte semi-smooth Newton method}
+%% %
+%% %%%%%%%%%%%%%%%%%%%%%%%ADAPTIVE ALGORITHM IF FOR
+%% %%\begin{frame}
+%% %%\frametitle{Adaptive inexacte semi-smooth Newton algorithm}
+%% %%%\vspace{-0.3 cm}
+%% %%\vspace{-0.4 cm}
+%% %%\begin{algorithm}[H]
+%% %%\caption{Adaptive inexact semi-smooth Newton algorithm}
+%% %%
+%% %%\begin{algorithmic}
+%% %%\STATE{\textbf{Initialization:}\; Choose an initial vector $\Xh^{\textcolor{royalblue}{0}} \in \mathcal{M}_{3N_h,1}(\R)$}
+%% %%\FOR{$\textcolor{royalblue}{k=1 : N_{\mathrm{newton}}^{\mathrm{max}}}$} 
+%% %%\STATE {Compute $\A^{\textcolor{royalblue}{k-1}} \hspace{-0.1
+%% %% cm} \in \mathcal{M}_{3N_h,3N_h}(\R)$, $\bB^{\textcolor{royalblue}{k-1}} \hspace{-0.1 cm} \in \mathcal{M}_{3N_h,1}(\R)$ \\
+%% %%Consider 
+%% %%%the system of linear algebraic equations 
+%% %%$\A^{\textcolor{royalblue}{k-1}} \Xhk= \bB^{\textcolor{royalblue}{k-1}}$}
+%% %%\STATE{\textbf{Initialization for the linear solver:} Define $\X_h^{\kk,\textcolor{burntorange}{0}} = \X_h^{\textcolor{royalblue}{k-1}}$ 
+%% %%%as initial guess for the linear solver 
+%% %%}
+%% %%	\FOR{$\textcolor{burntorange}{i=1 : N_{\mathrm{alg}}^{\mathrm{max}}}$}\STATE Compute Residual: {$\Rhki =\bB^{\textcolor{royalblue}{k-1}}-\A^{\textcolor{royalblue}{k-1}} \Xhki$}\\
+%% %%	Compute estimators 
+%% %%	\IF{\fcolorbox{violet}{white}{$\eta_{\mathrm{alg}}^{\kk,\ii} \leq \gamma_{\mathrm{alg}} \max  \left\{{\eta_{\mathrm{disc}}^{\kk,\ii}, \eta_{\mathrm{lin}}^{\kk,\ii}}\right\}$}} \STATE {Set $\Xhk = \Xhki$ end of linear solver (\textbf{break})} 
+%% %%	%\ELSE \STATE{$\ii=\ii+1$}
+%% %%	\ENDIF
+%% %%	\ENDFOR
+%% %%	\IF{\fcolorbox{violet}{white}{$\eta_{\mathrm{lin}}^{\kk,\ii} \leq \gamma_{\mathrm{lin}} \eta_{\mathrm{disc}}^{\kk,\ii}$}} \STATE {Set $\Xhk = \Xh$, end of non linear solver (\textbf{return})} 
+%% %%%	\ELSE \STATE{$\kk=\kk+1$} 
+%% %%\ENDIF
+%% %%\ENDFOR
+%% %%\end{algorithmic}
+%% %%\end{algorithm}
+%% %%\scriptsize
+%% %%\vspace{-0.4 cm}
+%% %%%\begin{thebibliography}{10}
+%% %%%\bibitem{VorErn:2013}
+%% %%%Alexandre Ern and Martin Vohral{\'{\i}}k.
+%% %%%\newblock Adaptive inexact {N}ewton methods with a posteriori stopping criteria
+%% %%%  for nonlinear diffusion {PDE}s. {\em SIAM J. Sci. Comput.}, 35(4):A1761--A1791, 2013.
+%% %%%\end{thebibliography}
+%% %%\end{frame}
+%% %%\begin{frame}
+%% %%\scriptsize
+%% %%\vspace{-0.3 cm}
+%% %%\begin{algorithm}[H]
+%% %%\caption{Adaptive Inexact semi-smooth Newton algorithm}
+%% %%\begin{algorithmic}
+%% %%\STATE $ {\bm 1.} \hspace{0.1 cm} \mbox{Choose an initial vector $\Xh^{0} \in \mathcal{M}_{3N_h,1}(\R)$ \hspace{0.15 cm} and we set $\kk=1$}.$\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE $ {\bm 2.} \hspace{0.1 cm} \mbox{From $\Xh^{k-1}$ define $\A^{\kk-1} \in \mathcal{M}_{3N_h,3N_h}(\R)$ and $\mathbb{F}^{\kk-1} \in \mathcal{M}_{3N_h,1}(\R)$.}$\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE  $ {\bm 3.}\hspace{0.1 cm} \mbox{Consider the system of linear algebraic equations $\A^{\kk-1} \Xhk= \mathbb{F}^{\kk-1}$ ($*$)}$.\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE  ${\bm {3a}.} \hspace{0.1 cm} \mbox{Define $\X_h^{\kk,0} = \X_h^{k-1}$ as initial guess for the linear solver and set $\ii=0$}$.\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE  ${\bm {3b}.}\hspace{0.1 cm}  \mbox{For $\textcolor{red}{\ii}>0$ the approximation $\Xhki$ to $\Xhk$ satisfy $\A^{\kk-1} \Xhki +\Rhki =\mathbb{F}^{\kk-1}$ ($**$)}$.\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE ${\bm 4.}\hspace{0.1 cm} \mbox{\textcolor{cadmiumgreen}{\textbf{Adaptive inexact resolution for ($**$)}}}$.\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE $\qquad {\bm {4a}.} \hspace{0.1 cm} \mbox{Stopping criterion for the linear solver: $\eta_{\mathrm{alg}}^{\kk,\ii} \leq \gamma_{\mathrm{alg}} \max \left\{\eta_{\mathrm{disc}}^{\kk,\ii}, \eta_{\mathrm{lin}}^{\kk,\ii}\right\}$.}$
+%% %%\vspace{0.1 cm}
+%% %%\STATE $ \qquad \mbox{If satisfied, set $\Xhk = \Xhki$. If not, set $\ii=\ii+1$ and go back to $(**)$.}$\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE $\qquad {\bm {4b}.}\hspace{0.1 cm}  \mbox{Sopping criterion for the non linear solver: $\eta_{\mathrm{lin}}^{\kk,\ii} \leq \gamma_{\mathrm{lin}} \eta_{\mathrm{disc}}^{\kk,\ii}$.}$\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE $\qquad \mbox{If satisfied finish. If not, set $\kk=\kk+1$ and go back to ${\bm 2}.$}$
+%% %%\label{ref:adpative:exact:inexacte algorithm}
+%% %%\end{algorithmic}
+%% %%\label{ref:methode_newton_min_exacte}
+%% %%\end{algorithm}
+%% %%\scriptsize
+%% %%\begin{thebibliography}{10}
+%% %%\bibitem{VorErn:2013}
+%% %%Alexandre Ern and Martin Vohral{\'{\i}}k.
+%% %%\newblock Adaptive inexact {N}ewton methods with a posteriori stopping criteria
+%% %%  for nonlinear diffusion {PDE}s. {\em SIAM J. Sci. Comput.}, 35(4):A1761--A1791, 2013.
+%% %%\end{thebibliography}
+%% %%\end{frame}
+%% %
+%% %%%%%%%%%%ALGO LIKE PAPER MARTIN SIAM
+%% %%%%%%%%%%%%%%%
+%% %%\scriptsize
+%% %%\begin{algorithmic}
+%% %%\STATE $ {\bm 1.} \hspace{0.1 cm} \mbox{Choose an initial vector $\Xh^{0} \in \mathcal{M}_{3N_h,1}(\R)$ \hspace{0.15 cm} and we set $k=1$}.$\\
+%% %%\STATE $ {\bm 2.} \hspace{0.1 cm} \mbox{From $\Xh^{k-1}$ define the matrix $\A^{k-1} \in \mathcal{M}_{3N_h,3N_h}(\R)$ and the vector $\mathbb{F}^{k-1} \in \mathcal{M}_{3N_h,1}(\R)$  by \eqref{eq:def:jac_clarke:A:right:hand:side:newton:newton}.}$\\
+%% %%\STATE  $ {\bm 3.}\hspace{0.1 cm} \mbox{Consider the system of linear algebraic equations $\A^{k-1} \Xhk= \mathbb{F}^{k-1}$ ($*$)}$.\\
+%% %%\STATE  ${\bm {3a}.} \hspace{0.1 cm} \mbox{Define $\X_h^{k,0} = \X_h^{k-1}$ as initial guess for the iterative linear solver and set $i=0$}$.\\
+%% %%\STATE  ${\bm {3b}.}\hspace{0.1 cm}  \mbox{Perform $\nu$ steps of a chosen iterative lienar solver for the solution of the linear system $(*)$ starting}$\\
+%% %%\STATE $\mbox{from the vector $\Xhki$. This yields on step $i \geq 0$ an approximation $\Xhki$ to $\Xhk$ satisfying}$\\
+%% %%\STATE$\mbox{$\A^{k-1} \Xhki +\Rhki =\mathbb{F}^{k-1}$ ($**$)}$.\\
+%% %%\STATE ${\bm 4.}\hspace{0.1 cm} \mbox{\textcolor{blue}{Exact resolution for ($**$)}}$.\\
+%% %%\only<2>{
+%% %%\STATE $\qquad {\bm {4a}.}\hspace{0.1 cm}  \mbox{Check the stopping criterion for the linear solver in the form $\left\|\bR_{\mathrm{alg}} \right\| \leq \varepsilon_1$}$.\\
+%% %%\STATE $ \qquad\mbox{If satisfied, set $\Xhk = \Xhki$. If not, set $i=i+\nu$ and go back to ${\bm 3b}$.}$\\
+%% %%\STATE $\qquad {\bm {4b}.}\hspace{0.1 cm}  \mbox{Check the stopping criterion for the non linear solver in the form $\left\|\bR_{\mathrm{lin}} \right\| \leq \varepsilon_1$}$.\\
+%% %%\STATE $ \qquad\mbox{If satisfied finish. If not, set $k=k+1$ and go back to ${\bm 2}.$}$\\}
+%% %%\STATE ${\bm 5.}\hspace{0.1 cm} \mbox{\textcolor{cadmiumgreen}{Inexact resolution for ($**$)}}$.\\
+%% %%\only<3>{\STATE $\qquad {\bm {5a}.}\hspace{0.1 cm} \mbox{Check the stopping criterion for the linear solver in the form $\left\|\bR_{\mathrm{alg}} \right\| \leq \alpha_{\mathrm{alg}}\left\|\bR_{\mathrm{lin}} \right\|$}$.\\
+%% %%\STATE $ \qquad\mbox{If satisfied, set $\Xhk = \Xhki$. If not, set $i=i+\nu$ and go back to ${\bm {3b}}$}$.\\
+%% %%\STATE $\qquad {\bm {5b}.} \hspace{0.1 cm} \mbox{Check the stopping criterion for the non linear solver in the form $\left\|\bR_{\mathrm{lin}} \right\| \leq \varepsilon_1$}$.\\
+%% %%\STATE $ \qquad\mbox{If satisfied finish. If not, set $k=k+1$ and go back to ${\bm 2}.$}$\\
+%% %%}
+%% %%\STATE ${\bm 6.}\hspace{0.1 cm} \mbox{\textcolor{red}{Adaptive inexact resolution for ($**$)}}$.\\
+%% %%\only<4>
+%% %%{
+%% %%\STATE $\qquad {\bm {6a}.} \hspace{0.1 cm} \mbox{Check the stopping criterion for the linear solver in the form $\eta_{\mathrm{alg}}^{k,i} \leq \gamma_{\mathrm{alg}} \max \left\{\eta_{\mathrm{disc}}^{k,i}, \eta_{\mathrm{lin}}^{k,i}\right\}$.}$
+%% %%\STATE $ \qquad \mbox{If satisfied, set $\Xhk = \Xhki$. If not, set $i=i+1$ and go back to $(**)$.}$\\
+%% %%\STATE $\qquad {\bm {6b}.}\hspace{0.1 cm}  \mbox{Check the stopping criterion for the non linear solver in the form $\eta_{\mathrm{lin}}^{k,i} \leq \gamma_{\mathrm{lin}} \eta_{\mathrm{disc}}^{k,i}$.}$\\
+%% %%\STATE $\qquad \mbox{If satisfied finish. If not, set $k=k+1$ and go back to ${\bm 2}.$}$
+%% %%}
+%% %%\label{ref:adpative:exact:inexacte algorithm}
+%% %%\end{algorithmic}
+%% %%\label{ref:methode_newton_min_exacte}
+%% %%\end{algorithm}
+%% %%\end{frame}
+%% %
+%% %\begin{frame}
+%% %\vspace{-0.3 cm}
+%% %\begin{algorithm}[H]
+%% %\frametitle{Adaptive inexacte semi-smooth Newton algorithm}
+%% %\caption{Adaptive inexact semi-smooth Newton algorithm}
+%% %\begin{algorithmic}
+%% %
+%% %\STATE{\textbf{Initialization:}\; Choose an initial vector $\Xh^{\textcolor{royalblue}{0}} \in \mathcal{M}_{3N_h,1}(\R)$, ($\kk=0$)}\\
+%% %\STATE{\textbf{Do}}\\
+%% %\STATE{\quad$\kk =\textcolor{royalblue}{k+1}$}\\
+%% %\STATE {\quad Compute $\A^{\textcolor{royalblue}{k-1}} \hspace{-0.1
+%% % cm} \in \mathcal{M}_{3N_h,3N_h}(\R)$, $\bB^{\textcolor{royalblue}{k-1}} \hspace{-0.1 cm} \in \mathcal{M}_{3N_h,1}(\R)$ \\
+%% %\quad Consider 
+%% %%the system of linear algebraic equations 
+%% %$\A^{\textcolor{royalblue}{k-1}} \Xhk= \bB^{\textcolor{royalblue}{k-1}}$}
+%% %\STATE{\quad \textbf{Initialization for the linear solver:} Define $\X_h^{\kk,\textcolor{burntorange}{0}} = \X_h^{\textcolor{royalblue}{k-1}}$, ($\textcolor{burntorange}{i=0}$) 
+%% %%as initial guess for the linear solver 
+%% %}\\
+%% %\STATE{\quad \textbf{Do}}
+%% %	\STATE{\qquad $\textcolor{burntorange}{i=i+1}$}\\	
+%% %	\STATE \qquad Compute Residual: {$\Rhki =\bB^{\textcolor{royalblue}{k-1}}-\A^{\textcolor{royalblue}{k-1}} \Xhki$}\\
+%% %	\qquad  Compute estimators 
+%% %	\STATE{\quad \textbf{While} \fcolorbox{violet}{white}{$\eta_{\mathrm{alg}}^{\kk,\ii} \geq \gamma_{\mathrm{alg}} \max  \left\{{\eta_{\mathrm{disc}}^{\kk,\ii}, \eta_{\mathrm{lin}}^{\kk,\ii}}\right\}$}} 
+%% %	
+%% %	
+%% %	
+%% %	\STATE{\textbf{While} \fcolorbox{violet}{white}{ $\eta_{\mathrm{lin}}^{\kk,\ii} \geq \gamma_{\mathrm{lin}} \eta_{\mathrm{disc}}^{\kk,\ii}$}} 
+%% %	\STATE{\textbf{End}}
+%% %%	\ELSE \STATE{$\kk=\kk+1$} 
+%% %
+%% %\end{algorithmic}
+%% %\end{algorithm}
+%% %\end{frame}
+%% %
+%% %
+%% %
+%% %
+%% %\begin{frame}
+%% %\section{Numerical experiments}
+%% %\subsection{Numerical experiments}
+%% %
+%% %\frametitle{Numerical experiments}
+%% %
+%% %\begin{itemize}
+%% %\item
+%% %$\Omega$ = \mbox{unit disk}, $J = 3$, $\mu_1= \mu_2 = 1$, $g = 0.05$, $\gamma_{\mathrm{lin}}=0.3$ $\gamma_{\mathrm{alg}}=0.3$
+%% %\item 
+%% %Semi-smooth solver: \textcolor{blue}{Newton-min}. Linear solver: \textcolor{red}{GMRES}
+%% %\end{itemize}
+%% %
+%% %
+%% %\begin{figure}
+%% %\begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Exact Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_exact_resolution_convergence_estimator_number_elements.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage}\hfill
+%% %\begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Inexact Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_inexact_resolution_convergence_estimator_number_elements.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage}\hfill
+%% %\begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Adaptive inexact Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_adapt_inexact_resolution_convergence_estimator_number_elements.eps}     
+%% %%\label{ref:lambda_membrane_convergence} 
+%% %\end{minipage}
+%% %%\caption{Exact Newton(left), Inexact Newton(middle), adaptive inexact Newton(right)}
+%% %\end{figure}
+%% %
+%% %\textcolor{red}{\textbf{Quality and precision are preserved for adaptive inexact semi-smooth Newton method.}}
+%% %
+%% %
+%% %\end{frame}
+%% %
+%% %\begin{frame}
+%% %\begin{figure}
+%% %\begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Exact Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_exact_resolution_estimators_gmres_iter_inside_first_newton_iter_Hmax_015.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage}\hfill
+%% %\begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Inexact Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_inexacte_resolution_Hmax_015_number_gmres_iter_inside_first_newton_step.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage}\hfill
+%% %\begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Adaptive inexact Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_adapt_inexact_resolution_estimators_gmres_iter_inside_first_newton_iter_Hmax_015.eps}     
+%% %%\label{ref:lambda_membrane_convergence} 
+%% %\end{minipage}
+%% %%\caption{Exact Newton(left), Inexact Newton(middle), adaptive inexact Newton(right)}
+%% %\end{figure}
+%% %
+%% %\vspace{-0.3 cm}
+%% %\begin{figure}
+%% %   \begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Exact  Newton 
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_exact_resolution_estimators_newton_iter_Hmax_015.eps}    
+%% %   \end{minipage} \hfill
+%% %   \begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Inexact Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_inexacte_resolution_Hmax_015_estimators_newton_step.eps}     
+%% %   \end{minipage} \hfill
+%% %  \begin{minipage}[c]{.32\linewidth}
+%% %  \centering
+%% %  Adaptive Inexact Newton  
+%% %   \includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_adapt_inexact_resolution_estimators_newton_iter_Hmax_015.eps}     
+%% %\end{minipage}\hfill
+%% %\end{figure}
+%% %\end{frame}
+%% %
+%% %
+%% %%
+%% %%\begin{figure}[H]
+%% %%\begin{subfigure}[normal]{0.32\textwidth} 
+%% %%\includegraphics[width=\textwidth]{fig_article/estimators_newton_step_exact_resolution.eps}    
+%% %%%\label{ref:position_membrane_convergence}
+%% %%\end{subfigure}
+%% %%\begin{subfigure}[normal]{0.32\textwidth}
+%% %%\includegraphics[width=\textwidth]{fig_article/estimators_newton_step_inexact_resolution.eps}     
+%% %%%\label{ref:lambda_membrane_convergence} 
+%% %%\end{subfigure}
+%% %%\begin{subfigure}[normal]{0.33\textwidth}
+%% %%\includegraphics[width=\textwidth]{fig_article/estimators_newton_step_adapt_inexact_resolution.eps}     
+%% %%%\label{ref:lambda_membrane_convergence} 
+%% %%\end{subfigure}
+%% %%\caption{Exact Newton(left), inexact Newton(middle), adaptive inexacte Newton(right)}
+%% %%\end{figure}
+%% %
+%% %\begin{frame}
+%% %
+%% %%\begin{itemize}
+%% %%\item Effectivity indices as a function of the Newton iterations for 3 methods.
+%% %%\end{itemize}
+%% %
+%% %\textcolor{red}{\textbf{Overall performance of the three approaches:}}
+%% %\begin{figure}[H]
+%% %\begin{minipage}[c]{.40\linewidth}
+%% %   \centering 
+%% %   Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_comparison_three_methods_number_Newton_iter_number_elements.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage}\hfill
+%% %\begin{minipage}[c]{.40\linewidth}
+%% %\centering
+%% %GMRES
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_comparison_three_methods_number_Gmres_iter_number_newton_step.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage} \hfill
+%% %\end{figure}
+%% %\begin{figure}
+%% %\vspace*{-0.04\textwidth} \hspace*{0.1\textwidth}
+%% %\begin{minipage}{.40\linewidth} 
+%% %\centering   Total GMRES
+%% % \includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_comparison_three_methods_total_number_Newton_Gmres_iter_number_elements.eps}     
+%% %%\label{ref:lambda_membrane_convergence} 
+%% %\end{minipage} \hfill
+%% %
+%% %%\caption{Number of Newton iterations per number of elements (left), number of linear solver iterations per Newton step, and total number of linear solver iterations per number of elements}
+%% %\label{ref:figure:plot:number:alg:iter:per:newton:step}
+%% %\end{figure}
+%% %\end{frame}
+%% %%\begin{frame}
+%% %%%\begin{figure}[H]
+%% %%\centering
+%% %%\begin{tabular}
+%% %%{|>{\begin{bf}} c <{\end{bf}}|c|c|c|c|c|}
+%% %%\hline
+%% %% $(\gamma_{\mathrm{alg}},\gamma_{\mathrm{lin}})$  & 
+%% %% $(0.1,0.1)$ &  $(0.01,0.1)$  & $(0.1,0.01)$ & $(0.01,0.01)$ \\
+%% %%\hline
+%% %% Newton iter &   21 &  21 &  25 &  25  \\
+%% %%\hline
+%% %% Algebraic iter ($k=5$) &   10 &  30 &  10 &  30\\
+%% %%\hline
+%% %% Total iter &   210 &  370 &  250 &  410 
+%% %%\label{ref:tableau:number:inex:adapt:iter_gamma:alg:0.1}
+%% %%%\caption{Adaptive inexact Newton method for a fixed mesh containing approximately 35000 elements and for several weights $\gamma_{\mathrm{alg}}$ and $\gamma_{\mathrm{lin}}$.}
+%% %%\label{ref:tableau:comparatif}
+%% %%
+%% %%\end{tabular}
+%% %%%\end{figure}
+%% %%\end{frame}
+%% %
+%% %\begin{frame}
+%% %\begin{figure}
+%% %\begin{minipage}[c]{.38\linewidth}
+%% %   \centering
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_effectivity_index_3_methods_Hmax_015.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage}\hfill
+%% %\begin{minipage}[c]{.38\linewidth}
+%% %   \centering
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_effectivity_index_3_methods_last_newton_iter_Hmax_015.eps}     
+%% %%\label{ref:lambda_membrane_convergence} 
+%% %\end{minipage}\hfill
+%% %\end{figure}
+%% %
+%% %\textcolor{red}{\textbf{Distribution of the error:}}
+%% %\begin{figure}[H]
+%% %\begin{minipage}[c]{.40\linewidth}
+%% %   \centering
+%% %   Actual error
+%% %\includegraphics[width=\textwidth]{fig_article/estimator_actual_error_inexact_newton_iter_30second_level_modif.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage}\hfill
+%% %\begin{minipage}[c]{.40\linewidth}
+%% %   \centering
+%% %   Estimated error
+%% %\includegraphics[width=\textwidth]{fig_article/energy_norm_second_level_inexact_newton_iter_30_modif.eps}     
+%% %%\label{ref:lambda_membrane_convergence} 
+%% %\end{minipage}\hfill
+%% %%\caption{Estimated(left) and actual(right), $J=2$, inexact Newton}
+%% %\end{figure}
+%% %
+%% %
+%% %
+%% %\end{frame}
+%% %\begin{frame}
+%% %\frametitle{Conclusion}
+%% %\begin{itemize}
+%% %\item
+%% %We devised an a posteriori error estimate between $\bu$ and $\uhki$ for a wide class of semi-smooth Newton methods.
+%% %\vspace{0.5 cm}
+%% %
+%% %\item 
+%% %This estimate enables to control the error at each semi-smooth Newton stesp.
+%% %\vspace{0.5 cm}
+%% %\item
+%% %The adaptive inexact semi-smooth Newton method requires less non linear and linear steps. 
+%% %%\vspace{0.5 cm}
+%% %%\item We have adaptive stopping criteria for the discretization $h$, the semi-smooth Newton method $\kk$ and for the linear algebra $\ii$.
+%% %\vspace{0.5 cm}
+%% %\item
+%% %Extension of this work to  multiphase flow problem with exchange between phases (non linear complementarity conditions) in porous media.  
+%% %\end{itemize}
+%% %\vspace{1 cm}
+%% %\Large
+%% %\hspace{1.8 cm}
+%% %\textcolor{midnightblue}
+%% %{\textbf{
+%% %Thank you for your attention!}}
+%% %\end{frame}
+%% %%\begin{frame}
+%% %%\footnotesize
+%% %%\frametitle{Bibliography}
+%% %%\begin{itemize}
+%% %%\item
+%% %%Problem of contact between two membranes
+%% %%\end{itemize}
+%% %%\begin{thebibliography}{10}
+%% %%  \bibitem{VorBer:2008}
+%% %%Faker Ben~Belgacem, Christine Bernardi, Adel Blouza, and Martin
+%% %%  Vohral{\'{\i}}k.
+%% %%\newblock A finite element discretization of the contact between two membranes.
+%% %%\newblock {\em M2AN Math. Model. Numer. Anal.}, 43(1):33--52, 2008.
+%% %%\bibitem{VorBer:2012}
+%% %%Faker Ben~Belgacem, Christine Bernardi, Adel Blouza, and Martin
+%% %%  Vohral{\'{\i}}k.
+%% %%\newblock On the unilateral contact between membranes. {P}art 2: {\it a
+%% %%  posteriori} analysis and numerical experiments.
+%% %%\newblock {\em IMA J. Numer. Anal.}, 32(3):1147--1172, 2012.
+%% %%
+%% %%\end{thebibliography}
+%% %%\begin{itemize}
+%% %%\item
+%% %%Inexact Newton method and a posteriori adaptivity
+%% %%\end{itemize}
+%% %%\begin{thebibliography}{10}
+%% %%\bibitem{VorErn:2013}
+%% %%Alexandre Ern and Martin Vohral{\'{\i}}k.
+%% %%\newblock Adaptive inexact {N}ewton methods with a posteriori stopping criteria
+%% %%  for nonlinear diffusion {PDE}s.
+%% %%\newblock {\em SIAM J. Sci. Comput.}, 35(4):A1761--A1791, 2013.
+%% %%\end{thebibliography}
+%% %%
+%% %%\begin{itemize}
+%% %%\item
+%% %%Non smooth analysis and complementarity problem
+%% %%\end{itemize}
+%% %%\begin{thebibliography}{10}
+%% %%
+%% %%\bibitem{Facchinei:2003}
+%% %%Francisco Facchinei and Jong-Shi Pang.
+%% %%\newblock {\em Finite-dimensional variational inequalities and complementarity
+%% %%  problems. {V}ol. {I,II}}.
+%% %%\newblock Springer Series in Operations Research. Springer-Verlag, New York,
+%% %%  2003.
+%% %%
+%% %%%\bibitem{Pang:2003}
+%% %%%Francisco Facchinei and Jong-Shi Pang.
+%% %%%\newblock {\em Finite-dimensional variational inequalities and complementarity
+%% %%%  problems. {V}ol. {II}}.
+%% %%%\newblock Springer Series in Operations Research. Springer-Verlag, New York,
+%% %%%  2003.
+%% %%  \end{thebibliography}
+%% %
+%% %%\end{frame}
+%% %
+%% %%\begin{frame}
+%% %%\begin{center}
+%% %%{\Large \textbf {Thank you for your attention}}
+%% %%\end{center}
+%% %%\end{frame}
+\bibliographystyle{plain}
+\bibliography{diphasique_biblio}
+\end{document}
+
+
+

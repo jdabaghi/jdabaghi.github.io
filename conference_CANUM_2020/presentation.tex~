@@ -1,0 +1,1288 @@
+
+
+\documentclass[10 pt]{beamer}
+\usepackage[utf8]{inputenc}
+%\usepackage[latin1]{inputenc}
+%\usepackage[cyr]{aeguill}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\usepackage[]{algorithm2e}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{pstricks}
+%\usepackage{stmaryrd}
+%\usepackage{enumitem} 
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{array}
+\usepackage{relsize,exscale}
+\usepackage{caption}
+\usepackage{times}
+\usepackage{subcaption}
+\usepackage{graphicx} 
+\usepackage{epstopdf}
+\usepackage{tikz}
+\usepackage{glossaries}
+\usepackage{cancel}
+%\usepackage{animate}
+\setbeamersize{text margin left=0.2 cm}
+  \setbeamersize{text margin right=0.2 cm}
+  %\setbeamersize{sidebar width left=}
+  %\setbeamersize{sidebar width right=taille}
+%\usetikzlibrary{calc}
+%\DeclareMathOperator*{\argmin}{argmin}
+
+
+\definecolor{ao(english)}{rgb}{0.0, 0.5, 0.0}
+\definecolor{armygreen}{rgb}{0.29, 0.33, 0.13}
+\definecolor{britishracinggreen}{rgb}{0.0, 0.26, 0.15}
+\definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{indigo}{rgb}{0.29, 0.0, 0.51}
+\definecolor{lightgray}{gray}{0.85}
+\definecolor{midnightblue}{rgb}{0.1, 0.1, 0.44}
+\definecolor{burntorange}{rgb}{0.8, 0.33, 0.0}
+\definecolor{royalblue}{rgb}{0.25, 0.41, 0.88}
+\definecolor{darkmagenta}{rgb}{0.55, 0.0, 0.55}
+\definecolor{byzantine}{rgb}{0.74, 0.2, 0.64}
+\definecolor{blue-violet}{rgb}{0.54, 0.17, 0.89}
+\definecolor{brown-traditional}{rgb}{0.59, 0.29, 0.0}
+\definecolor{brown-web}{rgb}{0.65, 0.16, 0.16}
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+\definecolor{electricpurple}{rgb}{0.75, 0.0, 1.0}
+\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{goldenbrown}{rgb}{0.6, 0.4, 0.08}
+\definecolor{armygreen}{rgb}{0.29, 0.33, 0.13}
+\definecolor{calpolypomonagreen}{rgb}{0.12, 0.3, 0.17}
+\definecolor{caputmortuum}{rgb}{0.35, 0.15, 0.13}
+\definecolor{carmine}{rgb}{0.59, 0.0, 0.09}
+\definecolor{chocolate-traditional}{rgb}{0.48, 0.25, 0.0}
+\definecolor{lincolngreen}{rgb}{0.11, 0.35, 0.02}
+\definecolor{magenta}{rgb}{1.0, 0.0, 1.0}
+\definecolor{auburn}{rgb}{0.43, 0.21, 0.1}
+\definecolor{bole}{rgb}{0.47, 0.27, 0.23}
+\definecolor{bulgarianrose}{rgb}{0.28, 0.02, 0.03}
+%\usepackage[dvipsnames]{xcolor}
+%\xdefinecolor{vert_olive}{named}{OliveGreen}
+%\xdefinecolor{bleuviolet}{named}{BlueViolet}
+%\xdefinecolor{bleucadet}{named}{CadetBlue}
+%\xdefinecolor{bleunuit}{named}{MidnightBlue}
+\graphicspath{{./Figures/}}
+\newtheorem{assumption}[theorem]{Assumption} 
+\newtheorem{proposition}[theorem]{Proposition} 
+\newtheorem{remark}[theorem]{Remark} 
+
+\renewcommand{\div}{\mathrm{div}}
+\newcommand{\Pdot}{\ddot{P}}
+\newcommand{\Pdothn}{\Pdot_h^n}
+%\usetheme{Madrid}
+\usetheme{Frankfurt}
+
+\title[SIAM GS 2019]{A hybrid parareal Monte-Carlo algorithm for the parabolic time
+dependant diffusion equation}
+\author[Jad Dabaghi]
+{\underline{Jad Dabaghi}, Yvon Maday, Andrea Zoia}
+\institute[]{Sorbonne Université \& CEA Paris Saclay}
+\date{CANUM, December $3^{\mathrm{rd}}$ 2020}
+\subject{Numerical Analysis}
+\input{command}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamercovered{transparent}
+
+
+
+\AtBeginSection[] {
+    \begin{frame}
+    <beamer>[noframenumbering]
+        \frametitle{Outline}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+
+\begin{document}
+
+
+\begin{frame}
+\maketitle
+\includegraphics[scale=0.2]{logo_sorbonne}
+\hfill \includegraphics[scale=0.14]{CEA}
+
+\end{frame}
+
+
+
+
+\newcommand{\kk}{\textcolor{royalblue}{k}}
+\newcommand{\ii}{\textcolor{burntorange}{i}}
+\newcommand{\nuu}{\textcolor{burntorange}{\nu}}
+
+
+\setcounter{tocdepth}{4}
+\section{Introduction}
+
+\begin{frame}
+\defbeamertemplate*{footline}{infolines theme frame plus slide}{\setcounter{slidenumber}{\insertpagenumber}\addcounter{slidenumber}{-\insertframestartpage}\addcounter{slidenumber}{1}}
+\frametitle{Motivation}
+\hspace*{0.2 cm} \textcolor{red}{\textbf{Study the neutron transport in nuclear reactors}}
+\\
+\vspace*{0.2 cm}
+\invisible<1>{
+\textcolor{midnightblue}{\textbf{Model:}} Linear Boltzmann equation for the angular flux
+\begin{equation*}
+\partial_t {\bm \Psi}(t,\bx,\bv) + \bv \cdot \nab {\bm \Psi}(t,\bx,\bv) + \sigma(\bx,\bv) {\bm \Psi}(t,\bx,\bv) - \int_{\mathbb{R}^3} k(\bx,\bv,\bv^{\prime}) {\bm \Psi}(t,\bx,\bv^{\prime})\,\mathrm{d} \bv^{\prime} = 0
+\end{equation*}
+Balance between the free neutrons that are created and that disappear in the
+core.
+\\
+\vspace{0.2 cm}
+\invisible<2>{
+\begin{minipage}{0.4 \linewidth}
+\begin{figure}
+\includegraphics[scale=0.23]{reactor}
+\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55 \linewidth}
+
+Numerical resolution:
+\begin{itemize}
+\item Monte-Carlo approach
+\item Deterministic approach
+\end{itemize}
+\vspace*{0.2 cm}
+Can we speed up a Monte-Carlo resolution?
+\end{minipage}
+\\
+\vspace*{0.2 cm}
+\invisible<3>{
+\textcolor{cadmiumgreen}{\textbf{Parareal-in-time algorithm}} $\Rightarrow$ important computational savings
+\begin{minipage}{0.2 \linewidth}
+\begin{figure}
+\includegraphics[scale=0.04]{attention}
+\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.75 \linewidth}
+Complicated problem... Start with a diffusion problem to understand the involved underlying mechanisms.
+\end{minipage}
+\invisible<4>{
+  }}}}
+\end{frame}
+
+\section{Model problem}
+    
+\subsection{}  
+
+\begin{frame}
+\frametitle{Model problem and parareal algorithm}
+\textcolor{cadmiumgreen}{\textbf{Time dependent diffusion equation with dirichlet boundary conditions:}}
+\begin{equation*}
+\dps
+\left\lbrace\begin{array}{llccc}
+\dps \partial_t u - \mathcal{D} \Delta u = g \quad & \mbox{in} \quad &\Omega \times \left[0,T\right], \\
+ \dps u({\bm \cdot},0) = u^0 \quad & \mbox{in} \quad &\Omega,\\
+u = 0 \quad & \mbox{on} \quad &\partial \Omega \times [0,T] . 
+\end{array}
+\right.
+\end{equation*}
+\invisible<1>{
+\textcolor{cadmiumgreen}{\textbf{Parareal procedure:}}
+It constructs a sequence $\bu_k^n:=(\bu_k^n)_{1 \leq n \leq N}$ such that $\bu_k^n \approx u^n$. It involves a coarse propagator $\GDt$ and a fine propagator $\Fdt$.\\
+\vspace*{0.2 cm}
+\invisible<2>{
+\textcolor{cadmiumgreen}{\textbf{Coarse time grid discretization:}}
+\begin{figure}
+\includegraphics[width = 0.75 \textwidth]{discretization_time_coarse-cropped}
+\end{figure}
+ \invisible<3>{
+\textcolor{cadmiumgreen}{\textbf{Fine time grid discretization:}}
+ \begin{figure}
+ \includegraphics[width = 0.7 \textwidth]{discretization_time_coarse_fine_krop}
+ \end{figure}
+ \invisible<4>{
+   }}}}
+\end{frame}
+%
+\begin{frame}
+\textcolor{midnightblue}{\textbf{The parareal algorithm}} 
+\begin{equation*}
+  \begin{split}
+    u_{\kk=0}^{n+1} & := \GDt(u_{\kk=0}^n), \qquad \text{where} \quad u_{\kk=0}^0 := u^0. \\
+    u_{\kk+1}^{n+1} & := \underbrace{\GDt(u_{\kk+1}^n)}_{\mathrm{prediction}} + \underbrace{\left[\Fdt(u_{\kk}^n) - \GDt(u_{\kk}^n) \right]}_{\mathrm{correction}}.
+    \end{split}
+\end{equation*}
+\vspace{0.1 cm}
+\invisible<1>{
+\textcolor{midnightblue}{\textbf{Illustration of the procedure:}}
+$n=3, \kk=2$
+
+\invisible<2>{
+1. Compute the coarse approximations:
+\begin{equation*}
+  u_{\kk=0}^{1}=\GDt(u^0), \quad u_{\kk=0}^{2}=\GDt^2(u^0), \quad u_{\kk=0}^{3}=\GDt^{3}(u^0)
+\end{equation*}
+\invisible<3>{
+2. Compute: $u_{\kk \geq 1}^{1}=\Fdt(u^0)$ \\
+\invisible<4>{
+3. Compute in parallel:
+\begin{equation*}
+  \Fdt(u_{\kk=0}^1) - \GDt(u_{\kk=0}^1), \ \Fdt(u_{\kk=0}^2) - \GDt(u_{\kk=0}^2), \ \Fdt(u_{\kk=0}^3) - \GDt(u_{\kk=0}^3)
+\end{equation*}
+\invisible<5>{
+4. \textcolor{cadmiumgreen}{\textbf{Update:}} $\fbox{$u_{\kk=1}^2$} \ \text{and} \ \GDt(u_{\kk=1}^2), \ \fbox{$u_{\kk=1}^3$} \ \text{and} \ \GDt(u_{\kk=1}^3), \ \text{and} \ \fbox{$u_{\kk=1}^4$} $
+\\
+\vspace*{0.2 cm}
+\invisible<6>{
+5. Compute in parallel:
+\begin{equation*}
+\Fdt(u_{\kk=1}^1) - \GDt(u_{\kk=1}^1), \quad  \Fdt(u_{\kk=1}^2) - \GDt(u_{\kk=1}^2), \quad \Fdt(u_{\kk=1}^3) - \GDt(u_{\kk=1}^3)
+\end{equation*}
+\invisible<7>{
+  6. \textcolor{cadmiumgreen}{\textbf{Update:}} 
+ $ \fbox{$u_{\kk=2}^2$} \ \text{and} \ \GDt(u_{\kk=2}^2) \quad \text{and} \quad \fbox{$u_{\kk=2}^3$} \ \text{and} \ \GDt(u_{\kk=2}^3) \quad \text{and} \quad \fbox{$u_{\kk=2}^4$}$
+
+\invisible<8>{
+  }}}}}}}}
+\end{frame}
+%
+\begin{frame}
+  \frametitle{Coarse propagator}
+  \vspace*{-0.1 cm}
+  $\Th$: mesh of the domain $\Omega$\\
+  \vspace{0.15 cm}
+  $\Vh$ : Lagrange nodes, $\Vhint$: interior nodes, $\Vhext$ : exterior nodes \\
+  \vspace{0.15 cm}
+  $\Nhint$ : number of internal Lagrange nodes, \ $\Nsp$ : number of elements \\
+  \vspace*{0.15 cm}
+\invisible<1>{
+  \textcolor{midnightblue}{\textbf{The finite element propagator}}
+  \begin{equation*}
+    \begin{split}
+X_h^p &:= \left\{v_h \in \mathcal{C}^{0}(\Omega); v_h|_{K} \in \mathbb{P}_p(K) \ \forall K \in \Th \right\} \subset H^1(\Omega) \\
+X_{0h}^p & := \left\{v_h \in \mathcal{C}^{0}(\Omega); v_h|_{K} \in \mathbb{P}_p(K) \ \forall K \in \Th, \ v_h|_{\partial \Omega}=0 \right\} \subset H_{0}^1(\Omega)
+\end{split}
+  \end{equation*}
+  
+  The discrete vector of unknowns : $\bU_h^n \in \R^{\Nhint}$ satisfies $\bU_h^n = \GDt(\bU_h^{n-1})$ with
+  \begin{equation*}
+    \GDt(\bU_h^{n-1}) = [\mathbb{A}^n]^{-1}  \times \bF^{n-1}, \quad \underbrace{[\mathbb{A}^n]^{-1}}_{\mathrm{Stiffness} \ \mathrm{matrix} + \mathrm{mass} \ \mathrm{matrix}} \hspace{-0.6 cm} \in \R^{\Nhint,\Nhint}, \quad \bF^{n-1} \in \R^{\Nhint}
+  \end{equation*}
+  \vspace{-0.1 cm}
+  \invisible<2>{
+  \hspace*{-0.2 cm}\textcolor{midnightblue}{\textbf{The cell centered finite volume propagator}}
+  \begin{equation*}
+\bU_h^n \egaldef (\bU_K^n)_{K\in \Th}, \quad \textcolor{cadmiumgreen}{\textbf{one value per cell and time step}} 
+\end{equation*}
+  The discrete vector of unknowns : $\bU_h^n \in \R^{\Nsp}$ satisfies $\bU_h^n = \GDt(\bU_h^{n-1})$ with
+  \begin{equation*}
+    \GDt(\bU_h^{n-1}) = [\mathbb{A}^n]^{-1}  \times \bF^{n-1}, \quad \underbrace{[\mathbb{A}^n]^{-1}}_{\mathrm{Sparse}} \in \R^{\Nsp,\Nsp}, \quad \bF^{n-1} \in \R^{\Nsp}
+  \end{equation*}
+  \invisible<3>{
+    }}}
+\end{frame}
+%
+\begin{frame}
+  \textcolor{midnightblue}{\textbf{The discontinuous galerkin propagator}}
+  \\
+  \vspace*{0.2 cm}
+  $\Nhint$:  total number of local internal degrees of freedom.
+  \\
+  \vspace*{0.2 cm}
+  \textcolor{cadmiumgreen}{\textbf{Discontinuous galerkin space:}}
+  \begin{equation*}
+    \begin{split}
+      X_h^p & := \left\{v_h \in L^2(\Omega); v_h|_{K} \in \Pp(K) \ \forall K \in \Th  \right\} \not \subset H^1(\Omega),\\
+X_{0h}^p & := \left\{v_h \in L^2(\Omega); v_h|_{K} \in \Pp(K) \ \forall K \in \Th, v_h|_{\partial \Omega} = 0  \right\} \not \subset H_0^1(\Omega)
+    \end{split}
+  \end{equation*}
+  The discrete vector of unknowns : $\bU_h^n \in \R^{\Nhint}$ satisfies $\bU_h^n = \GDt(\bU_h^{n-1})$ with
+  \begin{equation*}
+    \GDt(\bU_h^{n-1}) = [\mathbb{A}^n]^{-1}  \times \bF^{n-1}, \quad [\mathbb{A}^n]^{-1} \in \R^{\Nhint,\Nhint}, \quad \bF^{n-1} \in \R^{\Nhint}
+  \end{equation*}
+  \textcolor{cadmiumgreen}{\textbf{local matrix}} $[\mathbb{A}^n]^{-1}_K = $ stiffness matrix $+$ mass matrix $+$ consistency and stability terms.
+\end{frame}
+%
+\begin{frame}
+  \frametitle{Fine propagator : Monte-Carlo}
+  \textcolor{cadmiumgreen}{\textbf{Principle:}}
+  It gives an approximation of
+  \begin{equation*}
+    \int_K u^n(\bx)\,\mathrm{d}\bx.
+  \end{equation*}
+  \invisible<1>{
+    Consider $M$ particles. Statistical weight: $\omega_i^n \in \R_{+}$.
+    \\
+    \vspace*{0.2 cm}
+    Let $f$ be a probability density function satisfying $\int_{\Omega} f(\bx)\,\mathrm{d}\bx = 1$ and $f(\bx) \geq 0$.
+  Then,
+  \begin{equation*}
+\int_K u^n(\bx)\,\mathrm{dx} = \int_K \frac{u^n(\bx)}{f(\bx)} f(\bx)\,\mathrm{d} \bx.
+  \end{equation*}
+  $X_i^n$: be the position of the particle $i$ at time step $n$.
+  \\
+  \vspace*{0.15 cm}
+  ${\bm Z}^n := (\omega_1^n, \cdots,\omega_M^n) \in \R^M$ the RV associated to $f$: $\omega_i^n=1$ if $i \in K$, else $\omega_i^n = 0$. 
+    \\
+    \vspace{0.2 cm}
+    \invisible<2>{
+  \textcolor{cadmiumgreen}{\textbf{Law of large numbers:}}
+  \begin{equation*}
+\lim_{M \rightarrow + \infty} \sum_{i=1}^M \omega_i^n|_{i \in K} = \int_K u^n(\bx)\,\mathrm{d} \bx.
+  \end{equation*}
+  \invisible<3>{
+  \textcolor{cadmiumgreen}{\textbf{Central limit Theorem:}}
+\vspace*{-0.15 cm}
+  \begin{equation*}
+    \mathrm{error} \approx \frac{1}{\sqrt{M}}.
+  \end{equation*}
+  \invisible<4>{
+    }}}}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Sampling}
+
+
+  \textcolor{cadmiumgreen}{\textbf{Direct inversion of the cumulative:}}
+  \\
+  \vspace*{0.2 cm}
+  \invisible<1>{
+$F : \Omega \rightarrow [0,1] \hspace{0.15 cm}$ such that $F(\bx) := \int_{- \infty}^{x} \int_{- \infty}^{y} f(u,v)\,\mathrm{d}u \, \mathrm{d}v$ where $\bx=(x,y)$.
+    \\ \vspace*{0.2 cm}
+    Let $\xi_1 \sim \mathcal{U}([0,1])$.
+    \\ \vspace*{0.2 cm}
+    Position of the particle: ${\bm X}_i=F^{-1}(\xi_1)$.
+    \\ \vspace*{0.2 cm}
+    Repeat $M$ times the procedure.
+    \\
+    \vspace*{0.3 cm}
+    \invisible<2>{
+    \textcolor{cadmiumgreen}{\textbf{The table lookup method:}}
+    \\
+    \vspace*{0.2 cm}
+    Probability each element: $\mathbb{P}(K) = \int_{K} f(\bx)\,\mathrm{d}\bx$,\\
+    \vspace*{0.2 cm}
+    Cumulative function: $F_{K_i}: \Omega \rightarrow [0,1], \ F_{K_i} = \sum_{j \leq i} \mathbb{P}(K_j)$
+    \\
+    \vspace*{0.2 cm}      
+    Let $\xi_1 \sim \mathcal{U}([0,1])$. Identify the two elements $K_l$ and $K_{l^{\prime}}$ such that $F_{K_l} \leq \xi_1 \leq F_{K_l^{\prime}}$. The point $\overline{\bx}$ belongs to the element $K=\cup_{j=1}^{l^{\prime}} K_j \backslash \left(\cup_{j=1}^l K_j  \right)$ 
+    \\
+    \vspace*{0.1 cm}
+    Position of the particle: ${\bm X}_i = {\bm x}_K + {\bm \xi}$ where ${\bm \xi} \sim \mathcal{U}(K)$.
+        \\ \vspace*{0.2 cm}
+        Repeat $M$ times the procedure.
+        \invisible<3>{
+          }}}
+\end{frame}
+%
+\begin{frame}
+  \vspace{0.3 cm}
+    \textcolor{cadmiumgreen}{\textbf{Rejection method:}}
+    \\
+    \vspace{0.1 cm}
+    Often used when the PDF $f$ is hard to invert. Assume there exists a PDF $g : \Omega \rightarrow \R_{+}$ ``easy'' to simulate such that
+    \begin{equation*}
+f(\bx) \leq k g(\bx), \quad \text{where} \quad k \geq 1 \quad \text{is a constant}. 
+      \end{equation*}
+    Set $\dps \alpha(\bx)=\frac{f(\bx)}{k g(\bx)}$.
+    \\
+    \vspace*{0.2 cm}
+    Compute the cumulative function $G:\Omega \rightarrow [0,1]$ associated to $g$.\\
+    \vspace*{0.2 cm}
+    Let $\xi \sim \mathcal{U}([0,1])$. \\
+    \vspace*{0.2 cm}
+    Find ${\bm X}_i \in K$ using the direct inversion procedure.    \\
+    \vspace*{0.2 cm}
+    Compute $\alpha({\bm X}_i)$.
+    \\
+    \vspace*{0.2 cm}
+    Let $\xi_1 \sim \mathcal{U}([0,1])$. If $\xi_1 \leq \alpha ({\bm X}_i)$ accept ${\bm X}_i$. Otherwise reject and and come back to first step.
+    \\
+    \vspace*{0.3 cm}
+    \textcolor{red}{\textbf{After sampling the population of particles what are their motion? displacement?}}
+\end{frame}
+%
+\begin{frame}
+  \frametitle{Kernel Transport}
+  $(\bx,t)$ : position of the particle $\bx$ at time $t$
+  \\
+  \vspace*{0.2 cm}
+  $(\bx^{\prime},t^{\prime})$ : position of the particle $\bx^{\prime}$ at time $t^{\prime}$
+  We define the density transition kernel:
+  \begin{equation*}
+    T(\bx^{\prime},t^{\prime} \rightarrow \bx,t) :=
+    \frac{1}{\sqrt{2 \pi \mathcal{D} \left(t-t^{\prime}\right)}}
+    \exp \left(-\frac{(\bx-\bx^{\prime})^2}{2 \mathcal{D} \left(t-t^{\prime}\right)}\right).
+  \end{equation*}
+  %% \begin{equation*}
+  %%   \bx - \bx^{\prime} \sim \mathcal{N}(\bx^{\prime}, \mathcal{D} (t-t^{\prime}))
+  %% \end{equation*}
+  \textcolor{cadmiumgreen}{\textbf{Pratical formula for the brownian motion:}}
+  \\
+  \vspace*{0.1 cm}
+  \begin{equation*}
+T({\bm X}^n, t^{n-1} + \delta t_n) = T({\bm X}^{n-1},t^{n-1}) + \sqrt{2 \mathcal{D} \delta t_n} \ \mathcal{S}_n \quad \text{where} \quad \mathcal{S}_n \sim \mathcal{N}(0,1)
+    \end{equation*}
+  \begin{figure}
+    \centering
+\includegraphics[scale=0.38]{Sampling_2D-cropped}
+    \end{figure}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Hybrid parareal algorithm}
+\textcolor{midnightblue}{\textbf{Coarse propagator :}} Deterministic solver\\
+\vspace*{0.2 cm}
+\textcolor{midnightblue}{\textbf{Fine propagator:}} Monte-Carlo solver: deterministic data $+$ sampling $+$ average \\
+\vspace*{0.2 cm}
+Consider $p$ independent replicas and $M^{\prime}$ particles so that the total number of particles is $M = p \times M^{\prime}$.
+The numerical solution obtained for a batch $j \in \left[1, p\right]$ at parareal iteration $\kk$ is denoted by ${\bm U}_{\kk,j}^{n+1}$
+\begin{equation*}
+{\bm U}_{\kk}^{n+1} := \frac{1}{p} \sum_{j=1}^p {\bm U}_{\kk,j}^{n+1}
+\end{equation*}
+\begin{minipage}{0.2 \linewidth}
+\begin{figure}
+\includegraphics[scale=0.04]{attention}
+\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.75 \linewidth}
+When ${\bm U}_{\kk,j}^{n+1}$ is computed, we need its statistical version for the computation of ${\bm U}_{\kk+1,j}^{n+2} = \GDt({\bm U}_{\kk+1,j}^{n+1}) \times \dps \frac{\textcolor{red}{\Fdt({\bm U}_{\kk,j}^{n+1})}}{\GDt({\bm U}_{\kk,j}^{n+1})}$. Introduce biais in the Monte-Carlo solver.
+\end{minipage}
+\end{frame}
+%
+\begin{frame}
+  \frametitle{Updating the statistical weights}
+  \textcolor{cadmiumgreen}{\textbf{Example:}} How avoid sampling ${\bm U}_{\kk=1}^2$?
+  \begin{equation*}
+[\omega_1^2]_{i\in K} = [\omega_{\mathcal{F}}]_{i \in K} \times \left(\frac{{\bm U}_{\kk=1}^2}{\mathcal{F}({\bm U}_{\kk=0}^1)}  \right)|_{K}
+    \end{equation*}
+  \begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{reweighting-cropped}
+  \end{figure}
+  \begin{equation*}
+    \mathrm{hist}(\omega_{\kk=1}^2)|_{K_1} =\frac{1}{8}([{\omega_{2}^1}]_1 + [{\omega_{2}^1}]_2) = \left(\cancel{\omega_{\mathcal{F}_1} + \omega_{\mathcal{F}_2}}\right) \times \left(\frac{{\bm U}_{\kk=1}^2}{\cancel{\mathcal{F}({\bm U}_{\kk=0}^1)}}\right)|_{K_1}
+  \end{equation*}
+  \end{frame}
+
+%
+\section{Numerical experiments}
+\subsection{}
+\begin{frame}
+\frametitle{Numerical experiments}
+$\Omega$:  one-dimensional core with length $L = 5 m$, \textbf{Final simulation time:} $T=10 s$.
+\\
+\vspace{0.2 cm}
+\textbf{Deterministic propagator:} $\mathbb{P}_1$ finite element, $\Delta t = 2 s$.
+\\
+\vspace{0.2 cm}
+\textbf{Fine propagator:} Monte-Carlo, $\delta t = 2 \times 10^{-4} s$.
+\\
+\vspace{0.2 cm}
+\textbf{Diffusion coefficient:} $\mathcal{D} = 0.5 m^2 \cdot s^{-1}$, \\
+\vspace{0.2 cm}
+\textbf{Initial condition:} $u_0(x)=\frac{1}{L}$.
+\\
+\vspace{0.2 cm}
+\textbf{Number of particles:} $10^4$, \textbf{Number of replicas:} $10^3$
+\\
+\vspace{0.2 cm}
+\begin{figure}
+  \includegraphics[width= 0.44 \textwidth]{Full_MC_coarse_FEM_n=8}
+  \hfill
+  \includegraphics[width= 0.44 \textwidth]{Full_MC_coarse_FEM_n=10}
+\end{figure}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Hybrid solution}
+  \begin{figure}
+\centering
+\includegraphics[width=0.49\textwidth]{Coarse_solution_vs_hybrid_n=5}
+\includegraphics[width=0.49\textwidth]{hybrid_sol_MC_error_bar_zoom_bis} 
+\end{figure}
+\end{frame}
+%
+\begin{frame}
+ \frametitle{CPU time and convergence}
+\vspace*{-0.3 cm}
+ \begin{figure}
+\centering
+\includegraphics[width=0.48\textwidth]{CPU_time_hybrid_vs_MC}
+\includegraphics[width=0.5\textwidth]{Linf_error}
+\end{figure}
+
+\scriptsize
+\begin{table}[]
+\begin{tabular}{|c|c|c|c|c|c|c|l}
+\cline{1-7}
+\begin{tabular}[c]{@{}c@{}}Number \\ of \\ particles\end{tabular} & \begin{tabular}[c]{@{}c@{}}Number\\  of \\ batch\end{tabular} & \begin{tabular}[c]{@{}c@{}}Parallelized \\ Monte-Carlo\end{tabular} & \begin{tabular}[c]{@{}c@{}}Hybrid\\ parallelized\\ Monte-Carlo\\  $k=1$\end{tabular} & \begin{tabular}[c]{@{}c@{}}Hybrid\\ parallelized\\ Monte-Carlo\\ $k=2$\end{tabular} & \begin{tabular}[c]{@{}c@{}}Gain factor\\  $k=1$\end{tabular} & \begin{tabular}[c]{@{}c@{}}Gain factor\\ $k=2$\end{tabular} & \multicolumn{1}{c}{} \\ \cline{1-7}
+$10^5$                                                            & $10^2$                                                        & $1653.4$ s                                                         & $335.76$ s                                                                           & $534.16$ s                                                                           & $4.92$                                                        & $3.04$                                                       &                      \\ \cline{1-7}
+$10^4$                                                            & $10^3$                                                        & $164.09$ s                                                           & $33.05$ s                                                                             & $7.97$ s                                                                            & $4.96$                                                        & $3.09$                                                       &                      \\ \cline{1-7}
+$10^3$                                                            & $10^4$                                                        & $16.86$ s                                                            & $3.39$ s                                                                             & $0.83$ s                                                                            & $4.97$                                                        & $3.07$                                                       &                      \\ \cline{1-7}
+$10^2$                                                            & $10^5$                                                        & $1.78$ s                                                            & $0.35$ s                                                                             & $0.11$ s                                                                            & $5.08$                                                        & $3.02$                                                       &                      \\ \cline{1-7}
+\end{tabular}
+\end{table}
+\end{frame}
+%
+\begin{frame}
+  \frametitle{A second test case}
+  \textbf{Final simulation time:} $T=14 s$.
+\\
+\vspace{0.3 cm}
+\textbf{Deterministic propagator:} $\mathbb{P}_1$ finite element, $\Delta t = 2 s$.
+\\
+\vspace{0.3 cm}
+\textbf{Fine propagator:} Monte-Carlo, $\delta t = 2 \times 10^{-4} s$.
+\\
+\vspace{0.3 cm}
+\textbf{Diffusion coefficient:} $\mathcal{D} = 0.5 m^2 \cdot s^{-1}$ for Monte-Carlo, $\mathcal{D}=0.48 m^2 \cdot s^{-1}$ for FEM solver \\
+\vspace{0.3 cm}
+\textbf{Initial condition:} $u_0(x)=\frac{1}{L} \left(1 + \cos(\frac{\pi x}{L}) \right)$.
+\\
+\vspace{0.3 cm}
+\textbf{Number of particles:} $10^5$, \textbf{Number of replicas:} $10^2$
+\end{frame}
+%
+\begin{frame}
+  \frametitle{CPU time and convergence}
+  \begin{figure}
+\centering
+\includegraphics[width=0.49\textwidth]{sol_k1_k2_zoom}
+\includegraphics[width=0.5\textwidth]{CPU_time_trigo}
+\end{figure}
+\end{frame}
+%
+\section{Conclusion}
+\begin{frame}
+\frametitle{Conclusion}
+\begin{itemize}
+\item
+We devised for the diffusion equation a hybrid parareal algorithm.
+\vspace{0.3 cm}
+\item Our approach reduces the CPU time of a Monte-Carlo simulation.
+\end{itemize}
+\vspace{0.5 cm}
+\textcolor{red}{\textbf{Ongoing work:}}
+\begin{itemize}
+\item Extension to Boltzmann equation in neutronics
+\end{itemize}
+\vspace{0.5 cm}
+\begin{thebibliography}{10}
+ \scriptsize{
+ \bibitem{Dabaghi:Maday:Zoia:2020}
+ {\sc J.~Dabaghi, Y.~Maday, A.~Zoia, {\em A hybrid parareal Monte-Carlo algorithm for the parabolic
+time dependant diffusion equation}.
+ \textcolor{black}{In preparation}}}
+ \end{thebibliography}
+
+\end{frame}
+
+\begin{frame}
+\centering
+\vspace*{1 cm}
+\Huge Thank you for your attention!
+\vspace*{2 cm}
+\begin{figure}
+\centering
+\includegraphics[scale=1]{image/smiley}
+\end{figure}
+\end{frame}
+%
+%% %
+%% %\begin{frame}
+%% %\section{A posteriori and adaptivity}
+%% %\subsection{A posteriori and adaptivity}
+%% %\frametitle{A posteriori analysis and preliminary study}
+%% %\alert{\textbf{A posteriori error estimates:}}
+%% %$\dps |||\bu-\uhki||| \leq \left\{\dps \sum_{\substack{K \in\Th}} \eta_K(\uhki)^2\right\}^{1/2}$.\\
+%% %
+%% %%\alert{\textbf{Effectivity index:}} $\mathrm{I_{eff}}=\left\{\dps \sum_{\substack{K \in\Th}} \eta_K(\uhki)^2\right\}^{1/2} {\large /} \; {\dps|||\bu-\uhki|||} \quad \alert{\searrow 1} $ 
+%% %%From \eqref{eq:modele_initial_membrane} if we define ${\bm \sigma}_1 = -\mu_1 \nab u_1$ and ${\bm \sigma}_2 = - \mu_2 \nab u_2$ we have $({\bm \sigma}_1,{\bm \sigma}_2) \in \HdivOmeg$,  and $\nab \cdot {\bm \sigma}_1 = f_1 + \lambda $ and $\nab \cdot {\bm \sigma}_2 = f_2 - \lambda $. \\\\
+%% %%\includegraphics[scale=0.02]{attention} 
+%% %%\footnotesize
+%% %%$\left(-\nab \uunhki, -\nab \udeuxhki\right) \neq \HdivOmeg \hspace{0.1 cm}$  $\nab \cdot (- \mu_1 \nab \uunhki) \neq f_1 + \lambhki$  $\nab \cdot (-\mu_2 \nab \udeuxhki) \neq f_2 - \lambhki$.
+%% %%\normalsize
+%% %\scriptsize{
+%% %\begin{thebibliography}{10}
+%% %\bibitem{Repin:2008}
+%% %Sergey Repin.
+%% %\newblock {\em A posteriori estimates for partial differential equations}.
+%% %\newblock Walter de Gruyter GmbH \& Co. KG, Berlin, 2008.
+%% %\end{thebibliography}
+%% %}
+%% %
+%% %\scriptsize{
+%% %\begin{thebibliography}{10}
+%% %\bibitem{Verfurth:2013}
+%% %Verf\"urth, R\"udiger.
+%% %\newblock {\em A posteriori error estimation techniques for finite element
+%% %              methods}.
+%% %\newblock Oxford University Press, 2013.
+%% %\end{thebibliography}
+%% %}
+%% %
+%% %\vspace{-0.3 cm}
+%% %\normalsize
+%% %\begin{equation*}
+%% %\mbox{\textbf{Goal:}}\dps
+%% %\left\lbrace\begin{array}{llccc}
+%% %\dps \sigunhki \in \textbf H(\div,\Omega) \hspace{0.15 cm} \mbox{such that} \hspace{0.15 cm} (\nab \cdot \sigunhki,1)_K=(f_1+\lambhki,1)_K \hspace{0.15 cm} \forall K \in \Th, \\
+%% %\dps\sigdeuxhki \in \textbf H(\div,\Omega) \hspace{0.15 cm} \mbox{such that} \hspace{0.15 cm} (\nab \cdot \sigdeuxhki,1)_K=(f_2-\lambhki,1)_K \hspace{0.15 cm} \forall K \in \Th .
+%% %\end{array}
+%% %\right.
+%% %%\label{eq: 1.24}
+%% %\end{equation*}
+%% %\normalsize
+%% %\begin{itemize}
+%% %\item 
+%% %$\sigunhki = \sigunhdiski + \sigunhalgki$ and $\sigdeuxhki = \sigdeuxhdiski + \sigdeuxhalgki$
+%% %\end{itemize}
+%% %
+%% %%\textcolor{red}{\textbf{Assumption:}}
+%% %%$\sigunhalgki+\sigunhdiski =\sigunhki$ and
+%% %%$\sigdeuxhalgki+\sigdeuxhdiski =\sigdeuxhki$
+%% %%\\
+%% %\vspace{0.3 cm}
+%% %\textcolor{red}{\textbf{Algebraic fluxes reconstruction:}}
+%% %\begin{itemize}
+%% %
+%% %%$\lim\limits_{\substack{\textcolor{blue}{k},\textcolor{red}{i} \rightarrow + \infty}} {\left\|\sigunhalgki\right\|}_{L^2(\Omega)} = \lim\limits_{\substack{\textcolor{blue}{k},\textcolor{red}{i} \rightarrow + \infty }} {\left\|\sigdeuxhalgki\right\|}_{L^2(\Omega)} = 0$
+%% %\item $\left\{\sigunhalgki,\sigdeuxhalgki\right\} \in \textbf H(\div,\Omega)$, \: $\nab \cdot \sigunhalgki=\runhki$, \: $\nab \cdot \sigdeuxhalgki=\rdeuxhki$
+%% %\end{itemize}
+%% %
+%% %
+%% %
+%% %\scriptsize
+%% %\begin{thebibliography}{10}
+%% %  \bibitem{VorPapez:2015}
+%% %Papez Jan, Rüde Ulrich, Vohral{\'{\i}}k Martin, and Wohlmuth Barbara.
+%% %\newblock Sharp algebraic and total a posteriori error bounds via a multilevel
+%% %approach.
+%% %\newblock In preparation, 2017.
+%% %\end{thebibliography}
+%% %\end{frame}
+%% %%\subsection{Discretization fluxes reconstruction}
+%% %\begin{frame}
+%% %\frametitle{Discretization fluxes reconstruction}
+%% %%\subsection{Discretization flux reconstruction}
+%% %%$\forall \ba \in \mathcal{V}_{h}$, define $(\sigunhdiskia,\sigdeuxhdiskia) \in {\bf V}_{h}^{\ba} \times {\bf V}_{h}^{\ba}$ and $(\gamunhkia,\gamdeuxhkia)\in Q_{h}^{\ba} \times Q_{h}^{\ba}$, where ${\bf V}_{h}^{\ba} \subset \textbf H(\div,\Omega)$ and $Q_{h}^{\ba} \subset L^2(\Omega)$ by solving:
+%% %$\sigunhdiskia$ and $\sigdeuxhdiskia$ are the solution of mixed system on patches
+%% %\begin{equation*}
+%% %\left\lbrace\begin{array}{llccc}
+%% %(\sigunhdiskia,{\bv}_{1h})_{\omega_{h}^{\ba}}-(\gamunhkia,\nab \cdot {\bv}_{1h})_{\omega_{h}^{\ba}} &=& \dps -\left(\psi_{h,\ba} \nab \uunhki,{\bv}_{1h}\right)_{\omega_h^{\ba}}  & \forall {\bv}_{1h}\in {\bf V}_{h}^{\ba}, \\
+%% %\dps(\nab \cdot \sigunhdiskia,q_{1h})_{\omega_{h}^{\ba}}&=&\dps(\tildgunhkia,q_{1h})_{\omega_{h}^{\ba}} & \forall q_{1h}\in Q_{h}^{\ba},\\
+%% %(\sigdeuxhdiskia,{\bv}_{2h})_{\omega_{h}^{\ba}}-(\gamdeuxhkia,\nab \cdot {\bv}_{2h})_{\omega_{h}^{\ba}} &=& \dps-\left(\psi_{h,\ba} \nab \udeuxhki,{\bv}_{2h}\right)_{\omega_h^{\ba}} & \forall {\bv}_{2h}\in {\bf V}_{h}^{\ba},\\
+%% %(\nab \cdot \sigdeuxhdiskia,q_{2h})_{\omega_{h}^{\ba}}&=&\dps(\tildgdeuxhkia,q_{2h})_{\omega_{h}^{\ba}} & \forall q_{2h} \in Q_{h}^{\ba}.
+%% %\end{array}
+%% %\right.
+%% %%\label{eq:reconstruction_flux_raviart_thomas:newton:min:inexacte:discretozation:flux}
+%% %\end{equation*}
+%% %%\begin{align*}
+%% %%\tildgunhkia &=f_1 \psi_{h,\ba}- \mu_1 \nab \uunhki \cdot \nab \psi_{h,\ba} +\lambhki(\ba)\psi_{h,\ba} -\runhki \psi_{h,\ba} \quad \forall {\ba} \in \mathcal{V}_{h},\\
+%% %%\tildgdeuxhkia &= f_2 \psi_{h,\ba}- \mu_2 \nab \udeuxhki \cdot \nab \psi_{h,\ba}-\lambhki(\ba)\psi_{h,\ba}-\rdeuxhki \psi_{h,\ba} \quad \forall {\ba} \in \mathcal{V}_h,
+%% %%\end{align*}
+%% %\hspace{1.2 cm}
+%% %\fcolorbox{violet}{white}{
+%% %\textcolor{black}{$\dps
+%% %{{\sigunhdiski}}={\sum_{\ba \in \mathcal{V}_h} \sigunhdiskia} \quad \mbox{and} \quad \sigdeuxhdiski=\sum_{\ba \in \mathcal{V}_h} \sigdeuxhdiskia$}
+%% %}
+%% %\begin{itemize}
+%% %\item
+%% %$\sigunhdiski  \in \textbf H(\div,\Omega) \quad \mbox{and} \quad \left(\nab \cdot \sigunhdiski, 1\right)_K = \left(f_1 + \lambhki -\runhki ,1\right)_K$
+%% %\item
+%% %$\sigdeuxhdiski \in \textbf H(\div,\Omega) \quad \mbox{and} \quad \left(\nab \cdot \sigdeuxhdiski, 1\right)_K = \left(f_2 - \lambhki -\rdeuxhki ,1\right)_K$ .
+%% %\end{itemize}
+%% %
+%% %
+%% %\scriptsize{
+%% %\begin{thebibliography}{10}
+%% %\bibitem{Braess:2009}
+%% %Braess, Dietrich and Pillwein, Veronika and Sch{\"o}berl,
+%% %              Joachim.
+%% %\newblock {\em Equilibrated residual error estimates are {$p$}-robust}.
+%% %\newblock Computer Methods in Applied Mechanics and Engineering, 2009.
+%% %\end{thebibliography}
+%% %}
+%% %
+%% %\end{frame}
+%% %%\subsection{A posteriori error estimates}
+%% %\begin{frame}
+%% %\frametitle{A posteriori error estimates}
+%% %\vspace{-0.2 cm}
+%% %
+%% %\begin{itemize}
+%% %\item
+%% %${\bm u}=(u_1,u_2)\in\mathcal{K}_g$,\ $\uhki=(\uunhki,\udeuxhki)\in \mathbb{X}_{gh} \times \mathbb{X}_{0h}$,\ $\left\{\sigunhki, \sigdeuxhki\right\} \in \HdivOmeg$
+%% %\end{itemize}
+%% %\textcolor{red}{\textbf{Warning:}}
+%% %$\uunhki(\ba) - \udeuxhki(\ba)$ and $\lambhki(\ba)$ can be negative. 
+%% %%\vspace{-0.3 cm}
+%% %\begin{figure}[H]
+%% %\textcolor{red}{\hspace{-1.4 cm} \textbf{Example: k=2}}
+%% %\begin{subfigure}[normal]{0.35\textwidth} 
+%% %\includegraphics[width=\textwidth]{fig_article/diff_u1_u2_newton_gmres.eps}    
+%% %\label{ref:position_membrane_inside_iter}
+%% %\end{subfigure}
+%% %\begin{subfigure}[normal]{0.35\textwidth}
+%% %\includegraphics[width=\textwidth]{fig_article/lambda_newton_iter7.eps}     
+%% %\label{ref:lambda_membrane_inside_iter} 
+%% %\end{subfigure}
+%% %%\caption{membranes (left) and lagrange multiplier (right) during the iterations }
+%% %\end{figure}
+%% %\vspace{-0.2 cm}
+%% %\textcolor{cadmiumgreen}{\textbf{Motivation:}} Define $\shki \in \Kgh$ by
+%% %\vspace{0.3 cm}
+%% %$\dps \shki (\ba)= \dps \begin{cases}
+%% %\uhki(\ba) = \left(\uunhki(\ba), \udeuxhki(\ba)\right) \quad &\mbox{if $\uunhki(\ba) \geq \udeuxhki(\ba)$,}\\
+%% %\dps \left(\frac{\uunhki(\ba) + \udeuxhki(\ba)}{2}, \frac{\uunhki(\ba) + \udeuxhki(\ba)}{2}\right) \quad &\mbox{if $\uunhki(\ba) < \udeuxhki(\ba)$.}\end{cases}$
+%% %\end{frame}
+%% %\begin{frame}
+%% %
+%% %
+%% %\begin{itemize}
+%% %\item
+%% %Discretization error estimators
+%% %\vspace{0.3 cm}
+%% %$\left.
+%% %\begin{array}{ll}
+%% %\dps {\eta}_{\mathrm{F},K,\ialf}^{\kk,\ii} &= \left\| \mu_\ialf^{\frac{1}{2}} \nab u_{\ialf h}^{\kk,\ii}+\mu_\ialf^{-\frac{1}{2}} \sigmaialfhdiscki \right\|_{K}  
+%% %\\
+%% %\dps {\eta}_{\mathrm{osc},K,\ialf} & =  \dps \frac{h_K}{\pi} \mu_\ialf^{-\frac{1}{2}} \left\|f_\ialf-{\bm \Pi}_{\mathbb{P}_1}(f_\ialf)\right\|_{K}\\
+%% %\dps \etCKkipos & = 2 \dps \left(\uunhki-\udeuxhki,\lambhkipos\right)_K
+%% %\end{array}
+%% %\right\} \Rightarrow \dps {\bm \eta}^{\kk,\ii}_{\mathrm{disc}}
+%% %$\\
+%% %%\vspace{0.2 cm}
+%% %\item
+%% %Linearization error estimators
+%% %\vspace{0.3 cm}
+%% %%%%%%%%%%%
+%% %$\left.
+%% %\begin{array}{ll}
+%% %\dps \etalinunKki  &=  \tnorm{\shki-\uhki}_K  
+%% %\\
+%% %\dps \etalindeuxKki &= 2 h_{\Omega} \CPF \left(\frac{1}{\mu_1} + \frac{1}{\mu_2} \right)^{\frac{1}{2}} \left\|\lambhkipos\right\|_{\Omega} \tnorm{\shki-\uhki}_K\\
+%% %\dps \etalintroisKki &= h_{\Omega} \CPF \left(\frac{1}{\mu_1} + \frac{1}{\mu_2} \right)^{\frac{1}{2}} \left\| \lambhkineg\right\|_K
+%% %\end{array}
+%% %\right\} \Rightarrow \dps {\bm \eta}^{\kk,\ii}_{\mathrm{lin}}
+%% %$
+%% %\\
+%% %\item
+%% %Algebraic error estimators\\
+%% %\vspace{0.1 cm}
+%% %$\left.
+%% %\begin{array}{ll}
+%% %\dps \etaalgKialfki &= \left\|\mu_\ialf^{-\frac{1}{2}}\sigmaialfhalgki\right\|_{K}
+%% %\end{array}
+%% %\right\} \Rightarrow \dps {\bm \eta}^{\kk,\ii}_{\mathrm{alg}}
+%% %$
+%% %\end{itemize}
+%% %
+%% %\begin{theorem}[A posteriori  estimate distinguishing the error components]
+%% %
+%% %
+%% %\emph{
+%% %\textcolor{bulgarianrose}{
+%% %\begin{equation*}
+%% %\dps
+%% %|||\bu-\uhki||| \leq \eta^{\kk,\ii}_{\mathrm{disc}} +\eta^{\kk,\ii}_{\mathrm{alg}} + \eta^{\kk,\ii}_{\mathrm{lin}}.
+%% %\end{equation*}
+%% %}}
+%% %
+%% %\end{theorem}
+%% %\end{frame}
+%% %
+%% %\begin{frame}
+%% %\vspace{-0.2 cm}
+%% %\begin{proof}
+%% %We define global versions of these estimators as $ \eta_{\cdot}^{k,i} = \left\{\sum_{K \in \Th}\left(\eta_{\cdot,K}^{k,i}\right)^2\right\}^{\frac{1}{2}}$
+%% %\begin{enumerate}
+%% %\item $\uhki \notin \Kgh$: define the projection 
+%% %$\bs$ of $\uhki$ in $\Kg$ by $a(\bs,\bv-\bs) \geq a(\uhki,\bv-\bs) \quad \forall \bv \in \Kg $ \alert{Pb well posed: Lions-Stampacchia}
+%% %
+%% %
+%% %\item<2-> 
+%% %
+%% %$
+%% %\tnorm{\bu-\uhki}^2 = \underbrace{ a(\bu - \uhki, \bu - \bs)}_{=\textcolor{blue}{\textbf{A}}} + \underbrace{a(\bu  - \uhki, \bs-\uhki)}_{=\textcolor{cadmiumgreen}{\textbf{B}}}.
+%% %%=a(\bu,\bu-\uhki)-a(\uhki,\bu-\uhki).
+%% %$
+%% %\item<3-> 
+%% %
+%% %$\textcolor{cadmiumgreen}{\textbf{B}} \leq \tnorm{\bu-\uhki} \etalinunki$
+%% %\item<4-> 
+%% %\footnotesize
+%% %\vspace{-0.3 cm}
+%% %$\dps
+%% %\textcolor{blue}{\textbf{A}} \leq \left(\underbrace{\left\{\dps \sum_{K \in \Th}\dps \sum_{\ialf=1}^2({\eta}_{\mathrm{osc},K,\ialf} + {\eta}_{\mathrm{F},K,\ialf}^{\kk,\ii})^2\right\}^{\frac{1}{2}}}_{\textcolor{bulgarianrose}{\eta_1}} + \etalintroiski \right) \tnorm{\bu-\uhki} + \frac{1}{2} \etalindeuxki + \frac{1}{2} \sum_{K \in \Th} \etCKkipos 
+%% %$
+%% %\item<5-> 
+%% %\alert{Young inequality:} $\dps \tnorm{\bu-\uhki} \leq  \left\{ \left(\eta_1^{\kk,\ii} + \etalinunki + \etalintroiski    \right)^2  + \etalindeuxki + \sum_K \etCKkipos \right\}^{\frac{1}{2}}.
+%% %$
+%% %\end{enumerate}
+%% %\end{proof}
+%% %\end{frame}
+%% %
+%% %%\begin{frame}
+%% %%\scriptsize
+%% %%$\dps \eta_1 \hspace{-0.1 cm} = \left\{\sum_{K \in \Th}\sum_{j=1}^2({\eta}_{\mathrm{R},K,j}^{k,i}+{\eta}_{\mathrm{F},K,j}^{k,i}+\etalgKjki)^2\right\}^{\frac{1}{2}}$ $\dps \eta_2 \hspace{-0.1 cm}= \left\{\sum_{K\in \Th} (\etLKkineg)^2\right\}^{\frac{1}{2}} \hspace{-0.2 cm} +\left\{\sum_{K\in \Th} (\etPKki)^2\right\}^{\frac{1}{2}}$
+%% %%\\
+%% %%\scriptsize
+%% %%$\dps \eta_3 = \frac{1}{2} \sum_{K\in \Th}\left(\etCKkineg + \etCKkipos \right)+\left\{\sum_{K\in \Th} (\etLKkipos)^2\right\}^{\frac{1}{2}}$ 
+%% %%$\dps \varepsilon_1 = \frac{1}{2} \hspace{-0.1 cm} + \frac{1}{2}\frac{\min(1, \eta_2)}{\eta_2}$  $\dps \varepsilon_2 \hspace{-0.1 cm}=\min(\frac{1}{2}, \eta_2)$
+%% %%\vspace{-0.2 cm}
+%% %%\normalsize
+%% %
+%% %%\begin{itemize}
+%% %%\item 
+%% %%$\dps \eta^{k,i}_{\mathrm{disc}} = \sqrt{2} \left\{3 \sum_{j=1}^{2}\left(\sum_{K \in \Th} \left({\eta}_{\mathrm{R},K,j}^{k,i} + {\eta}_{\mathrm{F},K,j}^{k,i}\right)^{2}\right) + \frac{1}{2} \sum_{K \in \Th} \etCKkipos \right\}^{\frac{1}{2}}$
+%% %%\item
+%% %%$\dps \eta^{k,i}_{\mathrm{alg}} =  \sqrt{6} \left\{\sum_{j=1}^{2} \sum_{K \in \Th} \left(\etalgKjki\right)^{2}\right\}^{\frac{1}{2}}$
+%% %%\item
+%% %%$\dps \eta^{k,i}_{\mathrm{lin}} = \sqrt{2} \left\{\sum_{K \in \Th} \left(2 \left(\etLKkineg + \etPKki\right)^2 + \frac{1}{2} \etCKkineg + \etLKkipos\right)\right\}^{\frac{1}{2}}$
+%% %%\end{itemize}
+%% %
+%% %%\end{frame}
+%% %%\section{Adaptive Inexacte semi-smooth Newton method}
+%% %
+%% %%%%%%%%%%%%%%%%%%%%%%%ADAPTIVE ALGORITHM IF FOR
+%% %%\begin{frame}
+%% %%\frametitle{Adaptive inexacte semi-smooth Newton algorithm}
+%% %%%\vspace{-0.3 cm}
+%% %%\vspace{-0.4 cm}
+%% %%\begin{algorithm}[H]
+%% %%\caption{Adaptive inexact semi-smooth Newton algorithm}
+%% %%
+%% %%\begin{algorithmic}
+%% %%\STATE{\textbf{Initialization:}\; Choose an initial vector $\Xh^{\textcolor{royalblue}{0}} \in \mathcal{M}_{3N_h,1}(\R)$}
+%% %%\FOR{$\textcolor{royalblue}{k=1 : N_{\mathrm{newton}}^{\mathrm{max}}}$} 
+%% %%\STATE {Compute $\A^{\textcolor{royalblue}{k-1}} \hspace{-0.1
+%% %% cm} \in \mathcal{M}_{3N_h,3N_h}(\R)$, $\bB^{\textcolor{royalblue}{k-1}} \hspace{-0.1 cm} \in \mathcal{M}_{3N_h,1}(\R)$ \\
+%% %%Consider 
+%% %%%the system of linear algebraic equations 
+%% %%$\A^{\textcolor{royalblue}{k-1}} \Xhk= \bB^{\textcolor{royalblue}{k-1}}$}
+%% %%\STATE{\textbf{Initialization for the linear solver:} Define $\X_h^{\kk,\textcolor{burntorange}{0}} = \X_h^{\textcolor{royalblue}{k-1}}$ 
+%% %%%as initial guess for the linear solver 
+%% %%}
+%% %%	\FOR{$\textcolor{burntorange}{i=1 : N_{\mathrm{alg}}^{\mathrm{max}}}$}\STATE Compute Residual: {$\Rhki =\bB^{\textcolor{royalblue}{k-1}}-\A^{\textcolor{royalblue}{k-1}} \Xhki$}\\
+%% %%	Compute estimators 
+%% %%	\IF{\fcolorbox{violet}{white}{$\eta_{\mathrm{alg}}^{\kk,\ii} \leq \gamma_{\mathrm{alg}} \max  \left\{{\eta_{\mathrm{disc}}^{\kk,\ii}, \eta_{\mathrm{lin}}^{\kk,\ii}}\right\}$}} \STATE {Set $\Xhk = \Xhki$ end of linear solver (\textbf{break})} 
+%% %%	%\ELSE \STATE{$\ii=\ii+1$}
+%% %%	\ENDIF
+%% %%	\ENDFOR
+%% %%	\IF{\fcolorbox{violet}{white}{$\eta_{\mathrm{lin}}^{\kk,\ii} \leq \gamma_{\mathrm{lin}} \eta_{\mathrm{disc}}^{\kk,\ii}$}} \STATE {Set $\Xhk = \Xh$, end of non linear solver (\textbf{return})} 
+%% %%%	\ELSE \STATE{$\kk=\kk+1$} 
+%% %%\ENDIF
+%% %%\ENDFOR
+%% %%\end{algorithmic}
+%% %%\end{algorithm}
+%% %%\scriptsize
+%% %%\vspace{-0.4 cm}
+%% %%%\begin{thebibliography}{10}
+%% %%%\bibitem{VorErn:2013}
+%% %%%Alexandre Ern and Martin Vohral{\'{\i}}k.
+%% %%%\newblock Adaptive inexact {N}ewton methods with a posteriori stopping criteria
+%% %%%  for nonlinear diffusion {PDE}s. {\em SIAM J. Sci. Comput.}, 35(4):A1761--A1791, 2013.
+%% %%%\end{thebibliography}
+%% %%\end{frame}
+%% %%\begin{frame}
+%% %%\scriptsize
+%% %%\vspace{-0.3 cm}
+%% %%\begin{algorithm}[H]
+%% %%\caption{Adaptive Inexact semi-smooth Newton algorithm}
+%% %%\begin{algorithmic}
+%% %%\STATE $ {\bm 1.} \hspace{0.1 cm} \mbox{Choose an initial vector $\Xh^{0} \in \mathcal{M}_{3N_h,1}(\R)$ \hspace{0.15 cm} and we set $\kk=1$}.$\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE $ {\bm 2.} \hspace{0.1 cm} \mbox{From $\Xh^{k-1}$ define $\A^{\kk-1} \in \mathcal{M}_{3N_h,3N_h}(\R)$ and $\mathbb{F}^{\kk-1} \in \mathcal{M}_{3N_h,1}(\R)$.}$\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE  $ {\bm 3.}\hspace{0.1 cm} \mbox{Consider the system of linear algebraic equations $\A^{\kk-1} \Xhk= \mathbb{F}^{\kk-1}$ ($*$)}$.\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE  ${\bm {3a}.} \hspace{0.1 cm} \mbox{Define $\X_h^{\kk,0} = \X_h^{k-1}$ as initial guess for the linear solver and set $\ii=0$}$.\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE  ${\bm {3b}.}\hspace{0.1 cm}  \mbox{For $\textcolor{red}{\ii}>0$ the approximation $\Xhki$ to $\Xhk$ satisfy $\A^{\kk-1} \Xhki +\Rhki =\mathbb{F}^{\kk-1}$ ($**$)}$.\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE ${\bm 4.}\hspace{0.1 cm} \mbox{\textcolor{cadmiumgreen}{\textbf{Adaptive inexact resolution for ($**$)}}}$.\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE $\qquad {\bm {4a}.} \hspace{0.1 cm} \mbox{Stopping criterion for the linear solver: $\eta_{\mathrm{alg}}^{\kk,\ii} \leq \gamma_{\mathrm{alg}} \max \left\{\eta_{\mathrm{disc}}^{\kk,\ii}, \eta_{\mathrm{lin}}^{\kk,\ii}\right\}$.}$
+%% %%\vspace{0.1 cm}
+%% %%\STATE $ \qquad \mbox{If satisfied, set $\Xhk = \Xhki$. If not, set $\ii=\ii+1$ and go back to $(**)$.}$\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE $\qquad {\bm {4b}.}\hspace{0.1 cm}  \mbox{Sopping criterion for the non linear solver: $\eta_{\mathrm{lin}}^{\kk,\ii} \leq \gamma_{\mathrm{lin}} \eta_{\mathrm{disc}}^{\kk,\ii}$.}$\\
+%% %%\vspace{0.1 cm}
+%% %%\STATE $\qquad \mbox{If satisfied finish. If not, set $\kk=\kk+1$ and go back to ${\bm 2}.$}$
+%% %%\label{ref:adpative:exact:inexacte algorithm}
+%% %%\end{algorithmic}
+%% %%\label{ref:methode_newton_min_exacte}
+%% %%\end{algorithm}
+%% %%\scriptsize
+%% %%\begin{thebibliography}{10}
+%% %%\bibitem{VorErn:2013}
+%% %%Alexandre Ern and Martin Vohral{\'{\i}}k.
+%% %%\newblock Adaptive inexact {N}ewton methods with a posteriori stopping criteria
+%% %%  for nonlinear diffusion {PDE}s. {\em SIAM J. Sci. Comput.}, 35(4):A1761--A1791, 2013.
+%% %%\end{thebibliography}
+%% %%\end{frame}
+%% %
+%% %%%%%%%%%%ALGO LIKE PAPER MARTIN SIAM
+%% %%%%%%%%%%%%%%%
+%% %%\scriptsize
+%% %%\begin{algorithmic}
+%% %%\STATE $ {\bm 1.} \hspace{0.1 cm} \mbox{Choose an initial vector $\Xh^{0} \in \mathcal{M}_{3N_h,1}(\R)$ \hspace{0.15 cm} and we set $k=1$}.$\\
+%% %%\STATE $ {\bm 2.} \hspace{0.1 cm} \mbox{From $\Xh^{k-1}$ define the matrix $\A^{k-1} \in \mathcal{M}_{3N_h,3N_h}(\R)$ and the vector $\mathbb{F}^{k-1} \in \mathcal{M}_{3N_h,1}(\R)$  by \eqref{eq:def:jac_clarke:A:right:hand:side:newton:newton}.}$\\
+%% %%\STATE  $ {\bm 3.}\hspace{0.1 cm} \mbox{Consider the system of linear algebraic equations $\A^{k-1} \Xhk= \mathbb{F}^{k-1}$ ($*$)}$.\\
+%% %%\STATE  ${\bm {3a}.} \hspace{0.1 cm} \mbox{Define $\X_h^{k,0} = \X_h^{k-1}$ as initial guess for the iterative linear solver and set $i=0$}$.\\
+%% %%\STATE  ${\bm {3b}.}\hspace{0.1 cm}  \mbox{Perform $\nu$ steps of a chosen iterative lienar solver for the solution of the linear system $(*)$ starting}$\\
+%% %%\STATE $\mbox{from the vector $\Xhki$. This yields on step $i \geq 0$ an approximation $\Xhki$ to $\Xhk$ satisfying}$\\
+%% %%\STATE$\mbox{$\A^{k-1} \Xhki +\Rhki =\mathbb{F}^{k-1}$ ($**$)}$.\\
+%% %%\STATE ${\bm 4.}\hspace{0.1 cm} \mbox{\textcolor{blue}{Exact resolution for ($**$)}}$.\\
+%% %%\only<2>{
+%% %%\STATE $\qquad {\bm {4a}.}\hspace{0.1 cm}  \mbox{Check the stopping criterion for the linear solver in the form $\left\|\bR_{\mathrm{alg}} \right\| \leq \varepsilon_1$}$.\\
+%% %%\STATE $ \qquad\mbox{If satisfied, set $\Xhk = \Xhki$. If not, set $i=i+\nu$ and go back to ${\bm 3b}$.}$\\
+%% %%\STATE $\qquad {\bm {4b}.}\hspace{0.1 cm}  \mbox{Check the stopping criterion for the non linear solver in the form $\left\|\bR_{\mathrm{lin}} \right\| \leq \varepsilon_1$}$.\\
+%% %%\STATE $ \qquad\mbox{If satisfied finish. If not, set $k=k+1$ and go back to ${\bm 2}.$}$\\}
+%% %%\STATE ${\bm 5.}\hspace{0.1 cm} \mbox{\textcolor{cadmiumgreen}{Inexact resolution for ($**$)}}$.\\
+%% %%\only<3>{\STATE $\qquad {\bm {5a}.}\hspace{0.1 cm} \mbox{Check the stopping criterion for the linear solver in the form $\left\|\bR_{\mathrm{alg}} \right\| \leq \alpha_{\mathrm{alg}}\left\|\bR_{\mathrm{lin}} \right\|$}$.\\
+%% %%\STATE $ \qquad\mbox{If satisfied, set $\Xhk = \Xhki$. If not, set $i=i+\nu$ and go back to ${\bm {3b}}$}$.\\
+%% %%\STATE $\qquad {\bm {5b}.} \hspace{0.1 cm} \mbox{Check the stopping criterion for the non linear solver in the form $\left\|\bR_{\mathrm{lin}} \right\| \leq \varepsilon_1$}$.\\
+%% %%\STATE $ \qquad\mbox{If satisfied finish. If not, set $k=k+1$ and go back to ${\bm 2}.$}$\\
+%% %%}
+%% %%\STATE ${\bm 6.}\hspace{0.1 cm} \mbox{\textcolor{red}{Adaptive inexact resolution for ($**$)}}$.\\
+%% %%\only<4>
+%% %%{
+%% %%\STATE $\qquad {\bm {6a}.} \hspace{0.1 cm} \mbox{Check the stopping criterion for the linear solver in the form $\eta_{\mathrm{alg}}^{k,i} \leq \gamma_{\mathrm{alg}} \max \left\{\eta_{\mathrm{disc}}^{k,i}, \eta_{\mathrm{lin}}^{k,i}\right\}$.}$
+%% %%\STATE $ \qquad \mbox{If satisfied, set $\Xhk = \Xhki$. If not, set $i=i+1$ and go back to $(**)$.}$\\
+%% %%\STATE $\qquad {\bm {6b}.}\hspace{0.1 cm}  \mbox{Check the stopping criterion for the non linear solver in the form $\eta_{\mathrm{lin}}^{k,i} \leq \gamma_{\mathrm{lin}} \eta_{\mathrm{disc}}^{k,i}$.}$\\
+%% %%\STATE $\qquad \mbox{If satisfied finish. If not, set $k=k+1$ and go back to ${\bm 2}.$}$
+%% %%}
+%% %%\label{ref:adpative:exact:inexacte algorithm}
+%% %%\end{algorithmic}
+%% %%\label{ref:methode_newton_min_exacte}
+%% %%\end{algorithm}
+%% %%\end{frame}
+%% %
+%% %\begin{frame}
+%% %\vspace{-0.3 cm}
+%% %\begin{algorithm}[H]
+%% %\frametitle{Adaptive inexacte semi-smooth Newton algorithm}
+%% %\caption{Adaptive inexact semi-smooth Newton algorithm}
+%% %\begin{algorithmic}
+%% %
+%% %\STATE{\textbf{Initialization:}\; Choose an initial vector $\Xh^{\textcolor{royalblue}{0}} \in \mathcal{M}_{3N_h,1}(\R)$, ($\kk=0$)}\\
+%% %\STATE{\textbf{Do}}\\
+%% %\STATE{\quad$\kk =\textcolor{royalblue}{k+1}$}\\
+%% %\STATE {\quad Compute $\A^{\textcolor{royalblue}{k-1}} \hspace{-0.1
+%% % cm} \in \mathcal{M}_{3N_h,3N_h}(\R)$, $\bB^{\textcolor{royalblue}{k-1}} \hspace{-0.1 cm} \in \mathcal{M}_{3N_h,1}(\R)$ \\
+%% %\quad Consider 
+%% %%the system of linear algebraic equations 
+%% %$\A^{\textcolor{royalblue}{k-1}} \Xhk= \bB^{\textcolor{royalblue}{k-1}}$}
+%% %\STATE{\quad \textbf{Initialization for the linear solver:} Define $\X_h^{\kk,\textcolor{burntorange}{0}} = \X_h^{\textcolor{royalblue}{k-1}}$, ($\textcolor{burntorange}{i=0}$) 
+%% %%as initial guess for the linear solver 
+%% %}\\
+%% %\STATE{\quad \textbf{Do}}
+%% %	\STATE{\qquad $\textcolor{burntorange}{i=i+1}$}\\	
+%% %	\STATE \qquad Compute Residual: {$\Rhki =\bB^{\textcolor{royalblue}{k-1}}-\A^{\textcolor{royalblue}{k-1}} \Xhki$}\\
+%% %	\qquad  Compute estimators 
+%% %	\STATE{\quad \textbf{While} \fcolorbox{violet}{white}{$\eta_{\mathrm{alg}}^{\kk,\ii} \geq \gamma_{\mathrm{alg}} \max  \left\{{\eta_{\mathrm{disc}}^{\kk,\ii}, \eta_{\mathrm{lin}}^{\kk,\ii}}\right\}$}} 
+%% %	
+%% %	
+%% %	
+%% %	\STATE{\textbf{While} \fcolorbox{violet}{white}{ $\eta_{\mathrm{lin}}^{\kk,\ii} \geq \gamma_{\mathrm{lin}} \eta_{\mathrm{disc}}^{\kk,\ii}$}} 
+%% %	\STATE{\textbf{End}}
+%% %%	\ELSE \STATE{$\kk=\kk+1$} 
+%% %
+%% %\end{algorithmic}
+%% %\end{algorithm}
+%% %\end{frame}
+%% %
+%% %
+%% %
+%% %
+%% %\begin{frame}
+%% %\section{Numerical experiments}
+%% %\subsection{Numerical experiments}
+%% %
+%% %\frametitle{Numerical experiments}
+%% %
+%% %\begin{itemize}
+%% %\item
+%% %$\Omega$ = \mbox{unit disk}, $J = 3$, $\mu_1= \mu_2 = 1$, $g = 0.05$, $\gamma_{\mathrm{lin}}=0.3$ $\gamma_{\mathrm{alg}}=0.3$
+%% %\item 
+%% %Semi-smooth solver: \textcolor{blue}{Newton-min}. Linear solver: \textcolor{red}{GMRES}
+%% %\end{itemize}
+%% %
+%% %
+%% %\begin{figure}
+%% %\begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Exact Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_exact_resolution_convergence_estimator_number_elements.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage}\hfill
+%% %\begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Inexact Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_inexact_resolution_convergence_estimator_number_elements.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage}\hfill
+%% %\begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Adaptive inexact Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_adapt_inexact_resolution_convergence_estimator_number_elements.eps}     
+%% %%\label{ref:lambda_membrane_convergence} 
+%% %\end{minipage}
+%% %%\caption{Exact Newton(left), Inexact Newton(middle), adaptive inexact Newton(right)}
+%% %\end{figure}
+%% %
+%% %\textcolor{red}{\textbf{Quality and precision are preserved for adaptive inexact semi-smooth Newton method.}}
+%% %
+%% %
+%% %\end{frame}
+%% %
+%% %\begin{frame}
+%% %\begin{figure}
+%% %\begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Exact Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_exact_resolution_estimators_gmres_iter_inside_first_newton_iter_Hmax_015.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage}\hfill
+%% %\begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Inexact Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_inexacte_resolution_Hmax_015_number_gmres_iter_inside_first_newton_step.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage}\hfill
+%% %\begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Adaptive inexact Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_adapt_inexact_resolution_estimators_gmres_iter_inside_first_newton_iter_Hmax_015.eps}     
+%% %%\label{ref:lambda_membrane_convergence} 
+%% %\end{minipage}
+%% %%\caption{Exact Newton(left), Inexact Newton(middle), adaptive inexact Newton(right)}
+%% %\end{figure}
+%% %
+%% %\vspace{-0.3 cm}
+%% %\begin{figure}
+%% %   \begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Exact  Newton 
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_exact_resolution_estimators_newton_iter_Hmax_015.eps}    
+%% %   \end{minipage} \hfill
+%% %   \begin{minipage}[c]{.33\linewidth}
+%% %   \centering
+%% %   Inexact Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_inexacte_resolution_Hmax_015_estimators_newton_step.eps}     
+%% %   \end{minipage} \hfill
+%% %  \begin{minipage}[c]{.32\linewidth}
+%% %  \centering
+%% %  Adaptive Inexact Newton  
+%% %   \includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_adapt_inexact_resolution_estimators_newton_iter_Hmax_015.eps}     
+%% %\end{minipage}\hfill
+%% %\end{figure}
+%% %\end{frame}
+%% %
+%% %
+%% %%
+%% %%\begin{figure}[H]
+%% %%\begin{subfigure}[normal]{0.32\textwidth} 
+%% %%\includegraphics[width=\textwidth]{fig_article/estimators_newton_step_exact_resolution.eps}    
+%% %%%\label{ref:position_membrane_convergence}
+%% %%\end{subfigure}
+%% %%\begin{subfigure}[normal]{0.32\textwidth}
+%% %%\includegraphics[width=\textwidth]{fig_article/estimators_newton_step_inexact_resolution.eps}     
+%% %%%\label{ref:lambda_membrane_convergence} 
+%% %%\end{subfigure}
+%% %%\begin{subfigure}[normal]{0.33\textwidth}
+%% %%\includegraphics[width=\textwidth]{fig_article/estimators_newton_step_adapt_inexact_resolution.eps}     
+%% %%%\label{ref:lambda_membrane_convergence} 
+%% %%\end{subfigure}
+%% %%\caption{Exact Newton(left), inexact Newton(middle), adaptive inexacte Newton(right)}
+%% %%\end{figure}
+%% %
+%% %\begin{frame}
+%% %
+%% %%\begin{itemize}
+%% %%\item Effectivity indices as a function of the Newton iterations for 3 methods.
+%% %%\end{itemize}
+%% %
+%% %\textcolor{red}{\textbf{Overall performance of the three approaches:}}
+%% %\begin{figure}[H]
+%% %\begin{minipage}[c]{.40\linewidth}
+%% %   \centering 
+%% %   Newton
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_comparison_three_methods_number_Newton_iter_number_elements.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage}\hfill
+%% %\begin{minipage}[c]{.40\linewidth}
+%% %\centering
+%% %GMRES
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_comparison_three_methods_number_Gmres_iter_number_newton_step.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage} \hfill
+%% %\end{figure}
+%% %\begin{figure}
+%% %\vspace*{-0.04\textwidth} \hspace*{0.1\textwidth}
+%% %\begin{minipage}{.40\linewidth} 
+%% %\centering   Total GMRES
+%% % \includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_comparison_three_methods_total_number_Newton_Gmres_iter_number_elements.eps}     
+%% %%\label{ref:lambda_membrane_convergence} 
+%% %\end{minipage} \hfill
+%% %
+%% %%\caption{Number of Newton iterations per number of elements (left), number of linear solver iterations per Newton step, and total number of linear solver iterations per number of elements}
+%% %\label{ref:figure:plot:number:alg:iter:per:newton:step}
+%% %\end{figure}
+%% %\end{frame}
+%% %%\begin{frame}
+%% %%%\begin{figure}[H]
+%% %%\centering
+%% %%\begin{tabular}
+%% %%{|>{\begin{bf}} c <{\end{bf}}|c|c|c|c|c|}
+%% %%\hline
+%% %% $(\gamma_{\mathrm{alg}},\gamma_{\mathrm{lin}})$  & 
+%% %% $(0.1,0.1)$ &  $(0.01,0.1)$  & $(0.1,0.01)$ & $(0.01,0.01)$ \\
+%% %%\hline
+%% %% Newton iter &   21 &  21 &  25 &  25  \\
+%% %%\hline
+%% %% Algebraic iter ($k=5$) &   10 &  30 &  10 &  30\\
+%% %%\hline
+%% %% Total iter &   210 &  370 &  250 &  410 
+%% %%\label{ref:tableau:number:inex:adapt:iter_gamma:alg:0.1}
+%% %%%\caption{Adaptive inexact Newton method for a fixed mesh containing approximately 35000 elements and for several weights $\gamma_{\mathrm{alg}}$ and $\gamma_{\mathrm{lin}}$.}
+%% %%\label{ref:tableau:comparatif}
+%% %%
+%% %%\end{tabular}
+%% %%%\end{figure}
+%% %%\end{frame}
+%% %
+%% %\begin{frame}
+%% %\begin{figure}
+%% %\begin{minipage}[c]{.38\linewidth}
+%% %   \centering
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_effectivity_index_3_methods_Hmax_015.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage}\hfill
+%% %\begin{minipage}[c]{.38\linewidth}
+%% %   \centering
+%% %\includegraphics[width=\textwidth]{image_article_membrane_version_Juillet_2017/modif_effectivity_index_3_methods_last_newton_iter_Hmax_015.eps}     
+%% %%\label{ref:lambda_membrane_convergence} 
+%% %\end{minipage}\hfill
+%% %\end{figure}
+%% %
+%% %\textcolor{red}{\textbf{Distribution of the error:}}
+%% %\begin{figure}[H]
+%% %\begin{minipage}[c]{.40\linewidth}
+%% %   \centering
+%% %   Actual error
+%% %\includegraphics[width=\textwidth]{fig_article/estimator_actual_error_inexact_newton_iter_30second_level_modif.eps}    
+%% %%\label{ref:position_membrane_convergence}
+%% %\end{minipage}\hfill
+%% %\begin{minipage}[c]{.40\linewidth}
+%% %   \centering
+%% %   Estimated error
+%% %\includegraphics[width=\textwidth]{fig_article/energy_norm_second_level_inexact_newton_iter_30_modif.eps}     
+%% %%\label{ref:lambda_membrane_convergence} 
+%% %\end{minipage}\hfill
+%% %%\caption{Estimated(left) and actual(right), $J=2$, inexact Newton}
+%% %\end{figure}
+%% %
+%% %
+%% %
+%% %\end{frame}
+%% %\begin{frame}
+%% %\frametitle{Conclusion}
+%% %\begin{itemize}
+%% %\item
+%% %We devised an a posteriori error estimate between $\bu$ and $\uhki$ for a wide class of semi-smooth Newton methods.
+%% %\vspace{0.5 cm}
+%% %
+%% %\item 
+%% %This estimate enables to control the error at each semi-smooth Newton stesp.
+%% %\vspace{0.5 cm}
+%% %\item
+%% %The adaptive inexact semi-smooth Newton method requires less non linear and linear steps. 
+%% %%\vspace{0.5 cm}
+%% %%\item We have adaptive stopping criteria for the discretization $h$, the semi-smooth Newton method $\kk$ and for the linear algebra $\ii$.
+%% %\vspace{0.5 cm}
+%% %\item
+%% %Extension of this work to  multiphase flow problem with exchange between phases (non linear complementarity conditions) in porous media.  
+%% %\end{itemize}
+%% %\vspace{1 cm}
+%% %\Large
+%% %\hspace{1.8 cm}
+%% %\textcolor{midnightblue}
+%% %{\textbf{
+%% %Thank you for your attention!}}
+%% %\end{frame}
+%% %%\begin{frame}
+%% %%\footnotesize
+%% %%\frametitle{Bibliography}
+%% %%\begin{itemize}
+%% %%\item
+%% %%Problem of contact between two membranes
+%% %%\end{itemize}
+%% %%\begin{thebibliography}{10}
+%% %%  \bibitem{VorBer:2008}
+%% %%Faker Ben~Belgacem, Christine Bernardi, Adel Blouza, and Martin
+%% %%  Vohral{\'{\i}}k.
+%% %%\newblock A finite element discretization of the contact between two membranes.
+%% %%\newblock {\em M2AN Math. Model. Numer. Anal.}, 43(1):33--52, 2008.
+%% %%\bibitem{VorBer:2012}
+%% %%Faker Ben~Belgacem, Christine Bernardi, Adel Blouza, and Martin
+%% %%  Vohral{\'{\i}}k.
+%% %%\newblock On the unilateral contact between membranes. {P}art 2: {\it a
+%% %%  posteriori} analysis and numerical experiments.
+%% %%\newblock {\em IMA J. Numer. Anal.}, 32(3):1147--1172, 2012.
+%% %%
+%% %%\end{thebibliography}
+%% %%\begin{itemize}
+%% %%\item
+%% %%Inexact Newton method and a posteriori adaptivity
+%% %%\end{itemize}
+%% %%\begin{thebibliography}{10}
+%% %%\bibitem{VorErn:2013}
+%% %%Alexandre Ern and Martin Vohral{\'{\i}}k.
+%% %%\newblock Adaptive inexact {N}ewton methods with a posteriori stopping criteria
+%% %%  for nonlinear diffusion {PDE}s.
+%% %%\newblock {\em SIAM J. Sci. Comput.}, 35(4):A1761--A1791, 2013.
+%% %%\end{thebibliography}
+%% %%
+%% %%\begin{itemize}
+%% %%\item
+%% %%Non smooth analysis and complementarity problem
+%% %%\end{itemize}
+%% %%\begin{thebibliography}{10}
+%% %%
+%% %%\bibitem{Facchinei:2003}
+%% %%Francisco Facchinei and Jong-Shi Pang.
+%% %%\newblock {\em Finite-dimensional variational inequalities and complementarity
+%% %%  problems. {V}ol. {I,II}}.
+%% %%\newblock Springer Series in Operations Research. Springer-Verlag, New York,
+%% %%  2003.
+%% %%
+%% %%%\bibitem{Pang:2003}
+%% %%%Francisco Facchinei and Jong-Shi Pang.
+%% %%%\newblock {\em Finite-dimensional variational inequalities and complementarity
+%% %%%  problems. {V}ol. {II}}.
+%% %%%\newblock Springer Series in Operations Research. Springer-Verlag, New York,
+%% %%%  2003.
+%% %%  \end{thebibliography}
+%% %
+%% %%\end{frame}
+%% %
+%% %%\begin{frame}
+%% %%\begin{center}
+%% %%{\Large \textbf {Thank you for your attention}}
+%% %%\end{center}
+%% %%\end{frame}
+\bibliographystyle{plain}
+\bibliography{diphasique_biblio}
+\end{document}
+
+
+

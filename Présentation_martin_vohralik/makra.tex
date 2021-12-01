@@ -1,0 +1,577 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Biblio
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\subm{\rm submitted}
+\newcommand\Subm{\rm Submitted}
+\newcommand\submt{\rm submitted~to~}
+\newcommand\Submt{\rm Submitted~to~}
+\newcommand\Submfp{\rm Submitted for publication}
+\newcommand\submfp{\rm submitted for publication}
+\newcommand\prep{\rm In~preparation}
+\newcommand\toap{\rm to~appear}
+\newcommand\Afp{\rm Accepted for publication}
+\newif \ifwhere
+%\wheretrue
+\newcommand\jour{}
+%\newcommand\jour{\em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\bean}{\begin{eqnarray*}}
+\newcommand{\eean}{\end{eqnarray*}}
+\def\ba#1\ea{\begin{align}#1\end{align}}
+\def\ban#1\ean{\begin{align*}#1\end{align*}}
+\def\bat#1\eat{\begin{alignat}#1\end{alignat}}
+\def\batn#1\eatn{\begin{alignat*}#1\end{alignat*}}
+\def\bs#1\es{\begin{split}#1\end{split}}
+\newcommand{\bse}{\begin{subequations}}
+\newcommand{\ese}{\end{subequations}}
+\newcommand{\bt}{\begin{theorem}}
+\newcommand{\et}{\end{theorem}}
+\newcommand{\bl}{\begin{lemma}}
+\newcommand{\el}{\end{lemma}}
+\newcommand{\bc}{\begin{corollary}}
+\newcommand{\ec}{\end{corollary}}
+\newcommand{\bp}{\begin{proof}}
+\newcommand{\ep}{\end{proof}}
+\newcommand{\bd}{\begin{definition}}
+\newcommand{\ed}{\end{definition}}
+\newcommand{\br}{\begin{remark}}
+\newcommand{\er}{\end{remark}}
+\newcommand{\bas}{\begin{assumption}}
+\newcommand{\eas}{\end{assumption}}
+\newcommand{\bex}{\begin{example}}
+\newcommand{\eex}{\end{example}}
+\newcommand{\bqo}{\begin{quote}}
+\newcommand{\eqo}{\end{quote}}
+\newcommand{\bdc}{\begin{description}}
+\newcommand{\edc}{\end{description}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+\ifSIAM
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\else
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{assumption}[lemma]{Assumption}
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem{remark}[lemma]{Remark}
+\newtheorem{example}[lemma]{Example}
+\newtheorem{algorithm}[lemma]{Algorithm}
+
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \ifbbm two versions of fonts for tensors
+% \iffract fractions as 1/2 or \frac 1 2
+% \Xv vector version of X
+% \Xm matrix version of X
+% \Xi[1] X with superscript as argument
+% \tX bold X
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Domains
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\Om{\Omega}
+\newcommand\om{\omega}
+\newcommand\oma{{\omega_\ver}}
+\newcommand{\TF}{T}
+\newcommand\GD{\Gamma_{\mathrm D}}
+\newcommand\GN{\Gamma_{\mathrm N}}
+\newcommand\GR{\Gamma_{\mathrm R}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Operators
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\Gr{\nabla}
+\newcommand\Grb{\nabla}
+\newcommand\Dv{\nabla {\cdot}}
+\newcommand\Dvb{\nabla_{\mathcal{T}} {\cdot}}
+\newcommand\Crl{\nabla {\times}}
+\newcommand\Rt{\Rm\nabla}
+\newcommand\Rm{{\rm R}_{\frac{\pi}{2}}}
+\newcommand\Rmat{\begin{pmatrix}
+   0 & -1 \\
+   1 & 0
+  \end{pmatrix}}
+\newcommand\gr{\mathrm{grad}}
+\newcommand\dv{\mathrm{div}}
+\newcommand\rt{\mathrm{rot}}
+\newcommand\crl{\mathrm{curl}}
+\newcommand\scp{{\cdot}}
+\newcommand\scpm{{:}}
+\newcommand\Lap{\Delta}
+\newcommand\Lapb{\Delta}
+\newcommand{\jump}[1]{[\![#1]\!]}
+\newcommand{\aver}[1]{\{\!\!\{#1\}\!\!\}}
+\renewcommand{\vec}[1]{#1}
+\newcommand{\matr}[1]{\mathbb{#1}}
+\newcommand\il{|\hspace{-0.02cm}|\hspace{-0.02cm}|}
+\newcommand{\en}[1]{\il#1\il}
+\newcommand{\ena}[1]{\il#1\il_\oplus}
+\newcommand\BS{\mathcal{B}_{\mathrm{S}}}
+\newcommand\BA{\mathcal{B}_{\mathrm{A}}}
+\newcommand\BD{\mathcal{B}_{\mathrm{D}}}
+\newcommand\bA{b_{\mathrm{A}}}
+
+\ifbbm
+
+\newcommand\II{{\mathbbm I}}
+\newcommand{\svg}[1]{{\mathbbm d}(#1)}
+
+\else
+
+\newcommand\II{\underline{\bm I}}
+\newcommand{\svg}[1]{\underline{\bm d}(#1)}
+
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Spaces
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\Ho{H^1(\Om)}
+\newcommand\Hoi[1]{H^1(#1)}
+\newcommand\Hoo{H^1_0(\Om)}
+\newcommand\Hooi[1]{H^1_0(#1)}
+\newcommand\Hmo{H^{-1}(\Om)}
+\newcommand\HTh{H^1(\Th)}
+\newcommand\HG{H^{1/2}(\pt \Om)}
+\newcommand\Hsa{H^1_*(\oma)}
+\newcommand\HTa{H^1(\Ta)}
+\newcommand\Hs{H^1_*(\om)}
+\newcommand\Hbsa{\bar H^1_*(\oma)}
+
+\newcommand\Woinf{W^{1,\infty}(\Om)}
+\newcommand\Wop{W^{1,p}(\Om)}
+\newcommand\Wopi[1]{W^{1,p}(#1)}
+\newcommand\Woop{{W^{1,p}_0(\Om)}}
+
+\newcommand\Lt{L^2(\Om)}
+\newcommand\Lti[1]{L^2(#1)}
+\newcommand\Lto{L^2_0(\Om)}
+\newcommand\Linf{L^\infty(\Om)}
+\newcommand\Lq{L^q(\Om)}
+\newcommand\Lqo{L^q_0(\Om)}
+\newcommand\LtQ{L^2(\Omega \times (0,\TF))}
+\newcommand\Ls{L^2_*(\oma)}
+\newcommand\tLti[1]{\tL^2(#1)}
+
+\newcommand\Cz{C^0(\overline\Om)}
+\newcommand\Ct{C^2(\overline\Om)}
+\newcommand\Cinf{C^\infty(\overline\Om)}
+\newcommand\Do{{\mathcal D}(\Om)}
+\newcommand\Doi[1]{{\mathcal D}(#1)}
+
+\newcommand\Hdv{\tH(\dv,\Om)}
+\newcommand\Hdvi[1]{\tH(\dv,#1)}
+\newcommand\Hdvs{\tH_0(\dv,\oma)}
+\newcommand\Hdvss{\tH^0(\dv,\oma)}
+\newcommand\HdvTa{\tH(\dv,\Ta)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Shorthands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\ie{i.e.}
+\newcommand\eg{e.g.}
+\newcommand\cf{cf.}
+\newcommand\eal{{\em et al.}}
+\newcommand\eq{:=}
+\newcommand\qe{=:}
+\newcommand\ls{\lesssim}
+\newcommand\ds{\displaystyle}
+\newcommand\nn{\nonumber}
+\newcommand\pt{\partial}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand\ra{\rightarrow}
+\newcommand\lra{\longrightarrow}
+\newcommand{\sumN}{\sum_{n=1}^N}
+\newcommand{\iIn}{\int_{I_n}}
+\newcommand\ON{\{1, \ldots, N\}}
+\newcommand\nv{0}
+\newcommand\nvv{{\bm 0}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Meshes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\elm}{{K}}
+\newcommand{\elmt}{{K'}}
+\newcommand{\sd}{{F}}
+\newcommand{\sdt}{{F'}}
+\newcommand{\ver}{{\ta}}
+\newcommand{\vertt}{{\ta'}}
+\newcommand{\htt}{{h\tau}}
+
+\newcommand\Fh{\mathcal{F}_h}
+\newcommand\Fhint{\Fh^{\mathrm{s}}}
+\newcommand\Fhext{\Fh^{\mathrm{b}}}
+\newcommand\FK{\mathcal{F}_\elm}
+\newcommand\FKi{\mathcal{F}_{\elm_i}}
+\newcommand\FKj{\mathcal{F}_{\elm_j}}
+\newcommand\Fa{\mathcal{F}_{\ver}}
+\newcommand\Fas{{\Fa^{\mathrm{s}}}}
+\newcommand\Fab{{\Fa^{\mathrm{b}}}}
+\newcommand\Fapp{\Fa^{\partial}}
+\newcommand\FaN{\Fa^{\mathrm{N}}}
+\newcommand\FaD{\Fa^{\mathrm{D}}}
+\newcommand\FKN{\FK^{\mathrm{N}}}
+\newcommand\FKNi{\F_{\elm_i}^{\mathrm{N}}}
+\newcommand\FKD{\FK^{\mathrm{D}}}
+\newcommand\FKDi{\F_{\elm_i}^{\mathrm{D}}}
+\newcommand\Fe{{\F_\edg}}
+
+\newcommand{\edg}{{e}}
+\newcommand\Ea{\mathcal{E}_{\ver}}
+
+\newcommand\Th{\mathcal{T}_h}
+\newcommand\TK{\mathcal{T}_\elm}
+\newcommand\TKn{\mathfrak{T}_\elm}
+\newcommand\Ta{{\mathcal{T}_{\ver}}}
+\newcommand\Taint{\mathcal{T}_\ver^{\circ}}
+\newcommand\Taext{\mathcal{T}_\ver^{\partial}}
+\newcommand\Te{{\mathcal{T}_{\sd}}}
+\newcommand\TEs{\mathcal{T}_{E\ups}}
+
+\newcommand\Vh{\mathcal{V}_h}
+\newcommand\Vhint{\mathcal{V}^{\circ}_h}
+\newcommand\Vhext{\mathcal{V}^{\partial}_h}
+\newcommand\VK{\mathcal{V}_\elm}
+\newcommand\VEs{\mathcal{V}_{E\ups}}
+\newcommand\Va{\mathcal{V}_{\ver}}
+\newcommand\Vas{\mathcal{V}_{\ver\ups}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Variables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\uu{u}
+\newcommand\uh{u_h}
+\newcommand\buh{{\bar u}_h}
+\newcommand\uht{u_{\htt}}
+\newcommand\uhtn{u_h^n}
+\newcommand\uv{\tu}
+\newcommand\uvh{\tu_h}
+\newcommand\fh{\tp_h}
+
+\newcommand\pr{s}
+\newcommand\prh{s_h}
+\newcommand\prv{\ts}
+\newcommand\prhv{\ts_h}
+\newcommand\prht{s_\htt}
+\newcommand\prhn{s_h^n}
+\newcommand\prho{s_h^0}
+
+\newcommand\fr{{\bm \sigma}}
+\newcommand\frh{{\bm \sigma}_h}
+\newcommand\fro{\sigma}
+\newcommand\frho{\sigma_h}
+\newcommand\vfr{{\bm \varsigma}}
+\newcommand\vfrh{{\bm \varsigma}_h}
+\newcommand\vfrp{{\bm \varsigma}_p}
+
+\ifbbm
+
+%\mathbbm \mathbbmss \mathbbmtt
+
+\newcommand\frm{{\mathbbm w}}
+\newcommand\frhm{{\mathbbm w}_h}
+\newcommand\frhtm{{\mathbbm w}_{\htt}}
+\newcommand\Km{{\mathbbm K}}
+
+\else
+
+\newcommand\frm{\underline{\bm \sigma}}
+\newcommand\frhm{\underline{\bm \sigma}_h}
+\newcommand\frhtm{\underline{\bm \sigma}_{\htt}}
+\newcommand\Km{\underline{\bf K}}
+
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Estimators
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\eelm{\eta_{\elm}}
+\newcommand\eelmi[1]{\eta_{\elm}^{#1}}
+\newcommand\eA{\eta}
+\newcommand\eAi[1]{\eta^{#1}}
+
+\newcommand\eres{\eta_{\mathrm{R},\elm}}
+\newcommand\eresi[1]{\eta_{\mathrm{R},\elm}^{#1}}
+\newcommand\eresA{\eta_{\mathrm{R}}}
+\newcommand\eresAi[1]{\eta_{\mathrm{R}}^{#1}}
+
+\newcommand\ef{\eta_{\mathrm{F},\elm}}
+\newcommand\efi[1]{\eta_{\mathrm{F},\elm}^{#1}}
+\newcommand\efii[2]{\eta_{\mathrm{F},#1,\elm}^{#2}}
+\newcommand\efA{\eta_{\mathrm{F}}}
+\newcommand\efAi[1]{\eta_{\mathrm{F}}^{#1}}
+
+\newcommand\enc{\eta_{\mathrm{NC},\elm}}
+\newcommand\enci[1]{\eta_{\mathrm{NC},\elm}^{#1}}
+\newcommand\encii[2]{\eta_{\mathrm{NC},#1,\elm}^{#2}}
+\newcommand\encA{\eta_{\mathrm{NC}}}
+\newcommand\encAi[1]{\eta_{\mathrm{NC}}^{#1}}
+\newcommand\tenc{\widetilde\eta_{\mathrm{NC},\elm}}
+\newcommand\tenci[1]{\widetilde\eta_{\mathrm{NC},#1,\elm}}
+
+\newcommand\edisc{\eta_{\mathrm{disc},\elm}}
+\newcommand\edisci[1]{\eta_{\mathrm{disc},\elm}^{#1}}
+\newcommand\ediscA{\eta_{\mathrm{disc}}}
+\newcommand\ediscAi[1]{\eta_{\mathrm{disc}}^{#1}}
+
+\newcommand\elin{\eta_{\mathrm{lin},\elm}}
+\newcommand\elini[1]{\eta_{\mathrm{lin},\elm}^{#1}}
+\newcommand\elinA{\eta_{\mathrm{lin}}}
+\newcommand\elinAi[1]{\eta_{\mathrm{lin}}^{#1}}
+
+\newcommand\eae{\eta_{\mathrm{alg},\elm}}
+\newcommand\eaei[1]{\eta_{\mathrm{alg},\elm}^{#1}}
+\newcommand\eaeA{\eta_{\mathrm{alg}}}
+\newcommand\eaeAi[1]{\eta_{\mathrm{alg}}^{#1}}
+
+\newcommand\ereg{\eta_{\mathrm{reg},\elm}}
+\newcommand\eregi[1]{\eta_{\mathrm{reg},\elm}^{#1}}
+\newcommand\eregA{\eta_{\mathrm{reg}}}
+\newcommand\eregAi[1]{\eta_{\mathrm{reg}}^{#1}}
+
+\newcommand\eosc{\eta_{\mathrm{osc},\elm}}
+\newcommand\eosci[1]{\eta_{\mathrm{osc},\elm}^{#1}}
+\newcommand\eoscA{\eta_{\mathrm{osc}}}
+\newcommand\eoscAi[1]{\eta_{\mathrm{osc}}^{#1}}
+
+\newcommand\erem{\eta_{\mathrm{rem},\elm}}
+\newcommand\eremi[1]{\eta_{\mathrm{rem},\elm}^{#1}}
+\newcommand\eremA{\eta_{\mathrm{rem}}}
+\newcommand\eremAi[1]{\eta_{\mathrm{rem}}^{#1}}
+
+\newcommand\eclas{\eta_{\mathrm{\sharp},\elm}}
+\newcommand\eclasA{\eta_{\mathrm{\sharp}}}
+
+\newcommand\epot{\eta_{\mathrm{P},\elm}}
+
+\newcommand\ediv{\eta_{\mathrm{D},\elm}}
+\newcommand\edivi[1]{\eta_{\mathrm{D},\elm}^{#1}}
+\newcommand\edivA{\eta_{\mathrm{D}}}
+\newcommand\edivAi[1]{\eta_{\mathrm{D}}^{#1}}
+
+\newcommand\esp{\eta_{\mathrm{sp},\elm}}
+\newcommand\espi[1]{\eta_{\mathrm{sp},\elm}^{#1}}
+\newcommand\espii[2]{\eta_{\mathrm{sp},#1}^{#2}}
+\newcommand\espA{\eta_{\mathrm{sp}}}
+\newcommand\espAi[1]{\eta_{\mathrm{sp}}^{#1}}
+
+\newcommand\etm{\eta_{\mathrm{tm},\elm}}
+\newcommand\etmi[1]{\eta_{\mathrm{tm},\elm}^{#1}}
+\newcommand\etmA{\eta_{\mathrm{tm}}}
+\newcommand\etmAi[1]{\eta_{\mathrm{tm}}^{#1}}
+
+\newcommand\Eic{\eta_{\mathrm{IC}}}
+
+\newcommand{\Res}{\mathcal{R}}
+\newcommand\Ieff{I_{\mathrm{eff}}}
+
+\newcommand\eaeAA{\eta_{\mathrm{AE}}}
+\newcommand\eaeAt{\hat\eta_{\mathrm{AE}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Greek letters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\al{\alpha}
+\newcommand\vf{\varphi}
+\newcommand\ve{\varepsilon}
+\newcommand\sg{\sigma}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bold letters arabic
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\ta{{\bm a}}
+\newcommand\tb{{\bm b}}
+\newcommand\tc{{\bm c}}
+\newcommand\te{{\bm e}}
+\newcommand\tf{{\bm f}}
+\newcommand\ti{{\bm i}}
+\newcommand\tl{{\bm l}}
+\newcommand\tm{{\bm m}}
+\newcommand\tn{{\bm n}}
+\newcommand\tp{{\bm p}}
+\newcommand\tq{{\bm q}}
+\newcommand\tr{{\bm r}}
+\newcommand\ts{{\bm s}}
+\newcommand\ttt{{\bm t}}
+\newcommand\tu{{\bm u}}
+\newcommand\tv{{\bm v}}
+\newcommand\tw{{\bm w}}
+\newcommand\tx{{\bm x}}
+\newcommand\ty{{\bm y}}
+\newcommand\tz{{\bm z}}
+
+\newcommand\tA{{\bm A}}
+\newcommand\tC{{\bm C}}
+\newcommand\tD{{\bm D}}
+\newcommand\tE{{\bm E}}
+\newcommand\tF{{\bm F}}
+\newcommand\tG{{\bm G}}
+\newcommand\tH{{\bm H}}
+\newcommand\tI{{\bm I}}
+\newcommand\tK{{\bm K}}
+\newcommand\tL{{\bm L}}
+\newcommand\tM{{\bm M}}
+\newcommand\tN{{\bm N}}
+\newcommand\tP{{\bm P}}
+\newcommand\tQ{{\bm Q}}
+\newcommand\tR{{\bm R}}
+\newcommand\tS{{\bm S}}
+\newcommand\tT{{\bm T}}
+\newcommand\tU{{\bm U}}
+\newcommand\tV{{\bm V}}
+\newcommand\tW{{\bm W}}
+\newcommand\tX{{\bm X}}
+\newcommand\tZ{{\bm Z}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bold Greek letters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\bsig}{\overline{\bm \sigma}}
+\newcommand{\bxi}{{\bm\xi}}
+\newcommand\bvf{{\bm \varphi}}
+\newcommand\bphi{{\bm \phi}}
+\newcommand\bpsi{{\bm \psi}}
+\newcommand\btau{{\bm \tau}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mathcal letters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\A{\mathcal{A}}
+\newcommand\B{\mathcal{B}}
+\newcommand\C{\mathcal{C}}
+\newcommand\D{\mathcal{D}}
+\newcommand\E{\mathcal{E}}
+\newcommand\F{\mathcal{F}}
+\newcommand\G{\mathcal{G}}
+\newcommand\I{\mathcal{I}}
+\newcommand\J{\mathcal{J}}
+\newcommand\K{\mathcal{K}}
+\newcommand\M{\mathcal{M}}
+\newcommand\N{\mathcal{N}}
+%\newcommand\O{\mathcal{O}}
+%\newcommand\P{\mathcal{P}}
+\newcommand\Q{\mathcal{Q}}
+\newcommand\R{\mathcal{R}}
+%\newcommand\S{\mathcal{S}}
+\newcommand\T{\mathcal{T}}
+\newcommand\X{\mathcal{X}}
+\newcommand\Y{\mathcal{Y}}
+\newcommand\V{\mathcal{V}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Polynomial spaces
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\RR{{\mathbb R}}
+\newcommand\NN{{\mathbb N}}
+
+\newcommand\PP{{\mathbb P}}
+\newcommand\QQ{{\mathbb Q}}
+
+\newcommand\RT{{\mathbbm{RT}}}
+\newcommand\RTN{\bm{RTN}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Subscripts and superscripts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\ro{\mathrm{o}}
+\newcommand\rw{\mathrm{w}}
+\newcommand\out{\mathrm{out}}
+\newcommand\inp{\mathrm{in}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fractions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\iffract
+
+\newcommand\ft{{\frac 1 2}}
+\newcommand\mft{{-\frac 1 2}}
+\newcommand\fq{{\frac 1 q}}
+
+\else
+
+\newcommand\ft{{1/2}}
+\newcommand\mft{{-1/2}}
+\newcommand\fq{{1/q}}
+
+\fi
+
+\newcommand{\tft}{{\tfrac{1}{2}}}
+\newcommand{\mtft}{{-\tfrac{1}{2}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Projections
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\PIn{\mathcal{P}_{I_n}}
+\newcommand\QIn{\mathcal{Q}_{I_n}}
+\newcommand\Iav{\mathcal{I}_{\mathrm{av}}}
+\newcommand\IV{I_{\tV_h}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Integration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\dx{\, \mathrm{d} \tx}
+\newcommand\dy{\, \mathrm{d} \ty}
+\newcommand\dxx{\, \mathrm{d} x}
+\newcommand\dyy{\, \mathrm{d} y}
+\newcommand\dzz{\, \mathrm{d} z}
+\newcommand\dxo{\, \mathrm{d} x_1}
+\newcommand\dxt{\, \mathrm{d} x_2}
+\newcommand\dxr{\, \mathrm{d} x_3}
+\newcommand\dgx{\, \mathrm{d} \gamma(\tx)}
+\newcommand\dgy{\, \mathrm{d} \gamma(\ty)}
+\newcommand\dS{\, \mathrm{d} S}
+\newcommand\dt{\, \mathrm{d} t}
+\newcommand\dss{\, \mathrm{d} s}
+\newcommand\dtau{\, \mathrm{d} \tau}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Constants
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\cKK{c_{\Km, \elm}}
+
+\newcommand{\upv}{^\mathrm{v}}
+\newcommand{\ups}{^\mathrm{s}}
+\newcommand{\upb}{^\mathrm{b}}
+\newcommand{\dK}{\partial \elm}

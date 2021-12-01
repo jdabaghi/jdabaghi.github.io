@@ -1,0 +1,13 @@
+Commandes de bases pour charger page web
+
+1) ouvrir terminal
+
+2) rentrer dans le dossier page web
+
+3) dans le terminal écrire git add . (Cette commande permet d'ajouter tous les fichiers. Si on veut seulement ajouter un fichier on écrit git add nom_fichier)
+
+4) git commit -m "un msg à entrer"
+
+5) git push origin main (à faire la première fois. Ensuite git push suffit)
+
+

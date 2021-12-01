@@ -1,0 +1,607 @@
+
+
+\documentclass[10 pt]{beamer}
+\usepackage[utf8]{inputenc}
+%\usepackage[latin1]{inputenc}
+%\usepackage[cyr]{aeguill}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\usepackage[]{algorithm2e}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{pstricks}
+%\usepackage{stmaryrd}
+%\usepackage{enumitem} 
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{array}
+\usepackage{relsize,exscale}
+\usepackage{caption}
+\usepackage{times}
+\usepackage{subcaption}
+\usepackage{graphicx} 
+\usepackage{epstopdf}
+\usepackage{tikz}
+\usepackage{glossaries}
+\usepackage{cancel}
+%\usepackage{animate}
+\setbeamersize{text margin left=0.2 cm}
+  \setbeamersize{text margin right=0.2 cm}
+  %\setbeamersize{sidebar width left=}
+  %\setbeamersize{sidebar width right=taille}
+%\usetikzlibrary{calc}
+%\DeclareMathOperator*{\argmin}{argmin}
+
+
+\definecolor{ao(english)}{rgb}{0.0, 0.5, 0.0}
+\definecolor{armygreen}{rgb}{0.29, 0.33, 0.13}
+\definecolor{britishracinggreen}{rgb}{0.0, 0.26, 0.15}
+\definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{indigo}{rgb}{0.29, 0.0, 0.51}
+\definecolor{lightgray}{gray}{0.85}
+\definecolor{midnightblue}{rgb}{0.1, 0.1, 0.44}
+\definecolor{burntorange}{rgb}{0.8, 0.33, 0.0}
+\definecolor{royalblue}{rgb}{0.25, 0.41, 0.88}
+\definecolor{darkmagenta}{rgb}{0.55, 0.0, 0.55}
+\definecolor{byzantine}{rgb}{0.74, 0.2, 0.64}
+\definecolor{blue-violet}{rgb}{0.54, 0.17, 0.89}
+\definecolor{brown-traditional}{rgb}{0.59, 0.29, 0.0}
+\definecolor{brown-web}{rgb}{0.65, 0.16, 0.16}
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+\definecolor{electricpurple}{rgb}{0.75, 0.0, 1.0}
+\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{goldenbrown}{rgb}{0.6, 0.4, 0.08}
+\definecolor{armygreen}{rgb}{0.29, 0.33, 0.13}
+\definecolor{calpolypomonagreen}{rgb}{0.12, 0.3, 0.17}
+\definecolor{caputmortuum}{rgb}{0.35, 0.15, 0.13}
+\definecolor{carmine}{rgb}{0.59, 0.0, 0.09}
+\definecolor{chocolate-traditional}{rgb}{0.48, 0.25, 0.0}
+\definecolor{lincolngreen}{rgb}{0.11, 0.35, 0.02}
+\definecolor{magenta}{rgb}{1.0, 0.0, 1.0}
+\definecolor{auburn}{rgb}{0.43, 0.21, 0.1}
+\definecolor{bole}{rgb}{0.47, 0.27, 0.23}
+\definecolor{bulgarianrose}{rgb}{0.28, 0.02, 0.03}
+%\usepackage[dvipsnames]{xcolor}
+%\xdefinecolor{vert_olive}{named}{OliveGreen}
+%\xdefinecolor{bleuviolet}{named}{BlueViolet}
+%\xdefinecolor{bleucadet}{named}{CadetBlue}
+%\xdefinecolor{bleunuit}{named}{MidnightBlue}
+\graphicspath{{./Figures/}}
+\newtheorem{assumption}[theorem]{Assumption} 
+\newtheorem{proposition}[theorem]{Proposition} 
+\newtheorem{remark}[theorem]{Remark} 
+
+\renewcommand{\div}{\mathrm{div}}
+\newcommand{\Pdot}{\ddot{P}}
+\newcommand{\Pdothn}{\Pdot_h^n}
+%\usetheme{Madrid}
+\usetheme{Frankfurt}
+
+\title[SIAM GS 2019]{A hybrid parareal Monte-Carlo algorithm for the parabolic time
+dependant diffusion equation}
+\author[Jad Dabaghi]
+{\underline{Jad Dabaghi}, Yvon Maday, Andrea Zoia}
+\institute[]{Sorbonne Université \& CEA Paris Saclay}
+\date{WCCM, January $11$-$15$, $2021$}
+\subject{Numerical Analysis}
+\input{command}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamercovered{transparent}
+
+
+
+\AtBeginSection[] {
+    \begin{frame}
+    <beamer>[noframenumbering]
+        \frametitle{Outline}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+
+\begin{document}
+
+
+\begin{frame}
+\maketitle
+\includegraphics[scale=0.2]{image/logo_sorbonne}
+\hfill \includegraphics[scale=0.14]{image/CEA}
+
+\end{frame}
+
+
+
+
+\newcommand{\kk}{\textcolor{royalblue}{k}}
+\newcommand{\ii}{\textcolor{burntorange}{i}}
+\newcommand{\nuu}{\textcolor{burntorange}{\nu}}
+
+
+\setcounter{tocdepth}{4}
+\section{Introduction}
+
+\begin{frame}
+\defbeamertemplate*{footline}{infolines theme frame plus slide}{\setcounter{slidenumber}{\insertpagenumber}\addcounter{slidenumber}{-\insertframestartpage}\addcounter{slidenumber}{1}}
+\frametitle{Motivation}
+\hspace*{0.2 cm} \textcolor{red}{\textbf{Study the neutron transport in nuclear reactors}}
+\\
+\vspace*{0.2 cm}
+\invisible<1>{
+\textcolor{midnightblue}{\textbf{Model:}} Linear Boltzmann equation for the angular flux
+\begin{equation*}
+\partial_t {\bm \Psi}(t,\bx,\bv) + \bv \cdot \nab {\bm \Psi}(t,\bx,\bv) + \sigma(\bx,\bv) {\bm \Psi}(t,\bx,\bv) - \int_{\mathbb{R}^3} k(\bx,\bv,\bv^{\prime}) {\bm \Psi}(t,\bx,\bv^{\prime})\,\mathrm{d} \bv^{\prime} = 0
+\end{equation*}
+Balance between the neutrons that are created and that disappear in the
+core.
+\\
+\vspace{0.2 cm}
+\invisible<2>{
+\begin{minipage}{0.4 \linewidth}
+\begin{figure}
+\includegraphics[scale=0.23]{image/reactor}
+\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55 \linewidth}
+
+Numerical resolution:
+\begin{itemize}
+\item Monte-Carlo approach
+\item Deterministic approach
+\end{itemize}
+\vspace*{0.2 cm}
+Can we speed up a Monte-Carlo resolution?
+\end{minipage}
+\\
+\vspace*{0.2 cm}
+\invisible<3>{
+\textcolor{cadmiumgreen}{\textbf{Parareal-in-time algorithm}} $\Rightarrow$ important computational savings
+\begin{minipage}{0.2 \linewidth}
+\begin{figure}
+\includegraphics[scale=0.04]{image/attention}
+\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.75 \linewidth}
+Complicated problem... Start with a diffusion problem to understand the involved underlying mechanisms.
+\end{minipage}
+\invisible<4>{
+  }}}}
+\end{frame}
+
+\section{Model problem}
+    
+\subsection{}  
+
+\begin{frame}
+\frametitle{Model problem and parareal algorithm}
+\textcolor{cadmiumgreen}{\textbf{Time dependent diffusion equation with dirichlet boundary conditions:}}
+\begin{equation*}
+\dps
+\left\lbrace\begin{array}{llccc}
+\dps \partial_t u - \mathcal{D} \Delta u = g \quad & \mbox{in} \quad &\Omega \times \left[0,T\right], \\
+ \dps u({\bm \cdot},0) = u^0 \quad & \mbox{in} \quad &\Omega,\\
+u = 0 \quad & \mbox{on} \quad &\partial \Omega \times [0,T] . 
+\end{array}
+\right.
+\end{equation*}
+\invisible<1>{
+\textcolor{cadmiumgreen}{\textbf{Parareal procedure:}}
+It constructs a sequence $\bu_{\kk}^n:=(\bu_{\kk}^n)_{1 \leq n \leq N}$ such that $\bu_{\kk}^n \approx u^n$. It involves a coarse propagator $\GDt$ and a fine propagator $\Fdt$.\\
+\vspace*{0.2 cm}
+\invisible<2>{
+\textcolor{cadmiumgreen}{\textbf{Coarse time grid discretization:}}
+\begin{figure}
+\includegraphics[width = 0.75 \textwidth]{image/discretization_time_coarse-cropped}
+\end{figure}
+ \invisible<3>{
+\textcolor{cadmiumgreen}{\textbf{Fine time grid discretization:}}
+ \begin{figure}
+ \includegraphics[width = 0.7 \textwidth]{image/discretization_time_coarse_fine_krop}
+ \end{figure}
+ \invisible<4>{
+   }}}}
+\end{frame}
+%
+\begin{frame}
+\textcolor{midnightblue}{\textbf{The parareal algorithm}} 
+\begin{equation*}
+  \begin{split}
+    u_{\kk=0}^{n+1} & := \GDt(u_{\kk=0}^n), \qquad \text{where} \quad u_{\kk=0}^0 := u^0. \\
+    u_{\kk+1}^{n+1} & := \underbrace{\GDt(u_{\kk+1}^n)}_{\mathrm{prediction}} + \underbrace{\left[\Fdt(u_{\kk}^n) - \GDt(u_{\kk}^n) \right]}_{\mathrm{correction}}.
+    \end{split}
+\end{equation*}
+\vspace{0.1 cm}
+\invisible<1>{
+\textcolor{midnightblue}{\textbf{Illustration of the procedure:}}
+$n=4, \kk=2$
+
+\invisible<2>{
+1. Compute the coarse approximations:
+\begin{equation*}
+  u_{\kk=0}^{1}=\GDt(u^0), \quad u_{\kk=0}^{2}=\GDt^2(u^0), \quad u_{\kk=0}^{3}=\GDt^{3}(u^0)
+\end{equation*}
+\invisible<3>{
+\hspace*{-0.15 cm} 
+2. Compute: $u_{\kk \geq 1}^{1}=\Fdt(u^0)$ \\
+\vspace*{0.1 cm}
+\invisible<4>{
+\hspace*{-0.05 cm} 3. Compute in parallel:
+\begin{equation*}
+  \Fdt(u_{\kk=0}^1) - \GDt(u_{\kk=0}^1), \ \Fdt(u_{\kk=0}^2) - \GDt(u_{\kk=0}^2), \ \Fdt(u_{\kk=0}^3) - \GDt(u_{\kk=0}^3)
+\end{equation*}
+\invisible<5>{
+ 4. \textcolor{cadmiumgreen}{\textbf{Update:}} $\fbox{$u_{\kk=1}^2$} \ \text{and} \ \GDt(u_{\kk=1}^2), \ \fbox{$u_{\kk=1}^3$} \ \text{and} \ \GDt(u_{\kk=1}^3), \ \text{and} \ \fbox{$u_{\kk=1}^4$} $
+\\
+\vspace*{0.2 cm}
+\invisible<6>{
+\hspace*{0.02 cm} 
+5. Compute in parallel:
+\begin{equation*}
+\Fdt(u_{\kk=1}^1) - \GDt(u_{\kk=1}^1), \quad  \Fdt(u_{\kk=1}^2) - \GDt(u_{\kk=1}^2), \quad \Fdt(u_{\kk=1}^3) - \GDt(u_{\kk=1}^3)
+\end{equation*}
+\invisible<7>{
+  6. \textcolor{cadmiumgreen}{\textbf{Update:}} 
+ $ \fbox{$u_{\kk=2}^2$} \quad \text{and} \quad \fbox{$u_{\kk=2}^3$} \quad \text{and} \quad \fbox{$u_{\kk=2}^4$}$
+
+\invisible<8>{
+  }}}}}}}}
+\end{frame}
+%
+\begin{frame}
+  \frametitle{Coarse propagator}
+  \vspace*{-0.1 cm}
+  $\Th$: mesh of the domain $\Omega$\\
+  \vspace{0.15 cm}
+  $\Vh$ : Lagrange nodes, $\Vhint$: interior nodes, \\
+  \vspace{0.15 cm}
+  $\Nhint$ : number of internal Lagrange nodes, \ $\Nsp$ : number of elements \\
+  \vspace*{0.15 cm}
+\invisible<1>{
+  \textcolor{midnightblue}{\textbf{The finite element propagator}}
+  \begin{equation*}
+    \begin{split}
+X_h^p &:= \left\{v_h \in \mathcal{C}^{0}(\Omega); v_h|_{K} \in \mathbb{P}_p(K) \ \forall K \in \Th \right\} \subset H^1(\Omega) \\
+X_{0h}^p & := \left\{v_h \in \mathcal{C}^{0}(\Omega); v_h|_{K} \in \mathbb{P}_p(K) \ \forall K \in \Th, \ v_h|_{\partial \Omega}=0 \right\} \subset H_{0}^1(\Omega)
+\end{split}
+  \end{equation*}
+  
+  The discrete vector of unknowns : $\bU_h^n \in \R^{\Nhint}$ satisfies $\bU_h^n = \GDt(\bU_h^{n-1})$ with
+  \begin{equation*}
+    \GDt(\bU_h^{n-1}) = [\mathbb{A}^n]^{-1}  \times \bF^{n-1}, \quad \underbrace{[\mathbb{A}^n]^{-1}}_{\mathrm{Stiffness} \ \mathrm{matrix} + \mathrm{mass} \ \mathrm{matrix}} \hspace{-0.6 cm} \in \R^{\Nhint,\Nhint}, \quad \bF^{n-1} \in \R^{\Nhint}
+  \end{equation*}
+  \vspace{-0.1 cm}
+  \invisible<2>{
+  \hspace*{-0.2 cm}\textcolor{midnightblue}{\textbf{The cell centered finite volume propagator}}
+  \begin{equation*}
+\bU_h^n \egaldef (\bU_K^n)_{K\in \Th}, \quad \textcolor{cadmiumgreen}{\textbf{one value per cell and time step}} 
+\end{equation*}
+  The discrete vector of unknowns : $\bU_h^n \in \R^{\Nsp}$ satisfies $\bU_h^n = \GDt(\bU_h^{n-1})$ with
+  \begin{equation*}
+    \GDt(\bU_h^{n-1}) = [\mathbb{A}^n]^{-1}  \times \bF^{n-1}, \quad \underbrace{[\mathbb{A}^n]^{-1}}_{\mathrm{Sparse}} \in \R^{\Nsp,\Nsp}, \quad \bF^{n-1} \in \R^{\Nsp}
+  \end{equation*}
+  \invisible<3>{
+    }}}
+\end{frame}
+%
+\begin{frame}
+  \textcolor{midnightblue}{\textbf{The discontinuous Galerkin propagator}}
+  \\
+  \vspace*{0.2 cm}
+  $\Nhint$:  total number of local internal degrees of freedom.
+  \\
+  \vspace*{0.2 cm}
+  \textcolor{cadmiumgreen}{\textbf{Discontinuous Galerkin space:}}
+  \begin{equation*}
+    \begin{split}
+      X_h^p & := \left\{v_h \in L^2(\Omega); v_h|_{K} \in \Pp(K) \ \forall K \in \Th  \right\} \not \subset H^1(\Omega),\\
+X_{0h}^p & := \left\{v_h \in L^2(\Omega); v_h|_{K} \in \Pp(K) \ \forall K \in \Th, v_h|_{\partial \Omega} = 0  \right\} \not \subset H_0^1(\Omega)
+    \end{split}
+  \end{equation*}
+  The discrete vector of unknowns : $\bU_h^n \in \R^{\Nhint}$ satisfies $\bU_h^n = \GDt(\bU_h^{n-1})$ with
+  \begin{equation*}
+    \GDt(\bU_h^{n-1}) = [\mathbb{A}^n]^{-1}  \times \bF^{n-1}, \quad [\mathbb{A}^n]^{-1} \in \R^{\Nhint,\Nhint}, \quad \bF^{n-1} \in \R^{\Nhint}
+  \end{equation*}
+  \textcolor{cadmiumgreen}{\textbf{local matrix}} $[\mathbb{A}^n]^{-1}_K = $ stiffness matrix $+$ mass matrix $+$ consistency and stability terms.
+\end{frame}
+%
+\begin{frame}
+  \frametitle{Fine propagator : Monte-Carlo}
+  \textcolor{cadmiumgreen}{\textbf{Principle:}}
+  It gives an approximation of
+  \begin{equation*}
+    \int_K u(\bx)\,\mathrm{d}\bx = \int_K \underbrace{f}_{PDF}(\bx) g(\bx)\,\mathrm{d}\bx.
+  \end{equation*}
+  \invisible<1>{
+    Consider $M$ particles and sample a collection $X_1, X_2, \cdots, X_M$ of $M$ points from the PDF $f$. Denote by $\omega_i \in \R_{+}$ their statistical weight.
+    \\
+    \vspace*{0.2 cm}
+    Compute $g(X_1)$,...,$g(X_M)$.
+    \\
+    \vspace*{0.2 cm}
+  Then,
+  \begin{equation*}
+\int_K u(\bx)\,\mathrm{dx} = \overline{\mathbb{E}}\left[u(g(\bx))\right].
+  \end{equation*}
+    \\
+    \vspace{0.2 cm}
+    \invisible<2>{
+  \textcolor{cadmiumgreen}{\textbf{Law of large numbers:}}
+  \begin{equation*}
+\lim_{M \rightarrow + \infty} \frac{1}{M} \sum_{i=1}^M g(X_i) = \int_K u(\bx)\,\mathrm{d} \bx.
+  \end{equation*}
+  \invisible<3>{
+  \textcolor{cadmiumgreen}{\textbf{Central limit Theorem:}}
+\vspace*{-0.15 cm}
+  \begin{equation*}
+    \mathrm{error} \approx 1/\sqrt{M}.
+  \end{equation*}
+  \invisible<4>{
+    }}}}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Sampling in 1D}
+
+
+  \textcolor{cadmiumgreen}{\textbf{Direct inversion of the cumulative for a given PDF:}}
+  \\
+  \vspace*{0.2 cm}
+  \invisible<1>{
+$F : \Omega \rightarrow [0,1] \hspace{0.15 cm}$ such that $F(x) := \int_{- \infty}^{x} f(u)\,\mathrm{d}u$.
+    \\ \vspace*{0.2 cm}
+    Let $\xi_1 \sim \mathcal{U}([0,1])$.
+    \\ \vspace*{0.2 cm}
+    Position of the particle: ${X}_i=F^{-1}(\xi_1)$.
+    \\ \vspace*{0.2 cm}
+    Repeat $M$ times the procedure.
+    \\
+    \vspace*{0.3 cm}
+    \invisible<2>{
+    \textcolor{cadmiumgreen}{\textbf{The table lookup method:}}
+    \\
+    \vspace*{0.2 cm}
+    Probability each element: $\mathbb{P}([x_{i-1},x_{i}]) = \int_{[x_{i-1},x_{i}]} f(x)\,\mathrm{d} x$,\\
+    \vspace*{0.2 cm}
+    Cumulative function: $F_{i}: \Omega \rightarrow [0,1], \ F_{i} = \sum_{j \leq i} \mathbb{P}([x_{j-1},x_{j}])$
+    \\
+    \vspace*{0.2 cm}      
+    Let $\xi_1 \sim \mathcal{U}([0,1])$. Identify the two intervals such that $F_{i-1} \leq \xi_1 \leq F_{i}$. 
+    \\
+    \vspace*{0.2 cm}    
+    Position of the particle: $\dps {X}_i = \frac{\left(x_i - x_{i-1}\right) \xi_1 - x_i F_{i-1} + x_{i-1} F_i}{F_i-F_{i-1}}$.
+        \\ \vspace*{0.2 cm}
+        Repeat $M$ times the procedure.
+        \invisible<3>{
+          }}}
+\end{frame}
+%
+\begin{frame}
+  \vspace{0.3 cm}
+    \textcolor{cadmiumgreen}{\textbf{Rejection method:}}
+    \\
+    \vspace{0.1 cm}
+    Often used when the PDF $f$ is hard to invert. Assume there exists a PDF $g : \Omega \rightarrow \R_{+}$ ``easy'' to simulate such that
+    \begin{equation*}
+f(x) \leq k g(x), \quad \text{where} \quad k \geq 1 \quad \text{is a constant}. 
+      \end{equation*}
+    Set $\dps \alpha(x)=\frac{f(x)}{k g(x)}$.
+    \\
+    \vspace*{0.2 cm}
+    Compute the cumulative function $G:\Omega \rightarrow [0,1]$ associated to $g$.\\
+    \vspace*{0.2 cm}
+    Let $\xi \sim \mathcal{U}([0,1])$. \\
+    \vspace*{0.2 cm}
+    Find ${X}_i \in K$ using the direct inversion procedure.    \\
+    \vspace*{0.2 cm}
+    Compute $\alpha({X}_i)$.
+    \\
+    \vspace*{0.2 cm}
+    Let $\xi_1 \sim \mathcal{U}([0,1])$. If $\xi_1 \leq \alpha ({X}_i)$ accept ${X}_i$. Otherwise reject and and come back to first step.
+    \\
+    \vspace*{0.3 cm}
+    \textcolor{red}{\textbf{How define the transport of the particles?}}
+\end{frame}
+%
+\begin{frame}
+  \frametitle{Kernel Transport}
+  $(\bx,t)$ : position of the particle $\bx$ at time $t$
+  \\
+  \vspace*{0.2 cm}
+  $(\bx^{\prime},t^{\prime})$ : position of the particle $\bx^{\prime}$ at time $t^{\prime}$\\
+  \vspace*{0.2 cm}
+  Density transition kernel:
+  \begin{equation*}
+    T(\bx^{\prime},t^{\prime} \rightarrow \bx,t) :=
+    \frac{1}{\sqrt{2 \pi \mathcal{D} \left(t-t^{\prime}\right)}}
+    \exp \left(-\frac{(\bx-\bx^{\prime})^2}{2 \mathcal{D} \left(t-t^{\prime}\right)}\right).
+  \end{equation*}
+  %% \begin{equation*}
+  %%   \bx - \bx^{\prime} \sim \mathcal{N}(\bx^{\prime}, \mathcal{D} (t-t^{\prime}))
+  %% \end{equation*}
+  \textcolor{cadmiumgreen}{\textbf{Pratical formula for the brownian motion:}}
+  \begin{equation*}
+T({\bm X}^{n+\delta t}, t^{n} + \delta t) = T({\bm X}^{n},t^{n}) + \sqrt{2 \mathcal{D} \delta t} \ \mathcal{S}_n \quad \text{where} \quad \mathcal{S}_n \sim \mathcal{N}(0,1)
+    \end{equation*}
+  \begin{figure}
+    \centering
+\includegraphics[scale=0.38]{image/Sampling_2D-cropped}
+    \end{figure}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Hybrid parareal algorithm}
+\textcolor{midnightblue}{\textbf{Coarse propagator :}} Deterministic solver\\
+\vspace*{0.2 cm}
+\textcolor{midnightblue}{\textbf{Fine propagator:}} Monte-Carlo solver: deterministic data $+$ sampling $+$ average \\
+\vspace*{0.2 cm}
+Consider $p$ independent replicas and $M^{\prime}$ particles so that the total number of particles is $M = p \times M^{\prime}$.
+The numerical solution obtained for a replica $j \in \left[1, p\right]$ at parareal iteration $\kk$ is denoted by ${\bm U}_{\kk,j}^{n+1}$
+\begin{equation*}
+{\bm U}_{\kk}^{n+1} := \frac{1}{p} \sum_{j=1}^p {\bm U}_{\kk,j}^{n+1}
+\end{equation*}
+\begin{minipage}{0.2 \linewidth}
+\begin{figure}
+\includegraphics[scale=0.04]{image/attention}
+\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.75 \linewidth}
+When ${\bm U}_{\kk,j}^{n+1}$ is computed, we need its statistical version for the computation of ${\bm U}_{\kk+1,j}^{n+2} = \GDt({\bm U}_{\kk+1,j}^{n+1}) \times \dps \frac{\textcolor{red}{\Fdt({\bm U}_{\kk,j}^{n+1})}}{\GDt({\bm U}_{\kk,j}^{n+1})}$. Introduce bias in the Monte-Carlo solver.
+\end{minipage}
+\end{frame}
+%
+\begin{frame}
+  \frametitle{Updating the statistical weights}
+  \textcolor{cadmiumgreen}{\textbf{Example:}} How avoid sampling ${\bm U}_{\kk=1}^2$?
+  \begin{equation*}
+[\omega_1^2]_{i\in K} = [\omega_{\mathcal{F}}]_{i \in K} \times \left(\frac{{\bm U}_{\kk=1}^2}{\mathcal{F}({\bm U}_{\kk=0}^1)}  \right)|_{K}
+    \end{equation*}
+  \begin{figure}
+    \centering
+    \includegraphics[scale=0.45]{image/reweighting-cropped}
+  \end{figure}
+  \begin{equation*}
+    \mathrm{hist}(\omega_{\kk=1}^2)|_{K_1} = \frac{1}{8} \left(\omega_{\mathcal{F}_1} + \omega_{\mathcal{F}_2}\right) \times \left(\frac{{\bm U}_{\kk=1}^2}{\mathcal{F}({\bm U}_{\kk=0}^1)}\right)|_{K_1} = {\bm U}_{\kk=1}^2
+  \end{equation*}
+  \end{frame}
+
+%
+\section{Numerical experiments}
+\subsection{}
+\begin{frame}
+\frametitle{Numerical experiments}
+$\Omega$:  one-dimensional core with length $L = 5 m$, \textbf{Final simulation time:} $T=10 s$.
+\\
+\vspace{0.2 cm}
+\textbf{Deterministic propagator:} $\mathbb{P}_1$ finite element, $\Delta t = 2 s$.
+\\
+\vspace{0.2 cm}
+\textbf{Fine propagator:} Monte-Carlo, $\delta t = 2 \times 10^{-4} s$.
+\\
+\vspace{0.2 cm}
+\textbf{Diffusion coefficient:} $\mathcal{D} = 0.5 m^2 \cdot s^{-1}$, \\
+\vspace{0.2 cm}
+\textbf{Initial condition:} $u_0(x)=\frac{1}{L}$.
+\\
+\vspace{0.2 cm}
+\textbf{Number of particles:} $10^4$, \textbf{Number of replicas:} $10^3$
+\\
+\vspace{0.2 cm}
+\begin{figure}
+  \includegraphics[width= 0.44 \textwidth]{image/Full_MC_coarse_FEM_n=8}
+  \hfill
+  \includegraphics[width= 0.44 \textwidth]{image/Full_MC_coarse_FEM_n=10}
+\end{figure}
+\end{frame}
+%
+\begin{frame}
+\frametitle{Hybrid solution}
+  \begin{figure}
+\centering
+\includegraphics[width=0.49\textwidth]{image/Coarse_solution_vs_hybrid_n=5}
+\includegraphics[width=0.49\textwidth]{image/hybrid_sol_MC_error_bar_zoom_bis} 
+\end{figure}
+\end{frame}
+%
+\begin{frame}
+ \frametitle{CPU time and convergence}
+\vspace*{-0.3 cm}
+ \begin{figure}
+\centering
+\includegraphics[width=0.48\textwidth]{image/CPU_time_hybrid_vs_MC}
+\includegraphics[width=0.5\textwidth]{image/Linf_error}
+\end{figure}
+
+\scriptsize
+\begin{table}[]
+\begin{tabular}{|c|c|c|c|c|c|c|l}
+\cline{1-7}
+\begin{tabular}[c]{@{}c@{}}Number \\ of \\ particles\end{tabular} & \begin{tabular}[c]{@{}c@{}}Number\\  of \\ replica \end{tabular} & \begin{tabular}[c]{@{}c@{}}Parallelized \\ Monte-Carlo\end{tabular} & \begin{tabular}[c]{@{}c@{}}Hybrid\\ parallelized\\ Monte-Carlo\\  $k=1$\end{tabular} & \begin{tabular}[c]{@{}c@{}}Hybrid\\ parallelized\\ Monte-Carlo\\ $k=2$\end{tabular} & \begin{tabular}[c]{@{}c@{}}Gain factor\\  $k=1$\end{tabular} & \begin{tabular}[c]{@{}c@{}}Gain factor\\ $k=2$\end{tabular} & \multicolumn{1}{c}{} \\ \cline{1-7}
+$10^5$                                                            & $10^2$                                                        & $1653.4$ s                                                         & $335.76$ s                                                                           & $534.16$ s                                                                           & $4.92$                                                        & $3.04$                                                       &                      \\ \cline{1-7}
+$10^4$                                                            & $10^3$                                                        & $164.09$ s                                                           & $33.05$ s                                                                             & $7.97$ s                                                                            & $4.96$                                                        & $3.09$                                                       &                      \\ \cline{1-7}
+$10^3$                                                            & $10^4$                                                        & $16.86$ s                                                            & $3.39$ s                                                                             & $0.83$ s                                                                            & $4.97$                                                        & $3.07$                                                       &                      \\ \cline{1-7}
+$10^2$                                                            & $10^5$                                                        & $1.78$ s                                                            & $0.35$ s                                                                             & $0.11$ s                                                                            & $5.08$                                                        & $3.02$                                                       &                      \\ \cline{1-7}
+\end{tabular}
+\end{table}
+\end{frame}
+%
+\begin{frame}
+  \frametitle{A second test case}
+  \textbf{Final simulation time:} $T=14 s$.
+\\
+\vspace{0.3 cm}
+\textbf{Deterministic propagator:} $\mathbb{P}_1$ finite element, $\Delta t = 2 s$.
+\\
+\vspace{0.3 cm}
+\textbf{Fine propagator:} Monte-Carlo, $\delta t = 2 \times 10^{-4} s$.
+\\
+\vspace{0.3 cm}
+\textbf{Diffusion coefficient MC:} $\mathcal{D} = 0.5 m^2 \cdot s^{-1}$
+\\
+\vspace{0.3 cm}
+\textbf{Diffusion coefficient FEM:} $\mathcal{D}=0.48 m^2 \cdot s^{-1}$
+\\
+\vspace{0.3 cm}
+\textbf{Initial condition:} $u_0(x)=\frac{1}{L} \left(1 + \cos(\frac{\pi x}{L}) \right)$.
+\\
+\vspace{0.3 cm}
+\textbf{Number of particles:} $10^5$, \textbf{Number of replicas:} $10^2$
+\end{frame}
+%
+\begin{frame}
+  \frametitle{CPU time and convergence}
+  \begin{figure}
+\centering
+\includegraphics[width=0.49\textwidth]{image/sol_k1_k2_zoom}
+\includegraphics[width=0.5\textwidth]{image/CPU_time_trigo}
+\end{figure}
+\end{frame}
+%
+\section{Conclusion}
+\begin{frame}
+\frametitle{Conclusion}
+\begin{itemize}
+\item
+We devised for the diffusion equation a hybrid parareal algorithm.
+\vspace{0.3 cm}
+\item Our approach reduces the CPU time of a Monte-Carlo simulation.
+\end{itemize}
+\vspace{0.5 cm}
+\textcolor{red}{\textbf{Ongoing work:}}
+\begin{itemize}
+\item Extension to Boltzmann equation in neutronics
+\end{itemize}
+\vspace{0.5 cm}
+\begin{thebibliography}{10}
+ \scriptsize{
+ \bibitem{Dabaghi:Maday:Zoia:2020}
+ {\sc J.~Dabaghi, Y.~Maday, A.~Zoia, {\em A hybrid parareal Monte-Carlo algorithm for the parabolic
+time dependant diffusion equation}.
+ \textcolor{black}{In preparation}}}
+ \end{thebibliography}
+
+\end{frame}
+
+\begin{frame}
+\centering
+\vspace*{1 cm}
+\Huge Thank you for your attention!
+\vspace*{2 cm}
+\begin{figure}
+\centering
+\includegraphics[scale=1]{image/smiley}
+\end{figure}
+\end{frame}
+%
+
+\bibliographystyle{plain}
+\bibliography{diphasique_biblio}
+\end{document}
+
+
+

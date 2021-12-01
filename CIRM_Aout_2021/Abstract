@@ -1,0 +1,21 @@
+Title:
+
+High-order numerical discretizations and a posteriori error estimates for variational inequalities
+
+Abstract:
+
+We propose an adaptive inexact version of a class of semismooth Newton methods for variational inequalities.
+As a model problem, we study the system of variational inequalities describing the contact between two membranes. 
+We study a family of Galerkin numerical schemes that discretize this problem. 
+We consider any iterative semismooth linearization algorithm like the Newton-min or the Newton–Fischer–Burmeister which we complement by
+any iterative linear algebraic solver. 
+In the case of finite elements, we then derive an a posteriori estimate on the error
+between the exact solution at the continuous level and the approximate solution which is
+valid at any step of the linearization and algebraic resolutions. 
+Our estimate is based on flux reconstructions in discrete subspaces of H(div,Ω) and on potential reconstructions in
+discrete subspaces of H1 (Ω) satisfying the constraints. 
+It distinguishes the discretization, linearization, and algebraic components of the error. 
+Consequently, we can formulate adaptive stopping criteria for both solvers, giving rise to an adaptive version of the considered inexact semismooth Newton algorithm. 
+Under these criteria, the efficiency of the leading estimates is also established, meaning that we prove them equivalent with the error up to a generic constant. 
+Numerical experiments for the Newton-min algorithm in combination with the GMRES algebraic solver confirm the efficiency of the developed adaptive method.
+An extension to unsteady problems is also discussed in the present work.

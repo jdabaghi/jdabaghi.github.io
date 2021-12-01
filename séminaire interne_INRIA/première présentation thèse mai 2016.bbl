@@ -1,0 +1,29 @@
+\begin{thebibliography}{1}
+
+\bibitem{VorBer:2008}
+Faker Ben~Belgacem, Christine Bernardi, Adel Blouza, and Martin
+  Vohral{\'{\i}}k.
+\newblock A finite element discretization of the contact between two membranes.
+\newblock {\em M2AN Math. Model. Numer. Anal.}, 43(1):33--52, 2008.
+
+\bibitem{VorBer:2012}
+Faker Ben~Belgacem, Christine Bernardi, Adel Blouza, and Martin
+  Vohral{\'{\i}}k.
+\newblock On the unilateral contact between membranes. {P}art 2: {\it a
+  posteriori} analysis and numerical experiments.
+\newblock {\em IMA J. Numer. Anal.}, 32(3):1147--1172, 2012.
+
+\bibitem{Ben:2012}
+Ibtihel Ben~Gharbia.
+\newblock Résolution de problèmes de complémentarité, application à un
+  écoulement diphasique en milieu poreux.
+\newblock {\em Thèse de Doctorat de mathématique appliquée, INRIA
+  Université Paris Dauphine}, 2012.
+
+\bibitem{BenJaff:2014}
+Ibtihel Ben~Gharbia and J{\'e}r{\^o}me Jaffr{\'e}.
+\newblock Gas phase appearance and disappearance as a problem with
+  complementarity constraints.
+\newblock {\em Math. Comput. Simulation}, 99:28--36, 2014.
+
+\end{thebibliography}

@@ -1,0 +1,54 @@
+\section{Conclusion  and perspectives}
+\subsection{}
+\begin{frame}
+\frametitle{Conclusion and perspectives}
+\textcolor{midnightblue}{\large \textbf{Conclusion}}
+\invisible<1>{
+\begin{itemize}
+\item
+ Variational inequality: we devised a posteriori error estimates with $\Pp$ finite elements.
+\item
+ Two-phase flow with phase transition: a posteriori error estimates for a cell centered finite volume discretization. 
+\item
+Formulations with complementarity constraints and semismooth algorithms.
+\item
+ We distinguished the different error components.
+\item
+Adaptive stopping criteria $\Rightarrow$ reduction of the number of iterations. 
+\end{itemize}
+\invisible<2>{
+\textcolor{midnightblue}{\large \textbf{Perspectives}}
+\begin{itemize}
+\item Extension of the stationary contact problem to a hyperbolic contact problem between two vibrating membranes
+\item
+Devise a proof for the convergence of the semismooth Newton scheme
+\item 
+Chapter 2: Improve the time derivative a posteriori error
+\item
+Construct a posteriori error estimates for a multiphase multi compositional flow with several phase transitions.
+\end{itemize}
+\invisible<3>{
+}}}
+\end{frame}
+%
+\begin{frame}
+\begin{center}
+\Huge{\textcolor{midnightblue}{Acknowledgements}}
+\end{center}
+ Ibtihel Ben Gharbia (IFPEN) Simulation in Chapter 3 on the basis of her \textcolor{midnightblue}{$\mathrm{MATLAB}$} code.
+\\
+Soleiman Yousef (IFPEN)
+\\
+Jean-Charles Gilbert (INRIA Paris)
+\\
+Michel Kern (INRIA Paris)
+\\
+Jan Pape{\v z} (INRIA Paris) Simulation in Chapter 1 on the basis of his \textcolor{midnightblue}{$\mathrm{MATLAB}$} code.
+\\ 
+Adel Blouza (Université Rouen)
+\newline
+\begin{center}
+\Huge{\textcolor{midnightblue}{Thank you for your attention}}
+\end{center}
+\end{frame}
+%

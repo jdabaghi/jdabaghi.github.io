@@ -1,0 +1,99 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,
+amsthm,amssymb}
+\usepackage{algorithm}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{algorithmic}
+\usepackage{appendix}
+\usepackage{tabularx}
+%\usepackage{makecell}
+\usepackage{dsfont}
+\usepackage
+ [colorlinks = true,
+             linkcolor = blue,
+             urlcolor  = blue,
+             citecolor = blue,
+             anchorcolor = blue]
+{hyperref}
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\xdefinecolor{vert olive}{named}{OliveGreen}
+\xdefinecolor{bleuviolet}{named}{BlueViolet}
+\xdefinecolor{bleucadet}{named}{CadetBlue}
+\xdefinecolor{bleunuit}{named}{MidnightBlue}
+\usepackage{bm} 
+\usepackage{array}
+\usepackage{pgf}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{stmaryrd}
+\usepackage{relsize,exscale}
+\usepackage{pstricks}
+\usepackage{float}
+\usetikzlibrary{arrows}
+\usepackage[top=3.5 cm, bottom=3.5 cm, left=3.5 cm , right=3.5 cm]{geometry}
+%\xdefinecolor{bleu}{blue}{0.85}
+%\xdefinecolor{bleu}{named}{LightSteelBlue}
+\xdefinecolor{marron}{named}{Brown}
+%%\xdefinecolor{bleu navy}{named}{Navy}
+
+%\usepackage{subfig}
+
+%\usepackage[margin=1in]{geometry}
+
+%\usepackage{refcheck}
+\newrgbcolor{grey}{255 125 125}
+\usetikzlibrary{calc}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\supp}{supp}
+%\input{color}
+%\input{article_commande_diphasique_anglais}
+\graphicspath{{./Figures/}}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\usepackage{graphicx} 
+\usepackage{epstopdf}
+
+\usetikzlibrary{plotmarks}
+%======================================
+\numberwithin{equation}{section}
+
+\begin{document}
+\thispagestyle{empty}
+\setcounter{page}{1}
+
+
+
+
+
+
+\title{{A posteriori error estimates, stopping criteria, and adaptivity for a two phase flow with exchange between phases as a nonlinear complementarity problem\thanks{This
+project has received funding from the European Research Council (ERC)
+under the European Union's Horizon 2020 research and innovation program
+(grant agreement
+No 647134 GATIPOR).}}}
+\author{\underline{Jad Dabaghi} 
+%\footnotemark[2] 
+%\and Vincent Martin \footnotemark[3] \and Martin Vohral\'ik\footnotemark[2]
+}
+
+\maketitle
+
+% \begin{abstract}
+% \label{ref:abstract}
+% In this work we develop an a posteriori-steered algorithm for a two phase compositional flow with exchange of components between the phases in porous media. The discretization of our model is based on a backward Euler scheme in time and a finite volume scheme in space. The phase transition is treated introducing a formulation based on Henry's law. The resulting nonlinear system is solved via an inexact semi-smooth Newton method. The key ingredient for the a posteriori analysis are the discretization, linearization, and algebraic flux reconstructions allowing to devise estimators for each error component. These enable to formulate criteria for stopping the iterative algebraic solver and the iterative linearization solver whenever the corresponding error components do not affect significantly the overall error.  Numerical experiments are performed using the semi-smooth Newton-min algorithm as well as the Fischer--Burmeister algorithm and the GMRES iterative linear solver to show the efficiency of the method.
+% \end{abstract}
+
+\begin{abstract}
+\label{ref:abstract}
+We develop an a posteriori-steered algorithm for a two-phase compositional flow with exchange of components between the phases in porous media. The discretization relies on a backward Euler scheme in time and a finite volume scheme in space. The resulting nonlinear system is solved via an inexact semismooth Newton method treating the phase transition. Numerical experiments are given for the semismooth Newton-min algorithm and the GMRES solver, showing good quality of the  estimates and of the adaptive stopping criteria.
+\end{abstract}
+
+
+\end{document}

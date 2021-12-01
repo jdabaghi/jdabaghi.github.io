@@ -1,0 +1,264 @@
+
+
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+%\usepackage[latin1]{inputenc}
+%\usepackage[cyr]{aeguill}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{fancyhdr}
+%\usepackage[]{algorithm2e}
+%\usepackage{hyperref}
+\usepackage{color}
+\usepackage{pstricks}
+%\usepackage{stmaryrd}
+%\usepackage{enumitem} 
+\usepackage{bbm}
+\usepackage{bm}
+%\usepackage{showlabels}
+\usepackage{cases}
+\usepackage{array}
+\usepackage{relsize,exscale}
+\usepackage{caption}
+\usepackage{times}
+\usepackage{subcaption}
+\usepackage{graphicx} 
+\usepackage{epstopdf}
+\usepackage{tikz}
+\usepackage{glossaries}
+
+
+\setbeamersize{text margin left=0.2 cm}
+  \setbeamersize{text margin right=0.2 cm}
+  %\setbeamersize{sidebar width left=}
+  %\setbeamersize{sidebar width right=taille}
+%\usetikzlibrary{calc}
+%\DeclareMathOperator*{\argmin}{argmin}
+
+\definecolor{ao(english)}{rgb}{0.0, 0.5, 0.0}
+\definecolor{armygreen}{rgb}{0.29, 0.33, 0.13}
+\definecolor{britishracinggreen}{rgb}{0.0, 0.26, 0.15}
+\definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{indigo}{rgb}{0.29, 0.0, 0.51}
+\definecolor{lightgray}{gray}{0.85}
+\definecolor{midnightblue}{rgb}{0.1, 0.1, 0.44}
+\definecolor{burntorange}{rgb}{0.8, 0.33, 0.0}
+\definecolor{royalblue}{rgb}{0.25, 0.41, 0.88}
+\definecolor{darkmagenta}{rgb}{0.55, 0.0, 0.55}
+\definecolor{byzantine}{rgb}{0.74, 0.2, 0.64}
+\definecolor{blue-violet}{rgb}{0.54, 0.17, 0.89}
+\definecolor{brown-traditional}{rgb}{0.59, 0.29, 0.0}
+\definecolor{brown-web}{rgb}{0.65, 0.16, 0.16}
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+\definecolor{electricpurple}{rgb}{0.75, 0.0, 1.0}
+\definecolor{gray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{goldenbrown}{rgb}{0.6, 0.4, 0.08}
+\definecolor{armygreen}{rgb}{0.29, 0.33, 0.13}
+\definecolor{calpolypomonagreen}{rgb}{0.12, 0.3, 0.17}
+\definecolor{caputmortuum}{rgb}{0.35, 0.15, 0.13}
+\definecolor{carmine}{rgb}{0.59, 0.0, 0.09}
+\definecolor{chocolate-traditional}{rgb}{0.48, 0.25, 0.0}
+\definecolor{lincolngreen}{rgb}{0.11, 0.35, 0.02}
+\definecolor{magenta}{rgb}{1.0, 0.0, 1.0}
+\definecolor{auburn}{rgb}{0.43, 0.21, 0.1}
+\definecolor{bole}{rgb}{0.47, 0.27, 0.23}
+\definecolor{bulgarianrose}{rgb}{0.28, 0.02, 0.03}
+%\graphicspath{{./Figures/}}
+\newtheorem{assumption}[theorem]{Assumption} 
+\newtheorem{proposition}[theorem]{Proposition} 
+\newtheorem{remark}[theorem]{Remark} 
+
+\renewcommand{\div}{\mathrm{div}}
+\newcommand{\Pdot}{\ddot{P}}
+\newcommand{\Pdothn}{\Pdot_h^n}
+%\usetheme{Madrid}
+\usetheme{Frankfurt}
+\vspace*{-0.7 cm}
+\title{High-order numerical
+discretizations and a posteriori error estimates for variational inequalities}
+\author{\underline{\textbf{JAD DABAGHI}}}
+
+\institute[]{CEA Paris Saclay \& Sorbonne Université}
+\date{Seminar ACSIOM, December $15^{\mathrm{th}}$ 2020}
+\input{manuscrit_commandes}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamercovered{transparent}
+
+
+\AtBeginSection[] {
+    \begin{frame}
+    <beamer>[noframenumbering]
+        \frametitle{Outline}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+
+\newcommand{\kk}{\textcolor{royalblue}{k}}
+\newcommand{\ii}{\textcolor{burntorange}{i}}
+\newcommand{\nuu}{\textcolor{burntorange}{\nu}}
+\newcommand{\zzero}{\textcolor{royalblue}{0}}
+\newcommand{\izzero}{\textcolor{burntorange}{0}}
+\begin{document}
+
+
+
+
+\begin{frame}
+\maketitle
+\includegraphics[scale=0.2]{logo_sorbonne}
+\hfill 
+\includegraphics[scale=0.13]{CEA}
+
+\end{frame}
+
+
+%% INTRODUCTION
+
+\section{Introduction}
+\subsection{}
+%\insertframenumber{}
+\setbeamertemplate{footline}[frame number]
+\begin{frame}
+\frametitle{Motivation}
+Let $\Omega \subset \mathbb{R}^2$ be a smooth connected domain.
+\\
+\vspace*{0.1 cm}
+$\mathcal{H}$ : Hilbert space, $\mathcal{K}_g$ : convex set
+\\
+\vspace*{0.1 cm}
+$a: \mathcal{H} \times \mathcal{H} \rightarrow \mathbb{R}$: bilinear continuous form, $\ell : \mathcal{H} \rightarrow \mathbb{R}$ : linear continuous form
+\begin{equation*}
+\text{Find} \quad \textcolor{red}{u} \in \mathcal{K}_g \quad a(\textcolor{red}{u},v-\textcolor{red}{u}) \geq \ell(v-\textcolor{red}{u}) \quad \forall v \in \mathcal{K}_g
+\end{equation*}
+\invisible<1>{
+\textcolor{cadmiumgreen}{\textbf{Application to several problems in contact mechanics}}
+\\
+\vspace*{0.2 cm}
+\invisible<2>{
+\textcolor{midnightblue}{\textbf{Obstacle problem:}}
+Find $\textcolor{red}{u} \in \Kg := \left\{ v \in H^1(\Omega) \ \text{s.t.} \ v=g \ \text{on} \ \partial \Omega , \ \text{and} \ v \geq \Psi \ \text{in} \ \Omega \right\}$ such that
+\begin{equation*}
+\left( \nab \textcolor{red}{u}, \nab (v-\textcolor{red}{u}) \right)_{\Omega} \geq \left(f,v-\textcolor{red}{u}\right)_{\Omega} \quad \forall v \in \Kg
+\end{equation*}
+\vspace*{-0.2 cm}
+\begin{itemize}
+\item $\textcolor{red}{u}$: displacement of an elastic membrane
+  \item $\Psi \in H^1(\Omega)$: position of the lower obstacle 
+  \item $g \in H^{\frac{1}{2}}(\partial \Omega)$: Dirichlet boundary datum for $\textcolor{red}{u}$
+    \item $f \in L^2(\Omega)$: force acting on the membrane
+\end{itemize}
+\invisible<3>{
+}}}
+\end{frame}
+%%%%%%%%%%%%
+\begin{frame}
+  \textcolor{midnightblue}{\textbf{Scalar Signorini problem:}}
+  $\partial \Omega = \Gamma_1 \cup \Gamma_2 \cup \Gamma_3$. \\
+  $\Gamma_1$: Dirichlet boundary conditions, $\Gamma_2$: Neumann boundary conditions \\
+  $\Gamma_3$: Unilateral contact boundary conditions
+  \\
+  \vspace*{0.1 cm}
+  Find $\textcolor{red}{u} \in \Kg := \left\{ v \in H^1(\Omega) \ \text{s.t.} \ v=g \ \text{on} \ \Gamma_1, \ \text{and} \ v \geq \Psi \ \text{on} \ \Gamma_3 \right\}$ such that
+\begin{equation*}
+\left( \nab \textcolor{red}{u}, \nab (v-\textcolor{red}{u}) \right)_{\Omega} \geq \left(f,v-\textcolor{red}{u}\right)_{\Omega} \quad \forall v \in \Kg
+\end{equation*}
+\vspace*{-0.5 cm}
+\begin{itemize}
+\item $g \in H^{\frac{1}{2}}(\Gamma_1)$ Dirichlet boudary datum for $\textcolor{red}{u}$
+  \item  $\Psi \in H^{\frac{1}{2}}(\Gamma_3)$: Obstacle function, $f \in L^2(\Omega)$: force acting on the membrane.
+\end{itemize}
+\vspace*{0.1 cm}
+\invisible<1>{
+\textcolor{midnightblue}{\textbf{Contact between two membranes:}}
+\\
+\vspace*{0.1 cm}
+Find $\textcolor{red}{\bu}:=(\textcolor{red}{u_1},\textcolor{red}{u_2}) \in \Kg := \left\{ \bv = \left(v_1,v_2\right) \in H_{g_1}^1(\Omega) \times H_{g_2}^1(\Omega) \ \text{s.t.} \ v_1 - v_2 \geq 0  \ \text{a.e.} \ \text{in} \ \Omega \right\}$ such that
+ \begin{equation*}
+  \fbox{$ \sum_{\alpha=1}^2 \mu_{\alpha}
+   \left( \nab \textcolor{red}{u_{\alpha}}, \nab \left(v_{\alpha} - \textcolor{red}{u_{\alpha}} \right) \right)_{\Omega} \geq
+   \sum_{\alpha=1}^2 \left(f_{\alpha}, v_{\alpha} - \textcolor{red}{u_{\alpha}} \right)_{\Omega} \quad \forall \bv \in \Kg$ }
+ \end{equation*}
+ \begin{itemize}
+ \item $\mu_1, \mu_2$: tensions of the membranes
+   \item $g_1 \geq g_2$ : boundary data
+\end{itemize}
+\invisible<2>{
+}}
+ \end{frame}
+%%%%
+
+%%%%%%%%%%%%%%%%%
+\begin{frame}
+\vspace*{0.1 cm}
+\textcolor{red}{\textbf{Study the contact problem between two membranes}}
+\\
+\vspace{0.3 cm}
+\textcolor{cadmiumgreen}{\textbf{Propose robust algorithms}}
+\begin{itemize}
+\item Discretization by the finite element method, the discontinuous Galerkin method, the hybrid high-order method
+\end{itemize}
+\textcolor{cadmiumgreen}{\textbf{Nonlinear resolution}}
+\begin{itemize}
+\item Semismooth Newton methods
+  \end{itemize}
+\textcolor{cadmiumgreen}{\textbf{Quantify the error}}
+\begin{itemize}
+  \item A posteriori error estimates
+  \item Distinction of each error components
+\end{itemize}
+
+\textcolor{cadmiumgreen}{\textbf{Save computational time}}
+\begin{itemize}
+\item Adaptivity
+  \end{itemize}
+  \invisible<1>{
+  \textcolor{red}{\textbf{Extension to unsteady problems?}}
+  \invisible<2>{
+  }}
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CHAP 1
+
+\section{Model problem and discretization}
+\subsection{}
+
+\input{Part1}
+
+%%%% CHAP 2
+
+\section{A posteriori analysis}
+\subsection{}
+
+\input{Part2}
+
+%%%%%%%%%%% CHAP 3
+
+\section{Extension to unsteady problems}
+\subsection{}
+
+\input{Part3}
+%
+
+%% CONCLUSION
+\section{Conclusion}
+\subsection{}
+
+\input{Conclusion.tex}
+
+
+
+% \bibliographystyle{plain}
+% \bibliography{diphasique_biblio}
+\end{document}
+
+
+

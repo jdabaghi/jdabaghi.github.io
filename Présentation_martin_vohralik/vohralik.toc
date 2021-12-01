@@ -1,0 +1,9 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Main results \& applications}{3}{0}{1}
+\beamer@sectionintoc {2}{Key ingredients}{29}{0}{2}
+\beamer@subsectionintoc {2}{1}{Stable polynomial extensions on a tetrahedron}{30}{0}{2}
+\beamer@subsectionintoc {2}{2}{3D patch enumeration}{39}{0}{2}
+\beamer@sectionintoc {3}{Proof sketch (potentials)}{42}{0}{3}
+\beamer@sectionintoc {4}{Numerical illustration in 2D a posteriori estimates}{54}{0}{4}
+\beamer@sectionintoc {5}{Conclusions and future directions}{66}{0}{5}

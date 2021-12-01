@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Model problem and its discretization}{4}{0}{2}
+\beamer@sectionintoc {3}{A posteriori analysis}{13}{0}{3}
+\beamer@sectionintoc {4}{Numerical experiments}{26}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{36}{0}{5}
