@@ -1,0 +1,13 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%Instructions for cross-diffusion code in Python%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+main.py
+
+continuous_case = 1; ------> run the code for a continuous initial guess 
+PVD_process = 1;  ----->  4 species = 1 and 3 species = 0
+compute_snapshots_offline = 1;  -----> compute snapshots of solutions in offline stage.  
+compute_snapshots_online = 1;   -------> compute high fidelity solutions when is employed online stage.
+choose_reduced_model = 1;  ----->  POD-ROM = 1 and SP-ROM = 2
+
+
