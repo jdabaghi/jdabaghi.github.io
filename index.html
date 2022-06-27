@@ -463,7 +463,10 @@ In the following images, is represented the error in the energy norm for a reali
 <br>
 
 In the following images, is represented the concept of adaptivity for inexact semismooth Newton resolutions of variational inequalities.
-The first image shows the behavior of the different error estimators as a function of the linear algebra resolution.  The second image shows the overall performance of three methods a semismooth Newton method, an inexact semismooth Newton method, and an adaptive inexact semismooth Newton mathod.
+
+The first image shows the overall behavior of the estimators as a function of the number of mesh elements. For exact and inexact semismooth Newton resolutions the discretization estimator is dominant and the linearization and algebraic estimators are small. In the adaptive inexact semismooth Newton resolution, the linearization and algebraic estimators are sufficiently small to not influence the behavior of the discretization estimator.
+
+The second image focuses on the behavior of the different error estimators as a function of the linear algebra (GMRES) resolution. An important number of algebraic iterations can be saved. The third image shows the overall performance of three methods.
 <br>
 <style type="text/css">
   .left{float:left;}
