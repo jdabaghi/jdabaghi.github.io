@@ -1,0 +1,587 @@
+\newcommand{\nc}{\newcommand}
+
+%%%%commandes principales
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemme}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}
+{Proposition}
+\newtheorem{notation}{Notation}
+\newtheorem{remarque}
+{Remark}
+\newtheorem{assumption}{Assumption}
+\newtheorem{corollary}{Corollary}
+
+\nc{\myth}[1]{#1^{\scriptsize\mbox{th}}}
+\nc{\lth}{\myth{l}}
+\nc{\ith}{\myth{i}}
+\nc{\dps}{\displaystyle}
+\newcommand{\ie}{{i.e}}
+\newcommand{\cf}{{\it cf.}}
+\nc{\card}{card \hspace {0.2cm}}
+\nc{\tq}{{t.q}}
+\renewcommand{\div}{\mathrm{div\,}}
+
+
+\newcommand{\TODO}[1]{{\red{\bf!!! \`A faire~: #1!!!}}}
+\nc{\TODOJAD}[1]{{\red{\bf \'A faire~: #1}}}
+\newcommand{\modifVct}[1]{\textcolor{blue}{#1}}
+
+
+%%%%commandes ensembles entiers naturels, réels
+
+\newcommand{\matR}{\ensuremath{\mathbb{R}}}
+\newcommand{\matN}{\ensuremath{\mathbb{N}}}
+\newcommand{\matZ}{\ensuremath{\mathbb{Z}}}
+\newcommand{\matX}{\ensuremath{\mathbb{X}}}
+
+%%%%%%
+
+\newcommand{\vv}[1]{\ensuremath{{\bf #1}}}
+\newcommand{\vu}{\vv{u}}
+
+\newcommand{\dd}{\ensuremath{\mathrm{dt}}}
+
+%%%%% Flux de fick
+
+\newcommand{\Jfick}[2]{{\bf J_{#1}^{#2}}}
+\newcommand{\Jhl}{\Jfick{h}{l}}
+\newcommand{\Jhi}{\Jfick{h}{i}}
+\newcommand{\Jwi}{\Jfick{w}{i}}
+\newcommand{\Jdi}{\Jfick{d}{i}}
+
+
+
+\newcommand{\Nx}{N_x}
+\newcommand{\Nt}{N_t}
+
+
+%%%%notations maillages
+
+\nc{\Eh}{\mathcal{E}_h}
+\nc{\Vhint}{\mathcal{V}_h^{\mathrm{int}}}
+\nc{\VK}{\mathcal{V}_K}
+\nc{\Vhext}{\mathcal{V}_h^{\mathrm{ext}}}
+\nc{\Vhiint}{\mathcal{V}_{h-1}^{\mathrm{int}}}
+\nc{\Vhintprime}{\mathcal{V}_{h}^{int}}
+\nc{\Vhiipriment}{\mathcal{V}_{h-1}^{int}}
+\nc{\Th}{\mathcal{T}_h}
+\nc{\tauunha}{{\bm{\mathcal{\tau}}}_{1h}^{\ba}}
+\nc{\taudeuxha}{{\bm{\mathcal{\tau}}}_{2h}^{\ba}}
+\nc{\guna}{g_{\mathrm{1}}^{\ba}}
+\nc{\gdeuxa}{g_{\mathrm{2}}^{\ba}}
+
+\nc{\Ehint}{\mathcal{E}_h^{int}}
+\nc{\Ehext}{\mathcal{E}_h^{ext}}
+\nc{\Vh}{\mathcal{V}_h}
+\nc{\ba}{{\bm a}}
+\nc{\bal}{{\bm a_l}}
+\nc{\baprime}{{\bm a'}}
+\nc{\oma}{\omega_{\bm a}}
+
+%%%inconnues discrètes, linéarisés, muligrille
+
+\nc{\bu}{{\bm u}}
+\nc{\bs}{{\bm s}}
+\nc{\bw}{{\bm w}}
+\nc{\uh}{{\bm u}_h}
+\nc{\bv}{{\bm v}}
+
+\nc{\X}{{\bf X}}
+\nc{\Xh}{{\bf X}_h}
+\nc{\bh}{{\bm b}_h}
+\nc{\rhk}{{\bm r}_h^k}
+\nc{\rhki}{{\bm r}_h^{k,i}}
+\nc{\rhkimoinsun}{{\bm r}_h^{k,i-1}}
+\nc{\runhkimoinsun}{{\bm r}_{1h}^{k,i-1}}
+\nc{\rHk}{{\bm r}_H^k}
+\nc{\rhi}{{\bm r}_h^i}
+\nc{\rHi}{{\bm r}_H^i}
+\nc{\rdeuxhkimoinsun}{{\bm r}_{2h}^{k,i-1}}
+
+\nc{\Xhki}{{\bf X}_h^{k,i}}
+\nc{\Xhkii}{{\bf X}_h^{k,i-1}}
+\nc{\Xhk}{{\bf X}_h^k}
+\nc{\Runhki}{{\bm R}_{1h}^{k,i}}
+\nc{\Rdeuxhki}{{\bm R}_{2h}^{k,i}}
+
+\nc{\runa}{r_1^{\ba}}
+\nc{\rdeuxa}{r_2^{\ba}}
+
+\nc{\uhk}{{\bm u}^{k}_h}
+
+\nc{\ujhk}{u^{k}_{jh}}
+
+\nc{\uhki}{{\bm u}^{k,i}_h}
+\nc{\ujhki}{u^{k,i}_{jh}}
+
+\nc{\uunhki}{u^{k,i}_{1h}}
+\nc{\uunhprimeki}{u^{k,i}_{1h'}}
+
+\nc{\uun}{u_1}
+\nc{\udeux}{u_2}
+
+
+\nc{\uununki}{u^{k,i}_{11}}
+
+
+\nc{\uunhkimoinsun}{u^{k,i-1}_{1h}}
+\nc{\udeuxhki}{u^{k,i}_{2h}}
+
+\nc{\udeuxhprimeki}{u^{k,i}_{2h'}}
+
+
+\nc{\udeuxunki}{u^{k,i}_{21}}
+
+\nc{\udeuxhkimoinsun}{u^{k,i-1}_{2h}}
+\nc{\uunhk}{u^{k}_{1h}}
+\nc{\udeuxhk}{u^{k}_{2h}}
+\nc{\uunhkmoinsun}{u^{k-1}_{1h}}
+\nc{\udeuxhkmoinsun}{u^{k-1}_{2h}}
+
+\nc{\uunhzero}{u_{1h}^0}
+\nc{\udeuxhzero}{u_{2h}^0}
+\nc{\uunhzeroki}{u^{0,k,i}_{1h}}
+\nc{\uunhzerokmoinsun}{u^{0,k-1}_{1h}}
+\nc{\uunhzerokimoinsun}{u^{0,k,i-1}_{1h}}
+
+
+
+
+\nc{\Xk}{{\bf X}^k}
+
+%%%% flux discret
+\nc{\sigunha}{{\bm{\sigma}}_{1h}^{\ba}}
+\nc{\sigdeuxha}{{\bm{\sigma}}_{2h}^{\ba}}
+
+
+%%\nc{\rhki}{{\bf r}_h^{k,i}}
+\nc{\Rhki}{{\bm R}_h^{k,i}}
+\nc{\Rhkimoinsunal}{{\bm R}_{h}^{k,i-1}(\ba_l)}
+\nc{\Rhmoinsunkimoinsunal}{{\bm R}_{h-1}^{k,i-1}(\ba_l)}
+\nc{\Rhmoinsunki}{{\bm R}_{h-1}^{k,i}}
+\nc{\Rzeroki}{{\bm R}_{0}^{k,i}}
+
+\nc{\Rhkimoinsun}{{\bm R}_{h}^{k,i-1}}
+\nc{\runhki}{{\bm r}_{1h}^{k,i}}
+\nc{\rununki}{{\bm r}_{11}^{k,i}}
+
+
+\nc{\rdeuxhki}{{\bm r}_{2h}^{k,i}}
+\nc{\rdeuxunki}{{\bm r}_{21}^{k,i}}
+\nc{\Rtroishki}{{\bm R}_{3h}^{k,i}}
+\nc{\rtroishki}{{\bm r}_{3h}^{k,i}}
+
+\nc{\shki}{{\bm s}_h^{k,i}}
+
+\nc{\shkii}{{\b s}_h^{k,i-1}}
+\nc{\Shki}{{\bf S}_h^{k,i}}
+\nc{\Shkii}{{\bf S}_h^{k,i-1}}
+
+
+\nc{\lambhk}{\lambda_h^{k}}
+\nc{\lambhkmoinsun}{\lambda_h^{k-1}}
+\nc{\lambhki}{\lambda_h^{k,i}}
+
+\nc{\lambunhki}{\lambda_{1h}^{k,i}}
+\nc{\lambdeuxhki}{\lambda_{2h}^{k,i}}
+
+
+
+
+\nc{\lambhkimoinsun}{\lambda_h^{k,i-1}}
+
+\nc{\lambhkimoinsdeux}{\lambda_h^{k,i-2}}
+
+
+%%%%%espaces discrets
+\nc{\HdivOmeg}{\textbf{H}(\div,\Omega)}
+\nc{\Hdivomeg}{\textbf{H}(\div,\omega_{\bm a})}
+\nc{\Hdivomegi}{\textbf{H}(\div,\omega_i)}
+\nc{\bn}{{\bm n}}
+\nc{\DOmeg}{\mathcal{D}(\Omega)}
+\nc{\Kg}{\mathcal{K}_{g}}
+\nc{\Kgh}{\mathcal{K}_{gh}}
+
+%%%%%%%%%
+
+
+
+
+\nc{\uhiplus}{{\bm u}_h^{i+1}}
+\nc{\jump}[1]{\llbracket #1 \rrbracket}   
+\nc{\prive}{\setminus}
+
+
+
+%%% A posteriori discret critère d'arrêt
+
+\nc{\gamrem}{\gamma_{rem}}
+\nc{\gamremj}{\gamma_{rem,j}}
+\nc{\gamlin}{\gamma_{lin}}
+\nc{\gamlinj}{\gamma_{lin,j}}
+\nc{\gamlinjk}{\gamma_{lin,j}^k}
+\nc{\gamlinKjk}{\gamma_{lin,K,j}^k}
+
+
+\nc{\gamalg}{\gamma_{alg}}
+\nc{\gamalgj}{\gamma_{alg,j}}
+
+%%%%%estimateur discret
+
+%%%%%flux linéarisés
+\nc{\sighk}{{\bm {\sigma}}_h^{k}}
+
+\nc{\sigjhk}{{\bm {\sigma}}_{jh}^{k}}
+
+\nc{\sigunhk}{{\bm {\sigma}}_{1h}^{k}}
+
+\nc{\sigunhdiskia}{{\bm \sigma}_{1h,\mathrm{disc}}^{k,i,{\bm a}}}
+
+\nc{\sigdeuxhdiskia}{{\bm \sigma}_{2h,\mathrm{disc}}^{k,i,{\bm a}}}
+
+
+\nc{\sigunhdiski}{{\bm \sigma}_{1h,\mathrm{disc}}^{k,i}}
+
+\nc{\sigdeuxhdiski}{{\bm \sigma}_{2h,\mathrm{disc}}^{k,i}}
+
+
+
+\nc{\sigdeuxhk}{{\bm {\sigma}}_{2h}^{k}}
+\nc{\sigjhalgki}{{\bm \sigma}_{jh,alg}^{k,i}}
+\nc{\sigunhalgki}{{\bm \sigma}_{1h,\mathrm{alg}}^{k,i}}
+\nc{\sigdeuxhalgki}{{\bm \sigma}_{2h,\mathrm{alg}}^{k,i}}
+\nc{\sigunjalgki}{{\bm \sigma}_{1,j,\mathrm{alg}}^{k,i}}
+\nc{\sigdeuxjalgki}{{\bm \sigma}_{2,j,\mathrm{alg}}^{k,i}}
+\nc{\sigunhalgkia}{{\bm \sigma}_{1h,\mathrm{alg}}^{k,i,{\bm a}}}
+\nc{\sigunjalgkia}{{\bm \sigma}_{1,j,\mathrm{alg}}^{k,i,{\bm a}}}
+\nc{\sigunlalgkia}{{\bm \sigma}_{1,l,\mathrm{alg}}^{k,i,{\bm a}}}
+
+\nc{\sigdeuxjalgkia}{{\bm \sigma}_{2,j,\mathrm{alg}}^{k,i,{\bm a}}}
+
+\nc{\sigdeuxlalgkia}{{\bm \sigma}_{2,l,\mathrm{alg}}^{k,i,{\bm a}}}
+
+\nc{\gamunjkia}{\gamma_{1j}^{k,i,\ba}}
+\nc{\gamunhkia}{\gamma_{1h}^{k,i,\ba}}
+\nc{\gamdeuxjkia}{\gamma_{2j}^{k,i,\ba}}
+\nc{\gamdeuxhkia}{\gamma_{2h}^{k,i,\ba}}
+
+\nc{\tildgunhkia}{\tilde{g}_{1h}^{k,i,\ba}}
+\nc{\tildgdeuxhkia}{\tilde{g}_{2h}^{k,i,\ba}}
+
+
+\nc{\gunaki}{g_{1}^{k,i,\ba}}
+\nc{\gdeuxaki}{g_{2}^{k,i,\ba}}
+%%%%%estimateur discret linéarisés
+
+\nc{\etFKi}{{\eta}_{\mathrm{F},K,i}}
+
+\nc{\etFKun}{{\eta}_{\mathrm{F},K,1}}
+
+\nc{\etFKdeux}{{\eta}_{\mathrm{F},K,2}}
+
+\nc{\etRKi}{{\eta}_{\mathrm{R},K,i}}
+\nc{\etRjK}{{\eta}_{\mathrm{R},K,j}}
+\nc{\etRKun}{{\eta}_{\mathrm{R},K,1}}
+\nc{\etRKdeux}{{\eta}_{\mathrm{R},K,2}}
+
+\nc{\etFi}{{\eta}_{\mathrm{F},i}}
+\nc{\etFun}{{\eta}_{\mathrm{F},1}}
+\nc{\etFdeux}{{\eta}_{\mathrm{F},2}}
+
+\nc{\etRi}{{\eta}_{\mathrm{R},i}}
+
+\nc{\etCK}{{\eta}_{\mathrm{C},K}}
+
+
+\nc{\etC}{{\eta}_{\mathrm{C}}}
+
+\nc{\etCKk}{{\eta}_{\mathrm{C},K}^k}
+
+\nc{\etCKkpos}{{\eta}_{\mathrm{C},K}^{k,pos}}
+
+\nc{\etCKkipos}{{\eta}_{\mathrm{C},K}^{k,i,\mathrm{pos}}}
+
+\nc{\etCKunpos}{{\eta}_{\mathrm{C},K}^{1,\mathrm{pos}}}
+
+\nc{\etCKtroispos}{{\eta}_{\mathrm{C},K}^{3,\mathrm{pos}}}
+
+\nc{\etCKonzepos}{{\eta}_{\mathrm{C},K}^{11,\mathrm{pos}}}
+
+\nc{\etCKseptpos}{{\eta}_{\mathrm{C},K}^{7,\mathrm{pos}}}
+
+\nc{\etCKkneg}{{\eta}_{\mathrm{C},K}^{k,\mathrm{neg}}}
+
+\nc{\etCKkineg}{{\eta}_{\mathrm{C},K}^{k,i,\mathrm{neg}}}
+
+\nc{\etLKk}{{\eta}_{\mathrm{L},K}^k}
+
+\nc{\etLKkpos}{{\eta}_{\mathrm{L},K}^{k,\mathrm{pos}}}
+
+\nc{\etLKkipos}{{\eta}_{\mathrm{L},K}^{k,i,\mathrm{pos}}}
+
+\nc{\etLKkneg}{{\eta}_{\mathrm{L},K}^{k,\mathrm{neg}}}
+
+\nc{\etLKkineg}{{\eta}_{\mathrm{L},K}^{k,i,\mathrm{neg}}}
+
+\nc{\etPKk}{{\eta}_{\mathrm{P},K}^k}
+
+\nc{\etPKki}{{\eta}_{\mathrm{P},K}^{k,i}}
+
+%\nc{\etPKk}{{\eta}_{\mathrm{P},K}^{k,i}}
+
+\nc{\etCKunk}{{\eta}_{\mathrm{C},K_1}^k}
+\nc{\etCKNk}{{\eta}_{\mathrm{C},K_N}^k}
+\nc{\etCKki}{{\eta}_{\mathrm{C},K}^{k,i}}
+
+
+\nc{\etFKjk}{{\eta}_{\mathrm{F,K,j}}^k}
+\nc{\etRKjk}{{\eta}_{\mathrm{R,K,j}}^k}
+\nc{\etRKjki}{{\eta}_{\mathrm{R,K,j}}^{k,i}}
+
+
+\nc{\etalgKunki}{\eta_{\mathrm{alg},K,1}^{k,i}}
+
+\nc{\etalgKjki}{\eta_{\mathrm{alg},K,\mathrm{j}}^{k,i}}
+
+\nc{\etalgKunjki}{\eta_{\mathrm{alg},K_1,\mathrm{j}}^{k,i}}
+
+\nc{\etalgKdeuxjki}{\eta_{\mathrm{alg},K_2,\mathrm{j}}^{k,i}}
+\nc{\etalgKNjki}{\eta_{\mathrm{alg},K_N,\mathrm{j}}^{k,i}}
+
+\nc{\etalgKdeuxki}{\eta_{\mathrm{alg},K,2}^{k,i}}
+
+\nc{\etdiscKjk}{\eta_{\mathrm{disc},K,j}^{k}}
+\nc{\etdiscKjki}{\eta_{\mathrm{disc},K,j}^{k,i}}
+
+\nc{\etlinKjk}{\eta_{\mathrm{lin},K,j}^{k}}
+\nc{\etlinKjki}{\eta_{\mathrm{lin},K,j}^{k,i}}
+
+\nc{\etqqeKjk}{\eta_{.,K,j}^{k}}
+\nc{\etqqejk}{\eta_{.,j}^{k}}
+\nc{\etdiscjk}{\eta_{\mathrm{disc},j}^{k}}
+\nc{\etdiscjki}{\eta_{\mathrm{disc},j}^{k,i}}
+
+\nc{\etlinjk}{\eta_{\mathrm{lin},j}^{k}}
+
+\nc{\etRjk}{{\eta}_{\mathrm{R},j}^{k}}
+\nc{\etdiscKunk}{\eta_{\mathrm{disc},K,1}^{k}}
+\nc{\etdiscKdeux}{\eta_{\mathrm{disc},K,2}^{k}}
+\nc{\etlinKunk}{\eta_{\mathrm{lin},K,1}^{k}}
+\nc{\etlinKdeuxk}{\eta_{\mathrm{lin},K,2}^{k}}
+
+
+%%%A posteriori linéarisé
+\nc{\lambhkneg}{\lambda_h^{k,\mathrm{neg}}}
+
+\nc{\lambhkineg}{\lambda_h^{k,i,\mathrm{neg}}}
+
+\nc{\lambhkpos}{\lambda_h^{k,\mathrm{pos}}}
+
+\nc{\lambhkipos}{\lambda_h^{k,i,\mathrm{pos}}}
+
+\nc{\dunhk}{{\bm d}_{1h}^{k}}
+\nc{\dunhka}{{\bm d}_{1h}^{k,\ba}}
+\nc{\dunhkal}{{\bm d}_{1h}^{k,\ba_l}}
+\nc{\ddeuxhk}{{\bm d}_{2h}^{k}}
+\nc{\ddeuxhka}{{\bm d}_{2h}^{k,\ba}}
+\nc{\ddeuxhkalmoinsnh}{{\bm d}_{2h}^{k,\ba_{l-N_h}}}
+\nc{\djhk}{{\bm d}_{jh}^{k}}
+\nc{\lunhk}{{\bm l}_{1h}^{k}}
+\nc{\lunhka}{{\bm l}_{1h}^{k,{\bm a}}}
+\nc{\lunhkal}{{\bm l}_{1h}^{k,{\bm a_l}}}
+
+\nc{\ldeuxhk}{{\bm l}_{2h}^{k}}
+\nc{\ldeuxhka}{{\bm l}_{2h}^{k,{\bm a}}}
+\nc{\ldeuxhkalmoinsnh}{{\bm l}_{2h}^{k,{\bm a_{l-N_h}}}}
+\nc{\ljhk}{{\bm l}_{jh}^{k}}
+
+%%%%estimateur discret linéarisés multigrille
+
+
+\nc{\etlgKjki}{\eta_{\mathrm{alg},K,j}^{k,i}}
+\nc{\etquaKij}{\eta_{\mathrm{quad},K,j}^{k,i}}
+\nc{\etremKij}{\eta_{\mathrm{rem},K,j}^{k,i}}
+\nc{\etoscKij}{\eta_{\mathrm{osc},K,j}^{k,i}}
+\nc{\etqqeKjki}{\eta_{.,K,j}^{k,i}}
+\nc{\etqqejki}{\eta_{.,j}^{k,i}}
+
+\nc{\etlinjki}{\eta_{lin,j}^{k,i}}
+\nc{\etquaij}{\eta_{quad,j}^{k,i}}
+\nc{\etremij}{\eta_{rem,j}^{k,i}}
+\nc{\etlgjki}{\eta_{alg,j}^{k,i}}
+\nc{\etRij}{{\eta}_{\mathrm{R},j}^{k,i}}
+\nc{\etdiscKii}{\eta_{disc,K,1}^{k,i}}
+\nc{\etdiscKiii}{\eta_{disc,K,2}^{k,i}}
+\nc{\etlinKii}{\eta_{lin,K,1}^{k,i}}
+\nc{\etlinKiii}{\eta_{lin,K,2}^{k,i}}
+\nc{\etlgKii}{\eta_{alg,K,1}^{k,i}}
+\nc{\etlgKiii}{\eta_{alg,K,2}^{k,i}}
+\nc{\etquaKii}{\eta_{quad,K,1}^{k,i}}
+\nc{\etquaKiii}{\eta_{quad,K,2}^{k,i}}
+\nc{\etremKii}{\eta_{rem,K,1}^{k,i}}
+\nc{\etremKiii}{\eta_{rem,K,2}^{k,i}}
+
+
+
+
+%%%%flux muligrilles
+
+\nc{\sighki}{{\bm {\sigma}}_h^{k,i}}
+\nc{\sighkij}{{\bm {\sigma}}_{jh}^{k,i}}
+\nc{\sigunhki}{{\bm {\sigma}}_{1h}^{k,i}}
+\nc{\sigdeuxhki}{{\bm {\sigma}}_{2h}^{k,i}}
+\nc{\sigjhki}{{\bm {\sigma}}_{jh}^{k,i}}
+\nc{\baresighkij}{\bar{{\bm {\sigma}}}_{jh}^{k,i}}
+
+
+\nc{\roohki}{\rho_h^{k,i}}
+\nc{\roohkij}{\rho_{jh}^{k,i}}
+\nc{\roohkii}{\rho_{1h}^{k,i}}
+\nc{\roohkiii}{\rho_{2h}^{k,i}}
+%%%%
+
+
+%%%% A posteriori multigrille
+
+\nc{\dhki}{{\bm d}_h^{k,i}}
+\nc{\djhki}{{\bm d}_{jh}^{k,i}}
+\nc{\dunhki}{{\bm d}_{1h}^{k,i}}
+\nc{\dunhkial}{{\bm d}_{1h}^{k,i,\ba_l}}
+\nc{\ddeuxhki}{{\bm d}_{2h}^{k,i}}
+\nc{\ddeuxhkialmoinsnh}{{\bm d}_{2h}^{k,i,\ba_{l-N_h}}}
+\nc{\lhki}{{\bm l}_h^{k,i}}
+\nc{\ljhki}{{\bm l}_{jh}^{k,i}}
+\nc{\lunhki}{{\bm l}_{1h}^{k,i}}
+\nc{\lunhkial}{{\bm l}_{1h}^{k,i,\ba_l}}
+\nc{\ldeuxhki}{{\bm l}_{2h}^{k,i}}
+\nc{\ldeuxhkialmoinsnh}{{\bm l}_{2h}^{k,i,\ba_{l-N_h}}}
+\nc{\ahki}{{\bm a}_{alg,h}^{k,i}}
+\nc{\ajhki}{{\bm a}_{alg,jh}^{k,i}}
+\nc{\aunhki}{{\bm a}_{alg,1h}^{k,i}}
+
+\nc{\baraunhki}{\overline{{\bm a}}_{alg,1h}^{k,i}}
+
+
+\nc{\aunhprimeki}{{\bm a}_{alg,1h'}^{k,i}}
+
+\nc{\aununki}{{\bm a}_{alg,11}^{k,i}}
+
+\nc{\aunhkial}{{\bm a}_{alg,1h}^{k,i,\ba_l}}
+\nc{\aunhprimekial}{{\bm a}_{alg,1h'}^{k,i,\ba_l}}
+
+
+\nc{\aununkial}{{\bm a}_{alg,11}^{k,i,\ba_l}}
+
+
+\nc{\adeuxhki}{{\bm a}_{alg,2h}^{k,i}}
+\nc{\baradeuxhki}{\overline{{\bm a}}_{alg,2h}^{k,i}}
+
+
+\nc{\adeuxhprimeki}{{\bm a}_{alg,2h'}^{k,i}}
+
+\nc{\adeuxunki}{{\bm a}_{alg,21}^{k,i}}
+
+\nc{\adeuxhkialmoinsnh}{{\bm a}_{alg,2h}^{k,i,\ba_{l-N_h}}}
+
+\nc{\adeuxhprimekialmoinsnh}{{\bm a}_{alg,2h'}^{k,i,\ba_{l-N_h}}}
+
+\nc{\adeuxhprimekialmoinsnhprime}{{\bm a}_{alg,2h'}^{k,i,\ba_{l-N_h'}}}
+
+
+\nc{\adeuxunkialmoinsnzero}{{\bm a}_{alg,21}^{k,i,\ba_{l-N_0}}}
+
+\nc{\adeuxunkialmoinsnh}{{\bm a}_{alg,21}^{k,i,\ba_{l-N_h}}}
+
+
+%%%%%%%
+\nc{\Xoh}{\mathbb{X}_{0h}}
+\nc{\Xho}{{\bf X}_{0h}}
+\nc{\Xhi}{{\bf X}_{1h}}
+\nc{\Xhii}{{\bf X}_{2h}}
+\nc{\Sh}{{\bf S}_h}
+%\nc{\Shk}{{\bf S}_h^k}
+
+\nc{\R}{\mathbb{R}}
+
+
+\nc{\M}{\mathbb{M}}
+\nc{\N}{\mathbb{N}}
+\nc{\A}{\mathbb{A}}
+\nc{\Ah}{\mathbb{A}_h}
+
+\nc{\nab}{{\bm \nabla}}
+
+
+
+
+
+
+
+
+
+
+
+\nc{\Shko}{{\bf S}_h^{k,0}}
+\nc{\Shkinnu}{{\bf S}_h^{k,i+\nu}}
+\nc{\Rhkinnu}{R_h^{k,i+\nu}}
+\nc{\Rhkii}{R_h^{k,i-1}}
+
+
+
+\nc{\gamremK}{\gamma_{rem,K}}
+
+\nc{\gamlinK}{\gamma_{lin,K}}
+
+\nc{\gamalgK}{\gamma_{alg,K}}
+
+\nc{\epsHi}{{\bm \varepsilon}_H^i}
+\nc{\vhk}{{\bm v}_h^k}
+\nc{\vhi}{{\bm v}_h^i}
+\nc{\shk}{{\bm s}_h^k}
+\nc{\Shk}{{\bm S}_h^k}
+\nc{\uhi}{{\bm u}_h^i}
+\nc{\uunh}{u_{1h}}
+\nc{\udeuxh}{u_{2h}}
+
+
+\nc{\PXh}{{\bf \Pi}(\Xh)}
+\nc{\PXhk}{{\bf \Pi}(\Xhk)}
+\nc{\PXhkmoinsun}{{\bf \Pi}(\Xh^{k-1})}
+\nc{\pshl}{\psi_{h,l}}
+\nc{\psha}{\psi_{h,\ba}}
+
+
+\nc{\uunhoki}{u_{1h}^{0,k,i}}
+\nc{\uunhokimoinsun}{u_{1h}^{0,k,i-1}}
+
+\nc{\uunhokimoinsdeux}{u_{1h}^{0,k,i-2}}
+
+\nc{\epszerounki}{\varepsilon_{01}^{k,i}}
+\nc{\epszerodeuxki}{\varepsilon_{02}^{k,i}}
+
+
+\nc{\underunhmoinsuncumki}{\underline{\varepsilon}_{1,h-1}^{cum,k,i}}
+
+\nc{\underdeuxhmoinsuncumki}{\underline{\varepsilon}_{2,h-1}^{cum,k,i}}
+
+\nc{\undertroishmoinsuncumki}{\underline{\varepsilon}_{3,h-1}^{cum,k,i}}
+
+\nc{\epszerotroiski}{\varepsilon_{03}^{k,i}}
+
+
+\nc{\fFB}{f_{\mathrm{FB}}}
+\nc{\fFBun}{f_{\mathrm{FB,1}}}
+\nc{\fFBdeux}{f_{\mathrm{FB,2}}}
+\nc{\fFBtrois}{f_{\mathrm{FB,3}}}
+
+\nc{\Nhext}{N_h^{\mathrm{ext}}}
+
+\newcommand\eal{{\em et al.}}
+
+%%nc{\L2Omeg}{L^2(\Omega)}
+
+
+
+%%\nc{\sig1ha}{\sigma_{1h}^{\ba}}

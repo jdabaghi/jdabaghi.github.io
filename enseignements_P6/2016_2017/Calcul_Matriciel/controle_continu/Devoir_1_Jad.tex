@@ -1,0 +1,125 @@
+\documentclass[11pt]{article}
+%\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+
+\usepackage[%
+     a4paper,%
+     textwidth=19cm,%
+     top=2cm,%
+     bottom=2cm,%
+     headheight=25pt,%
+     headsep=12pt,%
+     footskip=25pt]{geometry}%
+\usepackage[frenchb]{babel}
+%\usepackage{amsmath}
+
+%\usepackage{amsfonts}
+\parindent0pt
+\usepackage{longtable}
+\usepackage{color}
+\input{commandes_anglais}
+\pagestyle{empty}
+
+\begin{document}
+
+{\large UPMC \hfill 1M004 Calcul matriciel \hfill 2016-2017}
+
+\vskip -3mm
+\noindent \textbf{\hrulefill}
+
+\vskip 1mm
+
+\centerline{
+{\large Groupe PCGI 21.1 \hspace{1.7 cm} --- Contrôle du --- \hspace{3.5 cm}  13/03/2017}}
+
+
+\vskip -2mm
+\noindent \textbf{\hrulefill}
+
+
+
+\vskip 2mm
+
+\centerline{\textbf{Tout appareil \'electronique (calculatrices, t\'el\'ephones portables, etc.) est interdit}}
+
+\vskip 2mm
+
+
+
+{\sl  La pr\'esentation, la lisibilit\'e, l'orthographe, la
+ qualit\'e de la r\'edaction, la clart\'e et la pr\'ecision des
+ raisonnements entreront pour une part importante dans
+ l'appr\'eciation des copies. En particulier, les r\'esultats non
+ justifi\'es ne seront pas pris en compte. }
+
+
+\vskip 3mm
+\hrule
+
+\vskip 3mm
+
+\textbf{Questions du cours :} 
+\begin{enumerate}
+\item  Soit $A$ une matrice carrée. Donner la définition de la trace de $A$.
+\item Donner la définition d'une matrice inversible.
+\item  \emph{Vrai ou Faux:} (Si une assertion vous semble fausse, justifiez en exhibant un contre exemple).\\
+ Soient $A \in \mathcal{M}_{m,n}(\R)$, $B \in \mathcal{M}_{n,p}(\R)$ et $C \in \mathcal{M}_{p,q}(\R)$
+\begin{enumerate}
+\item Multiplication matricielle est commutative, alors $AB = BA$.
+\item La multiplication des matrices est associative, alors $(AB)C = A(BC)$.
+\end{enumerate}
+       
+\end{enumerate}
+\vskip 0.2cm
+  \hrule
+\vskip 2mm
+
+
+ \noindent \textbf{Exercice 1 :}\\
+ \begin{enumerate}
+ \item Soient les matrices $$A = \begin{pmatrix} 0 & 2 & -1  \\ -2 & -1 & 2 \end{pmatrix}, \quad B = \begin{pmatrix} 1 & 0 & 1  \\ -1 &  1 & -2 \\ 
+0 & 2 & 1 \end{pmatrix}, \quad C = \begin{pmatrix} -2 & 1  \\ 1 & 0\\ 
+ 0 & 2\end{pmatrix} .$$ Le produit $ABC$ est-il défini? Si oui, le calculer. Même question pour le produit $CAB$.
+\item  Calculer $ Tr({}^t\!B B)$ et $Tr(B {}^t\!B)$. Que remarquez vous? Cette formule est-elle générale?\\ 
+
+\end{enumerate}
+\noindent \textbf{Exercice 2 :}\\
+\begin{enumerate}
+\item Soient les matrices $A$ et $B$ définies respectivement par
+\begin{equation*}
+A = 
+\begin{pmatrix}
+1&1&1\\
+0&1&1\\
+0&0&1
+\end{pmatrix}
+\quad \mbox{et} \quad B = A - I_3.
+\end{equation*}
+Calculer $B^n$ pour $n \in \mathbb{N}$ et en déduire $A^n$.
+\item Calculer $A(3I_3 - 3A + A^2)$. Que pouvez vous en déduire?\\
+\end{enumerate}
+\textbf{Exercice 3 :}\\ 
+\begin{enumerate}
+\item On utilise $x$ molécules de $C_3H_6$ et $y$ molécules de $C_2H_4$ pour obtenir 4 molécules de $CH_4$. Trouver $x$ et $y$.\\
+\item En utilisant la méthode d'elimination de Gauss, résoudre le système suivant:
+$$\left\{\begin{array}{cccccccc}x&+&y&+&2z&=&5\\x&-&y&-&z&=&1\\x&&&+&z&=&3\end{array}\right.$$
+\end{enumerate}
+\noindent \textbf{Exercice 4 :}\\
+Soit la matrice 
+\begin{equation*}
+A=
+\begin{pmatrix}
+2 &1& 1\\
+1 &1 &1\\
+1 &1& 2
+\end{pmatrix}
+\end{equation*}
+ Montrer que la matrice $A$ est inversible. Calculer le déterminant de son inverse et calculer $A^{-1}$. 
+
+\end{document}

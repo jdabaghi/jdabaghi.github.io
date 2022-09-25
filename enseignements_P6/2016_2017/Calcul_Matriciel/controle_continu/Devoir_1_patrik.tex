@@ -1,0 +1,134 @@
+\documentclass[12pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[%
+      a4paper,%
+      textwidth=18cm,%
+      top=2cm,%
+      bottom=2cm,%
+      headheight=25pt,%
+      headsep=12pt,%
+      footskip=25pt]{geometry}%
+\usepackage[frenchb]{babel}
+\parindent0pt
+\usepackage{longtable}
+\usepackage{amsmath, amsfonts}
+\usepackage{enumitem}
+
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\def\N{\textrm{I\kern-0.21emN}}
+\def\C{\mathbb{C}}
+\def\K{\mathbb{K}}
+\def\R{\textrm{I\kern-0.21emR}}
+\def\Q{\textrm{l\kern-0.5emQ}}
+\def\Z{\mathbb{Z}}
+\newcommand{\ds}{\displaystyle}
+
+\pagestyle{empty}
+
+\begin{document}
+
+{\Large UPMC \hfill 1M004 - Calcul matriciel \hfill 2016-2017}
+
+\vskip -3mm
+\noindent \textbf{\hrulefill}
+
+\vskip 1mm
+
+\center{
+{\Large  \textbf{TD Section 21.3 -- Contrôle du 6 mars}} \linebreak
+{\large \textbf{Durée : 45 minutes / Sans documents ni matériel électronique}}
+}
+
+\vskip -2mm
+\noindent \textbf{\hrulefill}
+
+
+
+%\vskip 2mm
+
+%\centerline{\textbf{Tout appareil électronique (calculatrices, téléphones portables, etc.) est interdit}}
+
+%\vskip 2mm
+{\LARGE
+\begin{center}
+%\begin{tabular}{|p{7cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+%\hline
+%\textbf{Numéro d'étudiant} &     & & & & &   &
+%\\
+%\hline
+%\end{tabular}
+
+\vskip 0.25cm
+
+\begin{tabular}{|p{2cm}|p{6cm}|p{3cm}|p{5cm}|}
+\hline
+\textbf{Nom} &     & \textbf{Prénom   }  &   \\
+\hline
+\end{tabular}
+\end{center}
+} %% fin LARGE
+
+
+{\sl  La présentation et la clarté des raisonnements seront pris en compte dans l'appréciation des
+copies. Pensez à justifier tous vos résultats. }
+
+
+\vskip 3mm
+\hrule
+
+\vskip 3mm
+\noindent \textbf{Questions du cours :} \\
+\begin{enumerate}[font=\bfseries,label=(Q\arabic*)]
+\item  Soit $A$ une matrice carrée. Donner la définition de la trace de $A$.
+\item  \emph{Vrai ou Faux:} Soient $A \in \mathcal{M}_{m,n}(\R)$, $B \in \mathcal{M}_{n,p}(\R)$ et $C \in \mathcal{M}_{p,q}(\R)$
+\begin{enumerate}
+\item Multiplication matricielle est commutative, alors $AB = BA$.
+\item La multiplication des matrices est associative, alors $(AB)C = A(BC)$.
+\end{enumerate}
+%\item  Soit $\alpha \in \R_{+}$. Montrer par récurrence que pour tout $n \in \N$ on a $(1+\alpha)^n \ge 1 + n\alpha$.
+%  \item Résoudre le système suivant par la méthode du pivot de Gauss [1pt]:  %solution (3,2,0)
+%\begin{align*} 
+%x + y + 2z &=  5 \\ 
+%x - y - z &= 1\\
+%x + z &= 3
+%\end{align*}
+%
+%\item Donner la définition du déterminant d'une matrice de taille 2  et description de l'inverse d'une matrice de taille 2 [1pt]        
+\end{enumerate}
+
+\vskip 0.2cm
+  \hrule
+\vskip 2mm
+
+
+ \noindent \textbf{Exercices :}\\
+ \begin{enumerate}[font=\bfseries]
+ \item Soient les matrices $$A = \begin{pmatrix} 0 & 2 & -1  \\ -2 & -1 & 2 \end{pmatrix}, \quad B = \begin{pmatrix} 1 & 0 & 1  \\ -1 &  1 & -2 \\ 
+0 & 2 & 1 \end{pmatrix}, \quad C = \begin{pmatrix} -2 & 1  \\ 1 & 0\\ 
+ 0 & 2\end{pmatrix} .$$ Le produit $ABC$ est-il défini? Si oui, le calculer. Même question pour le produit $CAB$.
+\item Dans $\mathcal{M}_{3,4}(\R)$ soient $A = \begin{pmatrix} -5 & -4 & -3 & -2 \\ -1 & 0 & 1 & 2 \\ 
+3 & 4 & 5 & 6\end{pmatrix}$ 
+et $B = \begin{pmatrix} -1 & 0 & 1 & 2 \\ 2 & 1 & 0 & -1 \\ 1 & 0 & -1 & 2 \end{pmatrix}$.\\ 
+\'Ecrire la matrice ${}^t\!A$ puis calculer  $B\, {}^t\!A$. 
+%------------------------------------------------------
+ \item Résoudre le problème suivant: on utilise $x$ molécules de $C_3H_6$ et $y$ molécules de $C_2H_4$ pour obtenir 4 molécules de $CH_4$. Trouver $x$ et $y$.
+%------------------------------------------------------
+% \item Soit $x \in \R$. On considère la matrice $A_x = \begin{pmatrix}
+% 1 & 2 & 3\\
+% 1 & 2x &-x^2\\
+% 1 & 5 & 6
+% \end{pmatrix}$
+% \begin{enumerate}
+% \item Calculer le déterminant de la matrice $A_x$.
+% \item Déterminer l'ensemble des réels $x$ tels que $A_x X = B$ a une solution pour tout $B \in \R^3$.
+% \item Calculer l'inverse de $A_0$, i.e. en prenant $x = 0$.
+% \end{enumerate}
+%------------------------------------------------------
+ \item En utilisant la méthode d'elimination de Gauss, résoudre le système suivant:
+$$\left\{\begin{array}{cccccccc}x&+&y&+&2z&=&5\\x&-&y&-&z&=&1\\x&&&+&z&=&3\end{array}\right.$$
+ 
+ \end{enumerate}
+
+\end{document}

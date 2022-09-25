@@ -1,0 +1,150 @@
+\documentclass[11pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[%
+      a4paper,%
+      textwidth=18cm,%
+      top=2cm,%
+      bottom=2cm,%
+      headheight=25pt,%
+      headsep=12pt,%
+      footskip=25pt]{geometry}%
+\usepackage[frenchb]{babel}
+\parindent0pt
+\usepackage{longtable}
+\usepackage{amsmath, amsfonts}
+\usepackage{enumitem}
+
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\def\N{\textrm{I\kern-0.21emN}}
+\def\C{\mathbb{C}}
+\def\K{\mathbb{K}}
+\def\R{\textrm{I\kern-0.21emR}}
+\def\Q{\textrm{l\kern-0.5emQ}}
+\def\Z{\mathbb{Z}}
+\newcommand{\dps}{\displaystyle}
+
+\pagestyle{empty}
+
+\begin{document}
+
+{\Large UPMC \hfill 1M004 - Calcul matriciel \hfill 2016-2017}
+
+\vskip -3mm
+\noindent \textbf{\hrulefill}
+
+\vskip 1mm
+
+\center{
+{\Large  \textbf{ Section 21.2 -- Contrôle du 24 avril}} \linebreak
+{\large \textbf{Durée : 1h }}
+}
+
+\vskip -2mm
+\noindent \textbf{\hrulefill}
+
+
+
+%\vskip 2mm
+
+%\centerline{\textbf{Tout appareil électronique (calculatrices, téléphones portables, etc.) est interdit}}
+
+%\vskip 2mm
+{\LARGE
+%\begin{center}
+%%\begin{tabular}{|p{7cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+%%\hline
+%%\textbf{Numéro d'étudiant} &     & & & & &   &
+%%\\
+%%\hline
+%%\end{tabular}
+%
+%\vskip 0.25cm
+%
+%\begin{tabular}{|p{2cm}|p{6cm}|p{3cm}|p{5cm}|}
+%\hline
+%\textbf{Nom} &     & \textbf{Prénom   }  &   \\
+%\hline
+%\end{tabular}
+%\end{center}
+} %% fin LARGE
+
+
+{\sl  La présentation et la clarté des raisonnements seront pris en compte dans l'appréciation des
+copies. Pensez à justifier tous vos résultats. }
+
+
+\vskip 3mm
+\hrule
+
+\vskip 3mm
+\noindent \textbf{Questions du cours :} \\
+\begin{enumerate}[font=\bfseries,label=(Q\arabic*)]
+\item  Donner la définition d'\textit{une application linéaire} $F: \R^2 \to \R^2$.
+\item  Donner la définition d'une application linéaire $P: \R^3 \to \R^3$ qui est \textit{une projection} dans $\mathbb{R}^3$.
+
+\end{enumerate}
+
+\vskip 0.2cm
+  \hrule
+\vskip 2mm
+
+\textbf{Exercice 1:}
+% \noindent \textbf{Exercices :}\\
+ \begin{enumerate}[font=\bfseries]
+ \item Soient $A = \begin{pmatrix} 1 & 2 \\ 2 & -1 \end{pmatrix}, \quad B = \begin{pmatrix} 3 & -2 \\ 1 &  1 \end{pmatrix}$. Calculer $\mathrm{det}(A)$, $A^{-1}$, $\mathrm{det}(B)$, $\mathrm{det}(A+B)$, $\mathrm{det}(AB)$, $Tr(AB)$ et $Tr(A+B)$.\\
+ Que remarquez-vous? 
+ 
+ \end{enumerate}
+ \textbf{Exercice 2:}
+ \begin{enumerate}
+ \item
+Déterminer si le système suivant peut admettre une unique solution
+ $
+ \begin{cases}
+ 2x - y + z = 2\\
+ 3x + y + z = 6\\
+ 4x + y - 2z = 11
+ \end{cases}
+ $
+ \item
+ Résoudre le système par la méthode d'élimination de Gauss
+ \item Soient $$M = \begin{pmatrix} 1 & 0 & 0  \\ 1 & 0 & 1 \\ 2 & 2 & 2 \end{pmatrix}. $$ Montrer que matrice $M$ est inversible. Calculer $M^{-1}$. 
+ \end{enumerate}
+ \textbf{Exercice 3:}
+ \begin{enumerate}[font=\bfseries]
+ %----------------------------------------------------- 
+ \item Parmi les applications suivantes lesquelles sont linéaires? (\textit{Justifiez votre réponse!}) Lorsque c'est possible, donner la matrice de l'application (dans les bases canoniques).
+ \begin{enumerate}
+ \item $f: \R^2 \to \R^2; \begin{pmatrix} x \\ y \end{pmatrix} \mapsto \begin{pmatrix} 3x\\ -7y + 5x\end{pmatrix}$
+ \item $f: \R^3 \to \R; \begin{pmatrix} x \\ y\\z  \end{pmatrix} \mapsto \sin{(xyz)}$
+ \end{enumerate}
+ \item
+ Soit 
+$ A=
+  \begin{pmatrix}
+  2 & -1 & -1\\
+  1 & 0 & -1\\
+  1 & -1 & 0
+  \end{pmatrix}
+ $
+ et $g$ l'application linéaire de $\mathbb{R}^3$ dans $\mathbb{R}^3$ dont la matrice associée dans la base canonique de $\mathbb{R}^3$ est $g$.  
+\\ $g$ est elle une isométrie, une projection, une homothétie?\\
+\begin{center}
+\textbf{Exercice 4:}
+\end{center} 
+On considère l'application suivante:
+ $f : \R^3 \longrightarrow \R^3$, $\begin{pmatrix} x \\ y\\z  \end{pmatrix} \longmapsto \begin{pmatrix} y+z \\ x+y+z\\x  \end{pmatrix}$
+ 
+ \begin{enumerate}
+ \item Montrez que $f$ est linéaire.
+ \item Donner l'expression de $F$, la matrice de $f$ dans la base canonique de $\R^3$.
+ \item Déterminer l'ensemble ker($f$)$= \lbrace x \in \R^3\,|\, f(x) = 0 \rbrace$
+ \item Déterminer l'ensemble im($f$)$= \lbrace f(x)\,,\,x \in \R^3\ \rbrace$
+ \end{enumerate}
+%------------------------------------------------------
+ 
+ \end{enumerate}
+
+\end{document}
