@@ -1,0 +1,129 @@
+\miniframesoff
+
+
+\begin{frame}
+    \begin{center}
+        \Huge{Analyse réelle}
+    \end{center}
+\end{frame}
+
+%------------------------------------------------
+\section{Analyse réelle}
+
+%------------------------------------------------
+\begin{frame}	
+\frametitle{Analyse réelle}		
+      \begin{definition}[distance]
+Soit $E$ un ensemble non vide. 
+Une \textbf{distance} sur $E$ est une application  $d : E \times E \rightarrow \mathbb{R}^{+}$ qui vérifie $\forall (x, y, z) \in E \times E \times E$
+
+\begin{minipage}{0.63\textwidth}
+\begin{equation*}
+\begin{split}
+& d(x,y) = 0 \iff x = y \quad \text{(\textcolor{darkmagenta}{homogénéité})}
+\\
+& d(x, y) = d(y, x) \quad \text{(\textcolor{darkmagenta}{symétrie})}
+\\
+& d(x, z) \leq d(x,y) + d(y,z) \quad \text{(\textcolor{darkmagenta}{inégalité triangulaire)}}.
+\end{split}
+\end{equation*}
+\end{minipage}
+\hfill
+\begin{minipage}{0.36 \textwidth}
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale = 0.27]{inegalite_triangulaire}
+\end{figure}    
+\end{minipage}
+
+Le couple \textbf{$(E, d)$} est appelé \textbf{espace métrique}.
+\end{definition}
+\textcolor{cadmiumgreen}{\textbf{Exemple : }} 
+\begin{itemize}
+    \item Sur $\mathbb{R}$, la métrique usuelle est $d(x, y) = \left \lvert x - y \right \rvert $ 
+    \item
+     Sur $\mathbb{C}$, la métrique usuelle est $d(z_1, z_2) = \left \lvert z_2 - z_1 \right \rvert $
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{definition}[Ouvert]
+Soit $(E, d)$ un espace métrique. 
+On dit que $\mathcal{A} \in \mathcal{P}(E)$ est un ouvert de $E$ si $\mathcal{A}$ contient une boule ouverte. 
+Autrement dit, si 
+\begin{equation*}
+\forall x \in \mathcal{A}, \ \exists r > 0 \ \text{tel que} \ B(x, r) \subset \mathcal{A} \qquad \qquad \textcolor{midnightblue}{B(x,r) = \left\{y \in E \ | \ d(x, y) < r \right\}}
+\end{equation*}
+\end{definition}
+
+\begin{minipage}{0.59 \textwidth}
+    \begin{figure}
+    \centering
+\includegraphics[scale = 0.35]{ouvert_illustration.pdf}
+\end{figure}
+\end{minipage}
+\hfill
+\begin{minipage}{0.4 \textwidth}
+\textbf{Exemples ouverts :} 
+\begin{itemize}
+    \item $\mathbb{R}$
+    \item $\mathbb{R}^2$
+\item $]a, b[$
+\item $B(x,r)$
+\end{itemize}
+\end{minipage}
+\end{frame}
+
+\begin{frame}
+\begin{definition}[Voisinage]
+\begin{itemize}
+    \item \textbf{$(E, d)$ espace métrique} et $a \in E$.
+\end{itemize} 
+On dit que $\mathcal{V} \subset E$ est un voisinage de $a$ si, et seulement si, il existe un ouvert $O \subset \mathcal{V}$ contenant $a$. 
+Autrement dit s'il existe $B(a, r) \subset \mathcal{V}$.
+\end{definition}
+\textcolor{cadmiumgreen}{\textbf{Remarque :}}
+\vspace*{0.3 cm}
+\\
+\begin{itemize}
+\item[$\bullet$]
+En dimension $1$, 
+\begin{equation*}
+\mathcal{V}_a = ]a - \eta, a + \eta[
+\end{equation*}
+\item[$\bullet$]
+En dimension $2$,
+\begin{equation*}
+\mathcal{V}_a = B(a, \eta)
+\end{equation*}
+\end{itemize}
+%\begin{figure}
+%\centering
+%\includegraphics[scale=0.65]{dessin_voisinage}
+%\end{figure}
+
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Continuité}
+ \begin{definition}[Caractérisation de Weierstrass]
+Une fonction $f$ est dite continue en $a \in I$ si 
+\begin{equation*}
+\forall \varepsilon > 0, \ \exists \eta > 0, \ \forall x \in I, |x - a| \leq \eta \Rightarrow |f(x) - f(a)| \leq \varepsilon \quad \alert{(\lim_{x \rightarrow a} f(x) = f(a))}.
+  \end{equation*} 
+\end{definition}
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.6]{continuite.pdf}
+    \qquad \qquad 
+    \includegraphics[scale = 0.6]{discontinuite.pdf}
+\end{figure}
+\end{frame}
+%------
+%\begin{frame}
+ %   \begin{figure}
+  %      \centering
+%\includegraphics[scale = 0.65]{fonction_1_x.pdf}
+ %   \end{figure}
+%\end{frame}

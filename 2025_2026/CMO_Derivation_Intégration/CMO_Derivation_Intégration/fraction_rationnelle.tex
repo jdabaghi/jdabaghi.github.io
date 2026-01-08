@@ -1,0 +1,526 @@
+%%%%%%%%%%% CHAPTER FRACTIONS RATIONNELLES%%%%%%%%%
+
+\begin{frame}
+\begin{center}
+\Huge{Fractions rationnelles}
+\end{center}
+\end{frame}
+   %%%
+%%%%%
+\begin{frame}{Contenu}
+\begin{enumerate}
+    \item Rappels et quelques propriétés sur les polynômes
+\vspace{0.5 cm}
+    \item Définition et propriétés des fractions rationnelles
+\vspace{0.5 cm}
+    \item Décomposition en éléments simples dans $\mathbb{R}[X]$ et $\mathbb{C}[X]$.
+\vspace{0.5 cm}
+\item Quelques applications
+    
+\end{enumerate}
+       
+\end{frame}
+
+%%%%%%%
+
+\begin{frame}{Polynômes}
+ \begin{definition}
+      On appelle polynôme à coefficient dans $\mathbb{K}$ toute expression du type
+      \begin{equation*}
+          A = \sum_{k=0}^n a_k X^k \quad a_k \in \mathbb{R} \ \text{ou} \ \mathbb{C}.
+      \end{equation*}
+      De plus, le degré du polynôme $A$, noté $\mathrm{deg}(A)$ est définit par
+      \begin{equation*}
+          \mathrm{deg}(A) = 
+          \left\{
+\begin{array}{rcr}
+& \max \left\{ k \in \mathbb{N} \ | \ a_k \neq 0 \right\} \ & \text{si} \  A \neq 0  \\
+& - \infty \ &\text{si} \ A = 0. 
+\end{array}
+\right.
+      \end{equation*}
+       $a_n \neq 0$ s'appelle le coefficient dominant du polynôme.
+  \end{definition}
+    
+\end{frame}
+
+%%%%%%%%%%
+%%%%%%%%%%%%
+\begin{frame}{Quelques propriétés}
+\begin{proposition}
+Etant donnés deux polynômes $A$ et $B$ de $\mathbb{K}[X]$, on a :
+\vspace{0.2 cm}
+\begin{enumerate}
+    \item $\deg{(A + B)} = \max (\deg (A), \deg (B))$
+    \vspace{0.3 cm}
+    \item $\deg(AB) = \deg(A) + \deg(B)$
+\end{enumerate}
+\end{proposition}
+%%
+\begin{proposition}
+    L'ensemble $\mathbb{K}_n[X]$ des polynômes de degré $\leq n$ est un sous-espace vectoriel de $\mathbb{K}[X]$.
+\end{proposition}
+\textbf{Démonstration :}
+\\
+\vspace{0.3 cm}
+\alert{\textbf{Voir le polycopié !}}
+\end{frame}
+
+%%%%%%%%%%%%
+%%%%%%%%%%%
+
+\begin{frame}{Divisibilité dans $\mathbb{K}[X]$}
+    \begin{definition}
+    Soient $(A,B) \in \mathbb{K}[X] \times \mathbb{K}[X]$. On dit que $A$ divise $B$ si
+    \begin{equation*}
+        \exists C \in \mathbb{K}[X] \quad AC = B
+    \end{equation*}
+\end{definition}
+\invisible<1>{
+\textbf{Exercice :} 
+Montrer que le polynôme $(X - 1) (X - 2)$ divise le polynôme $(X - 1)^2(X-2) (X^2 + X + 1)$.
+\\
+\vspace{0.2 cm}
+\invisible<2>{
+        \corrige{
+        \begin{equation*}
+            (X - 1)^2(X-2) (X^2 + X + 1) = (X - 1)(X - 2) \times \textcolor{darkmagenta}{R(X)}
+        \end{equation*}
+        avec 
+        \begin{equation*}
+\textcolor{darkmagenta}{R(X) = (X - 1) (X^2 + X + 1)}.
+        \end{equation*}
+        }
+        \invisible<3>{
+        }}}
+\end{frame}
+%%%%%%
+%%%%%%
+\begin{frame}{Divisibilité dans $\mathbb{K}[X]$}
+\begin{theorem}
+\'{E}tant donnés deux polynômes $A$ et $B$ de $\mathbb{K}[X]$ avec $B \neq 0$, il existe un unique couple $(Q,R) \in \mathbb{K}[X] \times \mathbb{K}[X]$ vérifiant
+\begin{equation*}
+    A = BQ + R \quad \text{avec} \quad  \deg{(R)} < \deg{(B)}.
+\end{equation*}
+$Q$ est appelé le quotient et $R$ le reste de la division euclidienne de $A$ par $B$.
+\end{theorem}
+\vspace{0.3 cm}
+    \alert{\textbf{Preuve dans le polycopié! très intéréssante!}}
+\end{frame}
+%%%%%%%
+%%%%%
+\begin{frame}{Conjugaison}
+\begin{definition}
+    Si $\dps A=\sum_{k=0}^{+\infty} a_k X^k \in \mathbb{C}[X]$, on appelle conjugué de $A$, le polynôme $\dps \overline{A} = \sum_{k=0}^{+\infty} \overline{a}_k X^k$.
+\end{definition}
+
+\begin{proposition}
+Soit $(A, B) \in \mathbb{C}[X]^2$.
+Alors, on a les propriétés suivantes : 
+\begin{enumerate}
+    \item
+    $\overline{A + B} = \overline{A} + \overline{B}$
+    \item
+    $\overline{AB} = \overline{A} \times \overline{B}$
+    \item
+   $ A \in \mathbb{R}[X] \iff \overline{A} = A$
+\end{enumerate}    
+\end{proposition}
+\alert{\textbf{Preuve dans polycopié!}}
+\end{frame}
+%%%%
+%%%%
+\begin{frame}{Fractions rationnelles}
+\begin{definition}  
+      On appelle corps des fractions rationnelles à coefficients dans $\mathbb{K}$ l'ensemble 
+      \begin{equation*}
+         \mathcal{K} = \left\{ F = \frac{P}{Q} \quad \text{avec} \quad (P, Q) \in \mathbb{K}[X]^2 \quad \text{et} \quad Q \neq 0 \right\} \quad \textcolor{darkmagenta}{(P,Q) : \ \text{représentant de} \ F}.
+      \end{equation*}
+       \textcolor{darkmagenta}{Opérations licites :}
+      Pour $P$, $P_1$, $Q$, $Q_1$, $R$ des polynômes avec $Q \neq 0$, $Q_1 \neq 0$ et $R \neq 0$ :
+      \\
+    \begin{minipage}[t]{0.36\linewidth}
+    \begin{itemize}
+\item [$\bullet$]
+$\dps \frac{P}{Q} + \frac{P_1}{Q_1} = \frac{P Q_1 + P_1 Q}{Q Q_1} $
+\\
+\vspace{0.2 cm}
+           \item[$\bullet$]
+$\dps \frac{P}{Q} \times \frac{P_1}{Q_1} = \frac{P P_1}{Q Q_1}$
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.36\linewidth}
+\begin{itemize}
+           \item[$\bullet$]
+$\dps \frac{P}{Q} = \frac{P_1}{Q_1} \iff P Q_1 = P_1 Q$
+\\
+\vspace{0.2 cm}
+           \item[$\bullet$]
+$\dps\frac{PR}{QR} = \frac{P}{Q}$
+\end{itemize}
+\end{minipage}
+\begin{minipage}[t]{0.24\linewidth}
+\begin{itemize}
+           \item[$\bullet$]
+ Si $P \neq 0$, $\dps \left( \frac{P}{Q} \right)^{-1} = \frac{Q}{P}$.   
+      \end{itemize}
+\end{minipage}
+  \end{definition}
+  \end{frame}
+    %%%%
+\begin{frame}{Fractions rationnelles}
+    \begin{definition}[Conjuguée]
+      Soit $F$ une fraction rationnelle à coeff complexes  $\dps F = \frac{P}{Q}$  avec  $(P, Q) \in \mathbb{K}[X]^2$ et $Q \neq 0$. 
+      \textcolor{darkmagenta}{Fraction rationnelle conjuguée de $F$ :}
+      \begin{equation*}
+\overline{F} = \frac{\overline{P}}{\overline{Q}}.
+      \end{equation*}
+  \end{definition}
+    \begin{proposition}
+    Soient $F$ et $G$ deux fractions rationnelles.
+  Alors
+  \begin{equation*}
+      \overline{F + G} = \overline{F} + \overline{G} \quad \text{et} \quad \overline{FG} = \overline{F} \overline{G}. 
+  \end{equation*}
+  \end{proposition}
+\end{frame}
+%%%%%%%%%
+%%%%%%%%%%%
+\begin{frame}{Représentant irréductible d'une fraction rationnelle}
+\invisible<1>{
+     \begin{definition}[Polynômes premiers entre eux]
+$A$ et $B$ sont premiers entre eux si les seuls diviseurs communs à $A$ et $B$ sont les polynômes de degré $0$.
+  \end{definition}
+  \textbf{Exemple :}
+  \invisible<2>{
+      $P(X) = X \quad Q(X) = (X-1)^3$.
+  Le seul diviseur commun à $P$ et $Q$ est le polynôme constant $1$...
+\invisible<3>{
+  \begin{definition}
+On appelle représentant irréductible d'une fraction rationnelle $F$ tout représentant $(P, Q)$ de $F$ où $P$ et $Q$ sont premiers entre eux.    
+  \end{definition}
+  \invisible<4>{
+   \alert{\textbf{Toute fraction rationnelle admet un représentant irréductible unitaire et un seul!}}
+   \invisible<5>{
+   }}}}}
+\end{frame}
+%%%%%
+%%%%%%%
+\begin{frame}{Degré d'une fraction rationnelle}
+     \begin{definition}
+      Si $F$ est une fraction rationnelle : $\dps F = \frac{P}{Q}$.
+      \begin{equation*}
+          \deg{(F)} = \deg{(P)} - \deg{(Q)} \in \mathbb{Z} \cup \left\{ - \infty \right\}
+      \end{equation*}
+  \end{definition}
+  \begin{proposition}
+  \'{E}tant données deux fractions rationnelles $F_1$ et $F_2$ de $\mathbb{K}[X]$, on a :
+  \vspace{0.2 cm}
+  \begin{enumerate}
+      \item
+      $\deg{(F_1 + F_2)} \leq \max (\deg{(F_1)}, \deg{(F_2)})$
+\vspace{0.2 cm}
+      \item
+      $\deg{(F_1 F_2)} = \deg{(F_1)} + \deg{(F_2)}$
+  \end{enumerate}
+  \end{proposition}
+\end{frame}
+%%%
+\begin{frame}{Démonstration}
+   \vspace*{-0.1 cm}
+    \begin{enumerate}
+        \item 
+        Supposons $\deg{(F_1)} \geq \deg{(F_2)}$ 
+       \invisible<1>{ 
+       \ $\Rightarrow$
+        \invisible<2>{ $\textcolor{darkmagenta}{\deg{(P_1)} - \deg{(Q_1)} \geq \deg{(P_2)} - \deg{(Q_2)}}$.
+        \invisible<3>{
+        \begin{equation*}
+            F_1 + F_2 = \frac{P_1 Q_2 + Q_1 P_2}{Q_1 Q_2} \Rightarrow \deg{(F_1 + F_2)} = \deg{(P_1 Q_2 + Q_1 P_2)} - \deg{(Q_1 Q_2)}
+            \end{equation*}
+            \invisible<4>{
+\begin{equation*}
+\begin{split}
+    \deg{(F_1 + F_2)} & \leq \max(\deg{(P_1 Q_2)}, \deg{(Q_1 P_2)}) - \deg{(Q_1 Q_2)}
+    \\
+    & = \textcolor{darkmagenta}{\max (\deg{(P_1)} + \deg{(Q_2)}, \deg{(Q_1)} + \deg{(P_2)}) - \deg{(Q_1)} - \deg{(Q_2)}}
+    \\
+    & = \deg{(P_1)} - \deg{(Q_1)} = \deg{(F_1)} = \max(\deg{(F_1)}, \deg{(F_2)}).
+    \end{split}
+\end{equation*}   
+\invisible<5>{
+\item
+On a 
+\begin{equation*}
+\begin{split}
+    \deg{(F_1 F_2)} & = \deg{(\frac{P_1}{Q_1} \frac{P_2}{Q_2})} = \deg{(P_1P_2)} - \deg{(Q_1 Q_2)} 
+    \\
+    & = \deg{(P_1)} + \deg{(P_2)} - \deg{(Q_1)} - \deg{(Q_2)} = \deg{(F_1)} + \deg{(F_2)}
+\end{split}
+\end{equation*}
+\invisible<6>{
+    }}}}}}
+    \end{enumerate}
+\end{frame}
+%%
+\begin{frame}{Racines et pôles}
+\begin{definition}
+    Soit $F$ une fraction rationnelle de forme irréductible $\dps \frac{P}{Q}$.
+    \vspace{0.2 cm}
+    \begin{itemize}
+        \item[$\bullet$] On appelle racine de $F$ toute racine de $P$.
+        \vspace{0.3 cm}
+        \item[$\bullet$] On appelle pôle de $F$ toute racine de $Q$.
+        \vspace{0.3 cm}
+        \item[$\bullet$] Si $a$ est une racine (respectivement un pôle) de $F \neq 0$, l'ordre de multiplicité de $a$ est l'ordre de multiplicité de $a$ en tant que racine du polynôme $P$ (respectivement $Q$).
+    \end{itemize}
+\end{definition}    
+\end{frame}
+%%%
+\begin{frame}{Application}
+Soit $F$ la fraction rationnelle définie par
+    \begin{equation*}
+        F = \frac{X^3 - 1}{X^2 - 1}.
+    \end{equation*}
+Trouver les racines de $F$.
+\\
+\vspace{0.2 cm}
+\corrige{ 
+\begin{enumerate}
+    \invisible<1>{
+    \item \textcolor{darkmagenta}{Ecriture de $F$ sous forme irréductible}
+    \begin{equation*}
+        F(X) = \frac{(X - 1)(X^2 + X + 1)}{(X + 1)(X - 1)} = \frac{X^2 + X + 1}{X + 1}
+    \end{equation*}
+    \invisible<2>{
+    \item
+    Calcul des racines : 
+    \begin{equation*}
+        X_1 = -\frac{1}{2} - i \frac{\sqrt{3}}{2} \quad X_2 = -\frac{1}{2} + i \frac{\sqrt{3}}{2}
+    \end{equation*}
+    \invisible<3>{
+    }}}
+\end{enumerate}
+}
+\end{frame}
+%%%%%
+\begin{frame}{Décomposition en éléments simples sur $\mathbb{C}[X]$}
+\vspace*{-0.1 cm}
+\begin{proposition}[Partie entière]
+Toute fraction rationnelle $F$ s'écrit de façon unique comme la somme d'un polynôme, appelé partie entière de $F$, et d'une fraction rationnelle de degré strictement négatif.
+\end{proposition}
+\invisible<1>{
+    \textcolor{midnightblue}{\textbf{Démonstration :}}
+    \vspace{0.2 cm}
+      \begin{enumerate}
+          \item 
+\invisible<2>{
+\textbf{Existence :} $ F = \frac{P}{Q}$. \textcolor{darkmagenta}{Théorème de la division Euclidienne :} $\exists ! (E, R) \in (\mathbb{K}[X])^2$ tq 
+\begin{equation*}
+    P = EQ + R \quad \text{avec} \quad \deg{(R)} < \deg{(Q)} \ \Rightarrow   \textcolor{red}{F = E + R / Q}.
+\end{equation*}
+\invisible<3>
+{
+\item
+          \textbf{Unicité :} Par l'absurde. 
+          Supposons  $\exists (E, E_1) \in \mathbb{K}[X]^2$ et $(\Tilde{E}, E_2) \in \mathbb{K}[X]^2$ tq
+          \begin{equation*}
+              F = E + E_1 \ \text{et} \ F = \Tilde{E} + E_2 \quad \text{avec} \ \deg{(E_1)} < 0 \ \text{et} \ \deg{(E_2)} < 0 \ \Rightarrow  \textcolor{darkmagenta}{E - \Tilde{E} = E_2 - E_1}.
+          \end{equation*}
+          Si $\deg{(E_1)}> \deg{(E_2)}$, $\deg{(E - \tilde{E})} < 0$,  $\Rightarrow E_1 - E_2 = 0$, c'est à dire $E = \widetilde{E}$.
+      \end{enumerate}
+      \invisible<4>{
+      }}}}
+\end{frame}
+%%%%
+%%%%
+\begin{frame}{Application}
+\textbf{\textcolor{midnightblue}{Exercice :}}
+Calculer la partie entière de la fraction rationnelle 
+\begin{equation*}
+    F = \frac{X^5}{(X^2 + X + 1)^2}
+\end{equation*}
+\invisible<1>{
+\corrige{
+L'algorithme de la division euclidienne de $X^5$ par $(X^2 + X + 1)^2$ donne
+\begin{equation*}
+    F = \frac{(X - 2)(X^2 + X + 1)^2+ X^3 + 4X^2 + 3X + 2}{(X^2 + X + 1)^2} = \underbrace{X - 2}_{E} + \underbrace{\frac{X^3 + 4X^2 + 3X + 2}{(X^2 + X + 1)^2}}_{\mathrm{deg} < 0}.
+\end{equation*}
+}    
+\invisible<2>{
+}}
+
+\end{frame}
+%%%%%
+%%%%%%%%
+\begin{frame}{Partie polaire}
+     \begin{proposition}
+     Si $F$ est une fraction rationnelle admettant $a$ pour pôle d'ordre $n$, il existe un unique n-uplet de scalaires 
+     $(\lambda_p)_{p \in \left[ 1,n \right]}$ et une unique fraction $F_0$ n'admettant pas $a$ pour pôle tq:
+  \begin{equation*}
+      F(X) = \sum_{p=1}^n \frac{\lambda_p}{(X - a)^p} + F_0.
+  \end{equation*}
+  La quantité : 
+  \begin{equation*}
+      \sum_{p=1}^n \frac{\lambda_p}{(X - a)^p}
+  \end{equation*}
+  s'appelle la partie polaire de $F$ relative au pôle de $a$.
+  \end{proposition}
+\end{frame}
+%%%%%%
+%%%%%
+\begin{frame}{Méthodologie de détermination des parties polaires}
+      Soit $F$ une fraction rationnelle admettant $a$ pour pôle.
+       \begin{enumerate}
+           \item \textbf{Pôle d'ordre $1$}
+  \begin{equation*}
+      F(X) = \frac{P(X)}{(X-a) Q_1(X)} \qquad \textcolor{cadmiumgreen}{(P_1)}
+  \end{equation*}
+  \invisible<1>{
+\alert{\textbf{Décomposition en éléments simples :}}  
+\begin{equation*}
+      F(X) = \frac{\lambda_1}{X-a} + F_0.
+  \end{equation*}
+  \invisible<2>{
+  On multiplie l'équation \textcolor{cadmiumgreen}{$(P_1)$} par $X-a$ et on obtient 
+  \begin{equation*}
+      \frac{P(X)}{Q_1(X)} = \lambda_1 + (X - a) F_0.
+  \end{equation*}
+  \invisible<3>{
+  Pour $X = a$ on trouve
+  \begin{equation*}
+      \lambda_1 = \frac{P(a)}{Q_1(a)}.
+  \end{equation*}
+  La partie relative au pôle $a$ est donc :
+  \begin{equation*}
+      \frac{\lambda_1}{X - a} \quad \text{avec} \quad \lambda_1 = \frac{P(a)}{Q_1(a)}.
+  \end{equation*}
+  \invisible<4>{
+  }}}}
+  \end{enumerate}
+       
+\end{frame}
+%%%%
+\begin{frame}{Alternative pratique} 
+Le pôle $X_i$ vérifie 
+\begin{equation}
+\label{eq:autre:moyen}
+    \frac{P(X)}{Q(X)} = \frac{P(X)}{(X - X_i) Q_i(X)}.
+\end{equation}
+Alors, en multipliant~\eqref{eq:autre:moyen} par $X - X_i$ pour $i$ fixé on obtient
+\begin{equation*}
+\frac{P(X)}{Q_i(X)} = \lambda_i + \sum_{j \neq i} \lambda_j \frac{X - X_i}{X - X_j}.
+\end{equation*}
+De plus, $Q^{\prime}(X) = Q_i(X) + (X - X_i) Q_i^{\prime}(X)$ et donc $Q_i(X_i) = Q^{\prime}(X_i)$. 
+\begin{equation*}
+  \textcolor{darkmagenta}{ \boxed{ \lambda_i = \frac{P(X_i)}{Q^{\prime}(X_i)}.}}
+\end{equation*}
+\end{frame}
+%%%%
+\begin{frame}
+\vspace{-0.3 cm}
+    \begin{enumerate} \setcounter{enumi}{1}
+        \item \textbf{Pôle d'ordre $2$}
+$\dps  F(X) = \frac{P(X)}{(X - a)^2 Q_2(X)}$
+\vspace{0.2 cm}
+\\
+\alert{\textbf{Décomposition en éléments simples :}} 
+  $    F(X) = \dps \frac{\lambda_2}{(X - a)^2} + \frac{\lambda_1}{X - a} + F_0$.
+  
+On multiplie par $(X - a)^2$ :
+  \begin{equation*}
+      \frac{P(X)}{Q_2(X)} = \lambda_2 + \lambda_1 (X - a) + F_0 (X - a)^2.  \quad \text{Pour} \ X = a \ \Rightarrow \dps \textcolor{darkmagenta}{\lambda_2 = \frac{P(a)}{Q_2(a)}}
+  \end{equation*}
+On dérive 
+  \begin{equation*}
+      \left( \frac{P(X)}{Q_2(X)} \right)^{\prime} = \lambda_1 + F_0^{\prime}(X) (X - a)^2 + 2 (X - a) F_0(X) 
+  \end{equation*}
+  Pour $X = a$ 
+  \begin{equation*}
+  \textcolor{darkmagenta}{
+  \dps \lambda_1 = \left( \frac{P}{Q_2} \right)^{\prime}(a)}      
+  \end{equation*}
+    \end{enumerate}
+\end{frame}
+%%%%%
+\begin{frame}{Exercice}
+          Soit $F = \dps \frac{X^5 + 1}{X(X-1)^2}$.
+      Trouvez la partie polaire associée à chaque pôle de $F$.
+      \corrige{ 
+$-1$ est racine de $F$ donc
+\begin{equation*}
+ X^5 + 1 = (X + 1)(X^4 - X^3 + X^2 - X + 1). 
+\end{equation*}
+Finalement, la fraction rationnelle $F$ s'écrit sous la forme
+\begin{equation*}
+    F(X) = \frac{(X + 1)(X^4 - X^3 + X^2 - X + 1)}{X(X - 1)^2} \quad 0 \ \text{pôle d'ordre 1} \quad 1 \ \text{pôle d'ordre 2}
+\end{equation*}
+\begin{equation*}
+     F(X) = \frac{\lambda_1}{X} + \frac{\lambda_2}{X - 1} + \frac{\lambda_3}{(X - 1)^2} 
+\end{equation*}
+    Par identification
+    \begin{equation*}
+          F(X) = \frac{1/2}{X} + \frac{-1/2}{X - 1} + \frac{1/2}{(X - 1)^2}.
+      \end{equation*}
+      }
+\end{frame}
+%%
+\begin{frame}{Exercice}
+Décomposer sur $\mathbb{R}$ la fraction rationnelle suivante :
+\begin{equation*}
+    F(X) = \frac{X^2 + 2X + 5}{X^2 - 3X + 2}
+\end{equation*}
+\corrige{
+\begin{enumerate}
+\item
+\invisible<1>{
+On écrit \textcolor{darkmagenta}{$F$} comme la \textcolor{darkmagenta}{somme d'une partie entière et d'une fraction rationnelle de degré strictement négatif}. 
+\invisible<2>{
+Par le \alert{Théorème de la division euclidienne :}
+\begin{equation*}
+    X^2 + 2X + 5 = 1 \times (X^2 - 3X + 2) + 5X + 3.
+\end{equation*}
+\invisible<3>{
+Donc
+\begin{equation*}
+    F(X) = 1 + \frac{5X + 3}{X^2 - 3X + 2}
+\end{equation*}
+\invisible<4>{
+}}}}
+\end{enumerate}
+}
+\end{frame}
+%%%%
+\begin{frame}
+    \begin{enumerate}
+     \setcounter{enumi}{1}   \item 
+        On factorise le dénominateur pour identifier les pôles de $F$.
+    On a
+    \begin{equation*}
+        X^2 - 3X + 2 = (X - 2)(X - 1).
+    \end{equation*} 
+    \alert{Donc $F$ admet $1$ et $2$ comme pôles d'ordre $1$.}
+    \item 
+    \invisible<1>{
+    \textcolor{darkmagenta}{Théorème de décomposition en éléments simples :} $\exists (\lambda_1, \lambda_2) \in \mathbb{R}^2$ tel que
+    \begin{equation*}
+        F(x) = 1 + \frac{\lambda_1}{X - 2} + \frac{\lambda_2}{X  - 1}
+    \end{equation*}
+    \invisible<2>{
+    \item Par identification 
+    \begin{equation*}
+        \lambda_1 = 13  \quad \text{et} \quad \lambda_2 = -8. 
+    \end{equation*}
+    \item
+    \invisible<3>{
+    Conclusion :
+    \textcolor{darkmagenta}{
+    \begin{equation*}
+\boxed{        F(X) = 1 + \frac{13}{X - 2} - \frac{8}{X - 1}.
+}
+\end{equation*}
+\invisible<4>{
+}}}}
+}
+    \end{enumerate}
+\end{frame}

@@ -1,0 +1,841 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%EQUATIONS DIFFERENTIELLES%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \begin{center}
+        \Huge{\'{E}quations différentielles linéaires}
+    \end{center}
+\end{frame}
+%%%%
+\begin{frame}
+  Soit $I$ un intervalle de $\mathbb{R}$ de la forme $I = ]0, T[$ avec $T > 0$.
+      Soit $ m \geq 1$ un nombre entier.
+    \begin{definition}
+      Soit $f : \overline{I} \times \mathbb{R}^m \rightarrow \mathbb{R}^{m}$.
+      On appelle équation différentielle ordinaire (EDO) d’ordre $n$, l'équation exprimant la dérivée n-ème $y^{(n)}$ d’une fonction $y : \overline{I} \rightarrow \mathbb{R}^m$, en fonction de ses dérivées d’ordre inférieur $y^{(i)}$, $i = 0,\cdots, n-1$, de la forme
+      \begin{equation*}
+\forall t \in I, \quad y^{(n)}(t) = f(t, y(t), y^{\prime}(t), \cdots, y^{(n-1)}(t)).
+      \end{equation*}
+      Une solution de l'EDO est une fonction de $\overline{I} \rightarrow \mathbb{R}^m$, $n$ fois dérivable sur $I$ et telle que l’égalité soit satisfaite pour tout $t \in I$.
+    \vspace*{0.2 cm}  \\
+\invisible<1>{
+    \textcolor{midnightblue}{ 
+On appelle problème de Cauchy, la conjonction d’une EDO et d’une donnée initiale,
+\begin{equation*}
+  \begin{split}
+  y^{\prime}(t) &= f(t, y(t))
+  \\
+  y(t_0) &= y_0
+  \end{split}
+\end{equation*}
+    }
+    \invisible<2>{
+      }}
+    \end{definition}
+\end{frame}
+%%%%
+\begin{frame}
+  \frametitle{Exemples de problèmes conduisant à une équation différentielle}
+     \begin{enumerate}
+      \item
+        Charge d'un condensateur à travers une résistance
+        \begin{minipage}[b]{0.5\linewidth}
+        \begin{figure}
+          \centering
+\includegraphics[scale = 0.4]{circuit_RC}
+        \end{figure}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b]{0.49\linewidth}
+          \begin{itemize}
+\item
+            $t$ : variable temporelle
+          \item       
+            $i$ : intensité du courant
+          \item
+            $q$ : charge du condensateur
+            \end{itemize}
+         \textcolor{cadmiumgreen}{\textbf{Loi d'Ohm}}
+        \begin{equation*}
+U = Ri + \dfrac{q}{c}.
+        \end{equation*}
+          \end{minipage}
+        On obtient le problème de Cauchy suivant:
+        \begin{equation*}
+          \begin{split}
+            \dfrac{dq}{dt} + \dfrac{q}{RC}  & = \dfrac{U}{R}
+            \\
+            q(0) & = 0
+          \end{split}
+        \end{equation*}
+     \end{enumerate}
+\end{frame}
+%%%%%
+\begin{frame}
+  \begin{enumerate}
+    \setcounter{enumi}{1}
+\vspace*{-0.3 cm}
+  \item
+    Oscillateur harmonique
+\vspace*{0.2 cm}
+        \\
+         \begin{minipage}[b]{0.45\linewidth}
+        \begin{figure}
+          \centering
+\includegraphics[scale = 0.4]{systeme_ressort}
+        \end{figure}
+        \end{minipage}
+         \hfill
+   \begin{minipage}[b]{0.54 \linewidth}
+     \begin{itemize}
+     \item
+       \textbf{Système étudié :} point $M$ de masse $m$ accroché à l’extrémité d’un ressort.
+       $\ell$ : longueur du ressort à l'instant $t$, $\ell_0$ : longueur au repos.
+       Allongement du ressort : $x = \ell - \ell_0$.
+     \item
+       \textbf{Forces appliquées à $M$ :} poids $\vec{P}$, réaction du support $\vec{R}$, et force de rappel du ressort $\vec{F} = -k (\ell - \ell_0) \vec{e}_x$.
+     \item
+        \textbf{PFD :} $\dps \sum \vec{F_{\mathrm{ext}}} = m \vec{a} \Rightarrow \vec{P} + \vec{R} + \vec{F} = m \vec{a}$
+               \end{itemize}
+   \end{minipage}
+\vspace{0.1 cm}   \\
+   \vspace*{0.1 cm}
+        En projetant l'équation précédente sur l'axe $(0x)$ on obtient
+        \begin{equation*}
+ x^{\prime \prime}(t) + \frac{k}{m}x(t) = 0.
+          \end{equation*}
+    \end{enumerate}
+\end{frame}
+%%%%
+\begin{frame}
+  \frametitle{\'{E}quations différentielles linéaires du premier ordre}
+  \begin{definition}
+      Soient $a$, $b$, et $c$ trois fonctions continues de $I$ dans $\mathbb{K}$. On considère l'équation différentielle linéaire du premier ordre
+      \begin{equation*}
+a(t) y^{\prime}(t) + b(t) y(t) = c(t) \qquad \qquad (E)
+      \end{equation*}
+      On appelle solution sur $I$ de l'équation différentielle toute fonction $f : I \rightarrow \mathbb{K}$ dérivable telle que :
+      \begin{equation*}
+\forall t \in I, \ a(t) f^{\prime}(t) + b(t) f(t) = c(t).
+        \end{equation*}
+  \end{definition}
+      \textbf{Remarque :}
+      Si $c$ est la fonction nulle, l'équation différentielle est dite homogène et on la note en général $(E_0)$.
+\end{frame}
+%%%%
+\begin{frame}
+\begin{proposition}
+Si $f_0$ est une solution particulière de l'équation $(E)$ et si $\mathcal{S}$ désigne l'ensemble des solutions de l'équation $(E_0)$, l'ensemble des solutions de l'équation $(E)$ est $\left\{ f_0 + g \ | g \in \mathcal{S} \right\}$.
+\end{proposition}
+\invisible<1>{
+  \textbf{Démonstration :}
+  \\
+\invisible<2>{
+  Puisque $f_0$ est une solution particulière de l'équation $(E)$ on a
+      \begin{equation*}
+a(t) f_0^{\prime}(t) + b(t) f_0(t) = c(t)
+      \end{equation*}
+      \invisible<3>{
+      De même, si $g$ est solution de $(E_0)$ alors on a
+      \begin{equation*}
+a(t) g^{\prime}(t) + b(t) g(t) = 0.
+      \end{equation*}
+\invisible<4>{
+      En sommant ces deux équations on trouve
+      \begin{equation*}
+a(t) \left(f_0 + g \right)^{\prime}(t) +  \left(f_0 + g \right)(t) b(t) = c(t)
+      \end{equation*}
+      ce qui prouve le résultat souhaité.
+      \invisible<5>{
+}}}}}
+\end{frame}
+%%%%%
+\begin{frame}
+  \frametitle{Résolution d'une équation homogène}
+    Soient $a, b \in \mathcal{C}^{0}(I, \mathbb{K})$ et on considère l'EDO du 1er ordre
+ \textcolor{cadmiumgreen}{${\bf a(t) y^{\prime}(t) + b(t) y(t) = 0}$ ($E_0$)}
+\invisible<1>{
+ \begin{proposition}
+      Si la fonction $a$ ne s'annule pas sur $I$ et si $A$ est une primitive sur $I$ de la fonction $t \mapsto \dfrac{b(t)}{a(t)}$, les solutions sur $I$ de l'équation $(E_0)$ sont les fonctions de la forme :
+      \begin{equation*}
+t \mapsto \lambda e^{-A(t)} \quad \text{avec} \quad \lambda \in \mathbb{K}
+        \end{equation*}
+ \end{proposition}
+ \invisible<2>{
+   \textbf{Démonstration :}
+   \\
+      Soit $g$ définie sur $I$ par $g(t) = \lambda e^{-A(t)}$ avec $\lambda \in \mathbb{K}$.
+      La fonction g est dérivable sur $I$ et
+      \begin{equation*}
+        \begin{split}
+          a(t) g^{\prime}(t) + b(t) g(t) &= a(t) \left( -\lambda A^{\prime}(t) e^{-A(t)} \right) + b(t) \lambda e^{-A(t)}
+          =
+           \lambda \left(-a(t) \dfrac{b(t)}{a(t)} + b(t) \right)e^{-A(t)}
+          \\
+          & = 0.
+          \end{split}
+      \end{equation*}
+      \invisible<3>{
+        }}}
+\end{frame}
+%%%%%
+\begin{frame}
+\frametitle{Résolution de l'équation avec second membre}
+Soient $a$, $b$, et $c$ trois fonctions continues sur un intervalle $I$ dans $\mathbb{K}$.
+On considère l'équation différentielle :
+  \begin{equation*}
+a(t) y^{\prime}(t) + b(t) y(t) = c(t) \qquad \qquad (E)
+  \end{equation*}
+  \invisible<1>{
+\textcolor{cadmiumgreen}{Solution générale de $(E)$ :} solution de l'équation homogène  $+$ solution particulière.
+    \vspace*{0.4 cm}
+    \\
+     \invisible<2>{
+  \textcolor{red}{Méthodologie pour trouver une solution particulière}
+  \begin{enumerate}
+  \item
+    La nature du second membre donne des indications.
+    Par ex, si le second membre est constant on cherchera une solution constante et s'il est trigonométrique on cherchera une combinaison linéaire de fonctions trigonométriques.
+\item Si on ne trouve pas facilement une solution particulière on utilise la méthode de la variation de la constante.
+  \end{enumerate}
+  \invisible<3>{
+    }}}
+  \end{frame}
+%%%%
+\begin{frame}
+  \frametitle{Méthode de la variation de la constante}
+\invisible<1>{
+  \textbf{Principe :}
+  Cette méthode consiste à rechercher une solution particulière de la forme $y = \lambda y_0$ où $y_0$ est une solution non nulle de $(E_0)$ et $\lambda$ une fonction dérivable sur $I$.
+  \invisible<2>{
+  \begin{equation*}
+    \begin{split}
+      \forall t \in I, \ a(t) y^{\prime}(t) + b(t) y(t) & = a(t) (\lambda y_0)^{\prime}(t) + b(t) \lambda(t) y_0(t)
+      \\
+      & = \lambda(t) \left(a(t) y_0(t) + b(t) y_0(t)  \right) + a(t) \lambda^{\prime}(t) y_0(t)
+      \\
+      & = a(t) \lambda^{\prime}(t) y_0(t) \ \text{car} \ y_0 \ \text{est une solution de} \ E_0.
+      \end{split}
+  \end{equation*}
+  \invisible<3>{
+  Ainsi $\lambda y_0$ est une solution de $(E)$ si et seulement si la fonction $\lambda$ vérifie :
+  \begin{equation*}
+\forall t \in I, \ \lambda^{\prime}(t) = \frac{c(t)}{a(t) y_0(t)}
+  \end{equation*}
+  si, et seulement si,
+  \begin{equation*}
+\lambda(t) = \int \dfrac{c(s)}{a(s) y_0(s)} ds.
+  \end{equation*}
+  \invisible<4>{
+    }}}}
+  \end{frame}
+%%%
+\begin{frame}
+\frametitle{Exercice}
+Résoudre sur $]0, + \infty[$ l'équation $(E)$: $t y^{\prime}(t) - y(t) = t^2 e^t$.
+      \vspace*{0.2 cm}
+      \\
+      \corrige{
+        \begin{enumerate}
+          \invisible<1>{
+          \item
+    \textbf{Résolution de l'équation homogène} $(E_0)$ associée à $(E)$.
+\begin{equation*}
+y_0(t) = \lambda t \quad \lambda \in \mathbb{R}.
+\end{equation*}
+\invisible<2>{
+  \vspace*{-0.2 cm}
+  \item
+    \textbf{Recherche d'une solution particulière} par la méthode de la variation de la constante.
+    On cherche donc une solution particulière de $(E)$ notée $y_0$ sous la forme $y_0(t) = \lambda(t) t$ où $\lambda$ est une fonction dérivable sur $\mathbb{R}_{+}^{*}$.
+    Alors, $y_0$ vérifie $(E)$ ssi,
+    \begin{equation*}
+t y_0^{\prime}(t) - y_0(t) = t^2 e^t \iff t (\lambda^{\prime}(t) t + \lambda(t)) - \lambda(t) t = t^2 e^t \iff \lambda^{\prime}(t) = e^t \iff \lambda(t) = e^t
+    \end{equation*}
+    \invisible<3>{
+\item
+\textbf{Conclusion :} l'ensemble des solutions de $(E)$ sont données par
+    \begin{equation*}
+y(t) = \lambda t + t e^t \quad \lambda \in \mathbb{R}.
+    \end{equation*}
+    \invisible<4>{
+      }}}}
+    \end{enumerate}
+  }
+  \end{frame}
+%%%%%
+\begin{frame}
+  \frametitle{Résolution avec une condition initiale}
+  Soient $a, b, c \in \mathcal{C}^{0}(I, \mathbb{K})$ et considérons l'EDO ${\bf a(t) y^{\prime}(t) + b(t) y(t) = c(t)}$
+\invisible<1>{
+  \begin{proposition}
+    Si la fonction $a$ ne s'annule par sur $I$ et si $(t_0, y_0) \in I \times \mathbb{K}$, $ \exists ! f$ solution de $(E)$ tq $f(t_0) = y_0$.
+  \end{proposition}
+  \invisible<2>{
+    \textbf{Démonstration :}
+    \invisible<3>{
+  Supposons qu'il existe $f_1$ et $f_2$ solutions de $(E)$ tq $f_1(t_0) = f_2(t_0) =  y_0$.
+Alors,
+\begin{equation*}
+  \begin{split}
+    a(t) f_1^{\prime}(t) + b(t) f_1(t) &= c(t)
+    \\
+    a(t) f_2^{\prime}(t) + b(t) f_2(t) &= c(t)
+  \end{split}
+  \Rightarrow a(t) (f_1 - f_2)^{\prime}(t) + b(t) (f_1 - f_2)(t) = 0.
+\end{equation*}
+\invisible<4>{
+La solution de cette dernière EDO est donnée par $(f_1- f_2)(t) = \lambda e^{\dps -A(t)}$ où $A$ est une primitive de $\dps t \mapsto b(t) / a(t)$.
+\invisible<5>{
+Finalement $f_1(t) = \lambda e^{\dps -A(t)} + f_2(t)$. 
+Or $f_1(t_0) = f_2(t_0) = y_0$ ce qui prouve que $\lambda = 0$. On en déduit que $f_1 = f_2$.
+\invisible<6>{
+  }}}}}}
+  \end{frame}
+%%%%%
+\begin{frame}
+
+   \begin{proposition}
+    \begin{enumerate}
+    \item
+      Soit $\alpha \in \mathbb{C}$.
+      La fonction $t \mapsto e^{\alpha t}$ est la seule fonction dérivable sur $\mathbb{R}$ vérifiant l'edo $y^{\prime} = \alpha y$ et la condition initiale $y(0) = 1$.
+      \vspace*{0.2 cm}
+    \item
+      Les fonctions dérivables de $\mathbb{R}$ dans $\mathbb{C}$ vérifiant l'équation fonctionnelle
+      \begin{equation}
+\forall (t, u) \in \mathbb{R}^2, \ f(t+u) = f(t) f(u)
+      \end{equation}
+      sont la fonction nulle et les fonctions $t \mapsto e^{\alpha t}$ avec $\alpha \in \mathbb{C}$.
+      \end{enumerate}
+   \end{proposition}
+   \invisible<1>{
+     \textbf{Démonstration :}
+     \invisible<2>{
+    \begin{enumerate}
+    \item
+      Le problème de Cauchy
+      \begin{equation*}
+          y^{\prime}(t) = \alpha y(t), \quad y(0) = 1
+      \end{equation*}
+      admet une unique solution.
+      Puisque la fonction $t \mapsto e^{\alpha t}$ est solution il s'agit de la seule fonction vérifiant ce problème.
+      \end{enumerate}
+    \invisible<3>{
+      }}}
+  \end{frame}
+%%%%%
+\begin{frame}
+  \begin{enumerate}
+\setcounter{enumi}{1}
+    \item
+      Soit $f$ une fonction dérivable vérifiant l'équation fonctionnelle
+      \begin{equation*}
+\forall (t, u) \in \mathbb{R}^2, \ f(t + u) = f(t) f(u).
+      \end{equation*}
+      \invisible<1>{
+      Pour $t = u = 0$ on trouve
+      \begin{equation*}
+f(0) = \left[f(0)\right]^2 \Rightarrow f(0) = 1.
+      \end{equation*}
+            \invisible<2>{
+      Ensuite, on dérive l'équation fonctionnelle par rapport à la variable $u$ et on trouve
+      \begin{equation*}
+f^{\prime}(t + u) = f(t) f^{\prime}(u).
+      \end{equation*}
+            \invisible<3>{
+      Pour $u = 0$ on obtient comme relation
+      \begin{equation*}
+f^{\prime}(t) = f(t) f^{\prime}(0).
+      \end{equation*}
+            \invisible<4>{
+      Finalement, la fonction $f$ est solution du problème de Cauchy
+      \begin{equation*}
+y^{\prime} = \alpha y \quad \text{où} \quad \alpha = f^{\prime}(0) \quad \text{et} \quad y(0) = 1.
+      \end{equation*}
+            \invisible<5>{
+              Or la solution de ce problème est donnée par $t \mapsto e^{\alpha t}$ ce qui donne le résultat.
+              \invisible<6>{
+                }}}}}}
+      \end{enumerate}
+  \end{frame}
+%%%%%
+\begin{frame}
+\frametitle{\'{E}quations du second ordre à coefficients constants}
+\begin{enumerate}
+\item
+  \textbf{Résolution de l'équation homogène}
+  \vspace*{0.2 cm}
+  \\
+  Soient $a$, $b$, et $c$ avec $a \neq 0$ trois nombres complexes ou réels.
+  On considère l'équation différentielle :
+  \begin{equation*}
+a y^{\prime \prime}(t) + b y^{\prime}(t) + c y(t) = 0  \qquad \qquad (E_0).
+  \end{equation*}
+  On s'intéresse à la résolution de l'équation différentielle $(E_0)$.
+  \begin{definition}
+    On appelle équation caractéristique associée à l'équation différentielle $(E_0)$ l'équation :
+    \begin{equation*}
+ar^2 + br + c = 0.
+      \end{equation*}
+  \end{definition}
+
+  \end{enumerate}
+\end{frame}
+%%%%%%
+\begin{frame}
+\begin{proposition}
+Soit $r \in \mathbb{C}$. La fonction $\varphi_r : t \mapsto e^{rt}$ est solution de $(E_0)$ si, et seulement si, $a r^2 + br + c = 0$.
+\end{proposition}
+      \invisible<1>{
+        \textbf{Démonstration :}
+      \invisible<2>{
+        Par double implication.
+\begin{itemize}
+\item[$\bullet$]
+  \invisible<3>{
+    Supposons que la fonction $\varphi_r$ est solution de $(E_0)$. En injectant l'expression de $\varphi_r$ dans $(E_0)$ on trouve
+        \begin{equation*}
+\left(a r^2+ b r + c\right)  e^{rt} = 0
+        \end{equation*}
+        Nécessairement $a r^2+ b r + c = 0$.
+        \\
+        \vspace*{0.25 cm}
+              \invisible<4>{
+      \item[$\bullet$]
+        Réciproquement, si $a r^2+ b r + c = 0$ alors on a $e^{rt} \left( a r^2+ b r + c = 0 \right)$ et donc $a \varphi_r^{\prime \prime}(t) + b \varphi_{r}^{\prime}(t) + c \varphi_r(t) = 0$.
+\end{itemize}
+\invisible<5>{
+  }}}}}
+  \end{frame}
+%%%%%
+\begin{frame}
+  \frametitle{Calcul des solutions}
+\begin{proposition}[Cas complexe]
+    Soit $(a, b, c) \in \mathbb{C}^3$.
+    \begin{itemize}
+      \item[$\bullet$]
+        Si l'équation caractéristique $a r^2 + br + c$ a deux racines distinctes $r_1$ et $r_2$, les solutions de $(E_0)$ sont les fonctions de la forme :
+        \begin{equation*}
+t \mapsto \lambda_1 e^{r_1 t} + \lambda_2 e^{r_2 t} \quad \text{avec} \quad (\lambda_1, \lambda_2) \in \mathbb{C}^2
+        \end{equation*}
+      \item[$\bullet$]
+        Si l'équation caractéristique $a r^2 + br + c$ a une racine double $r_0$, les solutions de $(E_0)$ sont les fonctions de la forme :
+        \begin{equation*}
+t \mapsto e^{r_0 t} \left( \lambda_1 + \lambda_2 t \right) \quad \text{avec} \quad (\lambda_1,\lambda_2) \in \mathbb{C}^2.
+        \end{equation*}
+        \end{itemize}
+\end{proposition}
+  \end{frame}
+%%%%%%%
+\begin{frame}
+\textbf{Démonstration :}
+    \begin{itemize}
+    \item[$\bullet$]
+            \invisible<1>{
+      Supposons que l'équation caractéristique $ar^2 + br + c$ a deux racines distinctes $r_1$ et $r_2$.
+      Alors, les fonctions $\varphi_{r_1}$ et $\varphi_{r_2}$ sont solutions de $(E_0)$.
+      \textcolor{red}{L'espace des solutions de $(E_0)$ est un espace vectoriel !} ce qui prouve le résultat.
+      \vspace*{0.2 cm}
+      \\
+    \item[$\bullet$]
+            \invisible<2>{
+      Supposons que l'équation caractéristique $a r^2 + br + c$ a une racine double notée $r_0$.
+      Alors, $r_0 = -\frac{b}{2a}$.
+      \\
+            \invisible<3>{
+              Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(t) = \lambda_1 + \lambda_2 t$.
+                    \invisible<4>{
+      La fonction $t \mapsto f(t) e^{r_0t}$ est solution de l'équation $(E_0)$ si, et seulement si, elle est deux fois dérivables et
+      \begin{equation*}
+        \begin{split}
+         & a (f(t)e^{r_0t})^{\prime \prime} + b (f(t)e^{r_0t})^{\prime} + c (f(t) e^{r_0t}) = 0
+          \\
+        %  \iff & a \left(f^{\prime}(t) e^{rt} + r f(t) e^{rt}  \right)^{\prime} + b \left(f^{\prime}(t) e^{rt} + r f(t) e^{rt} \right) + c f(t) e^{rt} = 0
+          %% \\
+          %% \iff
+          %% a \left(f^{\prime \prime}(t) e^{rt} + 2r f^{\prime}(t)e^{rt}  + r^2f(t)e^{rt}  \right) + b \left(f^{\prime}(t) e^{rt} + r f(t) e^{rt} \right) + c f(t) e^{rt} = 0
+          \iff
+         & \left(a r_0^2 + br_0 + c\right) f(t) e^{r_0t} + (2ar_0 + b)f^{\prime}(t) e^{r_0t} + a f^{\prime \prime}(t) e^{r_0t} = 0
+          \\
+         % \iff
+         %& (2ar_0 + b)f^{\prime}(t) e^{r_0t} + a f^{\prime \prime}(t) e^{r_0 t} = 0
+          %\\
+          \iff
+          & a f^{\prime \prime}(t) e^{r_0 t} = 0
+          \\
+          \iff
+          & f^{\prime \prime}(t) = 0
+          \iff
+           f(t) = \lambda_1 + \lambda_2 t \quad \text{où} \quad (\lambda_1, \lambda_2) \in \mathbb{R}^2.
+          \end{split}
+        \end{equation*}
+      \invisible<5>{
+        }}}}}
+      \end{itemize}
+  \end{frame}
+%%%%%
+\begin{frame}
+  \vspace*{-0.5 cm}
+ \begin{proposition}[Cas réel]
+    Soient $a$, $b$, et $c$ trois réels.
+    \begin{itemize}
+      \invisible<1>{
+    \item[$\bullet$]
+        Si l'équation caractéristique $a r^2 + br + c$ a deux racines réelles distinctes $r_1$ et $r_2$, les solutions de $(E_0)$ sont les fonctions de la forme :
+        \begin{equation*}
+t \mapsto \lambda_1 e^{r_1 t} + \lambda_2 e^{r_2 t} \quad \text{avec} \quad (\lambda_1, \lambda_2) \in \mathbb{R}^2
+        \end{equation*}
+        \vspace*{-0.5 cm}
+              \invisible<2>{
+      \item[$\bullet$]
+        Si l'équation caractéristique $a r^2 + br + c$ a une racine double $r_0$, les solutions de $(E_0)$ sont les fonctions de la forme :
+        \begin{equation*}
+t \mapsto e^{r_0 t} \left( \lambda_1 + \lambda_2 t \right) \quad \text{avec} \quad (\lambda_1,\lambda_2) \in \mathbb{R}^2.
+        \end{equation*}
+        \vspace*{-0.5 cm}
+              \invisible<3>{
+      \item[$\bullet$]
+        Si l'équation caractéristique $a r^2 + br + c$ a deux racines complexes conjuguées distinctes $r_1 = \alpha + i \beta$ et $r_2 = \alpha - i \beta$ les solutions de $(E_0)$ sont les fonctions :
+        \begin{equation*}
+t \mapsto \gamma_1 e^{\alpha t} \cos(\beta t) + \gamma_2 e^{\alpha t} \sin(\beta t) \quad \text{avec} \quad (\gamma_1, \gamma_2) \in \mathbb{R}^2
+        \end{equation*}
+        \invisible<4>{
+          }}}}
+    \end{itemize}
+ \end{proposition}
+\end{frame}
+%%%%
+\begin{frame}
+  \textbf{Démonstration :}
+  \begin{itemize}
+          \invisible<1>{
+    \item[$\bullet$]
+      Les deux premiers points se démontrent à l'instar du cas complexe.
+      \invisible<2>{
+    \item[$\bullet$]
+        Supposons que l'équation caractéristique $a r^2 + br + c$ a deux racines complexes conjuguées distinctes $r_1 = \alpha + i \beta$ et $r_2 = \alpha - i \beta$.
+              \invisible<3>{
+        Les fonctions $\varphi_{r_1}$ et $\varphi_{r_2}$ sont solutions de l'équation $(E_0)$.
+              \invisible<4>{
+    Comme $(E_0)$ a une structure d'espace vectoriel $\exists (\lambda_1,\lambda_2) \in \mathbb{R}^2$ tel que $\lambda_1 \varphi_{r_1} + \lambda_2 \varphi_{r_2}$ est solution de $(E_0)$.
+    Finalement 
+    \begin{equation*}
+\lambda_1 e^{r_1 t} + \lambda_2 e^{r_2 t} = 0
+    \end{equation*}
+    et donc
+    \begin{equation*}
+      \begin{split}
+      \lambda_1 e^{(\alpha + i \beta)t} + \lambda_2 e^{(\alpha - i \beta)t}
+      & =  e^{\alpha t} \left( (\lambda_1 + \lambda_2) \cos(\beta t) +  i (\lambda_1 - \lambda_2) \sin(\beta t)  \right)
+      \\
+      & = e^{\alpha t} \left( \gamma_1 \cos(\beta t) +  i \gamma_2 \sin(\beta t)  \right) = 0.
+      \end{split}
+    \end{equation*}
+    \invisible<5>{
+      }}}}}
+    \end{itemize}
+  \end{frame}
+%%%
+\begin{frame}
+  \frametitle{Exercice}
+        \invisible<1>{
+    Résoudre l'équation différentielle suivante :
+    \begin{equation*}
+y^{\prime \prime}(t) - 2 y^{\prime}(t) + y(t) = 0
+    \end{equation*}
+          \invisible<2>{
+    \corrige{
+  Il s'agit d'une équation différentielle linéaire homogène du second ordre à coefficients constants.
+    Son équation caractéristique associée est
+    \begin{equation*}
+r^2 -2r + 1 = 0.
+    \end{equation*}
+    Le discriminant $\Delta$ de cette équation est $\Delta = 0$. Cette équation admet donc une racine double $r = 1$.
+    Finalement les solutions de l'équation différentielle sont les fonctions de la forme $y(t)= e^{t} \left(A + Bt \right)$ où $(A, B) \in \mathbb{R}^2$.
+    }
+    \invisible<3>{
+      }}}
+  \end{frame}
+%%%
+\begin{frame}
+  \begin{enumerate}
+    \setcounter{enumi}{1}
+  \item \textbf{Résolution de l'équation non homogène}
+    \vspace*{0.4 cm}
+    \\
+     Considérons l'équation différentielle du second ordre
+  \begin{equation*}
+a y^{\prime \prime}(t) + b y^{\prime}(t) + c y(t)= d(t) \qquad (E).
+  \end{equation*}
+ \textcolor{cadmiumgreen}{Solutions de $(E)$ : solution de l'équation homogène $(E_0)$ $+$ solution particulière.}
+ \vspace*{0.3 cm}
+ \\
+ \textcolor{red}{\textbf{Comment trouver une solution particulière ?}}
+\vspace*{0.3 cm}
+\\
+$\rightarrow$ Le second membre donne des informations : Polynôme, exp etc...
+    \end{enumerate}
+\end{frame}
+%%%%
+\begin{frame}
+\frametitle{Cas où la fonction $d$ est un polynôme}
+\textbf{On cherche une solution polynomiale !}
+ \vspace*{0.2 cm}
+ \\
+Remarque : si $y$ est un polynôme de degré $p$ alors $a y^{\prime \prime} + b y^{\prime} + c y$ est un polynôme
+\begin{itemize}
+\item[$\bullet$]
+  de degré $p$ si $c \neq 0$
+\item[$\bullet$] de degré $p-1$ si $c=0$ et $b\neq 0$
+  \item[$\bullet$] de degré $p-2$ si $c=b=0$.
+  \end{itemize}
+\begin{proposition}
+  Soit $P$ un polynôme de degré $n$. On considère l'EDO ${\bf ay^{\prime \prime}(t) + b y^{\prime}(t) + c y(t) = P(t) \qquad (E)}$.
+  \vspace*{0.2 cm}
+  \\
+  L'équation $(E)$ possède comme solution particulière une fonction polynomiale de degré :
+  \begin{itemize}
+  \item[$\bullet$]
+$n$ si $c \neq 0$
+  \item[$\bullet$]
+    $n+1$ si $c=0$ et $b \neq 0$
+  \item[$\bullet$]
+    $n+2$ si $b = c = 0$.
+    \end{itemize}
+\end{proposition}
+
+  \end{frame}
+%%%
+\begin{frame}
+  \textbf{Démonstration :}
+\begin{itemize}
+  \item[$\bullet$]
+   Soit $c \neq 0$ et soit $P$ un polynôme de degré $n$ s'écrivant sous la forme
+$\dps P(t) = \sum_{k=0}^{n} \alpha_k t^k$.
+    Soit $y$ une fonction de la forme $\dps y(t) = \sum_{k=0}^{n} \beta_k t^k$.
+    La fonction $y$ est dérivable et on a
+    \begin{equation*}
+y^{\prime}(t) = \sum_{k=1}^{n} k \beta_k  t^{k - 1} \quad \text{et}\quad y^{\prime \prime}(t) = \sum_{k=2}^{n} k (k - 1) \beta_k  t^{k - 2}.
+    \end{equation*}
+    Aussi, \textcolor{cadmiumgreen}{$y$ est solution de $(E)$ si, et seulement si,}
+    \begin{equation*}
+      \begin{split}
+        &        a \sum_{k=2}^{n} k (k - 1) \beta_k  t^{k - 2} + b \sum_{k=1}^{n} k \beta_k  t^{k - 1} + c \sum_{k=0}^{n} \beta_k t^k = \sum_{k=0}^{n} \alpha_k t^k
+        \\
+&        \iff
+c \beta_0 + c \beta_1 t + b \beta_1 + \hspace*{-0.1 cm} \sum_{k=2}^{n} \left( k(k-1) \beta_k t^{k-2} + b  k \beta_k t^{k-1} + c  \beta_k t^k \right) = \alpha_0 + \alpha_1 t + \hspace*{-0.1 cm} \sum_{k=2}^{n} \alpha_k t^{k}        
+      \end{split}
+    \end{equation*}
+    \end{itemize}
+\end{frame}
+\begin{frame}
+  \begin{itemize}
+  \item
+    par identification on obtient le système matriciel
+    %% \begin{equation}
+    %%   \label{eq:systeme:mat}
+    %%   \begin{split}
+    %%   c \beta_0 + b \beta_1 + 2 \beta_2 &= \alpha_0
+    %%   \\
+    %%   c \beta_1 + 2 b \beta_2 + 6 \beta_3 &= \alpha_1
+    %%   %\\
+    %%   %c \beta_2 + 3b \beta_3 + 12 \beta_4 &= \alpha_2
+    %%   \\
+    %%    & \vdots
+    %%  % \\
+    %%   %n(n-1)\beta_n + b(n-1) \beta_{n-1} + c \beta_{n-2} &= \alpha_{n-2} t^{n-2}
+    %%   %\\
+    %%  % b n \beta_n + c \beta_{n-1} &= \alpha_{n-1}
+    %%   \\
+    %%   c \beta_n &= \alpha_n
+    %%   \end{split}
+    %% \end{equation}
+%    Puis sous forme matricielle 
+    \begin{equation*}
+%      \label{eq:systeme:matriciel:edo}
+\underbrace{
+      \begin{pmatrix}
+        c & b & 2 & \cdots & 0              & 0 & 0 & \cdots & 0
+        \\
+        0 & c & 2b & 6 & 0                  & 0 & 0 & \cdots & 0
+        \\
+        0 & 0 & c & 3b & 12                 & 0 & 0 & \cdots & 0
+        \\
+        \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots
+        \\
+        \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots
+                \\
+                \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots
+                \\
+                0 & 0 & 0 & 0 & 0 & 0  &   c & b (n-1) & n(n-1)
+                \\
+                0 & 0 & 0 & 0 & 0 & 0  & 0 & c & b n
+                \\
+  0 & 0 & 0 & 0 & 0 & 0  & 0  & 0 & c
+      \end{pmatrix}
+      }_{\textcolor{red}{\mathbb{A}}}
+\underbrace{
+\begin{pmatrix}
+        \beta_0
+        \\
+        \beta_1
+        \\
+        \beta_2
+        \\
+        \vdots
+        \\
+        \vdots
+        \\
+        \vdots
+        \\
+        \beta_{n-2}
+        \\
+        \beta_{n-1}
+        \\
+        \beta_n
+\end{pmatrix}
+}_{{\bm X}}
+=
+\underbrace{
+      \begin{pmatrix}
+        \alpha_0
+        \\
+        \alpha_1
+        \\
+        \alpha_2
+        \\
+        \vdots
+        \\
+        \vdots
+        \\
+        \vdots
+        \\
+        \alpha_{n-2}
+        \\
+        \alpha_{n-1}
+        \\
+        \alpha_n
+      \end{pmatrix}
+}_{\bm B}
+    \end{equation*}
+Ainsi, $y$ est une solution de $(E)$ si, et seulement si $\det(\mathbb{A}) \neq 0$.
+On en conclue bien que $y$ est solution de $(E)$.
+\end{itemize}
+  \end{frame}
+  %%%%
+\begin{frame}
+\begin{itemize}
+\item[$\bullet$]
+    Supposons que $c = 0$ et $b \neq 0$. L'équation $(E)$ devient
+    \begin{equation*}
+a y^{\prime \prime}(t) + b y^{\prime}(t) = P(t).
+      \end{equation*}
+    En posant $z(t) = y^{\prime}(t)$ on obtient une équation différentielle du 1er ordre d'inconnue $z(t)$ :
+    \begin{equation*}
+a z^{\prime}(t) + b z (t) = P(t)
+    \end{equation*}
+    $P$ étant un polynôme de degré $n$ il vient que $a z^{\prime}(t) + b z(t)$ est un polynôme de degré $n$ et donc que $z$ est un polynôme de degré $n$.
+    Finalement, $y$ est bien un polynôme de degré $n+1$.
+  \item[$\bullet$]
+    Supposons que $b = c = 0$.
+    L'équation $(E)$ s'écrit
+    \begin{equation*}
+a y^{\prime \prime}(t) = P(t).
+    \end{equation*}
+    Comme $a$ est constant et que $P$ est de degré $n$, en intégrant l'équation précédente il vient que $y$ est un polynôme de degré $n + 2$.
+    \end{itemize}
+    \end{frame}
+%%%%%%%%%%
+\begin{frame}
+  \frametitle{Cas où $d$ est un produit de polynôme exponentiel}
+  On suppose que $d$ est de la forme $d(t) = P(t) e^{mt}$ où $m \in \mathbb{C}$.
+  \vspace*{0.2 cm}
+  \\
+      \invisible<1>{
+  \textcolor{cadmiumgreen}{\textbf{Etude préliminaire:}}
+\vspace*{0.2 cm}
+\\
+\begin{enumerate}
+      \invisible<2>{
+\item
+Changement de variable : on pose $y(t) = e^{mt} z(t)$.
+L'équation $(E)$ se réecrit alors
+\begin{equation*}
+  \begin{split}
+    a \left( \left( m^2 e^{mt} z(t) + m e^{mt} z^{\prime}(t)  \right)             +m e^{mt} z^{\prime}(t) + e^{mt} z^{\prime \prime}(t) \right) &
+    \\
+    + b \left(m e^{mt} z(t) + e^{mt} z^{\prime}(t)  \right) + c e^{mt} z(t) = P(t) e^{mt}
+    \end{split}
+\end{equation*}
+En simplifiant par $e^{mt}$ on obtient
+%% \begin{equation*}
+%% a \left( \left( m^2 z(t) + m z^{\prime}(t)  \right) + m z^{\prime}(t) +  z^{\prime \prime}(t) \right) + b \left(m  z(t) +  z^{\prime}(t)  \right) + c z(t) = P(t) 
+%% \end{equation*}
+soit
+\begin{equation*}
+a z^{\prime \prime}(t) + (2am + b) z^{\prime}(t) + (a m^2 + bm + c) z(t) = P(t) 
+\end{equation*}
+      \invisible<3>{
+\item
+On obtient une EDO du 2nd ordre de variable $z$ avec un second membre polynomial. \textcolor{red}{on trouve la solution $y$ !}
+\invisible<4>{
+   }}}}
+\end{enumerate}
+\end{frame}
+%%%%%
+\begin{frame}
+\begin{proposition}
+  Soit $m \in \mathbb{C}$ et $P$ un polynôme de degré $n$. On peut trouver une solution particulière de l'équation :
+  \begin{equation}
+a y^{\prime \prime}(t) + b y^{\prime}(t) + cy(t) = e^{mt} P(t)
+  \end{equation}
+  de la forme $y(t) = e^{mt} Q(t)$ où $Q$ est un polynôme :
+  \vspace*{0.2 cm}
+\\
+  \begin{itemize}
+  \item[$\bullet$] de degré $n$ si $m$ n'est pas racine de l'équation $a r^2 + br + c = 0$,
+  \vspace*{0.2 cm}
+\\  
+\item[$\bullet$] de degré $n+1$ si $m$ est racine simple de l'équation $a r^2 + br + c = 0$
+  \vspace*{0.2 cm}
+\\
+    \item[$\bullet$] de degré $n+2$ si $m$ est racine doucle de l'équation $ar^2 + br + c$.
+    \end{itemize}
+
+\end{proposition}
+
+  \end{frame}
+%%%
+\begin{frame}
+  \frametitle{Exercice}
+  Résoudre l'équation différentielle suivante ${\bf y^{\prime \prime} - 4 y^{\prime} + 3 y = (2x + 1)e^{-x}}$ (E)
+
+  \corrige{
+    \begin{enumerate}
+      \invisible<1>{
+    \item
+      \textbf{Résolution de l'équation homogène associée $(E_0)$ :}
+      \\
+      L'équation caractéristique est $r^2 - 4 r + 3$. Elle admet deux solutions $r_1 = 1$ et $r_2 = 3$.
+      Les solutions de $(E_0)$ sont de la forme $t \mapsto \lambda_1 e^{t} + \lambda_2 e^{3t}$.
+            \invisible<2>{
+    \item \textbf{Calcul de la solution particulière $y_P$}
+      \\
+      Le 2nd membre est un produit polynôme-exponentiel.
+      Comme $1$ n'est pas racine de l'eqn caractéristique on cherche $y_P$ de degré $1$ tq $y_P(x) = e^{-x}(a x + b)$.
+      Or, $y_P$ est solution de $(E)$ ssi
+      \begin{equation*}
+        y_P^{\prime \prime}(x) - 4 y_P^{\prime}(x) + 3 y_P(x) = (2x + 1)e^{-x} \iff
+       a = \frac{1}{4} \quad \text{et} \quad b = \frac{5}{16} 
+      \end{equation*}
+            \invisible<3>{
+    \item
+      \textbf{Conclusion :}
+      $y(x) = \lambda_1 e^{x} + \lambda_2 e^{3x} + e^{-x}(\frac{1}{4}x + \frac{5}{16})$
+      \invisible<4>{
+        }}}}
+      \end{enumerate}
+  }
+  \end{frame}

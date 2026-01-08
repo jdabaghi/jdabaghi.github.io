@@ -1,0 +1,855 @@
+\begin{frame}
+    \begin{center}
+        \Huge{Calcul d'intégrales}
+    \end{center}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Primitives et intégrale d'une fonction continue}
+\begin{definition}
+    Soit $f \in \mathcal{C}^{0}(I, \mathbb{R})$. 
+    On appelle primitive de $f$ sur $I$ toute fonction de $I$ dans $\mathbb{R}$, dérivable sur $I$ et dont la dérivée est égale à $f$.
+\end{definition}
+\textbf{Exemples :}
+\vspace*{0.2 cm}
+\begin{itemize}
+   \invisible<1>{
+    \item $f : \mathbb{R} \rightarrow \mathbb{R}$ définie par $f(x) = x^2$. Alors $g : \mathbb{R} \rightarrow \mathbb{R}$ définie par $g(x) = \frac{1}{3}x^3$ est dérivable sur $\mathbb{R}$ et $g^{\prime}(x) = f(x)$.
+    \vspace*{0.2 cm}
+    \invisible<2>{
+    \item
+    $f : \mathbb{R} \rightarrow \mathbb{R}$ définie par $f(x) = e^x$. 
+    Alors $g : \mathbb{R} \rightarrow \mathbb{R}$ définie par $g(x) = e^x$ est dérivable sur $\mathbb{R}$ et $g^{\prime}(x) = f(x)$.
+    \vspace*{0.2 cm}
+    \invisible<3>{
+    \item $f : \mathbb{R}_{*}^{+} \rightarrow \mathbb{R}_{*}^{+}$ définie par $f(x) = \sqrt{x}$. 
+    Alors $g : \mathbb{R}_{+}^{*} \rightarrow \mathbb{R}_{+}^{*}$ définie par $g(x) = \frac{1}{2 \sqrt{x}}$ est dérivable sur $\mathbb{R}_{+}^{*}$ et $g^{\prime}(x) = f(x)$.
+    \invisible<4>{
+    }}}}    
+\end{itemize}
+\end{frame}
+%%%%
+\begin{frame}
+\begin{proposition}
+Soit $f \in \mathcal{C}^0(I)$. Si $F$ est une primitive de $f$, alors l'ensemble des primitives de $f$ sur $I$ sont les fonctions $F + \lambda$ avec $\lambda \in \mathbb{R}$. 
+\end{proposition}
+\invisible<1>{
+\textbf{Démonstration :}
+    Soit $G$ la fonction définie sur $I$ par 
+\begin{equation*}
+        G(x) = F(x) + \lambda \quad \forall x \in I.
+\end{equation*}
+    Alors, la fonction $G$ est dérivable sur $I$ et
+$ G^{\prime}(x) = F^{\prime}(x) = f(x)$.
+\invisible<2>{
+\begin{thm}[Fondamental]
+Soient $f$ une fonction continue de $I$ dans $\mathbb{R}$ et $a$ un point de $I$. 
+La fonction $F_a$ définie par :
+\begin{equation*}
+F_a(x) = \int_{a}^{x} f(t)\,\mathrm{dt}   
+\end{equation*}
+est une primitive de $f$ sur $I$. 
+C'est l'unique primitive de $f$ qui s'annule en $a$.
+\end{thm}
+\invisible<3>{
+}}}
+\end{frame}
+%%%%%%%%%%
+\begin{frame}
+\textbf{Démonstration :}
+    On prouve que $F_a$ est dérivable sur $I$ et  $F_a^{\prime} = f$ sur $I$.
+    Soit $x_0 \in I$.
+    \begin{equation*}
+       \left  \lvert \frac{F_a(x) - F_a(x_0)}{x - x_0} - f(x_0) \right  \rvert = \left  \lvert \frac{1}{x - x_0} \left( \int_{a}^{x} f(t)\,\mathrm{dt} - \int_{a}^{x_0} f(t)\,\mathrm{dt} \right) - f(x_0) \right  \rvert
+                 \leq \sup_{t \in [x_0, x]} \left \lvert f(t) - f(x_0) \right \rvert.
+    \end{equation*}
+Soit $\varepsilon > 0$. 
+Comme $f$ est continue en $x_0$  
+\begin{equation*}
+ \exists \eta > 0 \ \forall t \in  ]x_0 - \eta, x_0 + \eta[ \cap [x_0,x],  \ \left \lvert f(t) - f(x_0) \right \rvert < \varepsilon \ \Rightarrow \sup_{t \in [x_0, x]} \myabs{f(t) - f(x_0)} < \varepsilon.
+\end{equation*}
+Alors,
+\begin{equation*}
+    \myabs{\frac{F_a(x) - F_a(x_0)}{x - x_0} - f(x_0)} 
+\leq 
+\varepsilon 
+\end{equation*}
+Donc
+$F_a$ est dérivable en $x_0 \in I$ et $F_a^{\prime}(x_0) = f(x_0)$.
+\end{frame}
+%%%%%%%%
+\begin{frame}
+\begin{thm}
+    Soit $f \in \mathcal{C}^{0}(I,\mathbb{R})$ et $a$ et $b$ deux points de $I$. 
+    Si $F$ est une primitive de $f$ sur $I$, on a :
+\begin{equation*}
+    \int_{a}^{b} f(x)\,\mathrm{dx} = F(b) - F(a).
+\end{equation*}    
+\end{thm}
+\vspace*{0.2 cm}
+ \textbf{Exercices :}
+ \vspace*{0.2 cm}
+    Calculer les intégrales suivantes :
+    \begin{enumerate}
+        \item
+        \begin{equation*}
+        \dps \int_{a}^{b} e^{2x} \,\mathrm{dx} =  \textcolor{midnightblue}{\left[ \frac{1}{2} e^{2x}\right]_{a}^{b} = \frac{1}{2} \left( e^{2b} - e^{2a} \right)}    
+        \end{equation*}
+        \vspace*{0.2 cm}
+                \item
+            \begin{equation*}
+                    \dps \int_{0}^{\pi} \sin(x)\,\mathrm{dx}= \textcolor{midnightblue}{\left[ -\cos(x) \right]_{0}^{\pi} = 2}
+            \end{equation*}
+    \end{enumerate}
+\end{frame}
+%%%%%
+%%%%%%%%
+\begin{frame}{Méthodes de calcul de primitives}
+\invisible<1>{
+    \begin{thm}[Intégration par parties]
+Soit $(a,b) \in \mathbb{R}^2$. 
+Soient $u$ et $v$ deux fonctions de classe $\mathcal{C}^1$ sur $[a,b]$. Alors
+\begin{equation*}
+    \int_{a}^{b} u(t) v^{\prime}(t)\,\mathrm{dt} = [u(t) v(t)]_a^b - \int_{a}^b u^{\prime}(t) v(t)\,\mathrm{dt}.
+\end{equation*}
+\end{thm}
+\invisible<2>{
+\textbf{Exercice :}
+    Calculer l'intégrale suivante : $\dps \int_{1}^{2} \ln(x)\,\mathrm{dx}$.
+
+\invisible<3>{
+\corrige{$u : x \mapsto \ln(x)$ et $v: x \mapsto x$.
+Alors $u$ et $v$ sont $\mathcal{C}^{1}([1,2])$. 
+Par la formule d'IPP 
+\begin{equation*}
+    \int_{1}^{2} u(x) v^{\prime}(x)\,\mathrm{dx} = \left[u(x) v(x) \right]_{1}^{2} - \int_{1}^{2} u^{\prime}(x) v(x)\,\mathrm{dx} = \left[x \ln(x)\right]_{1}^{2} - \int_{1}^{2} 1 \,\mathrm{dx} = 2 \ln(2) - 1.
+    \end{equation*}
+}
+\invisible<4>{
+}}}}
+\end{frame}
+%%%%%
+\begin{frame}
+\vspace*{-0.3 cm}
+\begin{thm}[Changement de variables]
+    Soient $I$ et $J$ deux intervalles de $\mathbb{R}$ et $f \in \mathcal{C}^{0}(I,\mathbb{R})$ et $\varphi \in \mathcal{C}^{1}(J,I)$. 
+Si $\alpha$ et $\beta \in J$ on a : 
+\begin{equation*}
+\int_{\varphi(\alpha)}^{\varphi(\beta)} f(t)\,\mathrm{dt} = \int_{\alpha}^{\beta} f(\varphi(u)) \varphi^{\prime}(u)\,\mathrm{du}.   
+\end{equation*}
+\end{thm}
+\invisible<1>{
+\textbf{Démonstration :}
+  \textcolor{byzantine}{$f \in \mathcal{C}^{0}(I,\mathbb{R})$ donc admet une primitive $F$ d'après le Théorème fondamental}.
+  \invisible<2>{
+  De plus, $\varphi(\alpha) \in I$ et $\varphi(\beta) \in I$. Donc
+  \begin{equation*}
+\int_{\varphi(\alpha)}^{\varphi(\beta)} f(t)\,\mathrm{dt} 
+    = F(\varphi(\beta)) - F(\varphi(\alpha)) = (F \circ \varphi)(\beta) - (F \circ \varphi)(\alpha).
+  \end{equation*}
+  \invisible<3>{
+  Or $F$ est dérivable sur $I$ et $\varphi$ est de classe $\mathcal{C}^1$ sur $I$. Ainsi, 
+  \begin{equation*}
+\int_{\varphi(\alpha)}^{\varphi(\beta)} f(t)\,\mathrm{dt}        = \int_{\alpha}^{\beta} (F \circ \varphi)^{\prime}(u)\,\mathrm{du} = 
+    \int_{\alpha}^{\beta} F^{\prime}(\varphi(u)) \varphi^{\prime}(u)\,\mathrm{du} = \int_{\alpha}^{\beta} f(\varphi(u)) \varphi^{\prime}(u)\,\mathrm{du}
+  \end{equation*}
+  \invisible<4>{
+  }}}}
+\end{frame}
+%%%%%
+\begin{frame}{Remarques}
+    \alert{\textbf{On a le choix :}}
+    \vspace*{0.4 cm}
+    \begin{enumerate}
+        \item Trouver la fonction  $\varphi$ de classe $ \mathcal{C}^1$ sous-jacente au changement de variable.
+        \textbf{Avantage :} On voit tous les détails lors de la tranformation via la fonction $\varphi$ et c'est plus rigoureux. \textbf{Inconvénients :} Parfois un peu long.
+        \vspace*{0.6 cm}
+        \item
+        On pose $u$ en fonction de la variable primale $x$ (par exemple) et on calcul $du$ en fonction de $dx$ et on adapte les bornes. 
+        \textbf{Avantage :} Plus rapide. \textbf{Inconvénients :} moins rigoureux.
+    \end{enumerate}
+\end{frame}
+\begin{frame}{Exercices}
+    Calculer l'intégrale suivante :
+\begin{equation*}
+    \dps A =  \int_{0}^{\frac{\pi}{2}} \sin^2(u) \cos(u) \,\mathrm{du}
+\end{equation*}  
+\invisible<1>{
+    \corrige{
+        Soit $\varphi 
+ \in \mathcal{C}^{\infty}([0,\frac{\pi}{2}])$ définie par $\varphi(u) = \sin(u)$ et $f \in \mathcal{C}^{\infty}([0,\frac{\pi}{2}])$ définie par $f(u)=u^2$. 
+        Par la formule du changement de variable, on obtient
+       \begin{equation*}
+           A = \int_{0}^{\frac{\pi}{2}} f(\varphi(u)) \varphi^{\prime}(u)\,\mathrm{du} = \int_{\varphi(0)}^{\varphi(\frac{\pi}{2})} t^2 \,\mathrm{dt} = \int_{0}^{1} t^2 \,\mathrm{dt} 
+           = \left[\frac{1}{3} t^3\right]_0^1 = \frac{1}{3}. 
+      \end{equation*}
+      }
+      \invisible<2>{
+\textcolor{cadmiumgreen}{\textbf{Autre rédaction possible :}} on pose $v(u) = \sin(u)$. 
+Alors $\mathrm{dv} = \cos(u)\,\mathrm{du}$. Pour $u=0$ $\rightarrow \ v = 0$ et pour $u = \frac{\pi}{2} \rightarrow v = 1$.
+      Donc
+      \begin{equation*}
+          A = \int_{0}^{1} v^2\,\mathrm{dt} = \frac{1}{3}.
+      \end{equation*}
+      \invisible<3>{
+      }}}
+       \end{frame}
+       %%%%%%%
+       \begin{frame}
+       \frametitle{Exercices}
+        Calculer $\dps B = \int_{-1}^{2} \sqrt{4 - u^2} u \,\mathrm{du}$.
+        
+        \invisible<1>{
+        \corrige{
+        Soit $\varphi \in \mathcal{C}^{1}([-1,2])$ définie par $\varphi(u) = u^2$ et $f \in \mathcal{C}^{0}([-1, 2])$ définie par $f(v) = \sqrt{4 - v}$. 
+ Alors, on a 
+        \begin{equation*}
+            B = \frac{1}{2} \int_{-1}^{2} f(\varphi(u)) \varphi^{\prime}(u)\,\mathrm{du}
+            =
+            \frac{1}{2} \int_{\varphi(-1)}^{\varphi(2)} f(t)\,\mathrm{dt} = \frac{1}{2} \int_{1}^{4} \sqrt{4 - t}\,\mathrm{dt} = -\frac{1}{2} \left[\frac{2}{3} (4 - t)^{\frac{3}{2}} \right]_{1}^{4} = \sqrt{3}.
+        \end{equation*}
+        }
+        \invisible<2>{
+    \textcolor{cadmiumgreen}{\textbf{Autre rédaction possible :}}
+        Posons $t = u^2$ de sorte que $dt = 2 u du$. 
+        La formule du changement de variable donne
+        \begin{equation*}
+            B = \frac{1}{2} \int_{1}^{4} \sqrt{4 - t}\,\mathrm{dt} = -\frac{1}{2} \left[\frac{2}{3} (4 - t)^{\frac{3}{2}} \right]_{1}^{4} = \sqrt{3}. 
+        \end{equation*}
+        \invisible<3>{
+        }}}
+        \end{frame}
+        %%%%%%%%%%
+        \begin{frame}{Exercices}
+        Calculer $\dps C = \int_{-1}^{\frac{1}{2}} \sqrt{1 - t^2}\,\mathrm{dt}$. 
+
+        \corrige{
+\invisible<1>{
+                Soient $f$ et $\varphi$ les fonctions définies sur $[-1,\frac{1}{2}]$ par 
+            $f : t \mapsto \sqrt{1 - t^2}$ et $\varphi : u \mapsto \sin(u)$. 
+                Alors $f \in \mathcal{C}^{0}([-1, \frac{1}{2}])$, et  $\varphi \in \mathcal{C}^1([-1, \frac{1}{2}])$.
+                \vspace*{0.2 cm}
+                \\
+         \invisible<2>{
+         \textcolor{byzantine}{\textbf{Formule du changement de variable}}
+\begin{equation*}
+\begin{split}
+\int_{-1}^{\frac{1}{2}} \sqrt{1 - t^2}\,\mathrm{dt}
+& = \int_{\varphi(-\frac{\pi}{2})}^{\varphi(\frac{\pi}{6})} f(t)\,\mathrm{dt} = \int_{-\frac{\pi}{2}}^{\frac{\pi}{6}} f(\varphi(u))\varphi^{\prime}(u)\,\mathrm{du} 
+\\
+& = \int_{-\frac{\pi}{2}}^{\frac{\pi}{6}} \sqrt{1 - \sin^2(u)} \cos(u)\,\mathrm{du} = \int_{-\frac{\pi}{2}}^{\frac{\pi}{6}} \myabs{\cos(u)}  \cos(u)\,\mathrm{du} 
+\\
+& = \int_{-\frac{\pi}{2}}^{\frac{\pi}{6}}  \cos^2(u)\,\mathrm{du}
+\end{split}
+\end{equation*}
+\invisible<3>{
+}}}
+}
+\end{frame}
+%%%%%%%%%%
+\begin{frame}
+\textcolor{midnightblue}{
+    Ainsi,
+\begin{equation*}
+\begin{split}
+\int_{-1}^{\frac{1}{2}} \sqrt{1 - t^2}\,\mathrm{dt} 
+&=  \int_{-\frac{\pi}{2}}^{\frac{\pi}{6}} \frac{1}{2} \left( \cos(2u) + 1 \right)\,\mathrm{du} \ \textcolor{byzantine}{\mathrm{(Formule \ de \ Moivre)}}
+\\
+& = 
+\frac{1}{2} \left[\frac{1}{2} \sin(2u) + u \right]_{-\frac{\pi}{2}}^{\frac{\pi}{6}} 
+\\
+&= \frac{1}{2} \left( \frac{\sqrt{3}}{4} + \frac{2 \pi}{3}\right) = \frac{\sqrt{3}}{8} + \frac{\pi}{3}.
+\end{split}
+\end{equation*}
+}
+        \end{frame}
+%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Changement de variable affine}
+\invisible<1>{
+\textcolor{cadmiumgreen}{\textbf{fonction périodique}}
+\invisible<2>{
+\begin{proposition}
+Soit $f$ une fonction définie sur un intervalle $[a,b]$ et périodique de période $T > 0$. Alors
+\begin{equation*}
+\int_{a}^{b} f(u)\,\mathrm{du} = \int_{a+T}^{b+T} f(v)\,\mathrm{dv}   
+\end{equation*}    
+\end{proposition}
+\invisible<3>{
+\textbf{Démonstration :}
+     Si $f$ est $T$-périodique alors 
+       $\forall x \in [a,b], \ f(x + T) = f(x)$.
+       
+    Posons $\varphi(v) = v + T$.
+    Alors, $\varphi \in \mathcal{C}^{1}([a,b])$. D'après le \textcolor{byzantine}{\textbf{théorème du changement de variable}}
+\begin{equation*}  \int_{\varphi(a)}^{\varphi(b)} f(v)\,\mathrm{dv} = \int_{a}^{b} f(\varphi(u))\varphi^{\prime}(u)\,\mathrm{du}
+ = \int_{a}^{b} f(u+T)\,\mathrm{du} = \int_{a}^{b} f(u)\,\mathrm{du}.
+    \end{equation*}
+    \invisible<4>{
+    }}}}
+\end{frame}
+\begin{frame}
+    \textcolor{cadmiumgreen}{\textbf{fonction paire}}
+    \vspace*{0.2 cm}
+\invisible<1>{
+\begin{proposition} 
+Soit $f$ une fonction continue sur un intervalle $I$ contenant $0$ et soit $a \in I$.
+ Si $f$ est paire alors
+ \begin{equation*}
+   \dps \int_{-a}^{a} f(u)\,\mathrm{du} = 2 \int_{0}^{a} f(u)\,\mathrm{du}  
+ \end{equation*}
+\end{proposition}
+\invisible<2>{
+\vspace*{0.2 cm}
+\textbf{Démonstration :}
+\invisible<3>{
+\begin{equation*}
+\begin{split}
+    \dps \int_{-a}^{a} f(u)\,\mathrm{du} 
+         &= \int_{-a}^{0} f(u)\,\mathrm{du} + \int_{0}^{a} f(u)\,\mathrm{du}
+         \\
+         & = -\int_{0}^{-a} f(u)\,\mathrm{du} + \int_{0}^{a} f(u)\,\mathrm{du}
+\end{split}
+\end{equation*}
+\invisible<4>{
+    Soit $\varphi \in \mathcal{C}^1([-a,0])$ définie par 
+    $\varphi(v) = -v$.
+    \invisible<5>{
+    }}}}}
+    \end{frame}
+    %%%%%%%%%%%%%%%
+    \begin{frame}
+    Par la formule du \textcolor{byzantine}{changement de variable}
+    \invisible<1>{
+\begin{equation*}
+\int_{\varphi(-a)}^{\varphi(0)} f(u)\,\mathrm{du}  = \int_{-a}^{0} f(\varphi(u)) \varphi^{\prime}(u)\,\mathrm{du}=-\int_{-a}^{0} f(-u)\,\mathrm{du}= -\int_{-a}^{0} f(u)\,\mathrm{du}= \int_{0}^{-a} f(u)\,\mathrm{du}.
+\end{equation*}
+\invisible<2>{
+Or 
+\begin{equation*}
+\int_{\varphi(-a)}^{\varphi(0)} f(u)\,\mathrm{du}  = \int_{a}^{0} f(u)\,\mathrm{du}
+= - \int_{0}^{a} f(u)\,\mathrm{du} = \int_{0}^{-a} f(u)\,\mathrm{du}
+\end{equation*}
+\invisible<3>{
+Donc
+\begin{equation*}
+- \int_{0}^{-a} f(u)\,\mathrm{du} = \int_{0}^{a} f(u) \,\mathrm{du}. 
+\end{equation*}
+\invisible<4>{
+Ainsi
+\begin{equation*}
+    \int_{-a}^{a} f(u)\,\mathrm{du} = 2 \int_{0}^{a} f(u)\,\mathrm{du}.
+\end{equation*}
+\invisible<5>{
+}}}}}
+\end{frame}
+%%%%%%
+\begin{frame}
+\vspace*{-0.3 cm}
+    \textcolor{cadmiumgreen}{\textbf{fonction impaire}}
+    \invisible<1>{
+\begin{proposition}
+Soit $f$ une fonction continue sur un intervalle $I$ contenant $0$ et $a \in I$. 
+Si $f$ est impaire alors
+\begin{equation*}
+\dps \int_{-a}^{a} f(u)\, \mathrm{du} = 0    
+\end{equation*}
+\end{proposition} 
+\invisible<2>{
+Le \textcolor{byzantine}{changement de variable} précédent donne
+\begin{equation*}
+\int_{\varphi(-a)}^{\varphi(0)} f(u)\,\mathrm{du} = \int_{a}^{0} f(u)\,\mathrm{du} = \int_{-a}^{0} -f(-u) \,\mathrm{du} = \int_{-a}^{0} f(u)\,\mathrm{du}.
+\end{equation*}
+Ainsi,
+\vspace*{-0.1 cm}
+\begin{equation*}
+    -\int_{0}^{a} f(u)\,\mathrm{du} = \int_{a}^{0} f(u)\,\mathrm{du} = \int_{-a}^{0} f(u)\,\mathrm{du}.
+\end{equation*}
+\begin{equation*}
+\textcolor{red}{\Rightarrow}    \int_{-a}^{a} f(u)\,\mathrm{du} = 0.
+\end{equation*}
+\invisible<3>{
+}}}
+\end{frame}
+%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \textcolor{cadmiumgreen}{\textbf{Transformation affine sur l'élément de référence}}
+    \invisible<1>{
+    \begin{proposition}
+        Soit $f$ une fonction continue sur un intervalle $I$ et $a$ et $b$ deux points de $I$.
+Alors,
+\begin{equation*}
+\int_{a}^{b} f(t)\,\mathrm{dt}  = (b - a) \int_{0}^1 f(a + (b-a)v) \,\mathrm{dv}
+\end{equation*}
+    \end{proposition}
+    \invisible<2>{
+    \textbf{Démonstration :}
+Soit $\varphi \in \mathcal{C}^1([0,1])$ définie par 
+    \begin{equation*}
+        \varphi(v) = a + (b-a)v.
+    \end{equation*}
+    D'après la formule du \textcolor{byzantine}{changement de variable}
+    \begin{equation*}
+\int_{\varphi(0)}^{\varphi(1)} f(t)\,\mathrm{dt} = \int_{0}^{1} f(\varphi(v)) \varphi^{\prime}(v)\,\mathrm{dv}
+    = (b - a) \int_{0}^{1} f(a + (b - a)v) \,\mathrm{dv}.
+    \end{equation*}
+    \invisible<3>{
+    }}}
+\end{frame}
+%%%%%%%%%%%%%
+\begin{frame}{Primitives des fonctions polynômes-exponentielles}
+\invisible<1>{
+\begin{proposition}
+    Soit $a \in \mathbb{C}^{*}$ et $P$ une fonction polynomiale.
+    Alors la fonction $x\mapsto P(x) e^{ax}$ a une primitive de la forme $x \mapsto Q(x) e^{ax}$ où $Q$ est une fonction polynomiale de même degré que $P$.
+\end{proposition}
+\invisible<2>{
+\textbf{Exercice :}
+    Déterminer une primitive de la fonction $f$ définie sur $\mathbb{R}$ par
+    \begin{equation*}
+        f(x) = e^{x} (2x^3 + 3x^2 - x + 1)
+    \end{equation*}
+    \invisible<3>{
+\corrige{
+$f$ est le produit d'un polynôme de degré $3$ et d'une exponentielle. On cherche donc une primitive s'écrivant sous la forme 
+\begin{equation*}
+    F(x) = e^{x} Q(x) \quad \text{où} \ Q \in \mathbb{R}_3[X]  \ \text{i.e.} \ Q(x) = ax^3 + bx^2 + cx + d
+\end{equation*}
+On a 
+\begin{equation*}
+    F^{\prime}(x) = e^x (ax^3 + bx^2 + cx + d) + e^x (3 a x^2 + 2bx + c) = f(x).
+\end{equation*}
+}
+\invisible<4>{
+}}}}
+\end{frame}
+%%%%%%%%%%%%%%
+\begin{frame}
+\textcolor{midnightblue}{
+Alors on a 
+\begin{equation*}
+\begin{split}
+    F^{\prime}(x) &= x^3(a e^x) + x^2(b e^{x} + 3a e^x) + x(c e^x + 2b e^x) + (d+c)e^x
+    \\
+    & = 2e^x x^3 + 3x^2 e^x - x e^x + e^x
+    \end{split}
+\end{equation*}
+\invisible<1>{
+Par identification,
+\begin{equation*}
+    \begin{split}
+        a & = 2
+        \\
+        3a + b & = 3
+        \\
+        c + 2b & = -1
+        \\
+        d + c &= 1.
+    \end{split}
+\end{equation*}
+D'où,
+\begin{equation*}
+    a = 2, \quad b = -3, \quad c = 5, \quad d = -4.
+\end{equation*}
+\invisible<2>{
+Finalement
+\begin{equation*}
+    \int f(x)\,\mathrm{dx} = e^x (2 x^3 - 3 x^2 + 5x -4) + k \quad k \in \mathbb{R}.
+\end{equation*}
+\invisible<3>{
+}}}
+}
+\end{frame}
+%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%
+\begin{frame}{Primitives d'une fraction rationnelle}
+
+\begin{proposition}
+Soit $I$ un intervalle de $\mathbb{R}$ et soit $a \in \mathbb{R}$.
+\begin{enumerate}
+    \item 
+    Si $a \not \in I$
+     alors
+     \begin{equation*}
+     \int \frac{1}{x-a}\,\mathrm{dx} = \ln \myabs{x-a} + k \quad k \in \mathbb{R}
+     \end{equation*}
+   \item
+   Si $a \in \mathbb{C}$ tel que $a = \alpha + i \beta$, $(\alpha, \beta) \in \mathbb{R} \times \mathbb{R}^{*}$, alors sur tout intervalle $I$ de $\mathbb{R}$ on a 
+\begin{equation*}
+ \int \frac{1}{x-a}\,\mathrm{dx}
+= \frac{1}{2} \ln((x - \alpha)^2 + \beta^2) + i \arctan\left(\frac{x - \alpha}{\beta}\right) + k, \quad k \in \mathbb{R}.
+\end{equation*}
+\end{enumerate}    
+\end{proposition}
+\textbf{Démonstration :}
+\begin{enumerate}
+    \item 
+        Trivial. Il suffit de dériver le membre de droite de l'équation.
+\end{enumerate}
+\end{frame}
+%%%%%
+\begin{frame}
+\begin{enumerate}
+\setcounter{enumi}{1}
+    \item 
+    Soit $a \in \mathbb{C}$ tel que $a = \alpha + i \beta$, $\alpha \in \mathbb{R}$, $\beta \in \mathbb{R}^{*}$.
+    On a 
+    \begin{equation*}
+    \begin{split}
+    \frac{1}{x - a} & =     \frac{x - \overline{a}}{(x - a)(x - \overline{a})} 
+    = \frac{x - (\alpha - i \beta)}{(x - (\alpha + i \beta))(x - (\alpha - i \beta))} 
+    = \frac{x - \alpha + i \beta}{ (x - \alpha)^2 + \beta^2 }
+    \\
+    & = \frac{x - \alpha}{ (x - \alpha)^2 + \beta^2 } + i \frac{1}{\beta}\frac{1}{ 1 + \frac{(x - \alpha)^2}{\beta^2} }
+    \end{split}
+    \end{equation*}
+    En intégrant la dernière équation on obtient
+   \begin{equation*}
+       \int \frac{1}{x-a}\,\mathrm{dx}
+= \frac{1}{2} \ln((x - \alpha)^2 + \beta^2) + i \arctan\left(\frac{x - \alpha}{\beta}\right) + k, \quad k \in \mathbb{R}
+   \end{equation*} 
+\end{enumerate}
+    
+\end{frame}
+
+%%%%%%%%%%%%
+\begin{frame}{Exercice}
+Calculer une primitive de la fonction $f$ définie par
+            $\dps f(x) = \frac{1}{(x^2 - 1)(x - 2)^2}$
+
+        \corrige{
+        \invisible<1>{
+    \begin{equation*}
+        \mathcal{D}_f = \left] -\infty, -1 \right[ \cup \left] -1, 1
+ \right[ \cup \left]1, 2 \right[ \cup \left]2, + \infty \right[
+    \end{equation*}
+    \invisible<2>{
+    $f$ admet $-1$ et $1$ comme pôles d'ordre $1$, et $2$ comme pôle d'ordre $2$.
+    Par le théorème de la décomposition en éléments simples, 
+\begin{equation*}
+    f(x) = \frac{1}{2}\left( \frac{1}{x - 1}\right) - \frac{1}{18} \left(\frac{1}{x + 2}\right) - \frac{4}{9} \left( \frac{1}{x - 2} \right) + \frac{1}{3} \left(\frac{1}{(x - 2)^2}\right)
+\end{equation*}
+\invisible<3>{
+Une primitive de la fonction $f$ est donc 
+\begin{equation*}
+    F(x) = \frac{1}{2} \ln{\myabs{x - 1}} - \frac{1}{18} \ln{\myabs{x + 2}} - \frac{4}{9} \ln{\myabs{x - 2}} - \frac{1}{3} \frac{1}{x - 2} + k, \quad k \in \mathbb{R}
+\end{equation*}
+\invisible<4>{
+}}}}
+        }
+\end{frame}
+%%%
+\begin{frame}{Exercice}
+Calculer une primitive de la fonction $f$ définie par 
+            $\dps f(x) = \frac{5}{x^2 + x + 1 + i}$
+
+\corrige{
+\invisible<1>{
+$-i$ et $-i + 1$ sont pôles d'ordre 1 de $f$. 
+Par le théorème de la décomposition en éléments simples
+\begin{equation*}
+    f(x) = \frac{1 + 2i}{x + 1} - \frac{1 + 2i}{x + 1 - i}
+\end{equation*}
+\invisible<2>{
+Une primitive de $f$ est donnée par
+ \begin{equation*}  
+ \begin{split}  
+ F(x) & = - (1 + 2i) \left(\frac{1}{2} \ln((x+1)^2 + 1) + i \arctan(x + 1) + k \right)\quad k \in \mathbb{R}
+  \\
+ & = -\frac{(1 + 2i)}{2} \ln(x^2 + 2x + 2) + (2 - i) \arctan(x + 1) -k(1 + 2i).
+ \end{split}
+ \end{equation*}
+ \invisible<3>{
+}}}
+ }
+\end{frame}
+%%%%%%%%
+\begin{frame}{Résultat général sur les intégrales de fractions rationnelles}
+\invisible<1>{
+\begin{proposition}
+Soit $f$ la fonction définie sur $\mathbb{R}$ par $   f(x) = \frac{\lambda x + \mu}{x^2 + bx + c}$
+où $(\lambda,\mu, b, c)\in \mathbb{R}^{4}$ tel que $b^2 - 4c < 0$. Alors une primitive de $f$ est une combinaison linéaire des fonctions $\dps g : x \mapsto \ln(x^2 + bx + c)$ et $\dps h : x \mapsto \dps \arctan\left(\frac{2x + b}{\sqrt{4c - b^2}} \right)$    
+\end{proposition}
+\invisible<2>{
+\textbf{Démonstration :}
+\invisible<3>{
+On commence par faire apparaître au numérateur la dérivée du dénominateur. 
+\invisible<4>{
+    \begin{equation*}
+    \begin{split}
+        \int_{\mathbb{R}} f(x)\,\mathrm{dx} 
+        & = \int_{\mathbb{R}} \frac{\lambda x}{x^2 + bx + c} \,\mathrm{dx} 
+        + \int_{\mathbb{R}} \frac{\mu}{x^2 + bx + c} \,\mathrm{dx}
+        \\
+        & =
+    \frac{\lambda}{2}
+\int_{\mathbb{R}} \frac{2 x + b}{x^2 + bx + c} \,\mathrm{dx} 
+        + \int_{\mathbb{R}} \frac{\mu - b \frac{\lambda}{2}}{x^2 + bx + c} \,\mathrm{dx}
+\end{split}        \end{equation*}
+\invisible<5>{
+}}}}}
+\end{frame}
+%%
+\begin{frame}
+Alors
+    \begin{equation*}
+        \begin{split}
+     \int_{\mathbb{R}} f(x)\,\mathrm{dx}    & =     \frac{\lambda}{2}
+\int_{\mathbb{R}} \frac{2 x + b}{x^2 + bx + c} \,\mathrm{dx} 
+        + (\mu - b \frac{\lambda}{2}) \int \frac{1}{x^2 + bx + c} \,\mathrm{dx}.     
+        \end{split}
+    \end{equation*}
+    \invisible<1>{
+    Or
+    \begin{equation*}
+        \int_{\mathbb{R}} \frac{2 x + b}{x^2 + bx + c} \,\mathrm{dx}  = \ln \myabs{x^2 + bx + c} + k          = \ln (x^2 + bx + c) + k \quad k \in \mathbb{R}.
+    \end{equation*}
+    \invisible<2>{
+    Par ailleurs,
+    \begin{equation*}
+        \int_{\mathbb{R}} \frac{1}{x^2 + bx + c}\,\mathrm{dx} = 
+        \int_{\mathbb{R}} \frac{1}{(x + \frac{b}{2})^2 + \omega^2} = \frac{1}{\omega^2} \int_{\mathbb{R}} \frac{1}{1 + \left(\frac{x + \frac{b}{2}}{\omega}  \right)^2}\,\mathrm{dx} \quad \text{avec} \quad \omega = \sqrt{c - \left(\frac{b}{2}\right)^2}
+    \end{equation*}
+    \invisible<3>{
+    }}}
+    \end{frame}
+    %%%%%%%%
+    \begin{frame}
+     \textcolor{byzantine}{Changement de variable :}  $\varphi \in \mathcal{C}^1(\mathbb{R}, \mathbb{R})$ tq $\varphi(u) = \omega u - \frac{b}{2}$ \alert{($u = \frac{x + \frac{b}{2}}{\omega}$, \ $\mathrm{du} = \frac{1}{\omega} \,\mathrm{dx}$)}.
+    \begin{equation*}
+\int_{\mathbb{R}} \frac{1}{x^2 + bx + c}\,\mathrm{dx} =  \frac{1}{\omega} \int_{\mathbb{R}} \frac{1}{1 + u^2} \, \mathrm{du} = \frac{1}{\omega} \arctan(u) + k_1.
+    \end{equation*}
+Alors,
+\begin{equation*}
+\int \frac{1}{x^2 + bx + c}\,\mathrm{dx} = \omega \arctan(\frac{2x + b}{2 \omega}).
+    \end{equation*}
+    \invisible<1>{
+    Finalement
+    \begin{equation*}
+    \boxed{ \int \frac{\lambda x + \mu}{x^2 + bx + c}\, \mathrm{dx}
+         = 
+       \frac{\lambda}{2}  \ln(x^2 + bx + c) + 
+        \left(\mu - \frac{b \lambda}{2} \right) \sqrt{c - \frac{b^2}{a^2}} \arctan \left( \frac{2x + b}{2 \sqrt{c - \frac{b^2}{a^2}}} \right) + k^{\prime}.}
+    \end{equation*}
+    \invisible<2>{
+    }}
+    \end{frame}
+    %%%%%%%%%%
+    \begin{frame}{Exercice}
+    Calculer $\dps \int_{\mathbb{R}} \frac{\mathrm{dx}}{x^3 - 1}$. 
+    \vspace*{0.2 cm}
+    \\
+    \corrige{
+    \vspace*{0.2 cm}
+    \\
+\begin{enumerate}
+    \item \textcolor{midnightblue}{
+    \textbf{Recherche des pôles}
+\begin{equation*}
+    x^3 - 1 = (x - 1)(x^2 + x + 1)
+\end{equation*}
+Alors $1$ est pôle d'ordre 1 mais on ne peut pas trouver d'autres pôles car le polynôme $x^2 + x + 1$ est irréductible.
+}
+\vspace*{0.2 cm}
+\\
+\item
+\textcolor{midnightblue}{
+    \textbf{Décomposition en éléments simples}
+Il existe $(\lambda_1, a, b) \in \mathbb{R}^{3}$ tel que
+\begin{equation*}
+    \frac{1}{x^3 - 1} = \frac{\lambda_1}{x - 1} + \frac{ax + b}{x^2 + x + 1}.
+\end{equation*}
+Par identification on trouve $a=-\frac{1}{3}$ et $b = \frac{2}{3}$.
+}
+\end{enumerate}
+}
+\end{frame}
+%%%%%%%
+\begin{frame}
+\textcolor{midnightblue}{
+Alors,
+\begin{equation*}
+    \frac{1}{x^3 - 1} =
+    \frac{1}{3} \frac{1}{x - 1} 
+    + \frac{-\frac{1}{3}x + \frac{2}{3}}{x^2 + x + 1}
+ =
+    \frac{1}{3} \underbrace{\frac{1}{x - 1}}_{A_1} -\frac{1}{6}
+     \underbrace{\frac{2x + 1}{(x^2 + x + 1)}}_{A_2} - 5\underbrace{\frac{1}{x^2 + x + 1}}_{A_3}.
+\end{equation*}
+}
+\begin{enumerate}
+\setcounter{enumi}{2}
+ \item 
+ \textcolor{midnightblue}{\textbf{On calcul séparément chaque terme} 
+    \begin{align*}
+    A_1 = & \int_{\mathbb{R}} \frac{1}{x - 1}\, \mathrm{dx} = \ln \myabs{x - 1} + k_1 \quad k_1 \in \mathbb{R}
+    \\
+    A_2 = &     \int_{\mathbb{R}} \frac{2x + 1}{x^2 + x + 1}\,\mathrm{dx} = \ln \myabs{x^2 + x + 1} + k_2 \quad k_2 \in \mathbb{R}. 
+\end{align*}
+De plus
+\begin{equation*}
+A_3 =  
+    \int \frac{1}{(x + \frac{1}{2})^2 + \left(\frac{\sqrt{3}}{2}\right)^2}\,\mathrm{dx}
+    = \frac{4}{3} 
+    \int_{\mathbb{R}} \frac{1}{  1 + \left( \frac{2 x + 1}{\sqrt{3}} \right)^2}\,\mathrm{dx}
+\end{equation*}
+}
+\end{enumerate}
+\end{frame}
+%%%%%%%%%
+%%%%%%%%%
+\begin{frame}
+\begin{enumerate}
+    \item 
+    \textcolor{midnightblue}{\textbf{Changement de variable:}} 
+    \textcolor{midnightblue}{
+    Soit $\varphi$ définie par $\dps \varphi(u) = \frac{\sqrt{3}}{2} u - \frac{1}{2}$.
+Alors
+\begin{equation*}
+  A_3 = \frac{\sqrt{3}}{2} \int_{\mathbb{R}} \frac{1}{1 + u^2} \,\mathrm{du} 
+  = \frac{\sqrt{3}}{2} \arctan(u) + k_3 = \frac{\sqrt{3}}{2}
+  \arctan \left(\frac{2x + 1}{\sqrt{3}} \right) + k_3
+\end{equation*} 
+}
+\item
+\textcolor{midnightblue}{
+\textbf{Conclusion}
+\begin{equation*}
+\begin{split}
+    \int \frac{\mathrm{dx}}{x^3 - 1} 
+    & = \frac{1}{3} A_1 - \frac{1}{6} A_2 - 5 A_3
+    \\
+& =  \frac{1}{3} \ln \myabs{x - 1} -\frac{1}{6} \ln \myabs{x^2 + x + 1} -5 \frac{\sqrt{3}}{2} \arctan \left(\frac{2x + 1}{\sqrt{3}} \right) + k \quad k \in \mathbb{R}.
+    \end{split}
+\end{equation*}
+}
+\end{enumerate}
+\end{frame}
+
+%%%
+%%%%%%%%
+\begin{frame}
+\frametitle{Règles de Bioche}
+\textcolor{cadmiumgreen}{\textbf{But:}}
+Trouver le changement de variable optimal pour calculer des intégrales de fractions rationnelles en sinus et cosinus. 
+\vspace*{0.2 cm}
+\\
+Soit $f$ une fraction rationnelle en cosinus et sinus avec $w(x) = f(x)\,\mathrm{dx}$.
+\vspace*{0.2 cm}
+\\
+    \begin{enumerate}
+        \item 
+        \invisible<1>{
+        Si $w(x) = w(-x)$ on définit la fonction $\varphi : [-1, 1] \rightarrow \mathbb{R}$ de classe $\mathcal{C}^1$ sur $]-1,1[$  par 
+        \begin{equation*}
+ \varphi(u) = \arccos{(u)}       \end{equation*}
+        \item
+        \invisible<2>{
+        Si $\dps w(\pi - x) = w(x)$ on  définit la fonction $\varphi : [-1, 1] \rightarrow \mathbb{R}$ de classe $\mathcal{C}^1$ sur $]-1, 1[$ 
+        \begin{equation*}
+            \varphi(u) = \arcsin{(u)}.
+        \end{equation*}
+        \item
+        \invisible<3>{
+        Si $\dps w(\pi + x) = w(x)$ on définit la fonction $\varphi : \mathbb{R} \rightarrow \left]-\frac{\pi}{2},\frac{\pi}{2} \right[$ de classe $\mathcal{C}^1$ par
+        \begin{equation*}
+            \varphi(u) = \arctan{(u)}.
+        \end{equation*}
+        \invisible<4>{
+        }}}}
+        \end{enumerate}
+        \end{frame}
+        %%%%%%
+        \begin{frame}
+\begin{enumerate}
+    \setcounter{enumi}{3}
+   \item 
+   \invisible<1>{
+   Si deux des trois propriétés précédentes sont vérifiées 
+       on définit la fonction $\varphi : [-1, 1] \rightarrow \mathbb{R}$ de classe $\mathcal{C}^1$ sur $]-1,1[$  par 
+        \begin{equation*}
+ \varphi(u) = \frac{1}{2} \arccos{(u)}       \end{equation*}
+       \item
+   \invisible<2>{
+   Si aucune des propriétés n'est vérifiée, on utilise le changement de variable "brutal" $\varphi : \mathbb{R} \rightarrow \left]-\frac{\pi}{2},\frac{\pi}{2} \right[$ de classe $\mathcal{C}^1$ par
+        \begin{equation*}
+            \varphi(u) = 2 \arctan{(u)}.
+        \end{equation*}
+        \invisible<3>{
+        }}}
+    \end{enumerate}
+\end{frame}
+%%%%%%
+ \begin{frame}{Exercice}
+ Calculer l'intégrale suivante      
+ \begin{equation*}
+         F(x) = \int \frac{\mathrm{dx}}{\sin{(x)}}
+     \end{equation*}
+     \begin{enumerate}
+         \invisible<1>{
+         \item 
+        Soit $f$ définie sur $\mathbb{R} \backslash \left\{ k \pi, k \in \mathbb{Z} \right\}$ par $\dps f(x) = \frac{1}{\sin(x)}$ alors  $\dps w(x) = \frac{\mathrm{dx}}{\sin{(x)}} = w(-x)$. 
+ \invisible<2>{
+ \item
+ \textbf{Règles de Bioche} suggèrent de poser $\varphi : [-1, 1] \rightarrow \mathbb{R}$ de classe $\mathcal{C}^1$ sur $]-1, 1[$ par 
+ \begin{equation*}
+     \varphi(u) = \arccos{(u)}.
+ \end{equation*}
+ \invisible<3>{
+ \item
+ \textbf{Formule du changement de variable :}
+ \begin{equation*}
+ \int \frac{\mathrm{dx}}{\sin(x)} = \int f(\varphi(u)) \varphi^{\prime}(u)\,\mathrm{du} = -\int \frac{1}{\sin(\arccos{(u)})} \frac{1}{\sqrt{1 - u^2}}\,\mathrm{du}.
+\end{equation*}
+ \invisible<4>{
+ }}}}
+     \end{enumerate}
+     \end{frame}
+%     %%%%%%%%%%%%%%
+     \begin{frame}
+     \begin{enumerate}
+     \setcounter{enumi}{3}
+         \item 
+     Comme $\sin^2(x) + \cos^2(x) = 1$ alors $\dps \sin{(\arccos{(u)})} = \sqrt{1 - u^2}$.
+ D'où
+ \begin{equation*}
+     \int \frac{\mathrm{dx}}{\sin(x)} 
+     = -\int \frac{1}{1 - u^2}\,\mathrm{du} = -\int \frac{1}{(1 - u)(1 + u)}\,\mathrm{du}.
+ \end{equation*}
+ \item
+ \textbf{Décomposition en éléments simples :} $\exists ! (\lambda_1, \lambda_2) \in \mathbb{R} \times \mathbb{R}$ tel que
+ \begin{equation*}
+     \frac{1}{(1 - u)(1 + u)} = \frac{\lambda_1}{1 - u} + \frac{\lambda_2}{1 + u}.
+ \end{equation*}
+ Après identification on trouve $\dps \lambda_1 = \frac{1}{2}$ et $\dps \lambda_2 = \frac{1}{2}$.
+ \item
+ \textbf{Conclusion :}
+ \begin{equation*}
+ \begin{split}
+ \int \frac{\mathrm{dx}}{\sin(x)} &=
+ -\frac{1}{2} \int \left( \frac{1}{1 - u} + \frac{1}{1 + u} \right)\,\mathrm{du} = \frac{1}{2} \ln{\myabs{\frac{1 - u}{1 + u}}} + \lambda = \frac{1}{2} \ln{\left(\frac{1 - \cos{(x)}}{1 + \cos{(x)}}\right)} + \lambda
+ \\
+ & = 
+ \end{split}
+ \end{equation*}
+     \end{enumerate}
+ \end{frame}
+% %%%%%%%%%%%%
+ \begin{frame}
+     \textcolor{cadmiumgreen}{\textbf{Autre méthode équivalente :}}
+     \vspace*{0.4 cm}
+     \begin{enumerate}
+         \item Règles de Bioche : on pose $u = \cos(x)$ alors $\mathrm{du} = -\sin(x) \,\mathrm{dx}$.
+        \vspace*{0.4 cm}
+         \item
+         Alors
+         \begin{equation*}
+         \begin{split}
+             \int
+ \frac{\mathrm{dx}}{\sin(x)} & =\int \frac{\sin(x)}{\sin^2(x)}\,\mathrm{dx} =  \frac{\sin(x)\mathrm{dx}}{1 - \cos^2(x)} = \int -\frac{\mathrm{du}}{1 - u^2} = \frac{1}{2} \ln{\myabs{\frac{1 - u}{1 + u}}} + \lambda
+ \\
+ & = \frac{1}{2} \ln{\left(\frac{1 - \cos{(x)}}{1 + \cos{(x)}}\right)} + \lambda         \end{split}
+ \end{equation*}
+     \end{enumerate}
+ \end{frame}

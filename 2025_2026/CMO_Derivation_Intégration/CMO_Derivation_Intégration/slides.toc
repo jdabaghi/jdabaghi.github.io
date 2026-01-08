@@ -1,0 +1,5 @@
+\babel@toc {french}{}\relax 
+\beamer@sectionintoc {2}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {3}{Analyse réelle}{6}{0}{2}
+\beamer@sectionintoc {4}{Relations de comparaison}{10}{0}{3}
+\beamer@sectionintoc {5}{Dérivation}{55}{0}{4}

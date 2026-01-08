@@ -1,0 +1,462 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%EQUATIONS DIFFERENTIELLES%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \begin{center}
+        \Huge{\'{E}quations différentielles linéaires}
+    \end{center}
+\end{frame}
+%%%%
+\begin{frame}
+  Soit $I$ un intervalle de $\mathbb{R}$ de la forme $I = ]0, T[$ avec $T > 0$.
+      Soit $ m \geq 1$ un nombre entier.
+    \begin{definition}
+      Soit $f : \overline{I} \times \mathbb{R}^m \rightarrow \mathbb{R}^{m}$.
+      On appelle équation différentielle ordinaire (EDO) d’ordre $n$, l'équation exprimant la dérivée n-ème $y^{(n)}$ d’une fonction $y : \overline{I} \rightarrow \mathbb{R}^m$, en fonction de ses dérivées d’ordre inférieur $y^{(i)}$, $i = 0,\cdots, n-1$, de la forme
+      \begin{equation*}
+\forall t \in I, \quad y^{(n)}(t) = f(t, y(t), y^{\prime}(t), \cdots, y^{(n-1)}(t)).
+      \end{equation*}
+      Une solution de l'EDO est une fonction de $\overline{I} \rightarrow \mathbb{R}^m$, $n$ fois dérivable sur $I$ et telle que l’égalité soit satisfaite pour tout $t \in I$.
+    \vspace*{0.2 cm}  \\
+      \textcolor{midnightblue}{ 
+On appelle problème de Cauchy, la conjonction d’une EDO et d’une donnée initiale,
+\begin{equation*}
+  \begin{split}
+  y^{\prime}(t) &= f(t, y(t))
+  \\
+  y(t_0) &= y_0
+  \end{split}
+\end{equation*}
+}
+    \end{definition}
+\end{frame}
+%%%%
+\begin{frame}
+  \frametitle{Exemples de problèmes conduisant à une équation différentielle}
+     \begin{enumerate}
+      \item
+        Charge d'un condensateur à travers une résistance
+        \begin{minipage}[b]{0.5\linewidth}
+        \begin{figure}
+          \centering
+\includegraphics[scale = 0.4]{circuit_RC}
+        \end{figure}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b]{0.49\linewidth}
+          \begin{itemize}
+\item
+            $t$ : variable temporelle
+          \item       
+            $i$ : intensité du courant
+          \item
+            $q$ : charge du condensateur
+            \end{itemize}
+         \textcolor{cadmiumgreen}{\textbf{Loi d'Ohm}}
+        \begin{equation*}
+U = Ri + \dfrac{q}{c}.
+        \end{equation*}
+          \end{minipage}
+        On obtient le problème de Cauchy suivant:
+        \begin{equation*}
+          \begin{split}
+            \dfrac{dq}{dt} + \dfrac{q}{RC}  & = \dfrac{U}{R}
+            \\
+            q(0) & = 0
+          \end{split}
+        \end{equation*}
+     \end{enumerate}
+\end{frame}
+%%%%%
+\begin{frame}
+  \begin{enumerate}
+\vspace*{-0.3 cm}
+  \item
+    Oscillateur harmonique
+\vspace*{0.2 cm}
+        \\
+         \begin{minipage}[b]{0.45\linewidth}
+        \begin{figure}
+          \centering
+\includegraphics[scale = 0.4]{systeme_ressort}
+        \end{figure}
+        \end{minipage}
+         \hfill
+   \begin{minipage}[b]{0.54 \linewidth}
+     \begin{itemize}
+     \item
+       \textbf{Système étudié :} point $M$ de masse $m$ accroché à l’extrémité d’un ressort.
+       $\ell$ : longueur du ressort à l'instant $t$, $\ell_0$ : longueur au repos.
+       Allongement du ressort : $x = \ell - \ell_0$.
+     \item
+       \textbf{Forces appliquées à $M$ :} poids $\vec{P}$, réaction du support $\vec{R}$, et force de rappel du ressort $\vec{F} = -k (\ell - \ell_0) \vec{e}_x$.
+     \item
+        \textbf{PFD :} $\dps \sum \vec{F_{\mathrm{ext}}} = m \vec{a} \Rightarrow \vec{P} + \vec{R} + \vec{F} = m \vec{a}$
+               \end{itemize}
+   \end{minipage}
+\vspace{0.1 cm}   \\
+   \vspace*{0.1 cm}
+        En projetant l'équation précédente sur l'axe $(0x)$ on obtient
+        \begin{equation*}
+ x^{\prime \prime}(t) + \frac{k}{m}x(t) = 0.
+          \end{equation*}
+    \end{enumerate}
+\end{frame}
+%%%%
+\begin{frame}
+  \frametitle{\'{E}quations différentielles linéaires du premier ordre}
+  \begin{definition}
+      Soient $a$, $b$, et $c$ trois fonctions continues de $I$ dans $\mathbb{K}$. On considère l'équation différentielle linéaire du premier ordre
+      \begin{equation}
+a(t) y^{\prime}(t) + b(t) y(t) = c(t) \qquad \qquad (E)
+      \end{equation}
+      On appelle solution sur $I$ de l'équation différentielle toute fonction $f : I \rightarrow \mathbb{K}$ dérivable telle que :
+      \begin{equation*}
+\forall t \in I, \ a(t) f^{\prime}(t) + b(t) f(t) = c(t).
+        \end{equation*}
+  \end{definition}
+      \textbf{Remarque :}
+      Si $c$ est la fonction nulle, l'équation différentielle est dite homogène et on la note en général $(E_0)$.
+\end{frame}
+%%%%
+\begin{frame}
+\begin{proposition}
+Si $f_0$ est une solution particulière de l'équation $(E)$ et si $\mathcal{S}$ désigne l'ensemble des solutions de l'équation $(E_0)$, l'ensemble des solutions de l'équation $(E)$ est $\left\{ f_0 + g \ | g \in \mathcal{S} \right\}$.
+
+  \end{proposition}
+\textbf{Démonstration :}
+Puisque $f_0$ est une solution particulière de l'équation $(E)$ on a
+      \begin{equation*}
+a(t) f_0^{\prime}(t) + b(t) f_0(t) = c(t)
+      \end{equation*}
+      De même, si $g$ est solution de $(E_0)$ alors on a
+      \begin{equation*}
+a(t) g^{\prime}(t) + b(t) g(t) = 0.
+      \end{equation*}
+      En sommant ces deux équations on trouve
+      \begin{equation*}
+a(t) \left(f_0 + g \right)^{\prime}(t) +  \left(f_0 + g \right)(t) b(t) = c(t)
+      \end{equation*}
+      ce qui prouve le résultat souhaité.
+\end{frame}
+%%%%%
+\begin{frame}
+  \frametitle{Résolution d'une équation homogène}
+    Soient $a, b \in \mathcal{C}^{0}(I, \mathbb{K})$ et on considère l'EDO du 1er ordre
+ \textcolor{cadmiumgreen}{${\bf a(t) y^{\prime}(t) + b(t) y(t) = 0}$ ($E_0$)}
+    \begin{proposition}
+      Si la fonction $a$ ne s'annule pas sur $I$ et si $A$ est une primitive sur $I$ de la fonction $t \mapsto \dfrac{b(t)}{a(t)}$, les solutions sur $I$ de l'équation $(E_0)$ sont les fonctions de la forme :
+      \begin{equation*}
+t \mapsto \lambda e^{-A(t)} \quad \text{avec} \quad \lambda \in \mathbb{K}
+        \end{equation*}
+    \end{proposition}
+\textbf{Démonstration :} 
+      Soit $g$ définie sur $I$ par $g(t) = \lambda e^{-A(t)}$ avec $\lambda \in \mathbb{K}$.
+      La fonction g est dérivable sur $I$ et
+      \begin{equation*}
+        \begin{split}
+          a(t) g^{\prime}(t) + b(t) g(t) &= a(t) \left( -\lambda A^{\prime}(t) e^{-A(t)} \right) + b(t) \lambda e^{-A(t)}
+          =
+           \lambda \left(-a(t) \dfrac{b(t)}{a(t)} + b(t) \right)e^{-A(t)}
+          \\
+          & = 0.
+          \end{split}
+\end{equation*}
+\end{frame}
+%%%%%
+\begin{frame}
+\frametitle{Résolution de l'équation avec second membre}
+Soient $a$, $b$, et $c$ trois fonctions continues sur un intervalle $I$ dans $\mathbb{K}$.
+On considère l'équation différentielle :
+  \begin{equation*}
+a(t) y^{\prime}(t) + b(t) y(t) = c(t) \qquad \qquad (E)
+  \end{equation*}
+  La solution générale de $(E)$ est donnée par la somme de la solution de l'équation homogène associée à $(E)$ et d'une solution particulière.
+    \vspace*{0.2 cm}
+  \\
+  \textcolor{red}{Méthodologie pour trouver une solution particulière}
+  \begin{enumerate}
+  \item
+    La nature du second membre donne des indications.
+    Par ex, si le second membre est constant on cherchera une solution constante et s'il est trigonométrique on cherchera une combinaison linéaire de fonctions trigonométriques.
+\item Si on ne trouve pas facilement une solution particulière on utilise la méthode de la variation de la constante.
+  \end{enumerate}
+  
+  \end{frame}
+%%%%
+\begin{frame}
+  \frametitle{Méthode de la variation de la constante}
+  Cette méthode consiste à rechercher une solution particuliere sous la forme $y = \lambda y_0$ où $y_0$ est une solution non nulle de l'équation $(E_0)$ et $\lambda$ une fonction dérivable sur $I$.
+  \begin{equation*}
+    \begin{split}
+      \forall t \in I, \ a(t) y^{\prime}(t) + b(t) y(t) & = a(t) (\lambda y_0)^{\prime}(t) + b(t) \lambda(t) y_0(t)
+      \\
+      & = \lambda(t) \left(a(t) y_0(t) + b(t) y_0(t)  \right) + a(t) \lambda^{\prime}(t) y_0(t)
+      \\
+      & = a(t) \lambda^{\prime}(t) y_0(t) \ \text{car} \ y_0 \ \text{est une solution de} \ E_0.
+      \end{split}
+  \end{equation*}
+  Ainsi $\lambda y_0$ est une solution de $(E)$ si et seulement si la fonction $\lambda$ vérifie :
+  \begin{equation*}
+\forall t \in I, \ \lambda^{\prime}(t) = \frac{c(t)}{a(t) y_0(t)}
+  \end{equation*}
+  si, et seulement si,
+  \begin{equation*}
+\lambda(t) = \int \dfrac{c(s)}{a(s) y_0(s)} ds.
+  \end{equation*}
+
+  \end{frame}
+%%%
+\begin{frame}
+\frametitle{Exercice}
+Résoudre sur $]0, + \infty[$ l'équation $(E)$: $t y^{\prime}(t) - y(t) = t^2 e^t$.
+      \vspace*{0.2 cm}
+      \\
+      \corrige{
+        \begin{enumerate}
+          \item
+    \textbf{Résolution de l'équation homogène} $(E_0)$ associée à $(E)$.
+\begin{equation*}
+y_0(t) = \lambda t \quad \lambda \in \mathbb{R}.
+    \end{equation*}
+  \item
+    \textbf{Recherche d'une solution particulière} par la méthode de la variation de la constante.
+    On cherche donc une solution particulière de $(E)$ notée $y_0$ sous la forme $y_0(t) = \lambda(t) t$ où $\lambda$ est une fonction dérivable sur $\mathbb{R}_{+}^{*}$.
+    Alors, $y_0$ vérifie $(E)$ ssi,
+    \begin{equation*}
+t y_0^{\prime}(t) - y_0(t) = t^2 e^t \iff t (\lambda^{\prime}(t) t + \lambda(t)) - \lambda(t) t = t^2 e^t \iff \lambda^{\prime}(t) = e^t \iff \lambda(t) = e^t
+    \end{equation*}
+\item
+\textbf{Conclusion :} l'ensemble des solutions de $(E)$ sont données par
+    \begin{equation*}
+y(t) = \lambda t + t e^t \quad \lambda \in \mathbb{R}.
+    \end{equation*}
+    \end{enumerate}
+  }
+  \end{frame}
+%%%%%
+\begin{frame}
+  \frametitle{Résolution avec une condition initiale}
+  Soient $a, b, c \in \mathcal{C}^{0}(I, \mathbb{K})$ et considérons l'EDO ${\bf a(t) y^{\prime}(t) + b(t) y(t) = c(t)}$
+  \begin{proposition}
+    Si la fonction $a$ ne s'annule par sur $I$ et si $(t_0, y_0) \in I \times \mathbb{K}$, $ \exists ! f$ solution de $(E)$ tq $f(t_0) = y_0$.
+  \end{proposition}
+\textbf{Démonstration :}
+  Supposons qu'il existe $f_1$ et $f_2$ solutions de $(E)$ tq $f_1(t_0) = f_2(t_0) =  y_0$.
+Alors,
+\begin{equation*}
+  \begin{split}
+    a(t) f_1^{\prime}(t) + b(t) f_1(t) &= c(t)
+    \\
+    a(t) f_2^{\prime}(t) + b(t) f_2(t) &= c(t)
+  \end{split}
+  \Rightarrow a(t) (f_1 - f_2)^{\prime}(t) + b(t) (f_1 - f_2)(t) = 0.
+\end{equation*}
+La solution de cette dernière EDO est donnée par $(f_1- f_2)(t) = \lambda e^{\dps -A(t)}$ où $A$ est une primitive de $\dps t \mapsto b(t) / a(t)$.
+Finalement $f_1(t) = \lambda e^{\dps -A(t)} + f_2(t)$. 
+Or $f_1(t_0) = f_2(t_0) = y_0$ ce qui prouve que $\lambda = 0$. On en déduit que $f_1 = f_2$.
+  \end{frame}
+%%%%%
+\begin{frame}
+
+   \begin{proposition}
+    \begin{enumerate}
+    \item
+      Soit $\alpha \in \mathbb{C}$.
+      La fonction $t \mapsto e^{\alpha t}$ est la seule fonction dérivable sur $\mathbb{R}$ vérifiant l'edo $y^{\prime} = \alpha y$ et la condition initiale $y(0) = 1$.
+      \vspace*{0.2 cm}
+    \item
+      Les fonctions dérivables de $\mathbb{R}$ dans $\mathbb{C}$ vérifiant l'équation fonctionnelle
+      \begin{equation}
+\forall (t, u) \in \mathbb{R}^2, \ f(t+u) = f(t) f(u)
+      \end{equation}
+      sont la fonction nulle et les fonctions $t \mapsto e^{\alpha t}$ avec $\alpha \in \mathbb{C}$.
+      \end{enumerate}
+  \end{proposition}
+   \textbf{Démonstration :}
+    \begin{enumerate}
+    \item
+      Le problème de Cauchy
+      \begin{equation*}
+          y^{\prime}(t) = \alpha y(t), \quad y(0) = 1
+      \end{equation*}
+      admet une unique solution.
+      Puisque la fonction $t \mapsto e^{\alpha t}$ est solution il s'agit de la seule fonction vérifiant ce problème.
+      \end{enumerate}
+ 
+  \end{frame}
+%%%%%
+\begin{frame}
+  \begin{enumerate}
+
+    \item
+      Soit $f$ une fonction dérivable vérifiant l'équation fonctionnelle
+      \begin{equation*}
+\forall (t, u) \in \mathbb{R}^2, \ f(t + u) = f(t) f(u).
+      \end{equation*}
+      Pour $t = u = 0$ on trouve
+      \begin{equation*}
+f(0) = \left[f(0)\right]^2 \Rightarrow f(0) = 1.
+      \end{equation*}
+      Ensuite, on dérive l'équation fonctionnelle par rapport à la variable $u$ et on trouve
+      \begin{equation*}
+f^{\prime}(t + u) = f(t) f^{\prime}(u).
+      \end{equation*}
+      Pour $u = 0$ on obtient comme relation
+      \begin{equation*}
+f^{\prime}(t) = f(t) f^{\prime}(0).
+      \end{equation*}
+      Finalement, la fonction $f$ est solution du problème de Cauchy
+      \begin{equation*}
+y^{\prime} = \alpha y \quad \text{où} \quad \alpha = f^{\prime}(0) \quad \text{et} \quad y(0) = 1.
+      \end{equation*}
+      Or la solution de ce problème est donnée par $t \mapsto e^{\alpha t}$ ce qui donne le résultat.
+      \end{enumerate}
+  \end{frame}
+%%%%%
+\begin{frame}
+\frametitle{\'{E}quations du second ordre à coefficients constants}
+\begin{enumerate}
+\item
+  \textbf{Résolution de l'équation homogène}
+  \vspace*{0.2 cm}
+  \\
+  Soient $a$, $b$, et $c$ avec $a \neq 0$ trois nombres complexes ou réels.
+  On considère l'équation différentielle :
+  \begin{equation*}
+a y^{\prime \prime}(t) + b y^{\prime}(t) + c y(t) = 0  \qquad \qquad (E_0).
+  \end{equation*}
+  On s'intéresse à la résolution de l'équation différentielle $(E_0)$.
+  \begin{definition}
+    On appelle équation caractéristique associée à l'équation différentielle $(E_0)$ l'équation :
+    \begin{equation*}
+ar^2 + br + c = 0.
+      \end{equation*}
+  \end{definition}
+
+  \end{enumerate}
+\end{frame}
+%%%%%%
+\begin{frame}
+\begin{proposition}
+Soit $r \in \mathbb{C}$. La fonction $\varphi_r : t \mapsto e^{rt}$ est solution de $(E_0)$ si, et seulement si, $a r^2 + br + c = 0$.
+  \end{proposition}
+\textbf{Démonstration :} Par double implication.
+\begin{itemize}
+\item[$\bullet$]
+  Supposons que la fonction $\varphi_r$ est solution de $(E_0)$. En injectant l'expression de $\varphi_r$ dans $(E_0)$ on trouve
+        \begin{equation*}
+\left(a r^2+ b r + c\right)  e^{rt} = 0
+        \end{equation*}
+        Nécessairement $a r^2+ b r + c = 0$.
+        \\
+        \vspace*{0.25 cm}
+      \item[$\bullet$]
+        Réciproquement, si $a r^2+ b r + c = 0$ alors on a $e^{rt} \left( a r^2+ b r + c = 0 \right)$ et donc $a \varphi_r^{\prime \prime}(t) + b \varphi_{r}^{\prime}(t) + c \varphi_r(t) = 0$.
+   
+  \end{itemize}
+  \end{frame}
+%%%%%
+\begin{frame}
+  \frametitle{Calcul des solutions}
+\begin{proposition}[Cas complexe]
+    Soit $(a, b, c) \in \mathbb{C}^3$.
+    \begin{itemize}
+      \item[$\bullet$]
+        Si l'équation caractéristique $a r^2 + br + c$ a deux racines distinctes $r_1$ et $r_2$, les solutions de $(E_0)$ sont les fonctions de la forme :
+        \begin{equation*}
+t \mapsto \lambda_1 e^{r_1 t} + \lambda_2 e^{r_2 t} \quad \text{avec} \quad (\lambda_1, \lambda_2) \in \mathbb{C}^2
+        \end{equation*}
+      \item[$\bullet$]
+        Si l'équation caractéristique $a r^2 + br + c$ a une racine double $r_0$, les solutions de $(E_0)$ sont les fonctions de la forme :
+        \begin{equation*}
+t \mapsto e^{r_0 t} \left( \lambda_1 + \lambda_2 t \right) \quad \text{avec} \quad (\lambda_1,\lambda_2) \in \mathbb{C}^2.
+        \end{equation*}
+        \end{itemize}
+\end{proposition}
+  \end{frame}
+%%%%%%%
+\begin{frame}
+\textbf{Démonstration :}
+    \begin{itemize}
+    \item[$\bullet$]
+      Supposons que l'équation caractéristique $ar^2 + br + c$ a deux racines distinctes $r_1$ et $r_2$.
+      Alors, les fonctions $\varphi_{r_1}$ et $\varphi_{r_2}$ sont solutions de $(E_0)$.
+      \textcolor{red}{L'espace des solutions de $(E_0)$ est un espace vectoriel !} ce qui prouve le résultat.
+      \vspace*{0.2 cm}
+      \\
+    \item[$\bullet$]
+      Supposons que l'équation caractéristique $a r^2 + br + c$ a une racine double notée $r_0$.
+      Alors, $r_0 = -\frac{b}{2a}$.
+      Soit $f$ la fonction définie sur $\mathbb{R}$ par $f(t) = \lambda_1 + \lambda_2 t$.
+      La fonction $t \mapsto f(t) e^{r_0t}$ est solution de l'équation $(E_0)$ si, et seulement si, elle est deux fois dérivables et
+      \begin{equation*}
+        \begin{split}
+         & a (f(t)e^{r_0t})^{\prime \prime} + b (f(t)e^{r_0t})^{\prime} + c (f(t) e^{r_0t}) = 0
+          \\
+        %  \iff & a \left(f^{\prime}(t) e^{rt} + r f(t) e^{rt}  \right)^{\prime} + b \left(f^{\prime}(t) e^{rt} + r f(t) e^{rt} \right) + c f(t) e^{rt} = 0
+          %% \\
+          %% \iff
+          %% a \left(f^{\prime \prime}(t) e^{rt} + 2r f^{\prime}(t)e^{rt}  + r^2f(t)e^{rt}  \right) + b \left(f^{\prime}(t) e^{rt} + r f(t) e^{rt} \right) + c f(t) e^{rt} = 0
+          \iff
+         & \left(a r_0^2 + br_0 + c\right) f(t) e^{r_0t} + (2ar_0 + b)f^{\prime}(t) e^{r_0t} + a f^{\prime \prime}(t) e^{r_0t} = 0
+          \\
+         % \iff
+         %& (2ar_0 + b)f^{\prime}(t) e^{r_0t} + a f^{\prime \prime}(t) e^{r_0 t} = 0
+          %\\
+          \iff
+          & a f^{\prime \prime}(t) e^{r_0 t} = 0
+          \\
+          \iff
+          & f^{\prime \prime}(t) = 0
+          \\
+          \iff
+          & f(t) = \lambda_1 + \lambda_2 t \quad \text{où} \quad (\lambda_1, \lambda_2) \in \mathbb{R}^2.
+          \end{split}
+        \end{equation*}
+      
+      \end{itemize}
+  \end{frame}
+%%%%%
+\begin{frame}
+ \boxproposition{
+    Soient $a$, $b$, et $c$ trois réels.
+    \begin{itemize}
+      \item[$\bullet$]
+        Si l'équation caractéristique $a r^2 + br + c$ a deux racines réelles distinctes $r_1$ et $r_2$, les solutions de $(E_0)$ sont les fonctions de la forme :
+        \begin{equation}
+t \mapsto \lambda_1 e^{r_1 t} + \lambda_2 e^{r_2 t} \quad \text{avec} \quad (\lambda_1, \lambda_2) \in \mathbb{R}^2
+        \end{equation}
+      \item[$\bullet$]
+        Si l'équation caractéristique $a r^2 + br + c$ a une racine double $r_0$, les solutions de $(E_0)$ sont les fonctions de la forme :
+        \begin{equation}
+t \mapsto e^{r_0 t} \left( \lambda_1 + \lambda_2 t \right) \quad \text{avec} \quad (\lambda_1,\lambda_2) \in \mathbb{R}^2.
+        \end{equation}
+      \item[$\bullet$]
+        Si l'équation caractéristique $a r^2 + br + c$ a deux racines complexes conjuguées distinctes $r_1 = \alpha + i \beta$ et $r_2 = \alpha - i \beta$ où $(\alpha, \beta) \in \mathbb{R}^2$, les solutions de $(E_0)$ sont les fonctions de la forme :
+        \begin{equation}
+t \mapsto \gamma_1 e^{\alpha t} \cos(\beta t) + \gamma_2 e^{\alpha t} \sin(\beta t) \quad \text{avec} \quad (\gamma_1, \gamma_2) \in \mathbb{R}^2
+        \end{equation}
+        \end{itemize}
+  }
+  \begin{proof}
+    Les deux premiers points se démontrent à l'instar de la Proposition précédente.
+    Supposons que l'équation caractéristique $a r^2 + br + c$ a deux racines complexes conjuguées distinctes $r_1 = \alpha + i \beta$ et $r_2 = \alpha - i \beta$ où $(\alpha, \beta) \in \mathbb{R}^2$.
+    D'après la Proposition~\ref{ref:proposition:equiv:sol:exp} les fonctions $\varphi_{r_1}$ et $\varphi_{r_2}$ sont solutions de l'équation $(E_0)$.
+    Par ailleurs, l'ensemble des solutions de $(E_0)$ forment un espace vectoriel et donc $\exists (\lambda_1,\lambda_2) \in \mathbb{R}^2$ tel que $\lambda_1 \varphi_{r_1} + \lambda_2 \varphi_{r_2}$ est solution de $(E_0)$.
+    Finalement on a
+    \begin{equation}
+\lambda_1 e^{r_1 t} + \lambda_2 e^{r_2 t} = 0
+    \end{equation}
+    et donc
+    \begin{equation}
+      \begin{split}
+      \lambda_1 e^{(\alpha + i \beta)t} + \lambda_2 e^{(\alpha - i \beta)t}
+      & =  e^{\alpha t} \left( (\lambda_1 + \lambda_2) \cos(\beta t) +  i (\lambda_1 - \lambda_2) \sin(\beta t)  \right)
+      \\
+      & = e^{\alpha t} \left( \gamma_1 \cos(\beta t) +  i \gamma_2 \sin(\beta t)  \right) = 0.
+      \end{split}
+    \end{equation}
+    \end{proof}
+  \end{frame}
